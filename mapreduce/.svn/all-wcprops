@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/137/trunk/python/src/mapreduce
+END
+quota.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/132/trunk/python/src/mapreduce/quota.py
+END
+util.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/137/trunk/python/src/mapreduce/util.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/73/trunk/python/src/mapreduce/__init__.py
+END
+model.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/131/trunk/python/src/mapreduce/model.py
+END
+control.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/131/trunk/python/src/mapreduce/control.py
+END
+handlers.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/136/trunk/python/src/mapreduce/handlers.py
+END
+hooks.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/128/trunk/python/src/mapreduce/hooks.py
+END
+status.py
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/93/trunk/python/src/mapreduce/status.py
+END
+input_readers.py
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/136/trunk/python/src/mapreduce/input_readers.py
+END
+context.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/136/trunk/python/src/mapreduce/context.py
+END
+main.py
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/134/trunk/python/src/mapreduce/main.py
+END
+base_handler.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/114/trunk/python/src/mapreduce/base_handler.py
+END

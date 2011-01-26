@@ -1,0 +1,23 @@
+<html>
+<head>
+</head>
+<body>
+
+<div style="text-align: center">
+<div style="font-size: 96pt; font-family: Futura, Georgia, Palatino, Times New Roman, serif;">
+SIRC
+</div>
+
+<form action="/" method="GET">
+<input type="text" name="q" value="{{query}}" size="70" style="font-size: 18pt; font-family: sans-serif;"><input type="submit">
+</form>
+</div>
+
+{% if has_results %}
+{% for result in results %}
+<p>{{result.line_text}}</p>
+{% endfor %}
+{% endif %}
+
+</body>
+</html>

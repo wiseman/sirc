@@ -1,0 +1,21 @@
+application: heavymetalab
+version: 1
+runtime: python
+api_version: 1
+
+builtins:
+- remote_api: on
+- appstats: on
+
+handlers:
+- url: /mapreduce(/.*)?
+  script: mapreduce/main.py
+  login: admin
+
+- url: /a
+  script: views.py
+  login: admin
+
+- url: /.*
+  script: views.py
+
