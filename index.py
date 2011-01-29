@@ -116,7 +116,7 @@ def index_log_line(entity):
                                   msg_second)
     
     terms = extract_text_tokens(text)
-    line_text = unicode(line, encoding='cp1252')
+    line_text = unicode('<%s> %s' % (user, text), encoding='cp1252')
     index = LogLineIndex(log=log,
                          position=position,
                          timestamp=timestamp,
@@ -128,9 +128,7 @@ def index_log_line(entity):
 
 class IndexingFinished(webapp.RequestHandler):
   def post(self):
-    context = mapreduce.context.get()
-    params = context.mapreduce_spec.mapper.params
-    logging.info('Callback got params=%s' % (params,))
+    pass
 
 
 def parse_query_string(query_string):

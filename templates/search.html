@@ -15,7 +15,7 @@ SIRC
 
 {% if has_results %}
 {% for result in results %}
-<p>{{result.timestamp}}{{result.text}}</p>
+<p>{{result.timestamp}} {{result.log.channel|escape}} {{result.text|escape}}</p>
 {% endfor %}
 {% endif %}
 
