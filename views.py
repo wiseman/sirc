@@ -28,11 +28,6 @@ def render_template(name, values={}):
   return template.render(os.path.join(TEMPLATE_PATH, name), values)
 
 
-class Search(webapp.RequestHandler):
-  "This is the search page."
-  def get(self):
-    self.response.out.write('hello')
-
 class UploadLog(blobstore_handlers.BlobstoreUploadHandler):
   def get(self):
     upload_url = blobstore.create_upload_url('/u')
@@ -42,7 +37,8 @@ class UploadLog(blobstore_handlers.BlobstoreUploadHandler):
   def post(self):
     upload_files = self.get_uploads('file')
     blob_info = upload_files[0]
-    self.redirect('/a')
+    index.start_indexing_log(blob_info)
+    self.redirect('/mapreduce')
         
 
 class Admin(webapp.RequestHandler):
@@ -79,6 +75,7 @@ class Search(webapp.RequestHandler):
 application = webapp.WSGIApplication([('/', Search),
                                       ('/u', UploadLog),
                                       ('/a', Admin),
+                                      ('/indexing_did_finish', index.IndexingFinished)
                                       ]
                                      #debug=True
                                      )
