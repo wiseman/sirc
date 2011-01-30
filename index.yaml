@@ -13,12 +13,5 @@ indexes:
 - kind: LogLineIndex
   properties:
   - name: terms
-  - name: terms
-  - name: timestamp
-    direction: desc
-
-- kind: LogLineIndex
-  properties:
-  - name: terms
   - name: timestamp
     direction: desc
