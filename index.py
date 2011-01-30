@@ -116,7 +116,7 @@ def index_log_line(entity):
                                   msg_second)
     
     terms = extract_text_tokens(text)
-    line_text = unicode('<%s> %s' % (user, text), encoding='cp1252')
+    line_text = unicode('%s' % (text), encoding='cp1252')
     index = LogLineIndex(log=log,
                          position=position,
                          timestamp=timestamp,
@@ -147,7 +147,6 @@ def get_query_results(query_string):
   parsed_query = parse_query_string(query_string)
   db_query = make_db_query_from_parsed_query(parsed_query)
   records = db_query.fetch(10)
-  blob_reader = blobstore.BlobInfo.all().fetch(1)[0].open()
   #for r in records:
   #  r.line_text = get_log_line_from_position(blob_reader, r.position)
   return records

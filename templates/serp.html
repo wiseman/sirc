@@ -1,0 +1,14 @@
+{% regroup results by date as date_list %}
+
+<table>
+{% for date in date_list %}
+<tr><td colspan="4">{{ date.grouper|date:"N j, Y" }}</tr>
+{% for result in date.list %}
+<tr>
+<td>{{ result.channel|escape }}</td>
+<td>{{ result.record.timestamp|date:"G:i:s" }}</td>
+<td>&lt;{{ result.record.user|escape }}&gt;</td>
+<td>{{ result.record.text|escape }}</td>
+{% endfor %}
+{% endfor %}
+</table>

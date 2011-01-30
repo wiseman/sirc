@@ -12,11 +12,14 @@ SIRC
 <input type="text" name="q" value="{{query}}" size="70" style="font-size: 18pt; font-family: sans-serif;"><input type="submit">
 </form>
 </div>
-
+{% if query %}
 {% if has_results %}
-{% for result in results %}
-<p>{{result.timestamp}} {{result.log.channel|escape}} {{result.text|escape}}</p>
-{% endfor %}
+{{ result_html }}
+{% else %}
+<p>
+Sorry, there were no matches for your query.
+</p>
+{% endif %}
 {% endif %}
 
 </body>

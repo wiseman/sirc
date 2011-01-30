@@ -5,6 +5,7 @@
 from __future__ import with_statement
 import os.path
 import logging
+import collections
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
@@ -59,14 +60,34 @@ class Search(webapp.RequestHandler):
     query = self.request.get('q')
     values['has_results'] = False
     if len(query) > 0:
-      results = index.get_query_results(query)
-      values['results'] = results
-      values['has_results'] = True
-    values['query'] = query
+      values['query'] = query
+      records = index.get_query_results(query)
+      if len(records) > 0:
+        results = prepare_results_for_display(records)
+        logging.info('prepared: %s' % (results,))
+        result_html = render_template('serp.html', {'results': results})
+        values['result_html'] = result_html
+        values['has_results'] = True
     logging.info('values=%s' % (values,))
     self.response.out.write(render_template('search.html', values))
       
 
+
+def prepare_results_for_display(records):
+  results = []
+  current_date = None
+  previous_timestamp = None
+  for r in records:
+    if current_date is None or not is_same_day(previous_timestamp, r.timestamp):
+      previous_timestamp = r.timestamp
+      current_date = r.timestamp.date()
+    results.append({'date': current_date, 'record': r})
+  return results
+
+def is_same_day(t1, t2):
+  v = not (t1.day != t2.day or t1.month != t2.month or t1.year != t2.year)
+  logging.info('%s = %s: %s' % (t1, t2, v))
+  return v
 
 # ------------------------------------------------------------
 # Application URL routing.
