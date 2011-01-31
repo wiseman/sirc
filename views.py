@@ -31,13 +31,14 @@ def render_template(name, values={}):
 
 class UploadLog(blobstore_handlers.BlobstoreUploadHandler):
   def get(self):
-    upload_url = blobstore.create_upload_url('/u')
+    upload_url = blobstore.create_upload_url('/uuuuu')
     values = {'upload_url': upload_url}
     self.response.out.write(render_template('upload.html', values))
 
   def post(self):
     upload_files = self.get_uploads('file')
     blob_info = upload_files[0]
+    
     index.start_indexing_log(blob_info)
     self.redirect('/mapreduce')
         
@@ -94,7 +95,7 @@ def is_same_day(t1, t2):
 # ------------------------------------------------------------
 
 application = webapp.WSGIApplication([('/', Search),
-                                      ('/u', UploadLog),
+                                      ('/uuuuu', UploadLog),
                                       ('/a', Admin),
                                       ('/indexing_did_finish', index.IndexingFinished)
                                       ]

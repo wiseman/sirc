@@ -1,14 +1,14 @@
 {% regroup results by date as date_list %}
 
-<table>
+<table class="serps">
 {% for date in date_list %}
-<tr><td colspan="4">{{ date.grouper|date:"N j, Y" }}</tr>
+<tr class="serpdaterow"><td class="serpdate" colspan="4">{{ date.grouper|date:"N j, Y" }}</tr>
 {% for result in date.list %}
-<tr>
-<td>{{ result.channel|escape }}</td>
-<td>{{ result.record.timestamp|date:"G:i:s" }}</td>
-<td>&lt;{{ result.record.user|escape }}&gt;</td>
-<td>{{ result.record.text|escape }}</td>
+<tr class="serprow">
+<td valign="top" class="serpchannel">{{ result.record.channel|escape }}</td>
+<td valign="top" class="serptime">{{ result.record.timestamp|date:"H:i:s" }}</td>
+<td valign="top" class="serpuser">&lt;{{ result.record.user|escape }}&gt;</td>
+<td valign="top" class="serptext">{{ result.record.text|escape }}</td>
 {% endfor %}
 {% endfor %}
 </table>

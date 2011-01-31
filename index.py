@@ -24,6 +24,7 @@ class DayLog(db.Model):
 class LogLineIndex(db.Model):
   log = db.ReferenceProperty(DayLog)
   position = db.IntegerProperty()
+  channel = db.StringProperty(required=True)
   timestamp = db.DateTimeProperty(required=True)
   terms = db.StringListProperty(required=True)
   text = db.StringProperty()
@@ -42,7 +43,7 @@ def delete_indices():
 
 
 
-NUM_INDEXER_SHARDS = 4
+NUM_INDEXER_SHARDS = 1
 
 def start_indexing_log(blob_info):
   blob_reader = blob_info.open()
@@ -115,13 +116,16 @@ def index_log_line(entity):
                                   msg_minute,
                                   msg_second)
     
-    terms = extract_text_tokens(text)
-    line_text = unicode('%s' % (text), encoding='cp1252')
+    text_u = unicode(text, 'cp1252')
+    terms_u = extract_text_tokens(text_u)
+    line_text = unicode(text, encoding='cp1252')
+    user_text = unicode(user, encoding='cp1252')
     index = LogLineIndex(log=log,
                          position=position,
+                         channel=log.channel,
                          timestamp=timestamp,
-                         terms=terms,
-                         user=user,
+                         terms=terms_u,
+                         user=user_text,
                          text=line_text)
     yield mapreduce.operation.db.Put(index)
 
@@ -139,14 +143,14 @@ def make_db_query_from_parsed_query(parsed_query):
   db_query = LogLineIndex.all()
   for word in parsed_query:
     db_query.filter('terms =', word)
-  db_query.order('-timestamp')
+  #db_query.order('-timestamp')
   return db_query
 
   
 def get_query_results(query_string):
   parsed_query = parse_query_string(query_string)
   db_query = make_db_query_from_parsed_query(parsed_query)
-  records = db_query.fetch(10)
+  records = db_query.fetch(200)
   #for r in records:
   #  r.line_text = get_log_line_from_position(blob_reader, r.position)
   return records

@@ -13,9 +13,8 @@ handlers:
   script: mapreduce/main.py
   login: admin
 
-- url: /a
-  script: views.py
-  login: admin
+- url: /static
+  static_dir: static
 
 - url: /.*
   script: views.py
