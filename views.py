@@ -6,6 +6,7 @@ from __future__ import with_statement
 import os.path
 import logging
 import collections
+import hashlib
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
@@ -38,7 +39,15 @@ class UploadLog(blobstore_handlers.BlobstoreUploadHandler):
   def post(self):
     upload_files = self.get_uploads('file')
     blob_info = upload_files[0]
-    
+
+    hash = blob_hash(blob_info)
+    logging.info('hash=%s' % (hash,))
+    previous_logs = index.DayLog.all().filter('md5 = ',hash).fetch(5)
+    if len(previous_logs) > 0:
+      blob_info.delete()
+      logging.error('md5 collision.')
+      self.redirect('/a')
+    logging.info('Starting indexing of %s' % (blob_info.key(),))
     index.start_indexing_log(blob_info)
     self.redirect('/mapreduce')
         
@@ -59,18 +68,24 @@ class AddMD5(webapp.RequestHandler):
     import hashlib
     logs = []
     for blob_info in blobstore.BlobInfo.all():
-      reader = blobstore.BlobReader(blob_info)
-      m = hashlib.md5()
-      m.update(reader.read())
-      log = DayLog.all().filter('blob = ', blobstore.BlobKey(blob_info.key()))
-      log.md5 = m.hexdigest()
+      log = index.DayLog.all().filter('blob = ', blob_info.key()).fetch(1)[0]
+      log.md5 = blob_hash(blob_info)
       logs.append(log)
       logging.info('Hashing log %s' % (log.key(),))
-      reader.close()
     logging.info('Committing %s.' % (len(logs),))
     db.put(logs)
     self.redirect('/a')
 
+def blob_hash(blob_info):
+  m = hashlib.md5()
+  reader = blobstore.BlobReader(blob_info)
+  try:
+    m.update(reader.read())
+    return m.hexdigest()
+  finally:
+    reader.close()
+  
+  
 
 class Search(webapp.RequestHandler):
   def get(self):

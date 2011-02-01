@@ -2,8 +2,9 @@ import sys
 import re
 import logging
 import datetime
-from google.appengine.ext import webapp
+import hashlib
 
+from google.appengine.ext import webapp
 from google.appengine.ext import db
 from google.appengine.ext import blobstore
 
@@ -18,6 +19,7 @@ class DayLog(db.Model):
   channel = db.StringProperty(required=True)
   date = db.DateProperty(required=True)
   blob = blobstore.BlobReferenceProperty(required=True)
+  md5 = db.StringProperty()
   indexing_state = db.StringProperty(required=True,
                                      choices=set(['unindexed',
                                                   'indexed',
@@ -66,7 +68,10 @@ def start_indexing_log(blob_info):
   day = int(date_str[6:8])
   log_date = datetime.date(year, month, day)
 
-  log = DayLog(channel=channel, date=log_date, blob=blob_info.key(),
+  log = DayLog(channel=channel,
+               date=log_date,
+               blob=blob_info.key(),
+               md5=blob_hash(blob_info),
                indexing_state='in-progress')
   log.put()
   job_id = mapreduce.control.start_map('Index log %s' % (blob_info.key()),
@@ -162,6 +167,16 @@ def get_query_results(query_string):
 def get_log_line_from_position(blob_reader, position):
   blob_reader.seek(position)
   return blob_reader.readline()
+
+def blob_hash(blob_info):
+  m = hashlib.md5()
+  reader = blobstore.BlobReader(blob_info)
+  try:
+    m.update(reader.read())
+    return m.hexdigest()
+  finally:
+    reader.close()
+  
 
 
 if __name__ == '__main__':
