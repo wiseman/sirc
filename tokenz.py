@@ -4,7 +4,7 @@ import re
 import chardet
 
 
-TOKEN_RE = re.compile('\W+', re.UNICODE)
+TOKEN_RE = re.compile('_|\W+', re.UNICODE)
 
 
 class EncodingError(Exception):
@@ -36,23 +36,26 @@ def recode(text):
 
 
 
-#def main(argv):
-#  print sys.getdefaultencoding()
-#  for filename in argv:
-#    with open(filename, 'rb') as f:
-#      for line in f.xreadlines():
-#        high_char = False
-#        for char in line:
-#          if ord(char) > 127:
-#            high_char = True
-#        recoded_text = recode(line)
-#        terms = extract_text_tokens(recoded_text)
+def main(argv):
+  print sys.getdefaultencoding()
+  for filename in argv:
+    with open(filename, 'rb') as f:
+      for line in f.xreadlines():
+        high_char = False
+        for char in line:
+          if ord(char) > 127:
+            high_char = True
+        recoded_text = recode(line)
+        terms = extract_text_tokens(recoded_text)
+        if '_' in line:
+          print line
+          print terms
 #        if high_char:
 #          print '\n' + line
 #          for term in terms:
 #            sys.stdout.write('%s ' % (term,))
 
 
-#if __name__ == '__main__':
-#  main(sys.argv)
+if __name__ == '__main__':
+  main(sys.argv)
   
