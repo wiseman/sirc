@@ -11,6 +11,9 @@ import mapreduce.operation
 import mapreduce.control
 import mapreduce.context
 
+import tokenz
+
+
 class DayLog(db.Model):
   channel = db.StringProperty(required=True)
   date = db.DateProperty(required=True)
@@ -54,10 +57,10 @@ def start_indexing_log(blob_info):
   match = log_header_re.match(first_line)
   if not match:
     raise Exception('Unable to parse log header %s: "%s"' % (blob_reader.key(), first_line))
-  logging.info('%s' % (match.groups(),))
+  #logging.info('%s' % (match.groups(),))
   channel = match.groups()[0]
   date_str = match.groups()[1]
-  logging.info('date_str=%s, %s' % (date_str, date_str[0:2]))
+  #logging.info('date_str=%s, %s' % (date_str, date_str[0:2]))
   year = 2000 + int(date_str[0:2])
   month = int(date_str[3:5])
   day = int(date_str[6:8])
@@ -75,7 +78,7 @@ def start_indexing_log(blob_info):
                                        mapreduce_parameters={'done_callback': '/indexing_did_finish'})
   
 
-LINE_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+) <(\w+)> ?(.*)')
+LINE_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+) <(\w+)> ?(.*)', re.UNICODE)
 
 def parse_log_line(line):
   match = LINE_RE.match(line)
@@ -84,13 +87,6 @@ def parse_log_line(line):
     return match.groups()
 
 
-TOKEN_RE = re.compile('\W+')
-
-def extract_text_tokens(text):
-  words = TOKEN_RE.split(text)
-  words = [w.lower() for w in set(words) if len(w) > 0]
-  return words
-  
 
 
 def index_log_line(entity):
@@ -116,18 +112,24 @@ def index_log_line(entity):
                                   msg_minute,
                                   msg_second)
     
-    text_u = unicode(text, 'cp1252')
-    terms_u = extract_text_tokens(text_u)
-    line_text = unicode(text, encoding='cp1252')
-    user_text = unicode(user, encoding='cp1252')
-    index = LogLineIndex(log=log,
-                         position=position,
-                         channel=log.channel,
-                         timestamp=timestamp,
-                         terms=terms_u,
-                         user=user_text,
-                         text=line_text)
-    yield mapreduce.operation.db.Put(index)
+    encoded = False
+    try:
+      text_u = tokenz.recode(text)
+      terms_u = tokenz.extract_text_tokens(text_u)
+      user_u = tokenz.recode(user)
+      encoded = True
+    except tokenz.EncodingError, e:
+      logging.error('Unable to encode line %r: %s' % (text, e))
+
+    if encoded:
+      index = LogLineIndex(log=log,
+                           position=position,
+                           channel=log.channel,
+                           timestamp=timestamp,
+                           terms=terms_u,
+                           user=user_u,
+                           text=text_u)
+      yield mapreduce.operation.db.Put(index)
 
 
 class IndexingFinished(webapp.RequestHandler):
@@ -136,7 +138,8 @@ class IndexingFinished(webapp.RequestHandler):
 
 
 def parse_query_string(query_string):
-  words = extract_text_tokens(query_string)
+  logging.info('%r' % (query_string,))
+  words = tokenz.extract_text_tokens(query_string)
   return words
 
 def make_db_query_from_parsed_query(parsed_query):
