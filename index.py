@@ -48,7 +48,7 @@ def delete_indices():
 
 
 
-NUM_INDEXER_SHARDS = 1
+NUM_INDEXER_SHARDS = 2
 
 def start_indexing_log(blob_info):
   blob_reader = blob_info.open()
@@ -58,7 +58,7 @@ def start_indexing_log(blob_info):
   first_line = blob_reader.readline()
   match = log_header_re.match(first_line)
   if not match:
-    raise Exception('Unable to parse log header %s: "%s"' % (blob_reader.key(), first_line))
+    raise Exception('Unable to parse log header %s: "%s"' % (blob_info.key(), first_line))
   #logging.info('%s' % (match.groups(),))
   channel = match.groups()[0]
   date_str = match.groups()[1]
