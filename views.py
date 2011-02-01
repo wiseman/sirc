@@ -54,6 +54,23 @@ class Admin(webapp.RequestHandler):
       index.delete_logs()
     self.redirect('/a')
 
+class AddMD5(webapp.RequestHandler):
+  def post(self):
+    import hashlib
+    logs = []
+    for blob_info in blobstore.BlobInfo.all():
+      reader = blobstore.BlobReader(blob_info)
+      m = hashlib.md5()
+      m.update(reader.read())
+      log = DayLog.all().filter('blob = ', blobstore.BlobKey(blob_info.key()))
+      log.md5 = m.hexdigest()
+      logs.append(log)
+      logging.info('Hashing log %s' % (log.key(),))
+      reader.close()
+    logging.info('Committing %s.' % (len(logs),))
+    db.put(logs)
+    self.redirect('/a')
+
 
 class Search(webapp.RequestHandler):
   def get(self):
@@ -96,6 +113,7 @@ def is_same_day(t1, t2):
 
 application = webapp.WSGIApplication([('/', Search),
                                       ('/uuuuu', UploadLog),
+                                      ('/uuuuv', AddMD5),
                                       ('/a', Admin),
                                       ('/indexing_did_finish', index.IndexingFinished)
                                       ]
