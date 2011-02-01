@@ -47,9 +47,10 @@ class UploadLog(blobstore_handlers.BlobstoreUploadHandler):
       blob_info.delete()
       logging.error('md5 collision.')
       self.redirect('/a')
-    logging.info('Starting indexing of %s' % (blob_info.key(),))
-    index.start_indexing_log(blob_info)
-    self.redirect('/mapreduce')
+    else:
+      logging.info('Starting indexing of %s' % (blob_info.key(),))
+      index.start_indexing_log(blob_info)
+      self.redirect('/mapreduce')
         
 
 class Admin(webapp.RequestHandler):
