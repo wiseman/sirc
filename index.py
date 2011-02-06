@@ -13,6 +13,7 @@ import mapreduce.control
 import mapreduce.context
 
 import tokenz
+import query
 
 
 class DayLog(db.Model):
@@ -151,14 +152,14 @@ def make_db_query_from_parsed_query(parsed_query):
   db_query = LogLineIndex.all()
   for word in parsed_query:
     db_query.filter('terms =', word)
-  #db_query.order('-timestamp')
+  db_query.order('-timestamp')
   return db_query
 
   
 def get_query_results(query_string):
   parsed_query = parse_query_string(query_string)
-  db_query = make_db_query_from_parsed_query(parsed_query)
-  records = db_query.fetch(200)
+  db_query = query.make_multi_term_query(parsed_query)
+  records = db_query.fetch(1000)
   #for r in records:
   #  r.line_text = get_log_line_from_position(blob_reader, r.position)
   return records

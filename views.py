@@ -98,11 +98,11 @@ class Search(webapp.RequestHandler):
       records = index.get_query_results(query)
       if len(records) > 0:
         results = prepare_results_for_display(records)
-        logging.info('prepared: %s' % (results,))
+        #logging.info('prepared: %s' % (results,))
         result_html = render_template('serp.html', {'results': results})
         values['result_html'] = result_html
         values['has_results'] = True
-    logging.info('values=%s' % (values,))
+    #logging.info('values=%s' % (values,))
     self.response.out.write(render_template('search.html', values))
       
 
@@ -120,7 +120,7 @@ def prepare_results_for_display(records):
 
 def is_same_day(t1, t2):
   v = not (t1.day != t2.day or t1.month != t2.month or t1.year != t2.year)
-  logging.info('%s = %s: %s' % (t1, t2, v))
+  #logging.info('%s = %s: %s' % (t1, t2, v))
   return v
 
 # ------------------------------------------------------------
