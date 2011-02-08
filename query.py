@@ -2,6 +2,7 @@ import re
 import logging
 
 from google.appengine.ext import db
+from google.appengine.api import memcache
 
 import index
 
@@ -41,11 +42,13 @@ def term_query_pipe(term):
   return QueryPipe(term, query)
 
 
+
 class MultiTermQueryPipe:
   def __init__(self, query_pipes):
     self.query_pipes = query_pipes
     self.started = False
-
+    self.num_advances = 0
+    
   def advance_subqueries(self):
     if not self.started:
       logging.info('Starting %r' % (self,))
@@ -60,18 +63,18 @@ class MultiTermQueryPipe:
                               key=QueryPipe.timestamp,
                               reverse=True)
 
+    def advance_sub(timestamp, queries):
+      
     
   def advance(self):
     found_match = False
-    num_records = 0
     while not found_match:
       #logging.info('Looking for match in %r' % (self,))
       self.advance_subqueries()
-      num_records += 1
+      self.num_advances += 1
       if at_same_record(self.query_pipes):
         found_match = True
 
-    logging.info('*** Found match in %s advances in %r' % (num_records, self,))
     return self.query_pipes[0].record
 
   def __repr__(self):
@@ -79,13 +82,16 @@ class MultiTermQueryPipe:
 
   def fetch(self, n):
     records = []
+    self.num_advances = 0
     try:
       for i in xrange(n):
         logging.info('-------------------- FETCHING %s of %s' % (i, n))
         records.append(self.advance())
     except StopIteration:
       pass
+    logging.info('*** Found match in %s advances in %r' % (self.num_advances, self,))
     return records
+
 
 def at_same_record(pipes):
   records = [p.record for p in pipes]
@@ -99,7 +105,6 @@ def make_multi_term_query(terms):
   pipes = [term_query_pipe(term) for term in terms]
   return MultiTermQueryPipe(pipes)
 
-  
 
 
 ## def s_ident(scanner, token): return token
