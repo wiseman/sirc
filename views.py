@@ -7,6 +7,8 @@ import os.path
 import logging
 import collections
 import hashlib
+import cgi
+import string
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
@@ -109,6 +111,17 @@ class Search(webapp.RequestHandler):
 
 def prepare_results_for_display(records):
   results = []
+
+  for r in records:
+    url_segs = find_urls(r.text)
+    if len(url_segs) > 0:
+      s = cgi.escape(r.text[0:url_segs[0][0]], quote=True)
+      for url_start, url_end in url_segs:
+        url = cgi.escape(r.text[url_start:url_end], quote=True)
+        s += '<a href="%s">%s</a>' % (url, url)
+      s += cgi.escape(r.text[url_segs[-1][1]:], quote=True)
+      r.text = s
+                 
   current_date = None
   previous_timestamp = None
   for r in records:
@@ -122,6 +135,51 @@ def is_same_day(t1, t2):
   v = not (t1.day != t2.day or t1.month != t2.month or t1.year != t2.year)
   #logging.info('%s = %s: %s' % (t1, t2, v))
   return v
+
+
+
+g_url_prefixes = ["http", "ftp", "https", "telnet", "gopher", "file"]
+
+def find_url_start(text, start):
+  """Returns the start index of the first URL found in the specified
+  string (starting at the specified index, which defaults to 0).  If
+  no URL is found, this function returns -1.
+  """
+  for prefix in g_url_prefixes:
+    extra_prefix="%s://" % (prefix,)
+    url_start = string.find(text, extra_prefix, start)
+    if url_start > -1:
+      return url_start
+  return -1
+
+def find_url_end(text, start):
+  """Given a string and the starting position of a URL, returns the
+  index of the first non-URL character.
+  """
+  for i in range(start, len(text)):
+    if text[i] == ">" or text[i] in string.whitespace:
+      return i
+  return len(text)
+
+def find_url(text, start=0):
+  url_start = find_url_start(text, start)
+  #print "start: %s" % (URLStart,)
+  if url_start > -1:
+    url_end = find_url_end(text, url_start)
+    #print "end: %s" % (URLEnd,)
+    if (url_end > -1):
+      return (url_start, url_end)
+  return None
+
+def find_urls(text, start=0):
+  url_indices = []
+  indices = find_url(text, start)
+  while (indices != None and start < len(text)):
+    url_indices.append(indices)
+    start = indices[1]
+    indices = find_url(text, start)
+  return url_indices
+
 
 # ------------------------------------------------------------
 # Application URL routing.

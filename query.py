@@ -63,9 +63,6 @@ class MultiTermQueryPipe:
                               key=QueryPipe.timestamp,
                               reverse=True)
 
-    def advance_sub(timestamp, queries):
-      
-    
   def advance(self):
     found_match = False
     while not found_match:
