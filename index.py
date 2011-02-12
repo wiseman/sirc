@@ -150,13 +150,69 @@ def get_query_results(query_string):
   db_query = query.make_multi_term_query(parsed_query)
   records = db_query.fetch(1000)
   #for r in records:
+  #  blob_reader = blobstore.BlobReader(r.log.blob.key())
+  #  r.context = get_context_lines(blob_reader, r.position)
+  #  logging.info('Context: %s' % (r.context,))
+  #for r in records:
   #  r.line_text = get_log_line_from_position(blob_reader, r.position)
   return records
 
 
 def get_log_line_from_position(blob_reader, position):
-  blob_reader.seek(position)
-  return blob_reader.readline()
+  pos, line = blob_read_line(blob_reader, offset=position)
+  return line
+
+
+def blob_read_line(blob_reader, offset=None):
+  if offset:
+    blob_reader.seek(offset)
+  position = blob_reader.tell()
+  return position, blob_reader.readline()
+
+
+def get_context_lines(blob_reader, position, num_lines=5):
+  # FIXME; handle edge cases (like very tiny logs).
+
+  offset = 1000
+  have_context = False
+  following_lines = []
+  preceding_lines = []
+
+  # First get the preceding lines of context.
+  while not have_context and position - offset >= 0:
+    preceding_lines = []
+    #logging.debug('offset = %s, position - offset = %s' % (offset, position - offset))
+    blob_reader.seek(position - offset)
+    # Sync to the next line.
+    line_pos, line = blob_read_line(blob_reader)
+    # Read lines until we hit the line of interest.
+    while line_pos != position:
+      line_pos, line = blob_read_line(blob_reader)
+      preceding_lines.append(line)
+    # Did we get enough lines of preceding context?
+    if len(preceding_lines) < num_lines + 1:
+      # No.  Try again, but look further back.
+      offset = 2000
+    else:
+      have_context = True
+
+  # Now get trailing lines of context.
+  line_pos, line = blob_read_line(blob_reader)
+  while line and len(following_lines) < num_lines:
+    following_lines.append(line)
+    line_pos, line = blob_read_line(blob_reader)
+
+  context_lines = preceding_lines + following_lines
+  context_lines = context_lines[-((num_lines * 2) + 1):]
+  return context_lines
+
+    
+      
+
+
+  
+
+
 
 def blob_hash(blob_info):
   m = hashlib.md5()

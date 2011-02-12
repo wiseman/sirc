@@ -20,9 +20,9 @@ class QueryPipe:
   def advance(self):
     if not self.iterator:
       self.iterator = self.query.__iter__()
-    logging.debug('Advancing %r' % (self,))
+    #logging.debug('Advancing %r' % (self,))
     self.record = self.iterator.next()
-    logging.debug('Advanced %r' % (self,))
+    #logging.debug('Advanced %r' % (self,))
 
   def timestamp(self):
     return self.record.timestamp
@@ -82,7 +82,7 @@ class MultiTermQueryPipe:
     self.num_advances = 0
     try:
       for i in xrange(n):
-        logging.info('-------------------- FETCHING %s of %s' % (i, n))
+        #logging.info('-------------------- FETCHING %s of %s' % (i, n))
         records.append(self.advance())
     except StopIteration:
       pass
@@ -93,7 +93,7 @@ class MultiTermQueryPipe:
 def at_same_record(pipes):
   records = [p.record for p in pipes]
   keys = [r.key() for r in records]
-  logging.debug('keys=%s' % (keys,))
+  #logging.debug('keys=%s' % (keys,))
   num_unique_keys = len(set(keys))
   return num_unique_keys == 1
   
