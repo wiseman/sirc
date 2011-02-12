@@ -37,17 +37,6 @@ class LogLineIndex(db.Model):
   user = db.StringProperty()
 
 
-def delete_logs():
-  for b in blobstore.BlobInfo.all():
-    b.delete()
-
-def delete_indices():
-  for i in LogLineIndex.all():
-    i.delete()
-  for i in Indices.all():
-    i.delete()
-
-
 
 NUM_INDEXER_SHARDS = 2
 
