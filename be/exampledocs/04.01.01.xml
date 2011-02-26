@@ -1,0 +1,5735 @@
+<add>
+
+<doc>
+  <field name="id">1</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T02:35:02Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">sigh, does anyone here use WierdIRC?  sourceforge won't allow anonymous access to its CVS, for some reason.</field>
+</doc>
+
+
+<doc>
+  <field name="id">2</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T02:37:22Z</field>
+  <field name="user">kmr</field>
+  <field name="message">perhaps because it should be spelled weird?</field>
+</doc>
+
+
+<doc>
+  <field name="id">3</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T02:38:39Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">No, not that.</field>
+</doc>
+
+
+<doc>
+  <field name="id">4</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T02:39:03Z</field>
+  <field name="user">rahul</field>
+  <field name="message">HGAOOT NEW TIYR</field>
+</doc>
+
+
+<doc>
+  <field name="id">5</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T02:39:05Z</field>
+  <field name="user">rahul</field>
+  <field name="message">or somthing</field>
+</doc>
+
+
+<doc>
+  <field name="id">6</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T02:39:27Z</field>
+  <field name="user">kmr</field>
+  <field name="message">same to you!</field>
+</doc>
+
+
+<doc>
+  <field name="id">7</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T02:41:25Z</field>
+  <field name="user">rahul</field>
+  <field name="message">:)</field>
+</doc>
+
+
+<doc>
+  <field name="id">8</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T04:02:11Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">'morning, d-bug.</field>
+</doc>
+
+
+<doc>
+  <field name="id">9</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T05:16:39Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">happy new year, all</field>
+</doc>
+
+
+<doc>
+  <field name="id">10</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T05:16:50Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">may it be a long one</field>
+</doc>
+
+
+<doc>
+  <field name="id">11</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T05:25:32Z</field>
+  <field name="user">kmr</field>
+  <field name="message">a very nice wish, thanks</field>
+</doc>
+
+
+<doc>
+  <field name="id">12</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T05:30:58Z</field>
+  <field name="user">cm</field>
+  <field name="message">thanks, to you, too</field>
+</doc>
+
+
+<doc>
+  <field name="id">13</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T05:34:37Z</field>
+  <field name="user">kmr</field>
+  <field name="message">parsing queries with aima's chart-parse which uses unification looks more simpler than learning zebu</field>
+</doc>
+
+
+<doc>
+  <field name="id">14</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T05:36:42Z</field>
+  <field name="user">kmr</field>
+  <field name="message">neglecting processing complex analysis queries, I've yet to decide a grammer for log search queries</field>
+</doc>
+
+
+<doc>
+  <field name="id">15</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T05:37:31Z</field>
+  <field name="user">kmr</field>
+  <field name="message">using 4 input fields, like google uses for it's advanced search, is something I'd like to avoid</field>
+</doc>
+
+
+<doc>
+  <field name="id">16</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:07:35Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">"grammar" and "its".  HTH, HANY</field>
+</doc>
+
+
+<doc>
+  <field name="id">17</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:08:02Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">Hm.  That's how long the Nice Krystof lasted</field>
+</doc>
+
+
+<doc>
+  <field name="id">18</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:08:38Z</field>
+  <field name="user">tim</field>
+  <field name="message">HANY?</field>
+</doc>
+
+
+<doc>
+  <field name="id">19</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:09:04Z</field>
+  <field name="user">Xach</field>
+  <field name="message">have a nice year</field>
+</doc>
+
+
+<doc>
+  <field name="id">20</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:09:11Z</field>
+  <field name="user">cm</field>
+  <field name="message">:]</field>
+</doc>
+
+
+<doc>
+  <field name="id">21</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:09:24Z</field>
+  <field name="user">tim</field>
+  <field name="message">Ah.  That makes more sense than Hump Another Naked Yokel.</field>
+</doc>
+
+
+<doc>
+  <field name="id">22</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:09:42Z</field>
+  <field name="user">Xach</field>
+  <field name="message">that depends on how well you know Krystof</field>
+</doc>
+
+
+<doc>
+  <field name="id">23</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:09:54Z</field>
+  <field name="user">tim</field>
+  <field name="message">lol</field>
+</doc>
+
+
+<doc>
+  <field name="id">24</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:11:05Z</field>
+  <field name="user">Xach</field>
+  <field name="message">pathnames again?</field>
+</doc>
+
+
+<doc>
+  <field name="id">25</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:11:13Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Yup.</field>
+</doc>
+
+
+<doc>
+  <field name="id">26</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:11:38Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">A standard that can't be tested isn't a standard, it's a joke.</field>
+</doc>
+
+
+<doc>
+  <field name="id">27</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:12:10Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">If there's no guaranteed behavior, how can it be used to implement anything portably?</field>
+</doc>
+
+
+<doc>
+  <field name="id">28</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:13:47Z</field>
+  <field name="user">kmr</field>
+  <field name="message">Perhaps they should change their name to the American National Guidelines Institute</field>
+</doc>
+
+
+<doc>
+  <field name="id">29</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:47:51Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">successful new year! may it be better than the last one.</field>
+</doc>
+
+
+<doc>
+  <field name="id">30</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:48:35Z</field>
+  <field name="user">jdz</field>
+  <field name="message">your wish has been granted! :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">31</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:49:03Z</field>
+  <field name="user">Xach</field>
+  <field name="message">may the photographs of your drunken antics be swiftly destroyed!</field>
+</doc>
+
+
+<doc>
+  <field name="id">32</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:50:40Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">this household does not feature any picture-taking-device, so i am safe.</field>
+</doc>
+
+
+<doc>
+  <field name="id">33</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:51:05Z</field>
+  <field name="user">Xach</field>
+  <field name="message">i wish i were so lucky :(</field>
+</doc>
+
+
+<doc>
+  <field name="id">34</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:51:32Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">hang-over-p</field>
+</doc>
+
+
+<doc>
+  <field name="id">35</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:54:33Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">fortunately not I</field>
+</doc>
+
+
+<doc>
+  <field name="id">36</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:54:52Z</field>
+  <field name="user">cm</field>
+  <field name="message">Krystof: where are your predictions for 2k4? :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">37</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:54:58Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">Not here yet</field>
+</doc>
+
+
+<doc>
+  <field name="id">38</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:55:09Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">the SBCL UK AGM 2003 hasn't happened yet</field>
+</doc>
+
+
+<doc>
+  <field name="id">39</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:55:36Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">my primary prediction is that I won't suddenly become rich</field>
+</doc>
+
+
+<doc>
+  <field name="id">40</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:57:41Z</field>
+  <field name="user">cm</field>
+  <field name="message">Krystof: :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">41</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T06:59:30Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">gilberth: someone was looking for a news client in CLIM.  Wasn't that your work?</field>
+</doc>
+
+
+<doc>
+  <field name="id">42</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:00:27Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">_8jean: not really, i once got this ancient reader called "Hermes" going with McCLIM.</field>
+</doc>
+
+
+<doc>
+  <field name="id">43</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:01:37Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">ah.</field>
+</doc>
+
+
+<doc>
+  <field name="id">44</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:02:16Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">And another question while you're here: My first task next^W this year will be to pick a good XML library.</field>
+</doc>
+
+
+<doc>
+  <field name="id">45</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:02:26Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">The closure XML parser is LGPL (or LLGPL)?</field>
+</doc>
+
+
+<doc>
+  <field name="id">46</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:02:59Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">don't know --- pick one.</field>
+</doc>
+
+
+<doc>
+  <field name="id">47</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:03:37Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">Just making sure it's not GPL.</field>
+</doc>
+
+
+<doc>
+  <field name="id">48</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:04:17Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">better yet, just paste an MIT style disclaimer in front of the code and be set.</field>
+</doc>
+
+
+<doc>
+  <field name="id">49</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:05:03Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">We've played with xmls so far, but I'm sick of incomplete XML libraries.  I haven't tried your code yet, but at least you've made an effort to actually support different encodings.  And DOM, and ...</field>
+</doc>
+
+
+<doc>
+  <field name="id">50</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:05:29Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">gilberth: No!  Please not!  I'd be happy to use LPGL, since it forces us to release any possible patches.</field>
+</doc>
+
+
+<doc>
+  <field name="id">51</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:06:04Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">For example, I cannot really post my trivial (few dozen lines) of DOM-interface for xmls, since I'd first have to ask someone for permission.  It's all so silly.</field>
+</doc>
+
+
+<doc>
+  <field name="id">52</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:06:06Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">Bah, license wars again ... seems to become a fine year. :-/</field>
+</doc>
+
+
+<doc>
+  <field name="id">53</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:06:10Z</field>
+  <field name="user">jdz</field>
+  <field name="message">_8jean: you can't do it if you're not forced?</field>
+</doc>
+
+
+<doc>
+  <field name="id">54</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:06:48Z</field>
+  <field name="user">Xach</field>
+  <field name="message">post it anonymously to usenet</field>
+</doc>
+
+
+<doc>
+  <field name="id">55</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:06:57Z</field>
+  <field name="user">Xach</field>
+  <field name="message">i will try to forget you mentioned it here</field>
+</doc>
+
+
+<doc>
+  <field name="id">56</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:10:59Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">btw where is the theme support for McCLIM?</field>
+</doc>
+
+
+<doc>
+  <field name="id">57</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:13:13Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">The pixmap stuff you mean?  Somewhere in my old home directory...</field>
+</doc>
+
+
+<doc>
+  <field name="id">58</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:13:29Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">old home sounds scary.</field>
+</doc>
+
+
+<doc>
+  <field name="id">59</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:13:43Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">I have a vacation coming up this month.  If someone really cares, I could try to clean it up then.</field>
+</doc>
+
+
+<doc>
+  <field name="id">60</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:18:40Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">_8jean: anyhow, if you can rip the XML parse out of closure and morph it into a library for general purpose use, i'd be more than happy. we could then host it on this new common-lisp.net site.</field>
+</doc>
+
+
+<doc>
+  <field name="id">61</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:19:08Z</field>
+  <field name="user">chandler</field>
+  <field name="message">gilberth: what license would it be under? ISTR kire had thoughts of doing this but the license for closure is GPL not LGPL</field>
+</doc>
+
+
+<doc>
+  <field name="id">62</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:20:17Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">I'll have a look at it anyway.  The alternative would probably be porting CL-XML to mlisp.  No idea whether that would be easy or futile.</field>
+</doc>
+
+
+<doc>
+  <field name="id">63</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:21:14Z</field>
+  <field name="user">Fufie</field>
+  <field name="message">_8jean: use expat?</field>
+</doc>
+
+
+<doc>
+  <field name="id">64</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:21:16Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">chandler: The Closure policy is [was] keep the "app" GPL while allowing libraries getting LGPL on demand. (e.g. the SGML stuff is LGPL). Today I lean more towards something "free" like BSD style.</field>
+</doc>
+
+
+<doc>
+  <field name="id">65</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:21:34Z</field>
+  <field name="user">chandler</field>
+  <field name="message">aah, cool</field>
+</doc>
+
+
+<doc>
+  <field name="id">66</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:22:43Z</field>
+  <field name="user">kmr</field>
+  <field name="message">chandler: btw, cl-irc's tracking of users joined in a channel made it very easy to properly log non-channled events like quit and nick. very nice.</field>
+</doc>
+
+
+<doc>
+  <field name="id">67</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:24:09Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">Also I'd like rip the useful stuff out of Closure and morph it into libraries. unfortunately i forsee very, very little free time for 2004.</field>
+</doc>
+
+
+<doc>
+  <field name="id">68</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:24:44Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">Fufie: We need a real library with DOM, not just a read-once-then-throw-away parser.  If anything, we could do FFI to libxml2, which we are using anyway.  But I don't really feel like basing DOM on FFI.</field>
+</doc>
+
+
+<doc>
+  <field name="id">69</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:25:41Z</field>
+  <field name="user">Fufie</field>
+  <field name="message">_8jean: right</field>
+</doc>
+
+
+<doc>
+  <field name="id">70</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:25:55Z</field>
+  <field name="user">kmr</field>
+  <field name="message">chandler: I was taking with hcf (whose daemon creates http://tunes.org/~nef/). He recommened watching for a few warning messages as well as monitoring the connection and restablishing as necessary. I added such features to irc-logger v0.5. I suppose I should run an ircd so that I can test with disconnecting the client.</field>
+</doc>
+
+
+<doc>
+  <field name="id">71</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T07:47:22Z</field>
+  <field name="user">tim</field>
+  <field name="message">Hah!  "ASSERTOID".</field>
+</doc>
+
+
+<doc>
+  <field name="id">72</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:08:11Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">we're good that way.  CLASSOID, too</field>
+</doc>
+
+
+<doc>
+  <field name="id">73</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:09:11Z</field>
+  <field name="user">Xach</field>
+  <field name="message">ASTEROID</field>
+</doc>
+
+
+<doc>
+  <field name="id">74</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:09:43Z</field>
+  <field name="user">tim</field>
+  <field name="message">exactly.  CLASSOID's not as cool. ;)</field>
+</doc>
+
+
+<doc>
+  <field name="id">75</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:09:54Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">less classy, you mean?</field>
+</doc>
+
+
+<doc>
+  <field name="id">76</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:16:16Z</field>
+  <field name="user">tim</field>
+  <field name="message">arrrgh.</field>
+</doc>
+
+
+<doc>
+  <field name="id">77</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:22:21Z</field>
+  <field name="user">cliini</field>
+  <field name="message">So we're not going to find out what the pathname chapter meant after all? :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">78</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:25:17Z</field>
+  <field name="user">jdz</field>
+  <field name="message">maybe next year...</field>
+</doc>
+
+
+<doc>
+  <field name="id">79</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:40:37Z</field>
+  <field name="user">chandler</field>
+  <field name="message">kmr: very nice</field>
+</doc>
+
+
+<doc>
+  <field name="id">80</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:41:26Z</field>
+  <field name="user">kmr</field>
+  <field name="message">I've setup dancer-ircd and am testing reconnection. So far, I've found a few bugs.</field>
+</doc>
+
+
+<doc>
+  <field name="id">81</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:41:36Z</field>
+  <field name="user">chandler</field>
+  <field name="message">in cl-irc or in irc-logger? :-)</field>
+</doc>
+
+
+<doc>
+  <field name="id">82</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:41:49Z</field>
+  <field name="user">kmr</field>
+  <field name="message">oh, in the daemon-monitor of cl-irc</field>
+</doc>
+
+
+<doc>
+  <field name="id">83</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:42:15Z</field>
+  <field name="user">kmr</field>
+  <field name="message">one question on cl-irc: I can't find the kill event setup. I want to hook into that.</field>
+</doc>
+
+
+<doc>
+  <field name="id">84</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:42:45Z</field>
+  <field name="user">kmr</field>
+  <field name="message">For example, from the logs: UNHANLDED-EVENT:3281962984: KILL: kevin kmr3 ""</field>
+</doc>
+
+
+<doc>
+  <field name="id">85</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:42:45Z</field>
+  <field name="user">kmr</field>
+  <field name="message">UNHANLDED-EVENT:3281962984: ERROR: NIL "Closing Link: kmr3 (Killed by kevin ())"</field>
+</doc>
+
+
+<doc>
+  <field name="id">86</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:42:55Z</field>
+  <field name="user">kmr</field>
+  <field name="message">There's an error event defined, but not a kill event</field>
+</doc>
+
+
+<doc>
+  <field name="id">87</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:43:18Z</field>
+  <field name="user">chandler</field>
+  <field name="message">ok, so there's no event then. add it :-)</field>
+</doc>
+
+
+<doc>
+  <field name="id">88</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:43:38Z</field>
+  <field name="user">kmr</field>
+  <field name="message">how bold</field>
+</doc>
+
+
+<doc>
+  <field name="id">89</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:43:51Z</field>
+  <field name="user">chandler</field>
+  <field name="message">your take on the source is as good as mine</field>
+</doc>
+
+
+<doc>
+  <field name="id">90</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:44:17Z</field>
+  <field name="user">kmr</field>
+  <field name="message">well, mine is getting better...</field>
+</doc>
+
+
+<doc>
+  <field name="id">91</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:44:37Z</field>
+  <field name="user">kmr</field>
+  <field name="message">I'll give it a test</field>
+</doc>
+
+
+<doc>
+  <field name="id">92</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:44:47Z</field>
+  <field name="user">piso</field>
+  <field name="message">s/UNHANLDED/UNHANDLED</field>
+</doc>
+
+
+<doc>
+  <field name="id">93</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:44:58Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">heh</field>
+</doc>
+
+
+<doc>
+  <field name="id">94</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:45:03Z</field>
+  <field name="user">piso</field>
+  <field name="message">my first patch for cl-irc ;)</field>
+</doc>
+
+
+<doc>
+  <field name="id">95</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:45:07Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">I was wondering what was bothering me so much about those lines</field>
+</doc>
+
+
+<doc>
+  <field name="id">96</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:45:14Z</field>
+  <field name="user">kmr</field>
+  <field name="message">I'll incorporate it!</field>
+</doc>
+
+
+<doc>
+  <field name="id">97</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:46:00Z</field>
+  <field name="user">chandler</field>
+  <field name="message">piso: does abl have a sockets layer?</field>
+</doc>
+
+
+<doc>
+  <field name="id">98</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:46:31Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">it must do, because emarsden got pg.lisp working</field>
+</doc>
+
+
+<doc>
+  <field name="id">99</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:46:59Z</field>
+  <field name="user">chandler</field>
+  <field name="message">oh, right</field>
+</doc>
+
+
+<doc>
+  <field name="id">100</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:47:10Z</field>
+  <field name="user">piso</field>
+  <field name="message">ABL has make-socket and make-binary-socket</field>
+</doc>
+
+
+<doc>
+  <field name="id">101</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:47:34Z</field>
+  <field name="user">piso</field>
+  <field name="message">although make-binary-socket is planned to be subsumed by a keyword arg to make-socket</field>
+</doc>
+
+
+<doc>
+  <field name="id">102</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:47:50Z</field>
+  <field name="user">chandler</field>
+  <field name="message">nifty. it'd probably only take a few lines to get cl-irc running then. do you have threads?</field>
+</doc>
+
+
+<doc>
+  <field name="id">103</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:47:57Z</field>
+  <field name="user">piso</field>
+  <field name="message">not much of a layer, though</field>
+</doc>
+
+
+<doc>
+  <field name="id">104</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:47:58Z</field>
+  <field name="user">jdz</field>
+  <field name="message">what is ABL?</field>
+</doc>
+
+
+<doc>
+  <field name="id">105</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:48:09Z</field>
+  <field name="user">piso</field>
+  <field name="message">make-thread</field>
+</doc>
+
+
+<doc>
+  <field name="id">106</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:48:19Z</field>
+  <field name="user">piso</field>
+  <field name="message">but no locking primitives</field>
+</doc>
+
+
+<doc>
+  <field name="id">107</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:48:30Z</field>
+  <field name="user">piso</field>
+  <field name="message">Armed Bear Lisp</field>
+</doc>
+
+
+<doc>
+  <field name="id">108</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:48:55Z</field>
+  <field name="user">chandler</field>
+  <field name="message">ah. I had a half a thought about a cl-irc swing-based IRC client :-)</field>
+</doc>
+
+
+<doc>
+  <field name="id">109</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:48:58Z</field>
+  <field name="user">piso</field>
+  <field name="message">specials are per-thread</field>
+</doc>
+
+
+<doc>
+  <field name="id">110</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:49:15Z</field>
+  <field name="user">jdz</field>
+  <field name="message">piso: thanks</field>
+</doc>
+
+
+<doc>
+  <field name="id">111</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:49:49Z</field>
+  <field name="user">piso</field>
+  <field name="message">From time to time I've thought about doing a cl-irc based IRC client inside j, but I've never got around to it.</field>
+</doc>
+
+
+<doc>
+  <field name="id">112</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:50:31Z</field>
+  <field name="user">piso</field>
+  <field name="message">Definitely doable, though.</field>
+</doc>
+
+
+<doc>
+  <field name="id">113</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T08:59:20Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">In doing logical pathname translation, the matching rules are the same as pathname-match-p, which are 'implementation defined'.  In other words, you can't count on a damned thing, even with the supposed portable filename mechanism.</field>
+</doc>
+
+
+<doc>
+  <field name="id">114</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:00:15Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">cliini: we've found out what the pathname chapter means.  It means very little.</field>
+</doc>
+
+
+<doc>
+  <field name="id">115</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:02:33Z</field>
+  <field name="user">Fufie</field>
+  <field name="message">pfdietz: besides being a chronic headache for all CL implementors?</field>
+</doc>
+
+
+<doc>
+  <field name="id">116</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:03:14Z</field>
+  <field name="user">rydis</field>
+  <field name="message">Well, you can pretty much count on being able to re-read a file from the same LPN you've written it to, no?</field>
+</doc>
+
+
+<doc>
+  <field name="id">117</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:05:40Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">no, I don't think so</field>
+</doc>
+
+
+<doc>
+  <field name="id">118</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:06:12Z</field>
+  <field name="user">piso</field>
+  <field name="message">does sbcl have a sane lpn implementation?</field>
+</doc>
+
+
+<doc>
+  <field name="id">119</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:06:14Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">"before 2004, the matching algorithm is as follows: ...; from the 1st January 2004 henceforth, however..."</field>
+</doc>
+
+
+<doc>
+  <field name="id">120</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:06:36Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">piso: not quite.  There is some hairiness in version matching, I think</field>
+</doc>
+
+
+<doc>
+  <field name="id">121</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:06:51Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">I'd been hoping for a set of tests to act as a safety harness before I investigated, though :-/</field>
+</doc>
+
+
+<doc>
+  <field name="id">122</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:07:33Z</field>
+  <field name="user">piso</field>
+  <field name="message">I'm thinking (grasping at straws) that it might be plausible to codify some sort of current practice, if there is any that's worth codifying...</field>
+</doc>
+
+
+<doc>
+  <field name="id">123</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:07:44Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">(this in addition to the point that it is impossible to have a sane CL pathname implementation when your native filesystem is Unix)</field>
+</doc>
+
+
+<doc>
+  <field name="id">124</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:08:04Z</field>
+  <field name="user">rydis</field>
+  <field name="message">krystof: Yeah, I was kind of assuming the same implementation throughout.</field>
+</doc>
+
+
+<doc>
+  <field name="id">125</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:08:17Z</field>
+  <field name="user">piso</field>
+  <field name="message">Krystof: That is something that needs to be fixed.</field>
+</doc>
+
+
+<doc>
+  <field name="id">126</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:08:58Z</field>
+  <field name="user">rydis</field>
+  <field name="message">I've been thinking about looking at using ISO9660 for my data, without the unix translation layer.</field>
+</doc>
+
+
+<doc>
+  <field name="id">127</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:09:01Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">rydis: not mandated by the standard, I believe :-)</field>
+</doc>
+
+
+<doc>
+  <field name="id">128</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:09:54Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Krystof: what's the problem with pathnames and unix?</field>
+</doc>
+
+
+<doc>
+  <field name="id">129</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:10:06Z</field>
+  <field name="user">rydis</field>
+  <field name="message">Yeah, it's not safe from perverted reading. :) (Queue the story about DEFVAR and the isolated hacker implementing a really convoluted method to follow the spec from CLtL1.)</field>
+</doc>
+
+
+<doc>
+  <field name="id">130</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:10:49Z</field>
+  <field name="user">rydis</field>
+  <field name="message">pfdietz: File types, primarily, I'd imagine.</field>
+</doc>
+
+
+<doc>
+  <field name="id">131</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:11:12Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Ah.  What do you do if the filename has more than one dot in it.</field>
+</doc>
+
+
+<doc>
+  <field name="id">132</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:11:45Z</field>
+  <field name="user">rydis</field>
+  <field name="message">Or has one in an odd position, I guess.</field>
+</doc>
+
+
+<doc>
+  <field name="id">133</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:11:48Z</field>
+  <field name="user">piso</field>
+  <field name="message">Is that a completely intractable problem?</field>
+</doc>
+
+
+<doc>
+  <field name="id">134</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:11:53Z</field>
+  <field name="user">tonyms_</field>
+  <field name="message">Also, what's the name and type of .emacs?</field>
+</doc>
+
+
+<doc>
+  <field name="id">135</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:12:10Z</field>
+  <field name="user">rydis</field>
+  <field name="message">tonyms: Or .emacs.el.~3~? ;)</field>
+</doc>
+
+
+<doc>
+  <field name="id">136</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:12:21Z</field>
+  <field name="user">kalh</field>
+  <field name="message">the name is ".emacs". there is no type</field>
+</doc>
+
+
+<doc>
+  <field name="id">137</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:12:29Z</field>
+  <field name="user">piso</field>
+  <field name="message">kalh: agreed</field>
+</doc>
+
+
+<doc>
+  <field name="id">138</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:12:45Z</field>
+  <field name="user">piso</field>
+  <field name="message">the type follows the dot, unless there's nothing preceding the dot</field>
+</doc>
+
+
+<doc>
+  <field name="id">139</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:12:51Z</field>
+  <field name="user">chandler</field>
+  <field name="message">what about the name and type of #foo.c# ?</field>
+</doc>
+
+
+<doc>
+  <field name="id">140</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:13:13Z</field>
+  <field name="user">rydis</field>
+  <field name="message">CMUCL used to croak horribly on my #.emacs# files. :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">141</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:13:14Z</field>
+  <field name="user">tonyms_</field>
+  <field name="message">Heuristics-r-us, eh? :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">142</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:13:16Z</field>
+  <field name="user">piso</field>
+  <field name="message">special case that one</field>
+</doc>
+
+
+<doc>
+  <field name="id">143</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:13:31Z</field>
+  <field name="user">piso</field>
+  <field name="message">special case .emacs.el.~3~</field>
+</doc>
+
+
+<doc>
+  <field name="id">144</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:13:39Z</field>
+  <field name="user">piso</field>
+  <field name="message">MAKE PROGRESS!</field>
+</doc>
+
+
+<doc>
+  <field name="id">145</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:13:47Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Or just eliminate :type.</field>
+</doc>
+
+
+<doc>
+  <field name="id">146</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:13:51Z</field>
+  <field name="user">chandler</field>
+  <field name="message">make: don't know how to make progress. Stop</field>
+</doc>
+
+
+<doc>
+  <field name="id">147</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:13:56Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">And device.  And version.</field>
+</doc>
+
+
+<doc>
+  <field name="id">148</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:14:11Z</field>
+  <field name="user">rydis</field>
+  <field name="message">pfdietz: Hmm. Is eliminating :type possible?</field>
+</doc>
+
+
+<doc>
+  <field name="id">149</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:14:21Z</field>
+  <field name="user">chandler</field>
+  <field name="message">except now there's no portable interface to mac- or BeOS-like metadata</field>
+</doc>
+
+
+<doc>
+  <field name="id">150</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:14:29Z</field>
+  <field name="user">piso</field>
+  <field name="message">Type is useful.</field>
+</doc>
+
+
+<doc>
+  <field name="id">151</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:14:32Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Hell, as far as I can tell the implementor has license to do nearly anything he damned well pleases.</field>
+</doc>
+
+
+<doc>
+  <field name="id">152</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:14:39Z</field>
+  <field name="user">piso</field>
+  <field name="message">I'm not sure about device or version.</field>
+</doc>
+
+
+<doc>
+  <field name="id">153</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:14:46Z</field>
+  <field name="user">chandler</field>
+  <field name="message">pathname code isn't portable, it's ported</field>
+</doc>
+
+
+<doc>
+  <field name="id">154</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:14:47Z</field>
+  <field name="user">kalh</field>
+  <field name="message">chandler: why should there be?</field>
+</doc>
+
+
+<doc>
+  <field name="id">155</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:15:13Z</field>
+  <field name="user">chandler</field>
+  <field name="message">kalh: because lispms and many other systems traditionally had it. if we're going to LCD ourselves, let's LCD away directories</field>
+</doc>
+
+
+<doc>
+  <field name="id">156</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:15:17Z</field>
+  <field name="user">chandler</field>
+  <field name="message">there's no directories on PalmOS</field>
+</doc>
+
+
+<doc>
+  <field name="id">157</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:15:18Z</field>
+  <field name="user">rydis</field>
+  <field name="message">kalh: Because it's a non-sucky solution. CL should accomodate those. :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">158</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:15:32Z</field>
+  <field name="user">tonyms_</field>
+  <field name="message">pfdietz: at least there's a portable list of names to call to lay hands on that undefined behaviour :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">159</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:15:32Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">ACL sets :version to :unspecific everywhere, AFAICT.</field>
+</doc>
+
+
+<doc>
+  <field name="id">160</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:15:34Z</field>
+  <field name="user">chandler</field>
+  <field name="message">in fact files are really kept separate with type on Palm :-)</field>
+</doc>
+
+
+<doc>
+  <field name="id">161</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:15:38Z</field>
+  <field name="user">piso</field>
+  <field name="message">On systems with no directories, the directory can just be NIL.</field>
+</doc>
+
+
+<doc>
+  <field name="id">162</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:16:12Z</field>
+  <field name="user">rydis</field>
+  <field name="message">Systems with no (recursive?) directories are handled in the LPN chapter of CLtL2.</field>
+</doc>
+
+
+<doc>
+  <field name="id">163</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:16:25Z</field>
+  <field name="user">rydis</field>
+  <field name="message">It's kind of cute.</field>
+</doc>
+
+
+<doc>
+  <field name="id">164</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:17:04Z</field>
+  <field name="user">piso</field>
+  <field name="message">chandler: what is the metadata problem?</field>
+</doc>
+
+
+<doc>
+  <field name="id">165</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:22:59Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">pfdietz: the problem is that I think there is no place for anything in :type in a unix filesystem</field>
+</doc>
+
+
+<doc>
+  <field name="id">166</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:23:06Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">but COMPILE-FILE-PATHNAME requires its presence</field>
+</doc>
+
+
+<doc>
+  <field name="id">167</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:24:05Z</field>
+  <field name="user">rydis</field>
+  <field name="message">Maybe an interface to magic(5) would be somehow appropriate. ;)</field>
+</doc>
+
+
+<doc>
+  <field name="id">168</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:24:19Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">I think e.g. the file strcmp.3.gz is best represented as :name "strcmp.3.gz" :type nil :version :whatever</field>
+</doc>
+
+
+<doc>
+  <field name="id">169</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:24:33Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">but I can't do that, because of compile-file-pathname</field>
+</doc>
+
+
+<doc>
+  <field name="id">170</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:25:51Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">in particular, I would like to represent "foo.lisp" as :name "foo.lisp" :type nil</field>
+</doc>
+
+
+<doc>
+  <field name="id">171</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:25:59Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">and foo.fasl as :name "foo.fasl" :type nil</field>
+</doc>
+
+
+<doc>
+  <field name="id">172</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:26:08Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">but thanks to ANSI running out of patience, I can't</field>
+</doc>
+
+
+<doc>
+  <field name="id">173</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:26:16Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">So the files that C-F-P works on need to have the right :type ("lsp", "lisp", "l", "cl", say), as does its output ("fasl" or whatever), but anything else can just use :name.</field>
+</doc>
+
+
+<doc>
+  <field name="id">174</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:27:03Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">The pathname constructor is allowed to 'canonicalize' pathnames at any point.</field>
+</doc>
+
+
+<doc>
+  <field name="id">175</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:27:16Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">is it?</field>
+</doc>
+
+
+<doc>
+  <field name="id">176</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:27:23Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">I thought we weren't certain of that</field>
+</doc>
+
+
+<doc>
+  <field name="id">177</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:27:46Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">also, compile-file-pathname is required to work on arbitrary pathnames, is it not?</field>
+</doc>
+
+
+<doc>
+  <field name="id">178</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:28:39Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">(I actually wouldn't have any objection to changing the output file to be "foo.lisp.fasl", but it's still hideously ugly as an implementation requirement)</field>
+</doc>
+
+
+<doc>
+  <field name="id">179</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:32:01Z</field>
+  <field name="user">piso</field>
+  <field name="message">Is it possible to just use type for .lisp and .fasl files?</field>
+</doc>
+
+
+<doc>
+  <field name="id">180</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:32:18Z</field>
+  <field name="user">piso</field>
+  <field name="message">I.e. support C-F-P and nothing else.</field>
+</doc>
+
+
+<doc>
+  <field name="id">181</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:32:19Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">not really, because of merge-pathnames</field>
+</doc>
+
+
+<doc>
+  <field name="id">182</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:32:46Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">or at least, you'd get violently nonintuitive behaviour (!surprise!)</field>
+</doc>
+
+
+<doc>
+  <field name="id">183</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:33:16Z</field>
+  <field name="user">piso</field>
+  <field name="message">Example of vnb?</field>
+</doc>
+
+
+<doc>
+  <field name="id">184</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:33:44Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">(compile-file-pathname "foo.bar")</field>
+</doc>
+
+
+<doc>
+  <field name="id">185</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:33:52Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">(compile-file-pathname "foo.lisp")</field>
+</doc>
+
+
+<doc>
+  <field name="id">186</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:34:03Z</field>
+  <field name="user">piso</field>
+  <field name="message">ah</field>
+</doc>
+
+
+<doc>
+  <field name="id">187</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:34:05Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">(compile-file-pathname (merge-pathnames "foo.bar" "foo.lisp"))</field>
+</doc>
+
+
+<doc>
+  <field name="id">188</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:34:21Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">(compile-file-pathname (merge-pathnames "foo.lisp" "foo.bar"))</field>
+</doc>
+
+
+<doc>
+  <field name="id">189</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:35:19Z</field>
+  <field name="user">piso</field>
+  <field name="message">(merge-pathnames "foo" "bar") =&gt; #P"foo"</field>
+</doc>
+
+
+<doc>
+  <field name="id">190</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:35:34Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">yes, but I think I'd expect that</field>
+</doc>
+
+
+<doc>
+  <field name="id">191</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:35:40Z</field>
+  <field name="user">rydis</field>
+  <field name="message">It'd be nice if there was a "standard" implementation of LPN:s (like the one Mark Kantrowitz wrote) like there is for LOOP (ok, not everyone uses it, but most implementations at least provide it, or extend it).</field>
+</doc>
+
+
+<doc>
+  <field name="id">192</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:36:02Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">LOOP at least has a mostly-coherent standard</field>
+</doc>
+
+
+<doc>
+  <field name="id">193</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:36:11Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">no such thing currently exists for "L"PNs</field>
+</doc>
+
+
+<doc>
+  <field name="id">194</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:36:18Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">I wouldn't mind seeing (compile-file-pathname "foo.bar") ==&gt; #p"foo.bar.fasl"</field>
+</doc>
+
+
+<doc>
+  <field name="id">195</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:36:29Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">and (compile-file-pathname "foo.lsp") ==&gt; #p"foo.fasl"</field>
+</doc>
+
+
+<doc>
+  <field name="id">196</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:36:41Z</field>
+  <field name="user">piso</field>
+  <field name="message">OK</field>
+</doc>
+
+
+<doc>
+  <field name="id">197</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:36:53Z</field>
+  <field name="user">azu</field>
+  <field name="message">what's wrong with the current c-f-p behaviour?</field>
+</doc>
+
+
+<doc>
+  <field name="id">198</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:37:03Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">it requires a meaningful :type field in pathnames</field>
+</doc>
+
+
+<doc>
+  <field name="id">199</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:37:20Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">when various filesystems, notably Unix ones, have no such meaning</field>
+</doc>
+
+
+<doc>
+  <field name="id">200</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:37:54Z</field>
+  <field name="user">piso</field>
+  <field name="message">(Note too that Windows, which is popular in some quarters, has many of the same limitations as Unix in this regard.)</field>
+</doc>
+
+
+<doc>
+  <field name="id">201</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:37:56Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">It seems to me is what you need is a well-defined namestring parsing algorithm for unix.</field>
+</doc>
+
+
+<doc>
+  <field name="id">202</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:38:09Z</field>
+  <field name="user">azu</field>
+  <field name="message">I think sbcl's current usage of :type is just fine.  is it problematic in some ways?</field>
+</doc>
+
+
+<doc>
+  <field name="id">203</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:38:14Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">yes.</field>
+</doc>
+
+
+<doc>
+  <field name="id">204</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:38:21Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">what's the :type of ".emacs"?</field>
+</doc>
+
+
+<doc>
+  <field name="id">205</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:38:26Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">""</field>
+</doc>
+
+
+<doc>
+  <field name="id">206</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:38:29Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">what's the :type of ".emacs.el"?</field>
+</doc>
+
+
+<doc>
+  <field name="id">207</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:38:39Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">""</field>
+</doc>
+
+
+<doc>
+  <field name="id">208</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:38:48Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">pfdietz: I'm answering azu :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">209</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:39:02Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">what's the type of "strstr.3.gz"?</field>
+</doc>
+
+
+<doc>
+  <field name="id">210</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:39:05Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Ignore the :type unless you really need it internally in CL.</field>
+</doc>
+
+
+<doc>
+  <field name="id">211</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:39:33Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Which means lisp source, lisp compiled files, and not anything (?) else.</field>
+</doc>
+
+
+<doc>
+  <field name="id">212</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:39:34Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">pfdietz: now, if you were to tell me that I can canonicalize the result of compile-file-pathname at any time, then maybe I hit nirvana</field>
+</doc>
+
+
+<doc>
+  <field name="id">213</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:39:43Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">I haven't found that yet...</field>
+</doc>
+
+
+<doc>
+  <field name="id">214</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:40:10Z</field>
+  <field name="user">azu</field>
+  <field name="message">as I said, I think sbcl's current usage is fine, i.e. "" for ".emacs" and ".el " for ".emacs.el" looks ok to me</field>
+</doc>
+
+
+<doc>
+  <field name="id">215</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:40:24Z</field>
+  <field name="user">piso</field>
+  <field name="message">Krystof: sbcl seems to do sensible things for all of the examples quoted (agreeing with azu here)</field>
+</doc>
+
+
+<doc>
+  <field name="id">216</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:40:34Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">I don't believe that they're sensible</field>
+</doc>
+
+
+<doc>
+  <field name="id">217</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:40:55Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">On the page for MAKE-PATHNAME: "Whenever a pathname is constructed the components may be canonicalized if appropriate."</field>
+</doc>
+
+
+<doc>
+  <field name="id">218</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:41:18Z</field>
+  <field name="user">azu</field>
+  <field name="message">is this usage problematic in some ways or is it just that you don't like it?</field>
+</doc>
+
+
+<doc>
+  <field name="id">219</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:41:19Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">so.  Does Compile-file-pathname involve constructing a pathname?</field>
+</doc>
+
+
+<doc>
+  <field name="id">220</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:41:24Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Yes.</field>
+</doc>
+
+
+<doc>
+  <field name="id">221</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:41:36Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">azu: it's problematic in that these edge cases are nonintuitive</field>
+</doc>
+
+
+<doc>
+  <field name="id">222</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:41:44Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">what's the type of "..x"?</field>
+</doc>
+
+
+<doc>
+  <field name="id">223</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:41:54Z</field>
+  <field name="user">piso</field>
+  <field name="message">""</field>
+</doc>
+
+
+<doc>
+  <field name="id">224</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:41:59Z</field>
+  <field name="user">piso</field>
+  <field name="message">(or nil)</field>
+</doc>
+
+
+<doc>
+  <field name="id">225</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:42:01Z</field>
+  <field name="user">azu</field>
+  <field name="message">x</field>
+</doc>
+
+
+<doc>
+  <field name="id">226</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:42:06Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">"" or :unspecific</field>
+</doc>
+
+
+<doc>
+  <field name="id">227</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:42:06Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">:-)</field>
+</doc>
+
+
+<doc>
+  <field name="id">228</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:42:11Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">I think I've just proved my point</field>
+</doc>
+
+
+<doc>
+  <field name="id">229</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:42:33Z</field>
+  <field name="user">piso</field>
+  <field name="message">Do people really count on ..x having a well-defined type?</field>
+</doc>
+
+
+<doc>
+  <field name="id">230</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:42:41Z</field>
+  <field name="user">piso</field>
+  <field name="message">In the same way foo.lisp has a type?</field>
+</doc>
+
+
+<doc>
+  <field name="id">231</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:42:56Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">they can't possibly.  But I'd like them to be clearly not misled</field>
+</doc>
+
+
+<doc>
+  <field name="id">232</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:43:15Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">what's the type of "/etc/sbclrc"?  Why is it not "lisp"?</field>
+</doc>
+
+
+<doc>
+  <field name="id">233</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:43:23Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Which would mean the :type field should not be filled in.</field>
+</doc>
+
+
+<doc>
+  <field name="id">234</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:43:38Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">pfdietz: exactly</field>
+</doc>
+
+
+<doc>
+  <field name="id">235</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:43:50Z</field>
+  <field name="user">piso</field>
+  <field name="message">Can the implementation not make (and document) a few rules, about how it construes the type?</field>
+</doc>
+
+
+<doc>
+  <field name="id">236</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:44:01Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">piso: the implementation has broad leeway here.</field>
+</doc>
+
+
+<doc>
+  <field name="id">237</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:44:30Z</field>
+  <field name="user">piso</field>
+  <field name="message">And the next good step would be for &gt;1 implementation to follow the same rule(s).</field>
+</doc>
+
+
+<doc>
+  <field name="id">238</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:44:51Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Krystof: I think the rule should be that :type gets used if the underlying filesystem has a notion of type, or if CL requires it.  Otherwise, just use :name.</field>
+</doc>
+
+
+<doc>
+  <field name="id">239</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:45:23Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">CL-USER(2): (pathname-type #p"foo.bar")</field>
+</doc>
+
+
+<doc>
+  <field name="id">240</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:45:23Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">"bar"</field>
+</doc>
+
+
+<doc>
+  <field name="id">241</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:45:27Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Grrrr.</field>
+</doc>
+
+
+<doc>
+  <field name="id">242</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:46:19Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">I think if I'm allowed to canonicalize :name "foo.lisp" :type "fasl" to :name "foo.lisp.fasl", I might give it a try and see how many complaints I get</field>
+</doc>
+
+
+<doc>
+  <field name="id">243</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:46:31Z</field>
+  <field name="user">hefner</field>
+  <field name="message">yuck!</field>
+</doc>
+
+
+<doc>
+  <field name="id">244</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:46:40Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">one</field>
+</doc>
+
+
+<doc>
+  <field name="id">245</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:46:40Z</field>
+  <field name="user">azu</field>
+  <field name="message">pfdietz, that sounds to me as logical as the current rules are, but less useful</field>
+</doc>
+
+
+<doc>
+  <field name="id">246</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:46:59Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">ACL treats the final . as preceeding the type, unless it's the first character in the namestring.</field>
+</doc>
+
+
+<doc>
+  <field name="id">247</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:47:07Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">two</field>
+</doc>
+
+
+<doc>
+  <field name="id">248</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:47:16Z</field>
+  <field name="user">piso</field>
+  <field name="message">Which seems to me a good rule.</field>
+</doc>
+
+
+<doc>
+  <field name="id">249</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:47:18Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">pfdietz: so does sbcl</field>
+</doc>
+
+
+<doc>
+  <field name="id">250</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:47:29Z</field>
+  <field name="user">piso</field>
+  <field name="message">Another point in its favor.</field>
+</doc>
+
+
+<doc>
+  <field name="id">251</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:47:36Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">If there is no ., :type is NIL.</field>
+</doc>
+
+
+<doc>
+  <field name="id">252</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:47:45Z</field>
+  <field name="user">piso</field>
+  <field name="message">Also reasonable.</field>
+</doc>
+
+
+<doc>
+  <field name="id">253</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:47:58Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">I don't think this _is_ reasonable on a unix filesystem</field>
+</doc>
+
+
+<doc>
+  <field name="id">254</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:48:03Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">If there is only a leading ., :type is also NIL.</field>
+</doc>
+
+
+<doc>
+  <field name="id">255</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:48:16Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">or indeed any filesystem without a semantic type component</field>
+</doc>
+
+
+<doc>
+  <field name="id">256</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:49:56Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">I may just rip out the pathname tests.  They don't leave me feeling clean.</field>
+</doc>
+
+
+<doc>
+  <field name="id">257</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:50:19Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">leave them in but don't load them by default</field>
+</doc>
+
+
+<doc>
+  <field name="id">258</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:50:24Z</field>
+  <field name="user">rydis</field>
+  <field name="message">krystof: I thought SBCL had versions, as well. Hmm.</field>
+</doc>
+
+
+<doc>
+  <field name="id">259</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:50:39Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">rydis: I sincerely hope not.  CMUCL does, and it's almost totally broken</field>
+</doc>
+
+
+<doc>
+  <field name="id">260</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:50:50Z</field>
+  <field name="user">piso</field>
+  <field name="message">pfdietz: you need an ansi-tests/nonstandard directory ;)</field>
+</doc>
+
+
+<doc>
+  <field name="id">261</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:51:14Z</field>
+  <field name="user">rydis</field>
+  <field name="message">krystof: #p"foo.bar.1" prints as #p"foo.bar", and has a version field of 1.</field>
+</doc>
+
+
+<doc>
+  <field name="id">262</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:52:00Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">OK, that's less broken that cmucl's support</field>
+</doc>
+
+
+<doc>
+  <field name="id">263</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:52:09Z</field>
+  <field name="user">rydis</field>
+  <field name="message">(That's a debian-packaged 0.8.7.)</field>
+</doc>
+
+
+<doc>
+  <field name="id">264</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:52:09Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">it's probably still broken, though</field>
+</doc>
+
+
+<doc>
+  <field name="id">265</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:52:46Z</field>
+  <field name="user">rydis</field>
+  <field name="message">I like CMUCL:s understanding ~n~-stuff, but I guess most people don't use that kind of versioning. :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">266</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:53:19Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">rydis: where n is an integer? No.  And also, try translating logical pathnames to it</field>
+</doc>
+
+
+<doc>
+  <field name="id">267</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:54:20Z</field>
+  <field name="user">rydis</field>
+  <field name="message">krystof: You probably can't in conforming, portable userspace, no. Doing it in the implementation seems quite possible.</field>
+</doc>
+
+
+<doc>
+  <field name="id">268</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:54:38Z</field>
+  <field name="user">rydis</field>
+  <field name="message">(But I've only looked at it slightly, before CMUCL got that support.)</field>
+</doc>
+
+
+<doc>
+  <field name="id">269</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:54:53Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">ACL parses "foo.bar.1" with :type "1"</field>
+</doc>
+
+
+<doc>
+  <field name="id">270</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:55:12Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">rydis: no, I mean something like (("FOO:**;*.*.*" "/tmp/**/*.*.*")) as (logical-pathname-translations "FOO")</field>
+</doc>
+
+
+<doc>
+  <field name="id">271</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:55:18Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">it doesn't work</field>
+</doc>
+
+
+<doc>
+  <field name="id">272</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:55:39Z</field>
+  <field name="user">rydis</field>
+  <field name="message">krystof: No, I know.</field>
+</doc>
+
+
+<doc>
+  <field name="id">273</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:55:45Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">What does it do on foo.bar.newest ?</field>
+</doc>
+
+
+<doc>
+  <field name="id">274</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:56:50Z</field>
+  <field name="user">piso</field>
+  <field name="message">sbcl treats newest as the type</field>
+</doc>
+
+
+<doc>
+  <field name="id">275</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:57:14Z</field>
+  <field name="user">rydis</field>
+  <field name="message">That probably depends on in what context, for CMUCL, IIRC.</field>
+</doc>
+
+
+<doc>
+  <field name="id">276</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:57:54Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">CMUCL recent parses "foo.lsp.1" as having type "1".</field>
+</doc>
+
+
+<doc>
+  <field name="id">277</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:58:30Z</field>
+  <field name="user">rydis</field>
+  <field name="message">pfdietz: Not when it's a logical pathname, does it?</field>
+</doc>
+
+
+<doc>
+  <field name="id">278</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T09:59:07Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Oh, no, I was parsing a pathname namestring.</field>
+</doc>
+
+
+<doc>
+  <field name="id">279</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:00:07Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Inrterestingly, ACL does not translate the name and type fields to uppercase when parsing logical pathnames.</field>
+</doc>
+
+
+<doc>
+  <field name="id">280</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:01:00Z</field>
+  <field name="user">rydis</field>
+  <field name="message">Yeah, for unix namestrings it's foo.bar.~n~. In logical pathnames, I think it works with .newest and .1, as (my, a few months old, reading of) the standard mandates.</field>
+</doc>
+
+
+<doc>
+  <field name="id">281</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:01:21Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">ACL's behavior directly violates 19.3.1.1.7, but good for them.</field>
+</doc>
+
+
+<doc>
+  <field name="id">282</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:17:27Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">pain and suffering</field>
+</doc>
+
+
+<doc>
+  <field name="id">283</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:18:09Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">there is no semantic :type in Unix; hence, it shouldn't have one painfully bolted on in CL.</field>
+</doc>
+
+
+<doc>
+  <field name="id">284</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:18:26Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">This seems moderately obvious to me, but then I have spent the last year beating my head against the standard...</field>
+</doc>
+
+
+<doc>
+  <field name="id">285</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:20:00Z</field>
+  <field name="user">rydis</field>
+  <field name="message">OTOH, newish versions of for instance linux filesystems have versioning (and other metadata) support, though not ordinarily visible to the user. (I think most other "modern" unix filesystems have something similar, but haven't looked at it closely. I expect it to be wildly different between versions.)</field>
+</doc>
+
+
+<doc>
+  <field name="id">286</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:23:03Z</field>
+  <field name="user">rydis</field>
+  <field name="message">dan-b: Dunno. I haven't looked at it closely enough to know. It'd be interesting to have, for instance, a CVS device that uses CVS for versions on files, and possibly likewise for RCS, Arch, Subversion, what have you.</field>
+</doc>
+
+
+<doc>
+  <field name="id">287</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:23:43Z</field>
+  <field name="user">rydis</field>
+  <field name="message">(Or maybe not device; some sort of host might be better. Dunno.)</field>
+</doc>
+
+
+<doc>
+  <field name="id">288</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:24:28Z</field>
+  <field name="user">rydis</field>
+  <field name="message">dan-b: Right. Didn't think about that. That'd go in something like the device part, if you have a CVS host-family, perhaps?</field>
+</doc>
+
+
+<doc>
+  <field name="id">289</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:25:31Z</field>
+  <field name="user">rydis</field>
+  <field name="message">dan: No, branches.</field>
+</doc>
+
+
+<doc>
+  <field name="id">290</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:25:40Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">dan-b: re your latest diary entry; what are the sizes of the static spaces / read-only spaces in cmucl and your sbcls?</field>
+</doc>
+
+
+<doc>
+  <field name="id">291</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:25:51Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">in particular, I suspect sbcl is holding on to lots of garbage</field>
+</doc>
+
+
+<doc>
+  <field name="id">292</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:25:52Z</field>
+  <field name="user">rydis</field>
+  <field name="message">But I don't really understand CVS (or versioning), so don't mind me.</field>
+</doc>
+
+
+<doc>
+  <field name="id">293</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:28:10Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">yeah</field>
+</doc>
+
+
+<doc>
+  <field name="id">294</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:28:21Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">that would account for the difference between 30 and 15 seconds</field>
+</doc>
+
+
+<doc>
+  <field name="id">295</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:29:06Z</field>
+  <field name="user">rydis</field>
+  <field name="message">The versions are presumably ad-hockable. I'm not sure if you need to use strictly integer versions in the imagined special hosts, as long as they're ordered. I probably should learn more about versioning before trying to discuss it, though.</field>
+</doc>
+
+
+<doc>
+  <field name="id">296</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:30:22Z</field>
+  <field name="user">rydis</field>
+  <field name="message">I think all bets are off for non-logical, non-default-type hosts.</field>
+</doc>
+
+
+<doc>
+  <field name="id">297</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:30:44Z</field>
+  <field name="user">rydis</field>
+  <field name="message">(It probably wouldn't be as transparent as one might wish, though.)</field>
+</doc>
+
+
+<doc>
+  <field name="id">298</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:33:31Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">yeah, the glossary entry iirc</field>
+</doc>
+
+
+<doc>
+  <field name="id">299</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:33:48Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">or maybe one of those 19.1.6.5.1.2.17 sections</field>
+</doc>
+
+
+<doc>
+  <field name="id">300</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:33:51Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">with broken hyperlinking</field>
+</doc>
+
+
+<doc>
+  <field name="id">301</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:37:27Z</field>
+  <field name="user">rahul</field>
+  <field name="message">did I start this?</field>
+</doc>
+
+
+<doc>
+  <field name="id">302</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:37:33Z</field>
+  <field name="user">rahul</field>
+  <field name="message">I'm sorry if I did</field>
+</doc>
+
+
+<doc>
+  <field name="id">303</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:38:24Z</field>
+  <field name="user">cliini</field>
+  <field name="message">Now I've heard (and said) that before. :-)</field>
+</doc>
+
+
+<doc>
+  <field name="id">304</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:38:40Z</field>
+  <field name="user">rahul</field>
+  <field name="message">heh</field>
+</doc>
+
+
+<doc>
+  <field name="id">305</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:38:56Z</field>
+  <field name="user">rahul</field>
+  <field name="message">although my point was that we should just not use LPNs</field>
+</doc>
+
+
+<doc>
+  <field name="id">306</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:39:21Z</field>
+  <field name="user">rahul</field>
+  <field name="message">and that they're a way for a single implementation to create files and read them back</field>
+</doc>
+
+
+<doc>
+  <field name="id">307</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:39:44Z</field>
+  <field name="user">rahul</field>
+  <field name="message">if you want to read pre-existing files or files created with LPNs from another implementation, you're SOL</field>
+</doc>
+
+
+<doc>
+  <field name="id">308</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:41:31Z</field>
+  <field name="user">rydis</field>
+  <field name="message">User extensible (and usable) host objects, including translations, is something I'd find useful.</field>
+</doc>
+
+
+<doc>
+  <field name="id">309</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:42:13Z</field>
+  <field name="user">rydis</field>
+  <field name="message">But I might just have fallen for the LispM propaganda. ;)</field>
+</doc>
+
+
+<doc>
+  <field name="id">310</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:42:24Z</field>
+  <field name="user">rahul</field>
+  <field name="message">heh</field>
+</doc>
+
+
+<doc>
+  <field name="id">311</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T10:42:29Z</field>
+  <field name="user">rahul</field>
+  <field name="message">rydis: they would be nice</field>
+</doc>
+
+
+<doc>
+  <field name="id">312</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:13:09Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">feeling a bit delicate, are we?</field>
+</doc>
+
+
+<doc>
+  <field name="id">313</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:13:19Z</field>
+  <field name="user">cmm</field>
+  <field name="message">quite</field>
+</doc>
+
+
+<doc>
+  <field name="id">314</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:13:56Z</field>
+  <field name="user">cmm</field>
+  <field name="message">those strange times when typing is easier than talking</field>
+</doc>
+
+
+<doc>
+  <field name="id">315</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:16:11Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">JUST DON'T TYPE IN CAPS, HIS HEAD HURTS</field>
+</doc>
+
+
+<doc>
+  <field name="id">316</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:16:18Z</field>
+  <field name="user">rahul</field>
+  <field name="message">yeah ow</field>
+</doc>
+
+
+<doc>
+  <field name="id">317</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:16:25Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">so does mine though...</field>
+</doc>
+
+
+<doc>
+  <field name="id">318</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:16:27Z</field>
+  <field name="user">rahul</field>
+  <field name="message">someone in #debian made me laugh</field>
+</doc>
+
+
+<doc>
+  <field name="id">319</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:16:35Z</field>
+  <field name="user">rahul</field>
+  <field name="message">that was painful</field>
+</doc>
+
+
+<doc>
+  <field name="id">320</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:17:00Z</field>
+  <field name="user">gilberth</field>
+  <field name="message">I AM FEELING FINE.</field>
+</doc>
+
+
+<doc>
+  <field name="id">321</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:18:03Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">SO AM I</field>
+</doc>
+
+
+<doc>
+  <field name="id">322</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:19:09Z</field>
+  <field name="user">rahul</field>
+  <field name="message">OW</field>
+</doc>
+
+
+<doc>
+  <field name="id">323</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:23:37Z</field>
+  <field name="user">cmm</field>
+  <field name="message">and don't try binding 'deity lexically, you nasty hackers.</field>
+</doc>
+
+
+<doc>
+  <field name="id">324</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:24:40Z</field>
+  <field name="user">rydis</field>
+  <field name="message">cmm: A few :s interspersed with some random letters might work. ;)</field>
+</doc>
+
+
+<doc>
+  <field name="id">325</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:26:32Z</field>
+  <field name="user">kmr</field>
+  <field name="message">wow, running my own ircd and using /kill was a _huge_ help in getting my logging daemon monitor working correctly</field>
+</doc>
+
+
+<doc>
+  <field name="id">326</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:26:32Z</field>
+  <field name="user">cliini</field>
+  <field name="message">Re: lisp in not many lines of C, I've now got 150 lines and quote, setq, function, if, cons, car and cdr work.</field>
+</doc>
+
+
+<doc>
+  <field name="id">327</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:26:34Z</field>
+  <field name="user">cliini</field>
+  <field name="message">;-)</field>
+</doc>
+
+
+<doc>
+  <field name="id">328</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:27:00Z</field>
+  <field name="user">cmm</field>
+  <field name="message">does that include the reader?</field>
+</doc>
+
+
+<doc>
+  <field name="id">329</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:27:17Z</field>
+  <field name="user">cliini</field>
+  <field name="message">Yes, but it's of course not very functional. :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">330</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:27:36Z</field>
+  <field name="user">cmm</field>
+  <field name="message">not bad :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">331</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:28:22Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">does it compile?</field>
+</doc>
+
+
+<doc>
+  <field name="id">332</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:28:43Z</field>
+  <field name="user">cliini</field>
+  <field name="message">What do you think? :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">333</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:29:06Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">hmmm...*thinks*...no?</field>
+</doc>
+
+
+<doc>
+  <field name="id">334</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:29:12Z</field>
+  <field name="user">cliini</field>
+  <field name="message">Correct!</field>
+</doc>
+
+
+<doc>
+  <field name="id">335</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:29:19Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">do i get a cookie?</field>
+</doc>
+
+
+<doc>
+  <field name="id">336</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:30:16Z</field>
+  <field name="user">cmm</field>
+  <field name="message">I'd say that was a wonderfully equivocal question.</field>
+</doc>
+
+
+<doc>
+  <field name="id">337</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:31:05Z</field>
+  <field name="user">cliini</field>
+  <field name="message">Set-cookie: Dumb-question=true; Path=/; expires=Fri, 31-Dec-2010 23:59:59 GMT</field>
+</doc>
+
+
+<doc>
+  <field name="id">338</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:31:54Z</field>
+  <field name="user">cliini</field>
+  <field name="message">Yet another amazing subprotocol.</field>
+</doc>
+
+
+<doc>
+  <field name="id">339</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:52:23Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">I think it is a bad idea to use DEFVAR during the initial phases (i.e. when things are still fickle and you're just sketching.) I will stick to to defparameter.</field>
+</doc>
+
+
+<doc>
+  <field name="id">340</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T11:53:14Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">if I want to lock a value, I will bring in the big guns and use sb-thread mutexes :-D</field>
+</doc>
+
+
+<doc>
+  <field name="id">341</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:36:53Z</field>
+  <field name="user">Xach</field>
+  <field name="message">kkhawi: defvar + setf is useful</field>
+</doc>
+
+
+<doc>
+  <field name="id">342</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:46:59Z</field>
+  <field name="user">tim</field>
+  <field name="message">why would you use defvar + setf instead of just defparameter?</field>
+</doc>
+
+
+<doc>
+  <field name="id">343</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:47:13Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">defparameter can bite you when reloading files</field>
+</doc>
+
+
+<doc>
+  <field name="id">344</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:47:55Z</field>
+  <field name="user">Xach</field>
+  <field name="message">yep</field>
+</doc>
+
+
+<doc>
+  <field name="id">345</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:48:49Z</field>
+  <field name="user">tim</field>
+  <field name="message">So, this is a setf in some kind of init function, not right after the defvar, I guess?</field>
+</doc>
+
+
+<doc>
+  <field name="id">346</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:49:45Z</field>
+  <field name="user">hefner</field>
+  <field name="message">well, defvar can bite you when reloading files, too :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">347</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:53:06Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">Xach: yeah, but I try to minimize explicit destructive forms for most things (maybe except for counters, etc.)</field>
+</doc>
+
+
+<doc>
+  <field name="id">348</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:54:56Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">does anybody have a snippet that basically does pointer tracing within a clim pane? something that actively does (pointer-position (port-pointer (find-port))) or some such.</field>
+</doc>
+
+
+<doc>
+  <field name="id">349</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:55:17Z</field>
+  <field name="user">hefner</field>
+  <field name="message">that is built into clim</field>
+</doc>
+
+
+<doc>
+  <field name="id">350</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:55:47Z</field>
+  <field name="user">Xach</field>
+  <field name="message">tim: i use setf in interactive development</field>
+</doc>
+
+
+<doc>
+  <field name="id">351</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:55:50Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">hefner: please elaborate?</field>
+</doc>
+
+
+<doc>
+  <field name="id">352</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:56:08Z</field>
+  <field name="user">Xach</field>
+  <field name="message">rather than, say, using defparameter and reloading a file</field>
+</doc>
+
+
+<doc>
+  <field name="id">353</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:56:12Z</field>
+  <field name="user">hefner</field>
+  <field name="message">look up tracking-pointer in the clim spec</field>
+</doc>
+
+
+<doc>
+  <field name="id">354</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:56:27Z</field>
+  <field name="user">hefner</field>
+  <field name="message">it is implemented in mcclim and should work pretty well</field>
+</doc>
+
+
+<doc>
+  <field name="id">355</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:56:31Z</field>
+  <field name="user">tim</field>
+  <field name="message">Xach: oh, I see.</field>
+</doc>
+
+
+<doc>
+  <field name="id">356</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:58:12Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">hefner: another, possibly lame, question. Do you have any idea wether the gadgets in mcclim work yet or not? I couldn't instantiate _any_ of the them, I am just stuck with using a pane as a canvas and doing stupid drawings :-P</field>
+</doc>
+
+
+<doc>
+  <field name="id">357</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T12:59:15Z</field>
+  <field name="user">hefner</field>
+  <field name="message">well, define instantiate. are you putting them in your application frame layout and having them not work, or are you trying to make-instance them?</field>
+</doc>
+
+
+<doc>
+  <field name="id">358</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:00:02Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">hefner: just see them work on my application frame, like gadgets usually do.</field>
+</doc>
+
+
+<doc>
+  <field name="id">359</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:00:13Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">I am not able to see them at all</field>
+</doc>
+
+
+<doc>
+  <field name="id">360</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:00:32Z</field>
+  <field name="user">hefner</field>
+  <field name="message">there are a few gadgets that are not implemented but most of them work..</field>
+</doc>
+
+
+<doc>
+  <field name="id">361</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:01:21Z</field>
+  <field name="user">hefner</field>
+  <field name="message">can you send me some code to see what is going wrong?</field>
+</doc>
+
+
+<doc>
+  <field name="id">362</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:03:44Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">sure, I am just working with the examples from the franz "clim-ug.pdf"</field>
+</doc>
+
+
+<doc>
+  <field name="id">363</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:05:59Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">(clim:make-pane 'clim:push-button :label "OK" :client *app-frame* :id 'start)</field>
+</doc>
+
+
+<doc>
+  <field name="id">364</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:06:26Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">this is what my "code" boils down to, I removed a few crufts I made for multithreading, but this is basically it</field>
+</doc>
+
+
+<doc>
+  <field name="id">365</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:06:36Z</field>
+  <field name="user">hefner</field>
+  <field name="message">that is in your application frame layout?</field>
+</doc>
+
+
+<doc>
+  <field name="id">366</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:06:43Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">is that how you create gadgets?</field>
+</doc>
+
+
+<doc>
+  <field name="id">367</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:06:49Z</field>
+  <field name="user">hefner</field>
+  <field name="message">sure</field>
+</doc>
+
+
+<doc>
+  <field name="id">368</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:07:23Z</field>
+  <field name="user">hefner</field>
+  <field name="message">(well, I guess not the actual 'layout', but the :panes section at least)</field>
+</doc>
+
+
+<doc>
+  <field name="id">369</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:08:11Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">(:panes (display application))  quite frankly I don't understand what this means, just copied it from examples</field>
+</doc>
+
+
+<doc>
+  <field name="id">370</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:08:32Z</field>
+  <field name="user">hefner</field>
+  <field name="message">where are you calling make-pane from, then?</field>
+</doc>
+
+
+<doc>
+  <field name="id">371</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:08:39Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">the repl</field>
+</doc>
+
+
+<doc>
+  <field name="id">372</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:08:42Z</field>
+  <field name="user">hefner</field>
+  <field name="message">heh</field>
+</doc>
+
+
+<doc>
+  <field name="id">373</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:08:57Z</field>
+  <field name="user">hefner</field>
+  <field name="message">creating the pane doesn't magically insert it into the window</field>
+</doc>
+
+
+<doc>
+  <field name="id">374</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:09:34Z</field>
+  <field name="user">hefner</field>
+  <field name="message">you can do that using sheet-adopt-child, but you probably want to create the button inside define-application-frame</field>
+</doc>
+
+
+<doc>
+  <field name="id">375</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:09:55Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">wow</field>
+</doc>
+
+
+<doc>
+  <field name="id">376</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:10:30Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">assuming (setf *app-frame* (make-application-frame 'test-app))</field>
+</doc>
+
+
+<doc>
+  <field name="id">377</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:10:38Z</field>
+  <field name="user">hefner</field>
+  <field name="message">(also, if you are using make-pane outside of define-application-frame, remember to use with-look-and-feel-realization)</field>
+</doc>
+
+
+<doc>
+  <field name="id">378</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:11:25Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">what should be the argument to make-pane's :client initarg? *app-frame* itself, or (get-frame-pane *app-frame* 'pane)? or what else?</field>
+</doc>
+
+
+<doc>
+  <field name="id">379</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:12:04Z</field>
+  <field name="user">hefner</field>
+  <field name="message">the latter, but you normally don't have to do that..</field>
+</doc>
+
+
+<doc>
+  <field name="id">380</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:13:02Z</field>
+  <field name="user">hefner</field>
+  <field name="message">you probably want something like (:panes (mybutton (make-pane ...))) inside define-application-frame, and then change the :layouts section to include 'mybutton' somewhere</field>
+</doc>
+
+
+<doc>
+  <field name="id">381</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:14:11Z</field>
+  <field name="user">noss</field>
+  <field name="message">is it just me, or are ipods as popular in europe as sms is in us?</field>
+</doc>
+
+
+<doc>
+  <field name="id">382</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:14:43Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">hefner: will do that, thanks</field>
+</doc>
+
+
+<doc>
+  <field name="id">383</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:15:04Z</field>
+  <field name="user">tim</field>
+  <field name="message">what is an ipod?</field>
+</doc>
+
+
+<doc>
+  <field name="id">384</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:15:56Z</field>
+  <field name="user">noss</field>
+  <field name="message">it is an iPod.</field>
+</doc>
+
+
+<doc>
+  <field name="id">385</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:16:03Z</field>
+  <field name="user">rydis</field>
+  <field name="message">An mp3-player (hard-disk based) from Apple.</field>
+</doc>
+
+
+<doc>
+  <field name="id">386</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:16:12Z</field>
+  <field name="user">rtoy</field>
+  <field name="message">hefner:  Happy New Year!  Want some minor changes for mcclim/scigraph for cmucl?</field>
+</doc>
+
+
+<doc>
+  <field name="id">387</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:16:14Z</field>
+  <field name="user">tim</field>
+  <field name="message">heh, didn't realize you were case sensitive.</field>
+</doc>
+
+
+<doc>
+  <field name="id">388</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:19:03Z</field>
+  <field name="user">noss</field>
+  <field name="message">what kind of social environment do you live in?</field>
+</doc>
+
+
+<doc>
+  <field name="id">389</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:19:51Z</field>
+  <field name="user">jdz</field>
+  <field name="message">have seen ~3 macs in my life :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">390</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:20:05Z</field>
+  <field name="user">jdz</field>
+  <field name="message">here, in Latvia, which can hardly be called Europe</field>
+</doc>
+
+
+<doc>
+  <field name="id">391</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:20:26Z</field>
+  <field name="user">noss</field>
+  <field name="message">latvia is in europe.</field>
+</doc>
+
+
+<doc>
+  <field name="id">392</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:20:49Z</field>
+  <field name="user">jdz</field>
+  <field name="message">noss: theoretically :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">393</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:22:26Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">iHate those marketing-nouns</field>
+</doc>
+
+
+<doc>
+  <field name="id">394</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:23:26Z</field>
+  <field name="user">noss</field>
+  <field name="message">"i*" names is just Apple thinking outside the box.</field>
+</doc>
+
+
+<doc>
+  <field name="id">395</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:24:38Z</field>
+  <field name="user">kalh</field>
+  <field name="message">i never liked iLisp</field>
+</doc>
+
+
+<doc>
+  <field name="id">396</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:26:41Z</field>
+  <field name="user">kkhawi</field>
+  <field name="message">imo "ilisp" sounds pretty slimey</field>
+</doc>
+
+
+<doc>
+  <field name="id">397</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:32:29Z</field>
+  <field name="user">matju</field>
+  <field name="message">is there a way to trap any function call whose function name is not recognized?</field>
+</doc>
+
+
+<doc>
+  <field name="id">398</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:32:51Z</field>
+  <field name="user">matju</field>
+  <field name="message">i mean, if i do (FOO 42 666) and FOO is not bound function-wise</field>
+</doc>
+
+
+<doc>
+  <field name="id">399</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:33:32Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">trap undefined-function?</field>
+</doc>
+
+
+<doc>
+  <field name="id">400</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:34:47Z</field>
+  <field name="user">matju</field>
+  <field name="message">that's in CL ? which version?</field>
+</doc>
+
+
+<doc>
+  <field name="id">401</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:35:06Z</field>
+  <field name="user">matju</field>
+  <field name="message">(if you know)</field>
+</doc>
+
+
+<doc>
+  <field name="id">402</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:35:12Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">it's part of the spec</field>
+</doc>
+
+
+<doc>
+  <field name="id">403</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:35:16Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">clhs: undefined-function</field>
+</doc>
+
+
+<doc>
+  <field name="id">404</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:35:16Z</field>
+  <field name="user">clhs</field>
+  <field name="message">http://www.lispworks.com/reference/HyperSpec/Body/e_undefi.htm</field>
+</doc>
+
+
+<doc>
+  <field name="id">405</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:36:35Z</field>
+  <field name="user">rydis</field>
+  <field name="message">Isn't it "handle", rather than "trap"? (Nitpick, I know, but I'd like an answer, nonetheless.)</field>
+</doc>
+
+
+<doc>
+  <field name="id">406</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:37:06Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">most probably, yes.  I suppose it depends whether you think of handling or trapping errors</field>
+</doc>
+
+
+<doc>
+  <field name="id">407</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:39:43Z</field>
+  <field name="user">matju</field>
+  <field name="message">is there the same functionality as something else than a condition?</field>
+</doc>
+
+
+<doc>
+  <field name="id">408</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:40:04Z</field>
+  <field name="user">matju</field>
+  <field name="message">like Tcl's "unknown", Smalltalk's "DoesNotUnderstand:", Ruby's "method_missing" ?</field>
+</doc>
+
+
+<doc>
+  <field name="id">409</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:41:57Z</field>
+  <field name="user">jdz</field>
+  <field name="message">matju: another nitpick: there's no such thing as a function name.  CL has symbols for naming things</field>
+</doc>
+
+
+<doc>
+  <field name="id">410</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:41:58Z</field>
+  <field name="user">rydis</field>
+  <field name="message">matju: What do they do?</field>
+</doc>
+
+
+<doc>
+  <field name="id">411</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:42:01Z</field>
+  <field name="user">hefner</field>
+  <field name="message">happy new year rtoy (and all). minor changes are good, yes</field>
+</doc>
+
+
+<doc>
+  <field name="id">412</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:42:41Z</field>
+  <field name="user">matju</field>
+  <field name="message">jdz: that's pretty much of a nitpick. In some languages i use, a name is assumed to be a symbol.</field>
+</doc>
+
+
+<doc>
+  <field name="id">413</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:43:20Z</field>
+  <field name="user">matju</field>
+  <field name="message">jdz: "symbol" is the data type, "name" is the use you make of it</field>
+</doc>
+
+
+<doc>
+  <field name="id">414</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:43:21Z</field>
+  <field name="user">rydis</field>
+  <field name="message">(undefined-function is a subclass of cell-error, so, that might be what you're looking for.)</field>
+</doc>
+
+
+<doc>
+  <field name="id">415</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:43:22Z</field>
+  <field name="user">jdz</field>
+  <field name="message">matju: did you get the answer you wanted?</field>
+</doc>
+
+
+<doc>
+  <field name="id">416</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:45:46Z</field>
+  <field name="user">matju</field>
+  <field name="message">no, i don't want a condition, i want a symbol for which i can define a function that will be called whenever a symbol has no function bound to it; and that function would default to being defined as just signalling the undefined-function condition</field>
+</doc>
+
+
+<doc>
+  <field name="id">417</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:46:56Z</field>
+  <field name="user">matju</field>
+  <field name="message">further examples of what i want: ObjC's "forwardInvocation:" and Perl's "AUTOLOAD"</field>
+</doc>
+
+
+<doc>
+  <field name="id">418</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:46:57Z</field>
+  <field name="user">rydis</field>
+  <field name="message">Oh. There are a few such generic functions in CLOS, but not in CL in general, as far as I recall.</field>
+</doc>
+
+
+<doc>
+  <field name="id">419</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:47:35Z</field>
+  <field name="user">matju</field>
+  <field name="message">well, if CLOS defines it, it must be because it can be defined in CL itself, isn't it?</field>
+</doc>
+
+
+<doc>
+  <field name="id">420</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:47:39Z</field>
+  <field name="user">jdz</field>
+  <field name="message">matju: you can do it by having your hanler for undefined-function condition which might refuse to handle the condition</field>
+</doc>
+
+
+<doc>
+  <field name="id">421</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:48:17Z</field>
+  <field name="user">jdz</field>
+  <field name="message">matju: but anyway you want to look at the undefined-function condition, and handler-bind</field>
+</doc>
+
+
+<doc>
+  <field name="id">422</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:48:19Z</field>
+  <field name="user">rydis</field>
+  <field name="message">matju: The way to do it in CL is to handle undefined-function or cell-error, I'd think.</field>
+</doc>
+
+
+<doc>
+  <field name="id">423</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:50:44Z</field>
+  <field name="user">rtoy</field>
+  <field name="message">hefner:  Some minor portability issues in scigraph that are pretty obvious, but the biggest issue is that cmucl doesn't handle values declarations apparently the way the code expects.  I just commented those out.</field>
+</doc>
+
+
+<doc>
+  <field name="id">424</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:51:54Z</field>
+  <field name="user">hefner</field>
+  <field name="message">rtoy: send patches to the list then, I shall commit</field>
+</doc>
+
+
+<doc>
+  <field name="id">425</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:52:41Z</field>
+  <field name="user">rtoy</field>
+  <field name="message">hefner: Do I have to be a member of the list to send messages?  I'm on enough lists as it is.</field>
+</doc>
+
+
+<doc>
+  <field name="id">426</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:53:49Z</field>
+  <field name="user">hefner</field>
+  <field name="message">not that I'm aware of (although the steady flow of spam has stopped, so maybe that changed recently). alternately you could send them to me directly (hefner1 at umbc dot edu)</field>
+</doc>
+
+
+<doc>
+  <field name="id">427</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:55:20Z</field>
+  <field name="user">rydis</field>
+  <field name="message">Has there been any activity on the list since 20031213, or so? The web-accessible archive doesn't seem to have anything, at least.</field>
+</doc>
+
+
+<doc>
+  <field name="id">428</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:55:33Z</field>
+  <field name="user">hefner</field>
+  <field name="message">a little</field>
+</doc>
+
+
+<doc>
+  <field name="id">429</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:56:31Z</field>
+  <field name="user">rydis</field>
+  <field name="message">Ok. Then I'll just wait and hope I get subscribed soonish. Thanks.</field>
+</doc>
+
+
+<doc>
+  <field name="id">430</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:56:57Z</field>
+  <field name="user">rtoy</field>
+  <field name="message">Ok.  I'll send them to you.  They need work.  I just hacked until the demos work, more or less.  Clicking on the graphs gives no-applicable-method errors.</field>
+</doc>
+
+
+<doc>
+  <field name="id">431</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:58:07Z</field>
+  <field name="user">matju</field>
+  <field name="message">jdz,rydis: cool, thanks guys</field>
+</doc>
+
+
+<doc>
+  <field name="id">432</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T13:59:19Z</field>
+  <field name="user">rydis</field>
+  <field name="message">You're welcome.</field>
+</doc>
+
+
+<doc>
+  <field name="id">433</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:00:17Z</field>
+  <field name="user">jdz</field>
+  <field name="message">yeah -- happy lisping! :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">434</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:00:44Z</field>
+  <field name="user">rtoy</field>
+  <field name="message">hefner:  patches sent.</field>
+</doc>
+
+
+<doc>
+  <field name="id">435</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:03:05Z</field>
+  <field name="user">hefner</field>
+  <field name="message">danke</field>
+</doc>
+
+
+<doc>
+  <field name="id">436</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:03:29Z</field>
+  <field name="user">hefner</field>
+  <field name="message">fwiw I've never run scigraph at all</field>
+</doc>
+
+
+<doc>
+  <field name="id">437</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:03:48Z</field>
+  <field name="user">rydis</field>
+  <field name="message">I love to watch you say "just"?</field>
+</doc>
+
+
+<doc>
+  <field name="id">438</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:05:00Z</field>
+  <field name="user">rydis</field>
+  <field name="message">Ah. It was too long since i read alt.fan.warlord, obviously. Out of practice. :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">439</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:36:47Z</field>
+  <field name="user">rydis</field>
+  <field name="message">Reading jcrippen:s lmud stuff on CLiki reminded me of my start at doing something similar, about a year ago. Only got so far as a basic class hierarchy and some functions for testing it out, thoug. &lt;URL:http://rydis.no-ip.org:11147/src/mud/&gt;, if anyones interested in a /way/ overdesigned, unfinished sketch for a mud-style class hierarchy. :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">440</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:51:02Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">dan-b: precisely 0 point</field>
+</doc>
+
+
+<doc>
+  <field name="id">441</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:51:15Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">particularly if your 2004 predictions are realized :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">442</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:51:41Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">so, enjoying comp.lang.lisp's Christmas traffic?</field>
+</doc>
+
+
+<doc>
+  <field name="id">443</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:52:23Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">the gc go boom issue was splay-trees</field>
+</doc>
+
+
+<doc>
+  <field name="id">444</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:52:27Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">I think from Brown</field>
+</doc>
+
+
+<doc>
+  <field name="id">445</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:55:40Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">Robert Brown?</field>
+</doc>
+
+
+<doc>
+  <field name="id">446</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T14:57:43Z</field>
+  <field name="user">Krystof</field>
+  <field name="message">anyway.  Bedtime</field>
+</doc>
+
+
+<doc>
+  <field name="id">447</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T15:28:18Z</field>
+  <field name="user">antifuchs</field>
+  <field name="message">now I'm in the mood for some etherkiller fun</field>
+</doc>
+
+
+<doc>
+  <field name="id">448</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T15:32:02Z</field>
+  <field name="user">antifuchs</field>
+  <field name="message">really, people. if anybody tells you that kyocera fs-1010 printers are good to use with linux, have /them/ set the printer up for you.</field>
+</doc>
+
+
+<doc>
+  <field name="id">449</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T15:37:47Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">gah, why can't slime have /one/ place where stuff is evalled and sent to emacs?</field>
+</doc>
+
+
+<doc>
+  <field name="id">450</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T15:52:09Z</field>
+  <field name="user">emu</field>
+  <field name="message">indeed, why a sf lisp foundry when the projects will probably end up moving off it anyway</field>
+</doc>
+
+
+<doc>
+  <field name="id">451</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T15:57:58Z</field>
+  <field name="user">Fufie</field>
+  <field name="message">why would the projects move off?</field>
+</doc>
+
+
+<doc>
+  <field name="id">452</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T15:58:34Z</field>
+  <field name="user">emu</field>
+  <field name="message">because sf sucks? =)</field>
+</doc>
+
+
+<doc>
+  <field name="id">453</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T15:59:04Z</field>
+  <field name="user">Fufie</field>
+  <field name="message">clue is to have something that is less sucky but still reliable and provides enough features</field>
+</doc>
+
+
+<doc>
+  <field name="id">454</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T15:59:43Z</field>
+  <field name="user">Fufie</field>
+  <field name="message">while cl.net is great, it seems to have had uptime problems and lacks some sf features</field>
+</doc>
+
+
+<doc>
+  <field name="id">455</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:29:54Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">Where can I find a description of (boole boole-orc2 ...) (boole boole-ior ...) and such?  I've figured out that I want boole-ior for my particular task, but the CLHS doesn't describe these at all.</field>
+</doc>
+
+
+<doc>
+  <field name="id">456</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:29:57Z</field>
+  <field name="user">water</field>
+  <field name="message">hello dan</field>
+</doc>
+
+
+<doc>
+  <field name="id">457</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:31:07Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">sorry for such a stupid question, but i can't remember the name of the function that evaluates a series of lists.</field>
+</doc>
+
+
+<doc>
+  <field name="id">458</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:31:38Z</field>
+  <field name="user">water</field>
+  <field name="message">dan-b: data point. your blog entries show up in my aggregator in nonsequential order</field>
+</doc>
+
+
+<doc>
+  <field name="id">459</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:32:25Z</field>
+  <field name="user">water</field>
+  <field name="message">and the opening of tags in the rss source is html-encoding &lt;</field>
+</doc>
+
+
+<doc>
+  <field name="id">460</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:32:31Z</field>
+  <field name="user">piso</field>
+  <field name="message">teratorn: not sure what you mean. Maybe mapcar?</field>
+</doc>
+
+
+<doc>
+  <field name="id">461</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:32:36Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">teratorn - (mapcar #'eval '((+ 1 2) (- 1 2))) answer your question?</field>
+</doc>
+
+
+<doc>
+  <field name="id">462</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:33:17Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">ayrnieu: i think the form i'm looking for does "implicit quoting"</field>
+</doc>
+
+
+<doc>
+  <field name="id">463</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:33:45Z</field>
+  <field name="user">water</field>
+  <field name="message">ok... i don't scrutinize rss payloads much myself</field>
+</doc>
+
+
+<doc>
+  <field name="id">464</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:33:48Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">teratorn - err.  (list (+ 1 2) (- 1 2)) ?</field>
+</doc>
+
+
+<doc>
+  <field name="id">465</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:33:54Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">like (thefunc (foo) (bar))</field>
+</doc>
+
+
+<doc>
+  <field name="id">466</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:34:10Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">(foo) is evalutated, then (bar) is evaluated and returned.</field>
+</doc>
+
+
+<doc>
+  <field name="id">467</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:34:17Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">teratorn - PROGN</field>
+</doc>
+
+
+<doc>
+  <field name="id">468</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:34:19Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">YES</field>
+</doc>
+
+
+<doc>
+  <field name="id">469</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:34:50Z</field>
+  <field name="user">lisppaste</field>
+  <field name="message">dan_b pasted like so at http://www.common-lisp.net/paste/display/24</field>
+</doc>
+
+
+<doc>
+  <field name="id">470</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:35:46Z</field>
+  <field name="user">water</field>
+  <field name="message">teratorn: just use the term "forms" next time... that's what the parens form when they aren't a list, eg: '(1 2 3) vs. (+ 1 2 3)</field>
+</doc>
+
+
+<doc>
+  <field name="id">471</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:36:00Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">water: ok</field>
+</doc>
+
+
+<doc>
+  <field name="id">472</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:36:15Z</field>
+  <field name="user">rtoy</field>
+  <field name="message">clhs boole</field>
+</doc>
+
+
+<doc>
+  <field name="id">473</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:36:15Z</field>
+  <field name="user">clhs</field>
+  <field name="message">http://www.lispworks.com/reference/HyperSpec/Body/f_boole.htm</field>
+</doc>
+
+
+<doc>
+  <field name="id">474</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:36:18Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">i'm hacking on sawfish and learning lisp at the same time...</field>
+</doc>
+
+
+<doc>
+  <field name="id">475</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:36:45Z</field>
+  <field name="user">water</field>
+  <field name="message">and make sure to let us know which dialect you're using ;)</field>
+</doc>
+
+
+<doc>
+  <field name="id">476</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:37:00Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">... oh.  I looked at 'clhs boole-1' and such instead.  Thanks.</field>
+</doc>
+
+
+<doc>
+  <field name="id">477</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:37:11Z</field>
+  <field name="user">water</field>
+  <field name="message">i dunno. i'm just a satisfied user (and reader)</field>
+</doc>
+
+
+<doc>
+  <field name="id">478</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:37:33Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">is using progn with setq the proper idiom for "acquire a value once, and use it two or more times in following expressions"?</field>
+</doc>
+
+
+<doc>
+  <field name="id">479</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:37:59Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">clhs let</field>
+</doc>
+
+
+<doc>
+  <field name="id">480</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:37:59Z</field>
+  <field name="user">clhs</field>
+  <field name="message">http://www.lispworks.com/reference/HyperSpec/Body/s_let_l.htm</field>
+</doc>
+
+
+<doc>
+  <field name="id">481</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:38:01Z</field>
+  <field name="user">emu</field>
+  <field name="message">no, it's let</field>
+</doc>
+
+
+<doc>
+  <field name="id">482</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:38:17Z</field>
+  <field name="user">emu</field>
+  <field name="message">setq cannot create new variables</field>
+</doc>
+
+
+<doc>
+  <field name="id">483</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:38:20Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">oh crap, forgot about let</field>
+</doc>
+
+
+<doc>
+  <field name="id">484</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:38:23Z</field>
+  <field name="user">emu</field>
+  <field name="message">technically speaking</field>
+</doc>
+
+
+<doc>
+  <field name="id">485</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:38:57Z</field>
+  <field name="user">emu</field>
+  <field name="message">that it does do so in several implementations is an extension</field>
+</doc>
+
+
+<doc>
+  <field name="id">486</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:39:03Z</field>
+  <field name="user">water</field>
+  <field name="message">dan-b: oh, maybe i do see the pattern. each download is getting the entries in reverse order, but the batches themselves are in correct order. this is a well-trodden rss aggregator, so i generally don't expect bugs within it</field>
+</doc>
+
+
+<doc>
+  <field name="id">487</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:39:22Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">i'm dealing with librep here btw</field>
+</doc>
+
+
+<doc>
+  <field name="id">488</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:39:50Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">teratorn - then you really deal with scheme =)</field>
+</doc>
+
+
+<doc>
+  <field name="id">489</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:40:22Z</field>
+  <field name="user">water</field>
+  <field name="message">i suppose so</field>
+</doc>
+
+
+<doc>
+  <field name="id">490</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:40:27Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">yeah, i've heard that (nowadays) it's like scheme as opposed to elisp</field>
+</doc>
+
+
+<doc>
+  <field name="id">491</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:40:54Z</field>
+  <field name="user">water</field>
+  <field name="message">the client is NetNewsWire for OS X</field>
+</doc>
+
+
+<doc>
+  <field name="id">492</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:41:07Z</field>
+  <field name="user">water</field>
+  <field name="message">if it appears to matter.</field>
+</doc>
+
+
+<doc>
+  <field name="id">493</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:41:16Z</field>
+  <field name="user">water</field>
+  <field name="message">oh, and happy new year's! ;)</field>
+</doc>
+
+
+<doc>
+  <field name="id">494</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:42:00Z</field>
+  <field name="user">emu</field>
+  <field name="message">i wrote a program in rep once</field>
+</doc>
+
+
+<doc>
+  <field name="id">495</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:42:11Z</field>
+  <field name="user">emu</field>
+  <field name="message">kinda got sick of it then</field>
+</doc>
+
+
+<doc>
+  <field name="id">496</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:42:45Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">dan-b: what do you mean?</field>
+</doc>
+
+
+<doc>
+  <field name="id">497</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:42:59Z</field>
+  <field name="user">water</field>
+  <field name="message">hehe</field>
+</doc>
+
+
+<doc>
+  <field name="id">498</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:43:31Z</field>
+  <field name="user">emu</field>
+  <field name="message">coincidentally, kenny has just called python a wrapper for C on c.l.l</field>
+</doc>
+
+
+<doc>
+  <field name="id">499</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:43:49Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">dan-b: python certainly isn't.</field>
+</doc>
+
+
+<doc>
+  <field name="id">500</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:44:09Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">"available memory"</field>
+</doc>
+
+
+<doc>
+  <field name="id">501</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:45:21Z</field>
+  <field name="user">emu</field>
+  <field name="message">didn't you know?</field>
+</doc>
+
+
+<doc>
+  <field name="id">502</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:45:35Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">dan-b: what is that even doing?</field>
+</doc>
+
+
+<doc>
+  <field name="id">503</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:45:37Z</field>
+  <field name="user">emu</field>
+  <field name="message">mathematicians have decided that 0 is the correct answer to 1&lt;&lt;32</field>
+</doc>
+
+
+<doc>
+  <field name="id">504</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:45:48Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">n&gt;&gt;&gt; print 1L&lt;&lt;30</field>
+</doc>
+
+
+<doc>
+  <field name="id">505</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:45:48Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">1073741824</field>
+</doc>
+
+
+<doc>
+  <field name="id">506</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:45:48Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">&gt;&gt;&gt; print 1L&lt;&lt;31</field>
+</doc>
+
+
+<doc>
+  <field name="id">507</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:45:48Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">2147483648</field>
+</doc>
+
+
+<doc>
+  <field name="id">508</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:45:48Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">&gt;&gt;&gt; print 1L&lt;&lt;32</field>
+</doc>
+
+
+<doc>
+  <field name="id">509</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:45:50Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">4294967296</field>
+</doc>
+
+
+<doc>
+  <field name="id">510</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:46:15Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">and in newer python's, int's convert to longs when needed.</field>
+</doc>
+
+
+<doc>
+  <field name="id">511</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:46:25Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">&gt;&gt;&gt; print 1L&lt;&lt;100</field>
+</doc>
+
+
+<doc>
+  <field name="id">512</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:46:25Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">1267650600228229401496703205376</field>
+</doc>
+
+
+<doc>
+  <field name="id">513</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:46:45Z</field>
+  <field name="user">emu</field>
+  <field name="message">i always wondered why high level languages assume that people want modular arithmetic as default</field>
+</doc>
+
+
+<doc>
+  <field name="id">514</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:47:46Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">dan-b - Python 3.2.3 returns something very large for 1L&lt;&lt;10000 -- just use Python's xL bignums.</field>
+</doc>
+
+
+<doc>
+  <field name="id">515</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:47:57Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">ah well, all the other operators _currently_ switch over to longs</field>
+</doc>
+
+
+<doc>
+  <field name="id">516</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:48:01Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">i didn't know about &lt;&lt;</field>
+</doc>
+
+
+<doc>
+  <field name="id">517</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:48:03Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">indeed, Ruby just turns fixnums into bignums when they get too large.</field>
+</doc>
+
+
+<doc>
+  <field name="id">518</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:49:12Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">heh</field>
+</doc>
+
+
+<doc>
+  <field name="id">519</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:49:33Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">(and Ruby actually calls them FIXNUM and BIGNUM)</field>
+</doc>
+
+
+<doc>
+  <field name="id">520</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:50:51Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">ah, and Python's bitwise operators don't ever work on bignums.</field>
+</doc>
+
+
+<doc>
+  <field name="id">521</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:52:23Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">ayrnieu: err, it's bitwise, why would you wan't to do a bitwise operation on something with undefined bit-width?</field>
+</doc>
+
+
+<doc>
+  <field name="id">522</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:52:48Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">*between two things with</field>
+</doc>
+
+
+<doc>
+  <field name="id">523</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:52:57Z</field>
+  <field name="user">piso</field>
+  <field name="message">pfdietz: do you really mean "slot-nake" in slot-unbound.lsp? (as opposed to "slot-name")</field>
+</doc>
+
+
+<doc>
+  <field name="id">524</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:53:29Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">teratorn - every number has a defined bit-width -- as many binary digits as you need to express the number.</field>
+</doc>
+
+
+<doc>
+  <field name="id">525</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:53:52Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">so?</field>
+</doc>
+
+
+<doc>
+  <field name="id">526</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:54:19Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">with int's, that width is fixed.</field>
+</doc>
+
+
+<doc>
+  <field name="id">527</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:54:48Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">with longs, they could both be anything, and probably would be different.</field>
+</doc>
+
+
+<doc>
+  <field name="id">528</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:55:38Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">i suppose you shouldn't have brought it up then :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">529</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:56:00Z</field>
+  <field name="user">noss</field>
+  <field name="message">did anyone take up naggums wish about in-place manipulation of bignums (to decrease consing and make crypto stuff faster)</field>
+</doc>
+
+
+<doc>
+  <field name="id">530</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:56:04Z</field>
+  <field name="user">noss</field>
+  <field name="message">+?</field>
+</doc>
+
+
+<doc>
+  <field name="id">531</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:56:37Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">ayrnieu: i dunno what that means.</field>
+</doc>
+
+
+<doc>
+  <field name="id">532</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:56:58Z</field>
+  <field name="user">hefner</field>
+  <field name="message">heh</field>
+</doc>
+
+
+<doc>
+  <field name="id">533</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:57:06Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">teratorn - huge_even_number|1, except that it works.</field>
+</doc>
+
+
+<doc>
+  <field name="id">534</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:57:12Z</field>
+  <field name="user">hefner</field>
+  <field name="message">"MCCLIM will progress from its current status as the project that everyone admires and nobody actually uses, to a new position as a project that everyone installs to play with the Listener, but doesn't then use for anything serious. This will not change until a real application (probably Maxima) is released that depends on it. Lots of talking and approximately no hacking will be done on a CLIM-based editor/IDE, and a CLIM Gtk backend</field>
+</doc>
+
+
+<doc>
+  <field name="id">535</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:59:23Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">dan-b: btw, i'm not appologizing for anything.</field>
+</doc>
+
+
+<doc>
+  <field name="id">536</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:59:31Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">if i'm wrong, please tell me why.</field>
+</doc>
+
+
+<doc>
+  <field name="id">537</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T16:59:50Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">ayrnieu: sorry, as i said, i'm a lisp newbie - not following you.</field>
+</doc>
+
+
+<doc>
+  <field name="id">538</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:02:20Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">teratorn - (boole boole-ior *huge-even-number* 1) does what huge_even_number|1 would do in Python, except that the former accepts bignums.</field>
+</doc>
+
+
+<doc>
+  <field name="id">539</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:02:48Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">what a prick</field>
+</doc>
+
+
+<doc>
+  <field name="id">540</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:03:02Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">i came here for lisp help - he must be blind.</field>
+</doc>
+
+
+<doc>
+  <field name="id">541</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:03:26Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">ayrnieu: ok</field>
+</doc>
+
+
+<doc>
+  <field name="id">542</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:04:52Z</field>
+  <field name="user">noss</field>
+  <field name="message">logior?</field>
+</doc>
+
+
+<doc>
+  <field name="id">543</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:06:12Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">ah, logior accepts more than two arguments.  Thanks.</field>
+</doc>
+
+
+<doc>
+  <field name="id">544</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:17:01Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">piso: slot-nake?  Er, no...</field>
+</doc>
+
+
+<doc>
+  <field name="id">545</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:18:40Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Fixed.</field>
+</doc>
+
+
+<doc>
+  <field name="id">546</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:19:13Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">hm, where does the standard say that ASSOC has #'EQL as the default test?  I see pages outside the standard say so, and CLHS's examples imply so.</field>
+</doc>
+
+
+<doc>
+  <field name="id">547</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:20:06Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">I believe there's a statement somewhere that says EQL is the default comparison function for :TEST.</field>
+</doc>
+
+
+<doc>
+  <field name="id">548</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:20:50Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">17.2.1</field>
+</doc>
+
+
+<doc>
+  <field name="id">549</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:20:54Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">ah, in the description of EQL.</field>
+</doc>
+
+
+<doc>
+  <field name="id">550</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:21:08Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">There as well, perhaps.</field>
+</doc>
+
+
+<doc>
+  <field name="id">551</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:22:19Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">17.2.1 is more explicit about which operators this is the default in.</field>
+</doc>
+
+
+<doc>
+  <field name="id">552</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:22:20Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">I should read the standard proper more often =)  Thanks.</field>
+</doc>
+
+
+<doc>
+  <field name="id">553</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:22:32Z</field>
+  <field name="user">pfdietz</field>
+  <field name="message">Always a good idea.   Except section 19.</field>
+</doc>
+
+
+<doc>
+  <field name="id">554</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:22:58Z</field>
+  <field name="user">rtoy</field>
+  <field name="message">noss:  What do you want with consing bignums?  cmucl (and sbcl) has internal support for this, but you have to read the sources to learn how to do it.</field>
+</doc>
+
+
+<doc>
+  <field name="id">555</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:24:08Z</field>
+  <field name="user">noss</field>
+  <field name="message">rtoy: well, when the subject of python defaulting on fixnums came up i was reminded of how slow crypto code using bignums in sbcl/cmucl was.</field>
+</doc>
+
+
+<doc>
+  <field name="id">556</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:24:40Z</field>
+  <field name="user">rtoy</field>
+  <field name="message">hefner:  Who said that about mcclim?  I doubt maxima will use mcclim, until mcclim works with clisp/gcl and on windows.</field>
+</doc>
+
+
+<doc>
+  <field name="id">557</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:25:19Z</field>
+  <field name="user">noss</field>
+  <field name="message">rtoy: rsa needs a few optimized "destructive" operations, square modulo m, multiplication modulo m..</field>
+</doc>
+
+
+<doc>
+  <field name="id">558</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:25:51Z</field>
+  <field name="user">noss</field>
+  <field name="message">as well as the more basic ones.</field>
+</doc>
+
+
+<doc>
+  <field name="id">559</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:26:23Z</field>
+  <field name="user">rtoy</field>
+  <field name="message">bbiab.  Time to read a book.</field>
+</doc>
+
+
+<doc>
+  <field name="id">560</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:33:06Z</field>
+  <field name="user">cm</field>
+  <field name="message">hello :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">561</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:34:42Z</field>
+  <field name="user">water</field>
+  <field name="message">hm</field>
+</doc>
+
+
+<doc>
+  <field name="id">562</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T17:43:44Z</field>
+  <field name="user">rtoy</field>
+  <field name="message">noss:  Those are fairly easy to implement with the internal bignum routines in cmucl.</field>
+</doc>
+
+
+<doc>
+  <field name="id">563</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:53:15Z</field>
+  <field name="user">Zhivago</field>
+  <field name="message">wouldn't set-difference be simpler?</field>
+</doc>
+
+
+<doc>
+  <field name="id">564</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:55:33Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">no, but (not (set-exclusive-or list1 list2)) seems to do it =)</field>
+</doc>
+
+
+<doc>
+  <field name="id">565</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:55:46Z</field>
+  <field name="user">ayrnieu</field>
+  <field name="message">Thanks.</field>
+</doc>
+
+
+<doc>
+  <field name="id">566</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:56:02Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">yay, slime has been beaten into submission</field>
+</doc>
+
+
+<doc>
+  <field name="id">567</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:56:26Z</field>
+  <field name="user">emu</field>
+  <field name="message">that low-life crud</field>
+</doc>
+
+
+<doc>
+  <field name="id">568</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:56:40Z</field>
+  <field name="user">Zhivago</field>
+  <field name="message">a slippery customer</field>
+</doc>
+
+
+<doc>
+  <field name="id">569</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:56:52Z</field>
+  <field name="user">water</field>
+  <field name="message">what wayward purpose did slime have to be bent towards?</field>
+</doc>
+
+
+<doc>
+  <field name="id">570</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:57:24Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">clicky things</field>
+</doc>
+
+
+<doc>
+  <field name="id">571</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:57:36Z</field>
+  <field name="user">water</field>
+  <field name="message">oh, faux presentations?</field>
+</doc>
+
+
+<doc>
+  <field name="id">572</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:57:39Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">yeah</field>
+</doc>
+
+
+<doc>
+  <field name="id">573</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:58:12Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">it's not quite as elegant as some of the suggestions on slime-devel using keyweak hashtables and such</field>
+</doc>
+
+
+<doc>
+  <field name="id">574</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:58:20Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">but, it sort of works for me</field>
+</doc>
+
+
+<doc>
+  <field name="id">575</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:58:40Z</field>
+  <field name="user">water</field>
+  <field name="message">what does clickiing specifically do for you?</field>
+</doc>
+
+
+<doc>
+  <field name="id">576</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:58:46Z</field>
+  <field name="user">water</field>
+  <field name="message">s/ii/i/</field>
+</doc>
+
+
+<doc>
+  <field name="id">577</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T18:59:47Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">well, on things like printed pathnames, and printed unreadable objects, I can bring up a menu allowing me to do things like DESCRIBE, or edit the function definition</field>
+</doc>
+
+
+<doc>
+  <field name="id">578</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T19:00:22Z</field>
+  <field name="user">water</field>
+  <field name="message">ok, so exactly what you'd want from a presentation context menu</field>
+</doc>
+
+
+<doc>
+  <field name="id">579</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T19:00:28Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">pretty much, yeah</field>
+</doc>
+
+
+<doc>
+  <field name="id">580</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T19:00:36Z</field>
+  <field name="user">water</field>
+  <field name="message">cool. merge it! ;)</field>
+</doc>
+
+
+<doc>
+  <field name="id">581</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T19:01:02Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">I need to do a bit more testing first</field>
+</doc>
+
+
+<doc>
+  <field name="id">582</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T19:01:09Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">and flesh out the special-casing for menus</field>
+</doc>
+
+
+<doc>
+  <field name="id">583</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T19:01:40Z</field>
+  <field name="user">lawrence</field>
+  <field name="message">and I'm sure it's been done in an incredibly nasty way :P</field>
+</doc>
+
+
+<doc>
+  <field name="id">584</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:35:06Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">hmm, how do i get syntax highlightin w/ vim?</field>
+</doc>
+
+
+<doc>
+  <field name="id">585</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:35:48Z</field>
+  <field name="user">water</field>
+  <field name="message">3rd google result for "lisp vim": http://www.lisp-p.org/htdocs/15-vim/</field>
+</doc>
+
+
+<doc>
+  <field name="id">586</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:36:03Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">hmm, i did search google... :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">587</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:36:07Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">ty</field>
+</doc>
+
+
+<doc>
+  <field name="id">588</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:36:24Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">actually, i read that very thing</field>
+</doc>
+
+
+<doc>
+  <field name="id">589</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:37:12Z</field>
+  <field name="user">water</field>
+  <field name="message">um, even /i/ know how to use vim menus to turn on syntax highlighting :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">590</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:37:20Z</field>
+  <field name="user">Zhivago</field>
+  <field name="message">I just turn it off</field>
+</doc>
+
+
+<doc>
+  <field name="id">591</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:37:25Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">well i know i have it on</field>
+</doc>
+
+
+<doc>
+  <field name="id">592</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:37:30Z</field>
+  <field name="user">water</field>
+  <field name="message">or at least i recall knowing how the last time i had vim installed, 3 years ago</field>
+</doc>
+
+
+<doc>
+  <field name="id">593</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:37:38Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">but i need to turn on lisp mode, or something</field>
+</doc>
+
+
+<doc>
+  <field name="id">594</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:40:42Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">it's :set filetype=lisp, if anyone cares</field>
+</doc>
+
+
+<doc>
+  <field name="id">595</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:40:52Z</field>
+  <field name="user">Zhivago</field>
+  <field name="message">teratorn probably cares.</field>
+</doc>
+
+
+<doc>
+  <field name="id">596</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:41:09Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">it would be automatic, but this particular file has no extension</field>
+</doc>
+
+
+<doc>
+  <field name="id">597</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:41:24Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">probably.</field>
+</doc>
+
+
+<doc>
+  <field name="id">598</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:41:26Z</field>
+  <field name="user">Zhivago</field>
+  <field name="message">well, that's obtruncation for you</field>
+</doc>
+
+
+<doc>
+  <field name="id">599</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:42:02Z</field>
+  <field name="user">xanthus</field>
+  <field name="message">teratorn: You can use 'vim -l' too</field>
+</doc>
+
+
+<doc>
+  <field name="id">600</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T20:42:38Z</field>
+  <field name="user">teratorn</field>
+  <field name="message">hmm, neat</field>
+</doc>
+
+
+<doc>
+  <field name="id">601</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:49:22Z</field>
+  <field name="user">emu</field>
+  <field name="message">why do people fret so much about GC, don't they realize that malloc and free cost CPU time too?</field>
+</doc>
+
+
+<doc>
+  <field name="id">602</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:49:48Z</field>
+  <field name="user">rahul</field>
+  <field name="message">because they KNOW that's not true</field>
+</doc>
+
+
+<doc>
+  <field name="id">603</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:50:30Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">So?  When ACL announces that it's going to do global GC now and everything halts for 20s, the colleague at the other end of the office will ask whether the server is down again.  That's annoying.</field>
+</doc>
+
+
+<doc>
+  <field name="id">604</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:50:54Z</field>
+  <field name="user">Zhivago</field>
+  <field name="message">latency and throughput are different things :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">605</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:51:06Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">Grated, we solved that by upgrading from age-old RS/6000s to el-cheapo PCs and the complaints are gone now. :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">606</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:51:17Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">granted even</field>
+</doc>
+
+
+<doc>
+  <field name="id">607</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:51:59Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">What kind of GC does Java have these days?</field>
+</doc>
+
+
+<doc>
+  <field name="id">608</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:52:11Z</field>
+  <field name="user">rahul</field>
+  <field name="message">a wacky generational kind of thing</field>
+</doc>
+
+
+<doc>
+  <field name="id">609</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:52:19Z</field>
+  <field name="user">rahul</field>
+  <field name="message">and incremental as an option</field>
+</doc>
+
+
+<doc>
+  <field name="id">610</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:52:29Z</field>
+  <field name="user">Zhivago</field>
+  <field name="message">does java mandate the structural form?</field>
+</doc>
+
+
+<doc>
+  <field name="id">611</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:52:33Z</field>
+  <field name="user">rahul</field>
+  <field name="message">well, incremental-generational instead of copying-generational</field>
+</doc>
+
+
+<doc>
+  <field name="id">612</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:52:44Z</field>
+  <field name="user">rahul</field>
+  <field name="message">no, I'm talking about sun's jvm</field>
+</doc>
+
+
+<doc>
+  <field name="id">613</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:52:50Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">yeah, me too</field>
+</doc>
+
+
+<doc>
+  <field name="id">614</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:53:05Z</field>
+  <field name="user">rahul</field>
+  <field name="message">mark-and-sweep for some set of older generations</field>
+</doc>
+
+
+<doc>
+  <field name="id">615</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:53:34Z</field>
+  <field name="user">rahul</field>
+  <field name="message">and there's something to do with objects not being promoted to older generations all the time</field>
+</doc>
+
+
+<doc>
+  <field name="id">616</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:54:02Z</field>
+  <field name="user">Zhivago</field>
+  <field name="message">darius: that's what I thought :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">617</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:54:23Z</field>
+  <field name="user">rahul</field>
+  <field name="message">wait, structural form of what?</field>
+</doc>
+
+
+<doc>
+  <field name="id">618</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:54:33Z</field>
+  <field name="user">rahul</field>
+  <field name="message">oh, ok. I see</field>
+</doc>
+
+
+<doc>
+  <field name="id">619</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:55:09Z</field>
+  <field name="user">rahul</field>
+  <field name="message">yeah, jni has lots of crap because you need to explicitly allow the jvm to convert to c datatypes</field>
+</doc>
+
+
+<doc>
+  <field name="id">620</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:55:30Z</field>
+  <field name="user">rahul</field>
+  <field name="message">it's really only glaring when dealing with arrays of primitives</field>
+</doc>
+
+
+<doc>
+  <field name="id">621</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:58:56Z</field>
+  <field name="user">_8jean</field>
+  <field name="message">Looks like they have invested some effort into offering different GC options anyway: http://java.sun.com/docs/hotspot/gc1.4.2/</field>
+</doc>
+
+
+<doc>
+  <field name="id">622</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:59:21Z</field>
+  <field name="user">rahul</field>
+  <field name="message">yep</field>
+</doc>
+
+
+<doc>
+  <field name="id">623</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T22:59:37Z</field>
+  <field name="user">rahul</field>
+  <field name="message">it's a very complex GC and from my experience, it's not very fast</field>
+</doc>
+
+
+<doc>
+  <field name="id">624</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:23:06Z</field>
+  <field name="user">vorpal</field>
+  <field name="message">any suggestions for online lisp books?  i'm looking at lamkin's "successful lisp" right now, and it looks OK, but if there are other suggestions i would appreciate them as well</field>
+</doc>
+
+
+<doc>
+  <field name="id">625</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:24:05Z</field>
+  <field name="user">flippo</field>
+  <field name="message">Graham's On Lisp is online now</field>
+</doc>
+
+
+<doc>
+  <field name="id">626</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:24:22Z</field>
+  <field name="user">water</field>
+  <field name="message">that's not a book to start with</field>
+</doc>
+
+
+<doc>
+  <field name="id">627</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:24:35Z</field>
+  <field name="user">flippo</field>
+  <field name="message">he didn't say he was starting</field>
+</doc>
+
+
+<doc>
+  <field name="id">628</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:24:47Z</field>
+  <field name="user">water</field>
+  <field name="message">he implied it ;)</field>
+</doc>
+
+
+<doc>
+  <field name="id">629</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:25:18Z</field>
+  <field name="user">flippo</field>
+  <field name="message">water: probably a safe bet</field>
+</doc>
+
+
+<doc>
+  <field name="id">630</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:25:47Z</field>
+  <field name="user">vorpal</field>
+  <field name="message">i'm new at lisp, but have done a little ML in the past</field>
+</doc>
+
+
+<doc>
+  <field name="id">631</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:27:04Z</field>
+  <field name="user">vorpal</field>
+  <field name="message">appreciate the suggestions, nonetheless</field>
+</doc>
+
+
+<doc>
+  <field name="id">632</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:27:38Z</field>
+  <field name="user">rahul</field>
+  <field name="message">I recommend PAIP, but it's not online</field>
+</doc>
+
+
+<doc>
+  <field name="id">633</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:29:05Z</field>
+  <field name="user">vorpal</field>
+  <field name="message">rahul, yes i remember you saying that from earlier.  i have requested a hold for it at the local bookstore :)</field>
+</doc>
+
+
+<doc>
+  <field name="id">634</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:29:30Z</field>
+  <field name="user">vorpal</field>
+  <field name="message">used bookstore</field>
+</doc>
+
+
+<doc>
+  <field name="id">635</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:52:10Z</field>
+  <field name="user">vorpal</field>
+  <field name="message">darius-, i'm having a hard time finding seibel's book online.  tons of stuff about a survey, though.  would you have a URL?</field>
+</doc>
+
+
+<doc>
+  <field name="id">636</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:55:58Z</field>
+  <field name="user">vorpal</field>
+  <field name="message">thank you</field>
+</doc>
+
+
+<doc>
+  <field name="id">637</field>
+  <field name="channel">lisp</field>
+  <field name="timestamp">2004-01-01T23:58:30Z</field>
+  <field name="user">flippo</field>
+  <field name="message">successful lisp is another free book: http://www.psg.com/~dlamkins/sl/cover.html</field>
+</doc>
+
+</add>

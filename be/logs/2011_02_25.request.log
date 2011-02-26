@@ -1,0 +1,8 @@
+0:0:0:0:0:0:0:1 -  -  [25/02/2011:06:47:40 +0000] "GET /solr/select/?q=user%3Alemonodor+porn&version=2.2&start=0&rows=10&indent=on HTTP/1.1" 200 3048 
+0:0:0:0:0:0:0:1 -  -  [25/02/2011:06:47:41 +0000] "GET /favicon.ico HTTP/1.1" 200 1150 
+0:0:0:0:0:0:0:1 -  -  [25/02/2011:06:48:37 +0000] "GET /solr/select/?q=user:lemonodor+porn&version=2.2&start=0&rows=10&indent=on&fl=channel,message,score HTTP/1.1" 200 2350 
+0:0:0:0:0:0:0:1 -  -  [25/02/2011:06:48:55 +0000] "GET /solr/select/?q=user:lemonodor+porn&version=2.2&start=0&rows=10&indent=on&fl=channel,message,score,user,timestamp HTTP/1.1" 200 3246 
+0:0:0:0:0:0:0:1 -  -  [25/02/2011:06:49:16 +0000] "GET /solr/select/?q=user:lemonodor+porn&version=2.2&start=0&rows=10&indent=on&fl=*,score HTTP/1.1" 200 3498 
+0:0:0:0:0:0:0:1 -  -  [25/02/2011:06:50:01 +0000] "GET /solr/select/?q=user:lemonodor+porn&version=2.2&start=0&rows=10&indent=on&fl=*,score&hl=true&hl.fl=message HTTP/1.1" 200 4002 
+0:0:0:0:0:0:0:1 -  -  [25/02/2011:06:52:31 +0000] "GET /solr/select/?wt=json&indent=on&q=video+card&fl=name,id&hl=true&hl.fl=name,features HTTP/1.1" 200 580 
+0:0:0:0:0:0:0:1 -  -  [25/02/2011:06:53:05 +0000] "GET /solr/select/?wt=json&indent=on&q=video+card&fl=message,id&hl=true&hl.fl=message HTTP/1.1" 200 2733 
