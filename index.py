@@ -149,10 +149,11 @@ def get_query_results(query_string):
   parsed_query = parse_query_string(query_string)
   db_query = query.make_multi_term_query(parsed_query)
   records = db_query.fetch(1000)
-  #for r in records:
-  #  blob_reader = blobstore.BlobReader(r.log.blob.key())
-  #  r.context = get_context_lines(blob_reader, r.position)
-  #  logging.info('Context: %s' % (r.context,))
+  for r in records:
+    blob_reader = blobstore.BlobReader(r.log.blob.key())
+    r.context = get_context_lines(blob_reader, r.position)
+    #logging.info('context: %s' % (r.context,))
+    #logging.info('Context: %s' % (r.context,))
   #for r in records:
   #  r.line_text = get_log_line_from_position(blob_reader, r.position)
   return records

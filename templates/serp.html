@@ -9,6 +9,15 @@
 <td valign="top" class="serptime">{{ result.record.timestamp|date:"H:i:s" }}</td>
 <td valign="top" class="serpuser">&lt;{{ result.record.user|escape }}&gt;</td>
 <td valign="top" class="serptext">{{ result.record.text }}</td>
+</tr>
+{% for msg in result.record.context %}
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td valign="top" class="serptext">{{ msg|escape }}</td>
+</tr>
+{% endfor %}
 {% endfor %}
 {% endfor %}
 </table>
