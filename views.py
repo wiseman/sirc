@@ -53,7 +53,7 @@ class UploadLog(blobstore_handlers.BlobstoreUploadHandler):
       logging.info('Starting indexing of %s' % (blob_info.key(),))
       index.start_indexing_log(blob_info)
       self.redirect('/mapreduce')
-        
+
 
 class Admin(webapp.RequestHandler):
   def get(self):
@@ -87,8 +87,8 @@ def blob_hash(blob_info):
     return m.hexdigest()
   finally:
     reader.close()
-  
-  
+
+
 
 class Search(webapp.RequestHandler):
   def get(self):
@@ -113,21 +113,22 @@ def prepare_results_for_display(records):
   results = []
 
   for r in records:
-    url_segs = find_urls(r.text)
+    
+    url_segs = find_urls(r['text'])
     if len(url_segs) > 0:
-      s = cgi.escape(r.text[0:url_segs[0][0]], quote=True)
+      s = cgi.escape(r['text'][0:url_segs[0][0]], quote=True)
       for url_start, url_end in url_segs:
-        url = cgi.escape(r.text[url_start:url_end], quote=True)
+        url = cgi.escape(r['text'][url_start:url_end], quote=True)
         s += '<a href="%s">%s</a>' % (url, url)
-      s += cgi.escape(r.text[url_segs[-1][1]:], quote=True)
-      r.text = s
+      s += cgi.escape(r['text'][url_segs[-1][1]:], quote=True)
+      r['text'] = s
                  
   current_date = None
   previous_timestamp = None
   for r in records:
-    if current_date is None or not is_same_day(previous_timestamp, r.timestamp):
-      previous_timestamp = r.timestamp
-      current_date = r.timestamp.date()
+    if current_date is None or not is_same_day(previous_timestamp, r['timestamp']):
+      previous_timestamp = r['timestamp']
+      current_date = r['timestamp'].date()
     results.append({'date': current_date, 'record': r})
   return results
 

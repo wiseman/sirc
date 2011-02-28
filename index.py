@@ -159,6 +159,27 @@ def get_query_results(query_string):
   return records
 
 
+SEARCH_SERVER_URL = 'http://localhost:8983/solr/select/?q=%s&version=2.2&start=0&rows=1000&wt=json&sort=timestamp+desc'
+
+def get_query_results(query_string):
+  import cgi
+  import urllib2
+  from django.utils import simplejson as json
+  import pprint
+
+  import urllib
+  url = SEARCH_SERVER_URL % (urllib.quote_plus(query_string),)
+  logging.info('URL=%s' % (url,))
+  result = urllib2.urlopen(url)
+  response = json.load(result)
+  import pprint
+  records = response['response']['docs']
+  import datetime
+  for r in records:
+    r['timestamp'] = datetime.datetime.strptime(r['timestamp'], '%Y-%m-%dT%H:%M:%SZ')
+  return records
+
+
 def get_log_line_from_position(blob_reader, position):
   pos, line = blob_read_line(blob_reader, offset=position)
   return line
