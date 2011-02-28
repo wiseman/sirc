@@ -44,3 +44,15 @@ td.serpdate {
 }
 
 
+.stats {
+    font-family: Futura;
+    font-size: 14pt;
+    text-align: center;
+}
+
+.pagination {
+    font-family: Futura, Georgia, Palatino, Times New Roman, serif;
+    font-size: 14pt;
+    text-align: center; 
+    margin-top: 1cm;
+}

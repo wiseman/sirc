@@ -1,3 +1,7 @@
+<p class="stats">
+Showing {{ start }}-{{ end }} of {{ total }} hits.
+</p>
+
 {% regroup results by date as date_list %}
 
 <table class="serps">
@@ -21,3 +25,5 @@
 {% endfor %}
 {% endfor %}
 </table>
+
+{{ pagination_html }}

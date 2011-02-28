@@ -7,6 +7,7 @@ import os.path
 import logging
 import collections
 import hashlib
+import urllib
 import cgi
 import string
 
@@ -90,23 +91,91 @@ def blob_hash(blob_info):
 
 
 
+PAGE_SIZE = 10
+
 class Search(webapp.RequestHandler):
   def get(self):
     values = {}
     query = self.request.get('q')
+    start = self.request.get('start')
+
+    try:
+      start = int(start)
+    except:
+      logging.error('Unable to parse start=%r' % (start,))
+      start = 0
+
     values['has_results'] = False
     if len(query) > 0:
       values['query'] = query
-      records = index.get_query_results(query)
+      response = index.get_query_results(query, start)
+      records = response['docs']
       if len(records) > 0:
         results = prepare_results_for_display(records)
-        #logging.info('prepared: %s' % (results,))
-        result_html = render_template('serp.html', {'results': results})
+        paging_html = create_pagination_html(self.request.path, query, start, response['numFound'])
+        result_html = render_template('serp.html', {'start': start + 1,
+                                                    'end': start + len(results),
+                                                    'total': response['numFound'],
+                                                    'results': results,
+                                                    'pagination_html': paging_html})
         values['result_html'] = result_html
         values['has_results'] = True
-    #logging.info('values=%s' % (values,))
+
     self.response.out.write(render_template('search.html', values))
-      
+
+def create_pagination_html(url, query, start, total):
+  start = int(start / PAGE_SIZE) * PAGE_SIZE
+  base_url = '%s?q=%s' % (url, urllib.quote_plus(query))
+  def make_url(start):
+    return '%s&start=%s' % (base_url, start)
+  
+  pages = []
+  for offset in range(0, total, PAGE_SIZE):
+    pages.append('<a href="%s">%s</a> ' % (make_url(offset), (offset / PAGE_SIZE) + 1))
+
+  page_str = '<div class="pagination">'
+  
+  num_pages = total / PAGE_SIZE
+
+  previous_next_nav_html = ''
+  if num_pages > 1:
+    if start >= PAGE_SIZE:
+      previous_next_nav_html += '<a href="%s">Previous</a> ' % (make_url(start - PAGE_SIZE),)
+    if start < total - PAGE_SIZE:
+      previous_next_nav_html += '<a href="%s">Next</a> ' % (make_url(start + PAGE_SIZE),)
+  if len(previous_next_nav_html) > 0:
+    page_str += '<div>' + previous_next_nav_html + '</div>'
+
+  if num_pages > 1:
+    if start >= PAGE_SIZE:
+      page_str += '<a href="%s">First</a> ' % (make_url(0),)
+  
+  window_width = min(total / PAGE_SIZE, 14)
+  if window_width % 2 == 0:
+    # Make it odd
+    window_width -= 1
+    
+  current_idx = start / PAGE_SIZE
+  wl = min(max(0, current_idx - window_width / 2), num_pages - window_width)
+  wr = min(total / PAGE_SIZE, wl + window_width)
+  logging.info('wl=%s, wr=%s' % (wl, wr))
+
+  if wl > 0:
+    page_str += '... '
+  for i in range(wl, wr + 1):
+    if i != current_idx:
+      page_str += pages[i]
+    else:
+      page_str += '%s ' % (i+1,)
+  if wr < total / PAGE_SIZE:
+    page_str += '... '
+
+  if num_pages > 1:
+    if start < total - PAGE_SIZE:
+      page_str += '<a href="%s">Last</a> ' % (make_url((total - PAGE_SIZE) + 1),)
+
+  page_str += '</div>'
+  return page_str
 
 
 def prepare_results_for_display(records):
