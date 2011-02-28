@@ -1,6 +1,11 @@
+body {
+    background-image: url('background.jpg');
+}
+
 .titlelogo {
-    font-size: 96pt;
+    font-size: 72pt;
     font-family: Futura, Georgia, Palatino, Times New Roman, serif;
+    color: rgb(255,255,255);
 }
 
 .searchinput {
@@ -46,13 +51,13 @@ td.serpdate {
 
 .stats {
     font-family: Futura;
-    font-size: 14pt;
+    font-size: 12pt;
     text-align: center;
 }
 
 .pagination {
     font-family: Futura, Georgia, Palatino, Times New Roman, serif;
-    font-size: 14pt;
+    font-size: 12pt;
     text-align: center; 
     margin-top: 1cm;
 }

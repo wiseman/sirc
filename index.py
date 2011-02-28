@@ -5,6 +5,7 @@ import datetime
 import hashlib
 import urllib
 import urllib2
+import time
 
 from google.appengine.ext import webapp
 from google.appengine.ext import db
@@ -156,14 +157,16 @@ def get_query_results(query_string):
     r.context = get_context_lines(blob_reader, r.position)
     #logging.info('context: %s' % (r.context,))
     #logging.info('Context: %s' % (r.context,))
-  #for r in records:
-  #  r.line_text = get_log_line_from_position(blob_reader, r.position)
+  for r in records:
+    r['text'] = get_log_line_from_position(blob_reader, r['position'])
+    logging.info(r['text'])
   return records
 
 
 SEARCH_SERVER_URL = 'http://localhost:8983/solr/select/?q=%s&version=2.2&start=%s&rows=%s&wt=json&sort=timestamp+desc'
 
 def get_query_results(query_string, start):
+  start_time = time.time()
   import cgi
   from django.utils import simplejson as json
   import datetime
@@ -175,6 +178,16 @@ def get_query_results(query_string, start):
   response = json.load(result)['response']
   for r in response['docs']:
     r['timestamp'] = datetime.datetime.strptime(r['timestamp'], '%Y-%m-%dT%H:%M:%SZ')
+
+#  for r in response['docs']:
+#    blob_reader = blobstore.BlobReader(r.log.blob.key())
+#    r.context = get_context_lines(blob_reader, r.position)
+    #logging.info('context: %s' % (r.context,))
+    #logging.info('Context: %s' % (r.context,))
+#  for r in records:
+#    r['text'] = get_log_line_from_position(blob_reader, r['position'])
+  end_time = time.time()
+  response['query_time'] = end_time - start_time
   return response
 
 

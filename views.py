@@ -162,7 +162,9 @@ def create_pagination_html(url, query, start, total):
 
   if wl > 0:
     page_str += '... '
-  for i in range(wl, wr + 1):
+  logging.info('wl=%s, wr=%s, current_idx=%s, len(pages)=%s' % \
+               (wl, wr, current_idx, len(pages)))
+  for i in range(wl, wr):
     if i != current_idx:
       page_str += pages[i]
     else:
