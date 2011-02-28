@@ -86,11 +86,17 @@ def xform_file(path):
     day = int(date_str[6:8])
     g_date_str = '%s-%02d-%02d' % (year, month, day)
 
-    for line in f.xreadlines():
-      xformed = xform_line(line, 0)
+    position = f.tell()
+    line = f.readline()
+    while line != '':
+      xformed = xform_line(line, position)
+      position = f.tell()
+      line = f.readline()
       if xformed:
         print xformed
 
+  
+  
 
 def recode(text):
   recoded_text = unicode(text, 'cp1252', 'replace')
