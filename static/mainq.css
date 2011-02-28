@@ -1,13 +1,13 @@
 body {
-    background-image: url('background.jpg');
+    background-image: url('background2.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
 .titlelogo {
-    font-size: 64pt;
+    font-size: 48pt;
     font-family: Futura, Georgia, Palatino, Times New Roman, serif;
-    color: rgb(255,255,255);
+    color: rgb(0,0,0);
 }
 
 .searchinput {

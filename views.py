@@ -104,10 +104,12 @@ class Search(webapp.RequestHandler):
     except:
       logging.error('Unable to parse start=%r' % (start,))
       start = 0
-
+      
+    values['css_file'] = 'main.css'
     values['has_results'] = False
     if len(query) > 0:
       values['query'] = query
+      values['css_file'] = 'mainq.css'
       response = index.get_query_results(query, start)
       records = response['docs']
       if len(records) > 0:
