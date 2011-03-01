@@ -4,7 +4,7 @@ URL="$1"
 FILE="$2"
 
 
-SCRIPTFILE=/var/tmp/foo
+SCRIPTFILE=/var/tmp/foo$$
 
 cat > $SCRIPTFILE <<EOF
 go $URL
