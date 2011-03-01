@@ -2,63 +2,87 @@ body {
     background-image: url('background2.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
+    padding-left: 0.2in;
+    padding-right: 0.2in;
 }
 
 .titlelogo {
     font-size: 48pt;
-    font-family: Futura, Georgia, Palatino, Times New Roman, serif;
+    font-family: Futura, Verdana, Helvetica, Georgia, san serif;
     color: rgb(0,0,0);
 }
 
 .searchinput {
     font-size: 18pt;
-    font-family: sans-serif;
+    font-family: Verdana, Helvetica, Georgia, san serif;
+}
+
+.searchbutton {
+    font-size: 12pt;
+    font-family: Verdana, Helvetica, Georgia, san serif;
+}
+
+.searchform {
 }
 
 
 .serps {
-    padding-left: 0.5in;
-    font-family: Verdana;
+    font-family: Verdana, Helvetica, Georgia, san serif;
 }
 
 .serpdaterow {
-    font-family: Verdana, sans-serif;
-    font-size: 10pt;
+    font-family: Verdana, Helvetica, Georgia, san serif;
+    font-size: 9pt;
+}
+
+.serprow {
 }
 
 td.serpdate {
-        padding-top: 0.2cm;
+    padding-top: 0.2cm;
 }
 
 .serpchannel {
-    font-family: Courier;
-    font-size: 9pt;
+    font-family: Verdana, Helvetica, Georgia, san serif;
+    font-size: 10pt;
+    padding-right: 0.2cm;
+    padding-left: 0.4cm;
 }
 
 .serptime {
-    font-family: Courier;
+    font-family: Courier, monospace;
     font-size: 9pt;
+    padding-right: 0.3cm;
 }
 
 .serpuser {
-    font-family: Courier New, monospace;
+    font-family: Courier, monospace;
     font-size: 9pt;
+    text-align: right;
+    padding-right: 0.12cm;
 }
 
 .serptext {
-    font-family: Courier New, monospace;
+    font-family: Courier, monospace;
     font-size: 9pt;
 }
 
 
 .stats {
-    font-family: Futura;
+    font-family: Verdana, Helvetica, Georgia, san serif;
     font-size: 12pt;
     text-align: center;
 }
 
+.smallstats {
+    font-family: Verdana, Helvetica, Georgia, san serif;
+    font-size: 8pt;
+    text-align: center;
+    margin-top: 0.2cm;
+}
+
 .pagination {
-    font-family: Futura, Georgia, Palatino, Times New Roman, serif;
+    font-family: Verdana, Helvetica, Georgia, san serif;
     font-size: 12pt;
     text-align: center; 
     margin-top: 1cm;
