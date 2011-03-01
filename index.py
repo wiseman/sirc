@@ -163,7 +163,7 @@ def get_query_results(query_string):
   return records
 
 
-SEARCH_SERVER_URL = 'http://localhost:8983/solr/select/?q=%s&version=2.2&start=%s&rows=%s&wt=json&sort=timestamp+desc'
+SEARCH_SERVER_URL = 'http://ec2-184-72-93-240.compute-1.amazonaws.com:8983/solr/select/?q=%s&version=2.2&start=%s&rows=%s&wt=json&sort=timestamp+desc'
 
 def get_query_results(query_string, start):
   start_time = time.time()

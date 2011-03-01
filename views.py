@@ -99,10 +99,13 @@ class Search(webapp.RequestHandler):
     query = self.request.get('q')
     start = self.request.get('start')
 
-    try:
-      start = int(start)
-    except:
-      logging.error('Unable to parse start=%r' % (start,))
+    if start and len(start) > 0:
+      try:
+        start = int(start)
+      except:
+        logging.error('Unable to parse start=%r' % (start,))
+        start = 0
+    else:
       start = 0
       
     values['css_file'] = 'main.css'
