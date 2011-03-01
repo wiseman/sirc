@@ -175,7 +175,9 @@ def get_query_results(query_string, start):
   url = SEARCH_SERVER_URL % (urllib.quote_plus(query_string), start, num_rows)
   logging.info('URL=%s' % (url,))
   result = urllib2.urlopen(url)
-  response = json.load(result)['response']
+  response = json.load(result)
+  response['response']['QTime'] = response['responseHeader']['QTime']
+  response = response['response']
   for r in response['docs']:
     r['timestamp'] = datetime.datetime.strptime(r['timestamp'], '%Y-%m-%dT%H:%M:%SZ')
 

@@ -4,12 +4,12 @@ Showing {{ start }}-{{ end }} of {{ total }} hits.
 
 {% regroup results by date as date_list %}
 
-<table class="serps">
+<table class="serps" cellspacing="0">
 {% for date in date_list %}
 <tr class="serpdaterow"><td class="serpdate" colspan="4">{{ date.grouper|date:"N j, Y" }}</tr>
 {% for result in date.list %}
 <tr class="serprow">
-<td valign="top" class="serpchannel">{{ result.record.channel|escape }}</td>
+<td valign="top" class="serpchannel">#{{ result.record.channel|escape }}</td>
 <td valign="top" class="serptime">{{ result.record.timestamp|date:"H:i:s" }}</td>
 <td valign="top" class="serpuser">&lt;{{ result.record.user|escape }}&gt;</td>
 <td valign="top" class="serptext">{{ result.record.text }}</td>
@@ -26,4 +26,8 @@ Showing {{ start }}-{{ end }} of {{ total }} hits.
 {% endfor %}
 </table>
 
+<div class="smallstats">
+total={{ total_time }} ms, qtime={{ query_time }} ms
+</div>
+  
 {{ pagination_html }}

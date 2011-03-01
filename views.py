@@ -122,6 +122,8 @@ class Search(webapp.RequestHandler):
                                                     'end': start + len(results),
                                                     'total': response['numFound'],
                                                     'results': results,
+                                                    'total_time': '%s' % (int(response['query_time'] * 1000),),
+                                                    'query_time': '%s' % (response['QTime'],),
                                                     'pagination_html': paging_html})
         values['result_html'] = result_html
         values['has_results'] = True
