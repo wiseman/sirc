@@ -22,7 +22,7 @@ SIRC
 </div>
 
 <form class="searchform" action="/" method="GET">
-<input type="text" name="q" value="{{query}}" size="50" class="searchinput"><input type="submit" class="searchbutton" value="search">
+<input type="text" name="q" value="{{query|escape}}" size="50" class="searchinput"><input type="submit" class="searchbutton" value="search">
 </form>
 
 </div>
