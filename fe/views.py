@@ -91,7 +91,7 @@ def blob_hash(blob_info):
 
 
 
-PAGE_SIZE = 10
+PAGE_SIZE = 20
 
 class Search(webapp.RequestHandler):
   def get(self):
@@ -113,7 +113,7 @@ class Search(webapp.RequestHandler):
     if len(query) > 0:
       values['query'] = query
       values['css_file'] = 'mainq.css'
-      response = index.get_query_results(query, start)
+      response = index.get_query_results(query, start, PAGE_SIZE)
       records = response['docs']
       if len(records) > 0:
         results = prepare_results_for_display(records)

@@ -165,14 +165,13 @@ def get_query_results(query_string):
 
 SEARCH_SERVER_URL = 'http://ec2-184-72-93-240.compute-1.amazonaws.com:8983/solr/select/?q=%s&version=2.2&start=%s&rows=%s&wt=json&sort=timestamp+desc'
 
-def get_query_results(query_string, start):
+def get_query_results(query_string, start, num_results):
   start_time = time.time()
   import cgi
   from django.utils import simplejson as json
   import datetime
 
-  num_rows = 20
-  url = SEARCH_SERVER_URL % (urllib.quote_plus(query_string), start, num_rows)
+  url = SEARCH_SERVER_URL % (urllib.quote_plus(query_string), start, num_results)
   logging.info('URL=%s' % (url,))
   result = urllib2.urlopen(url)
   response = json.load(result)
