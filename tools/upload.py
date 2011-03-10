@@ -10,6 +10,15 @@ import sirc.util.s3
 import sirc.log
 
 
+
+def _error(msg):
+  sys.stdout.flush()
+  sys.stderr.write('%s\n' % (msg,))
+
+def _usage():
+  _error('Usage: %s <logpath> [<logpath>...]' % (sys.argv[0],))
+
+
 ############################################################
 #
 # ./upload.py ~/src/irc-logs/freenode/lisp/2010/10.01.01
@@ -18,8 +27,12 @@ import sirc.log
 
 def main(argv):
   args = argv[1:]
+  if len(args) == 0:
+    _usage()
+    sys.exit(1)
+
   credentials = sirc.util.s3.get_credentials()
-  conn = S3Connection(credentials.access_key, credentials.secret, debug=0)
+  conn = boto.connect_s3(credentials.access_key, credentials.secret, debug=0)
   bucket_name = 'sirc'
   bucket = conn.create_bucket(bucket_name)
 
