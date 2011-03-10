@@ -4,6 +4,13 @@ import sys
 import re
 from string import Template
 import cgi
+import logging
+import StringIO
+
+import boto
+
+import sirc.util.s3
+import sirc.log
 
 
 TEMPLATE = Template('''
@@ -20,7 +27,6 @@ TEMPLATE = Template('''
 
 LOG_TIMESTAMP_HEADER_RE = re.compile(r'.*log: started (.+)/([0-9\.]+)')
 LOG_LINE_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+) <(\w+)> ?(.*)', re.UNICODE)
-
 
 def parse_log_line(line):
   match = LOG_LINE_RE.match(line)
@@ -97,27 +103,45 @@ def xform_file(path):
       if xformed:
         print xformed
 
+
+def index_fp(log_data, fp):
+  logging.info('Indexing %s' % (log_data,))
+  first_line = fp.readline()
+  match = LOG_TIMESTAMP_HEADER_RE.match(first_line)
+  if not match:
+    raise Exception('Unable to parse log header %s: %r' % (log_data.path, first_line))
+  assert log_data.channel == match.groups()[0]
+  
+  position = fp.tell()
+  line = fp.readline()
+  while line != '':
+    xformed = xform_line(line, position)
+    position = fp.tell()
+    line = fp.readline()
+    if xformed:
+      print xformed
   
   
 
 def recode(text):
   recoded_text = unicode(text, 'cp1252', 'replace')
-  recoded_text = recoded_text.encode('ascii', 'xmlcharrefreplace')
+  recoded_text = recoded_text.encode('utf8', 'xmlcharrefreplace')
   return recoded_text
 
 
 def index_local_file(path):
   with open(path, 'rb') as f:
-    log_data = log.metadata_from_logpath(path)
+    log_data = sirc.log.metadata_from_logpath(path)
     index_from_fp(log_data, f)
 
 
 g_connection = None
 
 def get_s3_connection():
+  global g_connection
   if not g_connection:
     credentials = sirc.util.s3.get_credentials()
-    g_connection = boto.S3Connection(credentials.access_key, credentials.secret, debug=1)
+    g_connection = boto.connect_s3(credentials.access_key, credentials.secret, debug=1)
   return g_connection
   
 
@@ -134,27 +158,47 @@ def get_s3_bucket(bucket_name):
   return bucket
 
   
-def index_s3_file(path):
+def index_s3_file(solr_url, path):
   bucket, s3_path = parse_s3_url(path)
   bucket = get_s3_bucket(bucket)
   key = boto.s3.key.Key(bucket)
   key.key = s3_path
-  log_data = log.metadata_from_s3path(s3_path)
-  return index_fp(log_data, key.open_read())
+  log_sink = StringIO.StringIO()
+  log_data = sirc.log.metadata_from_s3path(s3_path)
+  log_contents = key.get_contents_as_string()
+  log_fp = StringIO.StringIO(log_contents)
+  return index_fp(log_data, log_fp)
 
-def index_file(path):
+def index_file(solr_url, path):
   if path.startswith('s3://'):
-    index_s3_file(path)
+    index_s3_file(solr_url, path)
   else:
-    index_local_file(path)
+    index_local_file(solr_url, path)
 
-def index_files(paths):
+
+def index_files(solr_url, paths):
   for path in paths:
-    index_file(path)
+    index_file(solr_url, path)
 
 def main(argv):
+  logging.basicConfig(level=logging.INFO)
   args = argv[1:]
-  index_files(args)
+  if len(args) < 2:
+    _usage()
+    sys.exit(1)
+  solr_url = args[0]
+  files = args[1:]
+  index_files(solr_url, files)
+
+def _error(msg):
+  sys.stdout.flush()
+  sys.stderr.write('%s\n' % (msg,))
+
+def _usage():
+  sys.stdout.flush()
+  sys.stderr.write('Usage: %s <solr url> <logpath> [<logpath>...]\n' % (sys.argv[0],))
+  sys.stderr.write('Where <logpath> is a local file path to a log file or an s3:// url.\n')
+  
 
 
 def parse_s3_url(url):
