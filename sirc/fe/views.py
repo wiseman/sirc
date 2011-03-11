@@ -20,8 +20,8 @@ from google.appengine.api import users as gaeusers
 from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
 
-import index
-import urlfinder
+import sirc.fe.index
+import sirc.fe.urlfinder
 
 
 # ------------------------------------------------------------
