@@ -4,7 +4,7 @@ import logging
 from google.appengine.ext import db
 from google.appengine.api import memcache
 
-import index
+import sirc.fe.index
 
 
 # Parse single term queries and phrase queries ("word another word").
