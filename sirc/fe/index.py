@@ -16,7 +16,6 @@ import mapreduce.control
 import mapreduce.context
 
 import sirc.fe.tokenz
-import sirc.fe.query
 
 
 class DayLog(db.Model):
