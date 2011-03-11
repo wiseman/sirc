@@ -15,8 +15,8 @@ import mapreduce.operation
 import mapreduce.control
 import mapreduce.context
 
-import tokenz
-import query
+import sirc.fe.tokenz
+import sirc.fe.query
 
 
 class DayLog(db.Model):

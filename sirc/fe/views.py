@@ -46,14 +46,14 @@ class UploadLog(blobstore_handlers.BlobstoreUploadHandler):
 
     hash = blob_hash(blob_info)
     logging.info('hash=%s' % (hash,))
-    previous_logs = index.DayLog.all().filter('md5 = ',hash).fetch(5)
+    previous_logs = sirc.fe.index.DayLog.all().filter('md5 = ',hash).fetch(5)
     if len(previous_logs) > 0:
       blob_info.delete()
       logging.error('md5 collision.')
       self.redirect('/a')
     else:
       logging.info('Starting indexing of %s' % (blob_info.key(),))
-      index.start_indexing_log(blob_info)
+      sirc.fe.index.start_indexing_log(blob_info)
       self.redirect('/mapreduce')
 
 
@@ -63,9 +63,9 @@ class Admin(webapp.RequestHandler):
 
   def post(self):
     if len(self.request.get('delete-indices')) > 0:
-      index.delete_indices()
+      sirc.fe.index.delete_indices()
     if len(self.request.get('delete-logs')) > 0:
-      index.delete_logs()
+      sirc.fe.index.delete_logs()
     self.redirect('/a')
 
 class AddMD5(webapp.RequestHandler):
@@ -73,7 +73,7 @@ class AddMD5(webapp.RequestHandler):
     import hashlib
     logs = []
     for blob_info in blobstore.BlobInfo.all():
-      log = index.DayLog.all().filter('blob = ', blob_info.key()).fetch(1)[0]
+      log = sirc.fe.index.DayLog.all().filter('blob = ', blob_info.key()).fetch(1)[0]
       log.md5 = blob_hash(blob_info)
       logs.append(log)
       logging.info('Hashing log %s' % (log.key(),))
@@ -114,7 +114,8 @@ class Search(webapp.RequestHandler):
     if len(query) > 0:
       values['query'] = query
       values['css_file'] = 'mainq.css'
-      response = index.get_query_results(query, start, PAGE_SIZE)
+      logging.error(sirc.__dict__)
+      response = sirc.fe.index.get_query_results(query, start, PAGE_SIZE)
       records = response['docs']
       if len(records) > 0:
         results = prepare_results_for_display(records)
@@ -238,7 +239,7 @@ application = webapp.WSGIApplication([('/', Search),
                                       ('/uuuuu', UploadLog),
                                       ('/uuuuv', AddMD5),
                                       ('/a', Admin),
-                                      ('/indexing_did_finish', index.IndexingFinished)
+                                      #('/indexing_did_finish', sirc.fe.index.IndexingFinished)
                                       ]
                                      #debug=True
                                      )
