@@ -23,7 +23,6 @@ from google.appengine.ext.webapp import blobstore_handlers
 import sirc.fe.index
 import sirc.fe.urlfinder
 
-
 # ------------------------------------------------------------
 # Keep templates in the 'templates' subdirectory.
 # ------------------------------------------------------------
