@@ -14,9 +14,9 @@ handlers:
   login: admin
 
 - url: /static
-  static_dir: static
+  static_dir: sirc/fe/static
   expiration: "1m"
 
 - url: /.*
-  script: views.py
+  script: sirc/fe/views.py
 
