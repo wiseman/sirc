@@ -1,1 +1,1 @@
-__all__ = ['be', 'fe', 'util', 'log']
+__all__ = ['be', 'fe', 'util', 'log', 'solr']
