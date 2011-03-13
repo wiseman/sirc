@@ -310,7 +310,7 @@ class SolrException(Exception):
                     self.httpcode, self.reason, self.body)
 
     def __str__(self):
-        return 'HTTP code=%s, reason=%s' % (self.httpcode, self.reason)
+        return 'HTTP code=%s, reason=%s body=%s' % (self.httpcode, self.reason, self.body)
 
 
 # ===================================================================
