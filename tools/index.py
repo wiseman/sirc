@@ -6,6 +6,7 @@ from string import Template
 import cgi
 import logging
 import StringIO
+import time
 
 import boto
 
@@ -32,7 +33,7 @@ def _usage():
 def index_files(solr_url, paths):
   for path in paths:
     index_file(solr_url, path)
-
+  quartiles()
 
 def index_file(solr_url, path):
   if path.startswith('s3://'):
@@ -84,9 +85,23 @@ def index_records_for_fp(log_data, fp):
 
 
 def post_records(solr_url, index_records):
+  start_time = time.time()
   conn = sirc.solr.SolrConnection(url=solr_url)
+  #  for i in index_records:
+  #    print i
+  #    conn.add(i)
   conn.add_many(index_records)
+  commit_start_time = time.time()
   conn.commit()
+  commit_end_time = time.time()
+  total_ms = int((commit_end_time - start_time) * 1000)
+  commit_ms = int((commit_end_time - commit_start_time) * 1000)
+  
+  record_measurement('total', total_ms)
+  record_measurement('commit', commit_ms)
+  logging.info('Posted %s records in %s ms (%s ms commit)',
+               len(index_records),
+               total_ms, commit_ms)
 
 def index_record_for_line(log_data, line, line_num, position):
   result = parse_log_line(line)
@@ -101,13 +116,21 @@ def index_record_for_line(log_data, line, line_num, position):
     timestamp = '%sT%sZ' % (date_str, timestamp,)
 
     return {
-      'id': id,
+      'id': log_id(log_data, line_num),
       'channel': log_data.channel,
       'timestamp': timestamp,
       'user': who,
       'text': message,
       'position': position
       }
+
+def log_id(log_data, line_num):
+  return '%s/%02d-%02d-%02d/%s' % (log_data.channel,
+                                   log_data.date.year,
+                                   log_data.date.month,
+                                   log_data.date.day,
+                                   line_num)
+  
 
 
 def parse_log_line(line):
@@ -124,7 +147,12 @@ def is_ctrl_char(c):
 
 
 def recode(text):
-  recoded_text = unicode(text, 'cp1252', 'strict')
+  try:
+    recoded_text = unicode(text, 'cp1252', 'replace')
+  except UnicodeDecodeError, e:
+    print 'error unicoding %r: %s' % (text, e)
+    raise
+  
   recoded_text = ''.join([c for c in recoded_text if not is_ctrl_char(c)])
   return recoded_text
 
@@ -162,6 +190,27 @@ def get_s3_bucket(bucket_name):
     bucket = g_buckets[bucket]
   return bucket
 
+
+g_measurements = {}
+
+def record_measurement(label, n):
+  global g_measurements
+  if not label in g_measurements:
+    g_measurements[label] = []
+  g_measurements[label].append(n)
+
+def quartiles():
+  global g_measurements
+  for key in g_measurements:
+    quartile(key, g_measurements[key])
+             
+def quartile(label, measurements):
+  global g_measurements
+  measurements = sorted(measurements)
+  n = len(measurements)
+  for x in [n * 0.1, n * 0.25, n * 0.5, n * 0.75, n * 0.9]:
+    i = int(x)
+    print '%s   %4s %%: %s' % (label, int((x / n) * 100), measurements[i])
 
 # ------------------------------------------------------------
 # Main
