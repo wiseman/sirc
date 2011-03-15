@@ -1,6 +1,8 @@
 import string
 import cgi
 
+from sirc import log
+
 
 LINE_TEMPLATE = '<tr>' + \
                 '<td class="nick"><span class="brack">&lt;</span><span class="source">$user</span><span class="brack">&gt;</span></td>' + \
@@ -16,3 +18,10 @@ def render_line(timestamp, user, message):
   template = string.Template(LINE_TEMPLATE)
   template.substitute(user=user_str, message=message_str, time=time_str)
   
+def render_from_key(key):
+  log_data = log.decode_id(key)
+  s3path = 'rawlogs/%s/%s/%02d.%02d' % (log_data.channel,
+                                        log_data.date.year,
+                                        log_data.date.month,
+                                        log_data.date.day)
+  return s3path
