@@ -2,7 +2,6 @@
 
 import sys
 import re
-from string import Template
 import cgi
 import logging
 import StringIO
@@ -52,7 +51,6 @@ def index_s3_file(solr_url, path):
   bucket = get_s3_bucket(bucket)
   key = boto.s3.key.Key(bucket)
   key.key = s3_path
-  log_sink = StringIO.StringIO()
   log_data = sirc.log.metadata_from_s3path(s3_path)
   log_contents = key.get_contents_as_string()
   log_fp = StringIO.StringIO(log_contents)
