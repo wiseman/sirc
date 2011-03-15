@@ -1,7 +1,10 @@
 import string
 import cgi
 
+import boto
+
 from sirc import log
+from sirc.util import s3
 
 
 LINE_TEMPLATE = '<tr>' + \
@@ -24,4 +27,11 @@ def render_from_key(key):
                                         log_data.date.year,
                                         log_data.date.month,
                                         log_data.date.day)
-  return s3path
+  credentials = s3.get_credentials()
+  conn = boto.connect_s3(credentials.access_key, credentials.secret,
+                         debug=0)
+  bucket_name = 'sirc'
+  buket = conn.create_bucket(bucket_name)
+  key = boto.s3.key.Key(bucket)
+  key.key = s3path
+  return key.get_contents_as_string()
