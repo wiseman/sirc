@@ -21,7 +21,6 @@ def metadata_from_logpath(logpath):
   channel_str = path_pieces[-3]
   year_str = path_pieces[-2]
   date_piece = path_pieces[-1]
-  century_str = date_piece[0:2]
   month_str = date_piece[3:5]
   day_str = date_piece[6:8]
   date = datetime.date(int(year_str), int(month_str), int(day_str))
