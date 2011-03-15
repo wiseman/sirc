@@ -2,7 +2,7 @@ import datetime
 
 
 class Metadata():
-  def __init__(self, path, server, channel, date):
+  def __init__(self, server, channel, date, path=''):
     self.path = path
     self.server = server
     self.channel = channel
