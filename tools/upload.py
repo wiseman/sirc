@@ -4,7 +4,6 @@ import os
 import sys
 
 import boto
-from boto.s3.connection import S3Connection
 
 import sirc.util.s3
 import sirc.log
