@@ -7,6 +7,7 @@ import cgi
 import logging
 import StringIO
 import time
+import unicodedata
 
 import boto
 
@@ -24,16 +25,20 @@ def _error(msg):
   sys.stdout.flush()
   sys.stderr.write('%s\n' % (msg,))
 
+
 def _usage():
   sys.stdout.flush()
-  sys.stderr.write('Usage: %s <solr url> <logpath> [<logpath>...]\n' % (sys.argv[0],))
-  sys.stderr.write('Where <logpath> is a local file path to a log file or an s3:// url.\n')
+  sys.stderr.write('Usage: %s <solr url> <logpath> [<logpath>...]\n' % \
+                   (sys.argv[0],))
+  sys.stderr.write('Where <logpath> is a local file path to a log file ' +
+                   'or an s3:// url.\n')
 
 
 def index_files(solr_url, paths):
   for path in paths:
     index_file(solr_url, path)
   quartiles()
+
 
 def index_file(solr_url, path):
   if path.startswith('s3://'):
@@ -69,9 +74,10 @@ def index_records_for_fp(log_data, fp):
   first_line = fp.readline()
   match = LOG_TIMESTAMP_HEADER_RE.match(first_line)
   if not match:
-    raise Exception('Unable to parse log header %s: %r' % (log_data.path, first_line))
+    raise Exception('Unable to parse log header %s: %r' % \
+                    (log_data.path, first_line))
   assert log_data.channel == match.groups()[0]
-  
+
   position = fp.tell()
   line_num = 0
   line = fp.readline()
@@ -96,12 +102,13 @@ def post_records(solr_url, index_records):
   commit_end_time = time.time()
   total_ms = int((commit_end_time - start_time) * 1000)
   commit_ms = int((commit_end_time - commit_start_time) * 1000)
-  
+
   record_measurement('total', total_ms)
   record_measurement('commit', commit_ms)
   logging.info('Posted %s records in %s ms (%s ms commit)',
                len(index_records),
                total_ms, commit_ms)
+
 
 def index_record_for_line(log_data, line, line_num, position):
   result = parse_log_line(line)
@@ -124,13 +131,13 @@ def index_record_for_line(log_data, line, line_num, position):
       'position': position
       }
 
+
 def log_id(log_data, line_num):
   return '%s/%02d-%02d-%02d/%s' % (log_data.channel,
                                    log_data.date.year,
                                    log_data.date.month,
                                    log_data.date.day,
                                    line_num)
-  
 
 
 def parse_log_line(line):
@@ -139,8 +146,6 @@ def parse_log_line(line):
     # timestamp, who, text
     return match.groups()
 
-
-import unicodedata
 
 def is_ctrl_char(c):
   return unicodedata.category(c) == 'Cc'
@@ -152,11 +157,9 @@ def recode(text):
   except UnicodeDecodeError, e:
     print 'error unicoding %r: %s' % (text, e)
     raise
-  
+
   recoded_text = ''.join([c for c in recoded_text if not is_ctrl_char(c)])
   return recoded_text
-
-
 
 
 # ------------------------------------------------------------
@@ -170,15 +173,19 @@ def parse_s3_url(url):
 
 g_connection = None
 
+
 def get_s3_connection():
   global g_connection
   if not g_connection:
     credentials = sirc.util.s3.get_credentials()
-    g_connection = boto.connect_s3(credentials.access_key, credentials.secret, debug=1)
+    g_connection = boto.connect_s3(credentials.access_key,
+                                   credentials.secret,
+                                   debug=1)
   return g_connection
-  
+
 
 g_buckets = {}
+
 
 def get_s3_bucket(bucket_name):
   global g_buckets
@@ -193,17 +200,20 @@ def get_s3_bucket(bucket_name):
 
 g_measurements = {}
 
+
 def record_measurement(label, n):
   global g_measurements
   if not label in g_measurements:
     g_measurements[label] = []
   g_measurements[label].append(n)
 
+
 def quartiles():
   global g_measurements
   for key in g_measurements:
     quartile(key, g_measurements[key])
-             
+
+
 def quartile(label, measurements):
   global g_measurements
   measurements = sorted(measurements)
@@ -211,6 +221,7 @@ def quartile(label, measurements):
   for x in [n * 0.1, n * 0.25, n * 0.5, n * 0.75, n * 0.9]:
     i = int(x)
     print '%s   %4s %%: %s' % (label, int((x / n) * 100), measurements[i])
+
 
 # ------------------------------------------------------------
 # Main
@@ -226,8 +237,6 @@ def main(argv):
   files = args[1:]
   index_files(solr_url, files)
 
-  
+
 if __name__ == '__main__':
   main(sys.argv)
-
-
