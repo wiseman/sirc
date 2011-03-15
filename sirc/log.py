@@ -53,24 +53,31 @@ def parse_log_path(path):
   
 
 def encode_id(log_data, suffix=None):
-  if suffix is None:
-    suffix = ''
+  assert suffix is None or not ('/' in suffix)
   if isinstance(log_data, Metadata):
-    return '/'.join([log_data.server,
-                     log_data.channel,
-                     '%s' % (log_data.date.year,),
-                     '%02d' % (log_data.date.month,),
-                     '%02d' % (log_data.date.day,),
-                     suffix])
+    key = '/'.join([log_data.server,
+                    log_data.channel,
+                    '%s' % (log_data.date.year,),
+                    '%02d' % (log_data.date.month,),
+                    '%02d' % (log_data.date.day,)])
+    
+    if not (suffix is None):
+      key += ':' + suffix
+    return key
   else:
     return encode_id(parse_log_path(log_data), suffix=suffix)
 
 
 def decode_id(id):
+  suffix = None
   pieces = id.split('/')
+  if ':' in pieces[-1]:
+    suffix_pieces = pieces[-1].split(':')
+    assert len(suffix_pieces) == 2
+    pieces[-1] = suffix_pieces[0]
+    suffix = suffix_pieces[1]
   date = datetime.date(year=int(pieces[2]),
                        month=int(pieces[3]),
                        day=int(pieces[4]))
-  return Metadata(path=None, server=pieces[0], channel=pieces[1],
-                  date=date)
-
+  m = Metadata(path=None, server=pieces[0], channel=pieces[1], date=date)
+  return (m, suffix)

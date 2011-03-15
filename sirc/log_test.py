@@ -25,12 +25,22 @@ class LogTest(unittest.TestCase):
     metadata = log.metadata_from_logpath(path)
     id1 = log.encode_id(path)
     id2 = log.encode_id(metadata)
-    self.assertEqual(id1, 'freenode/lisp/2011/01/01/')
-    self.assertEqual(id2, 'freenode/lisp/2011/01/01/')
-    m1 = log.decode_id(id1)
+    self.assertEqual(id1, 'freenode/lisp/2011/01/01')
+    self.assertEqual(id2, 'freenode/lisp/2011/01/01')
+
+    (m1, suffix) = log.decode_id(id1)
     self.assertEqual(m1.server, metadata.server)
     self.assertEqual(m1.channel, metadata.channel)
     self.assertEqual(m1.date, metadata.date)
+    self.assertEqual(suffix, None)
+
+    id1 = log.encode_id(path, suffix='100')
+    (m1, suffix) = log.decode_id(id1)
+    self.assertEqual(m1.server, metadata.server)
+    self.assertEqual(m1.channel, metadata.channel)
+    self.assertEqual(m1.date, metadata.date)
+    self.assertEqual(suffix, '100')
+
     
     
 if __name__ == '__main__':
