@@ -18,5 +18,5 @@ handlers:
   expiration: "1m"
 
 - url: /.*
-  script: sirc/fe/views.py
+  script: gae.py
 

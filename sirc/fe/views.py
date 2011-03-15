@@ -11,6 +11,7 @@ import urllib
 import cgi
 import string
 import datetime
+import time
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
@@ -21,10 +22,10 @@ from google.appengine.api import users as gaeusers
 from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
 
-from sirc.fe import index
-from sirc.fe import urlfinder
-from sirc.fe import logrender
-from sirc import log
+import sirc.fe.index
+import sirc.fe.urlfinder
+import sirc.fe.logrender
+import sirc.log
 
 
 # ------------------------------------------------------------
@@ -37,76 +38,26 @@ def render_template(name, values={}):
   return template.render(os.path.join(TEMPLATE_PATH, name), values)
 
 
-class UploadLog(blobstore_handlers.BlobstoreUploadHandler):
-  def get(self):
-    upload_url = blobstore.create_upload_url('/uuuuu')
-    values = {'upload_url': upload_url}
-    self.response.out.write(render_template('upload.html', values))
-
-  def post(self):
-    upload_files = self.get_uploads('file')
-    blob_info = upload_files[0]
-
-    hash = blob_hash(blob_info)
-    logging.info('hash=%s' % (hash,))
-    previous_logs = index.DayLog.all().filter('md5 = ',hash).fetch(5)
-    if len(previous_logs) > 0:
-      blob_info.delete()
-      logging.error('md5 collision.')
-      self.redirect('/a')
-    else:
-      logging.info('Starting indexing of %s' % (blob_info.key(),))
-      index.start_indexing_log(blob_info)
-      self.redirect('/mapreduce')
-
-
-class Admin(webapp.RequestHandler):
-  def get(self):
-    self.response.out.write(render_template('admin.html'))
-
-  def post(self):
-    if len(self.request.get('delete-indices')) > 0:
-      index.delete_indices()
-    if len(self.request.get('delete-logs')) > 0:
-      index.delete_logs()
-    self.redirect('/a')
-
-class AddMD5(webapp.RequestHandler):
-  def post(self):
-    import hashlib
-    logs = []
-    for blob_info in blobstore.BlobInfo.all():
-      log = index.DayLog.all().filter('blob = ', blob_info.key()).fetch(1)[0]
-      log.md5 = blob_hash(blob_info)
-      logs.append(log)
-      logging.info('Hashing log %s' % (log.key(),))
-    logging.info('Committing %s.' % (len(logs),))
-    db.put(logs)
-    self.redirect('/a')
-
-def blob_hash(blob_info):
-  m = hashlib.md5()
-  reader = blobstore.BlobReader(blob_info)
-  try:
-    m.update(reader.read())
-    return m.hexdigest()
-  finally:
-    reader.close()
-
-
-
 class Browse(webapp.RequestHandler):
   def get(self, channel_str, year_str, month_str, day_str):
+    start_time = time.time()
     year = int(year_str)
     month = int(month_str)
     day = int(day_str)
     log_date = datetime.date(year=year, month=month, day=day)
-    log_data = log.Metadata(server='freenode',
-                            channel=channel_str,
-                            date=log_date)
-    key = log.encode_id(log_data)
-    print logrender.render_from_key(key)
-  
+    log_data = sirc.log.Metadata(server='freenode',
+                                 channel=channel_str,
+                                 date=log_date)
+    key = sirc.log.encode_id(log_data)
+    logging.info('Browsing %s, key=%s', log_data, key)
+    self.response.headers['content-type'] = 'text/plain; charset=utf-8'
+    logging.info('%s', self.response.headers)
+    log = sirc.fe.logrender.render_from_key(key)
+    fetch_time = time.time()
+    self.response.out.write(sirc.fe.logrender.render_from_key(key))
+    end_time = time.time()
+    self.response.out.write('\n\ntotal=%s ms, fetch=%s ms' % (int((end_time - start_time) * 1000),
+                                                              int((fetch_time - start_time) * 1000)))
     
 
 PAGE_SIZE = 20
@@ -131,7 +82,7 @@ class Search(webapp.RequestHandler):
     if len(query) > 0:
       values['query'] = query
       values['css_file'] = 'mainq.css'
-      response = index.get_query_results(query, start, PAGE_SIZE)
+      response = sirc.fe.index.get_query_results(query, start, PAGE_SIZE)
       records = response['docs']
       if len(records) > 0:
         results = prepare_results_for_display(records)
@@ -209,14 +160,14 @@ def markup_urls(text):
   def escape(s):
     return cgi.escape(s, quote=True)
 
-  url_spans = urlfinder.find_urls(text)
+  url_spans = sirc.fe.urlfinder.find_urls(text)
   if len(url_spans) == 0:
     return escape(text)
   
   import StringIO
   result = StringIO.StringIO()
   start = 0
-  for url_start, url_end in urlfinder.find_urls(text):
+  for url_start, url_end in sirc.fe.urlfinder.find_urls(text):
     result.write(escape(text[start:url_start]))
     url = escape(text[url_start:url_end])
     result.write('<a href="%s">%s</a>' % (url, url))
@@ -247,19 +198,6 @@ def is_same_day(t1, t2):
 
 
 
-# ------------------------------------------------------------
-# Application URL routing.
-# ------------------------------------------------------------
-
-application = webapp.WSGIApplication([('/', Search),
-                                      ('/log/(.*)/(.*)/(.*)/(.*)', Browse),
-                                      ('/uuuuu', UploadLog),
-                                      ('/uuuuv', AddMD5),
-                                      ('/a', Admin),
-                                      ('/indexing_did_finish', index.IndexingFinished)
-                                      ]
-                                     #debug=True
-                                     )
 
 
 def real_main():

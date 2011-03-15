@@ -1,6 +1,8 @@
 import string
 import cgi
 
+from google.appengine.api import memcache
+
 import boto
 
 from sirc import log
@@ -22,6 +24,10 @@ def render_line(timestamp, user, message):
   template.substitute(user=user_str, message=message_str, time=time_str)
   
 def render_from_key(key):
+  cached_data = memcache.get(key)
+  if cached_data:
+    return cached_data
+
   log_data = log.decode_id(key)
   s3path = 'rawlogs/%s/%s/%02d.%02d' % (log_data.channel,
                                         log_data.date.year,
@@ -31,7 +37,9 @@ def render_from_key(key):
   conn = boto.connect_s3(credentials.access_key, credentials.secret,
                          debug=0)
   bucket_name = 'sirc'
-  buket = conn.create_bucket(bucket_name)
-  key = boto.s3.key.Key(bucket)
-  key.key = s3path
-  return key.get_contents_as_string()
+  bucket = conn.create_bucket(bucket_name)
+  s3key = boto.s3.key.Key(bucket)
+  s3key.key = s3path
+  data = s3key.get_contents_as_string()
+  memcache.set(key, data, time=60)
+  return data
