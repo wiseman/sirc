@@ -2,6 +2,7 @@
 
 import os
 import sys
+import time
 
 import boto
 
@@ -45,6 +46,7 @@ def upload_callback(bytes_sent, bytes_left):
 
 
 def upload_log_file(bucket, local_path):
+  start_time = time.time()
   with open(local_path, 'rb') as f:
     log_data = sirc.log.metadata_from_logpath(local_path)
     remote_path = 'rawlogs/%s/%s/' % (log_data.channel, log_data.date.year)
@@ -54,7 +56,9 @@ def upload_log_file(bucket, local_path):
     sys.stdout.write('%s -> s3://%s/%s: ' % (local_path, bucket.name, key.key))
     sys.stdout.flush()
     key.set_contents_from_file(f, cb=upload_callback, num_cb=10)
-  sys.stdout.write('\n')
+  end_time = time.time()
+  file_size = os.stat(local_path).st_size
+  sys.stdout.write(' %.1f KB/s\n' % ((file_size / 1024) / (end_time - start_time),))
 
 
 if __name__ == '__main__':
