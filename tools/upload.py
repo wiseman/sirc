@@ -10,10 +10,10 @@ import sirc.util.s3
 import sirc.log
 
 
-
 def _error(msg):
   sys.stdout.flush()
   sys.stderr.write('%s\n' % (msg,))
+
 
 def _usage():
   _error('Usage: %s <logpath> [<logpath>...]' % (sys.argv[0],))
@@ -44,17 +44,19 @@ def upload_callback(bytes_sent, bytes_left):
   sys.stdout.write('.')
   sys.stdout.flush()
 
+
 def upload_log_file(bucket, local_path):
   with open(local_path, 'rb') as f:
     log_data = sirc.log.metadata_from_logpath(local_path)
-    remote_path='rawlogs/%s/%s/' % (log_data.channel, log_data.date.year)
+    remote_path = 'rawlogs/%s/%s/' % (log_data.channel, log_data.date.year)
     key = boto.s3.key.Key(bucket)
-    key.key = os.path.join(remote_path, '%02d.%02d' % (log_data.date.month, log_data.date.day))
+    key.key = os.path.join(remote_path, '%02d.%02d' % (log_data.date.month,
+                                                       log_data.date.day))
     sys.stdout.write('%s -> s3://%s/%s: ' % (local_path, bucket.name, key.key))
     sys.stdout.flush()
     key.set_contents_from_file(f, cb=upload_callback, num_cb=10)
   sys.stdout.write('\n')
 
-    
+
 if __name__ == '__main__':
   main(sys.argv)

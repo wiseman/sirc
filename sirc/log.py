@@ -19,9 +19,9 @@ def metadata_from_logpath(logpath):
   century_str = date_piece[0:2]
   month_str = date_piece[3:5]
   day_str = date_piece[6:8]
-  
   date = datetime.date(int(year_str), int(month_str), int(day_str))
   return Metadata(path=logpath, channel=channel_str, date=date)
+
 
 def metadata_from_s3path(s3path):
   path_pieces = [p for p in s3path.split('/') if len(p) > 0]
@@ -33,4 +33,3 @@ def metadata_from_s3path(s3path):
 
   date = datetime.date(int(year_str), int(month_str), int(day_str))
   return Metadata(path=s3path, channel=channel_str, date=date)
-
