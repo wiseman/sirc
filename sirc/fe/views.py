@@ -10,6 +10,7 @@ import hashlib
 import urllib
 import cgi
 import string
+import datetime
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
@@ -22,6 +23,9 @@ from google.appengine.ext.webapp import blobstore_handlers
 
 from sirc.fe import index
 from sirc.fe import urlfinder
+from sirc.fe import logrender
+from sirc import log
+
 
 # ------------------------------------------------------------
 # Keep templates in the 'templates' subdirectory.
@@ -90,6 +94,20 @@ def blob_hash(blob_info):
     reader.close()
 
 
+
+class Browse(webapp.RequestHandler):
+  def get(self, channel_str, year_str, month_str, day_str):
+    year = int(year_str)
+    month = int(month_str)
+    day = int(day_str)
+    log_date = datetime.date(year=year, month=month, day=day)
+    log_data = log.Metadata(server='freenode',
+                            channel=channel_str,
+                            date=log_date)
+    key = log.encode_id(log_data)
+    print logrender.render_from_key(key)
+  
+    
 
 PAGE_SIZE = 20
 
@@ -234,6 +252,7 @@ def is_same_day(t1, t2):
 # ------------------------------------------------------------
 
 application = webapp.WSGIApplication([('/', Search),
+                                      ('/log/(.*)/(.*)/(.*)/(.*)', Browse),
                                       ('/uuuuu', UploadLog),
                                       ('/uuuuv', AddMD5),
                                       ('/a', Admin),
