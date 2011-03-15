@@ -121,21 +121,13 @@ def index_record_for_line(log_data, line, line_num, position):
     timestamp = '%sT%sZ' % (date_str, timestamp,)
 
     return {
-      'id': log_id(log_data, line_num),
+      'id': sirc.log_encode_id(log_data, suffix='%05d' % (line_num,))
       'channel': log_data.channel,
       'timestamp': timestamp,
       'user': who,
       'text': message,
       'position': position
       }
-
-
-def log_id(log_data, line_num):
-  return '%s/%02d-%02d-%02d/%s' % (log_data.channel,
-                                   log_data.date.year,
-                                   log_data.date.month,
-                                   log_data.date.day,
-                                   line_num)
 
 
 def parse_log_line(line):
