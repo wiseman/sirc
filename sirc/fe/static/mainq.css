@@ -4,12 +4,13 @@ body {
     background-attachment: fixed;
     padding-left: 0.2in;
     padding-right: 0.2in;
+    color: #111111;
 }
 
 .titlelogo {
     font-size: 48pt;
     font-family: Futura, Verdana, Helvetica, Georgia, san serif;
-    color: rgb(0,0,0);
+    color: #222222;
 }
 
 .searchinput {
@@ -87,3 +88,8 @@ td.serpdate {
     text-align: center; 
     margin-top: 1cm;
 }
+
+.smallstats {
+    color: #999999;
+}
+
