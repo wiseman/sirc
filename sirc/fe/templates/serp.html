@@ -10,7 +10,7 @@ Showing {{ start }}-{{ end }} of {{ total }} hits.
 {% for result in date.list %}
 <tr class="serprow">
 <td valign="top" class="serpchannel">#{{ result.record.channel|escape }}</td>
-<td valign="top" class="serptime">{{ result.record.timestamp|date:"H:i:s" }}</td>
+<td valign="top" class="serptime"><a href="{{result.record.log_url}}">{{ result.record.timestamp|date:"H:i:s" }}</a></td>
 <td valign="top" class="serpuser">&lt;{{ result.record.user|escape }}&gt;</td>
 <td valign="top" class="serptext">{{ result.record.text }}</td>
 </tr>
