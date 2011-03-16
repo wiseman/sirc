@@ -6,6 +6,24 @@ body {
     padding-right: 0.2in;
     margin-top: 0cm;
     color: #333333;
+    font-family: Verdana, Helvetica, Georgia, san serif;
+    font-size: 12pt;
+}
+
+a:link {
+    color: #cccccc;
+}
+
+a:visited {
+    color: #999999;
+}
+
+a:active {
+    color: #ffffff;
+}
+
+a:hover {
+    color: #dddddd;
 }
 
 .titlelogo {
