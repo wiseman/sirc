@@ -189,6 +189,10 @@ def prepare_results_for_display(records):
       previous_timestamp = r['timestamp']
       current_date = r['timestamp'].date()
     results.append({'date': current_date, 'record': r})
+
+  for r in records:
+    r['log_url'] = sirc.log.browse_url_for_key(r['id'])
+    
   return results
 
 def is_same_day(t1, t2):

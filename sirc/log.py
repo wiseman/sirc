@@ -9,7 +9,7 @@ class Metadata():
     self.date = date
 
   def __str__(self):
-    return '<log.Metadata %s %s %r %s>' % (self.path,
+    return '<log.Metadata path=%s server=%s channel=%r date=%s>' % (self.path,
                                            self.server,
                                            self.channel,
                                            self.date)
@@ -81,3 +81,15 @@ def decode_id(id):
                        day=int(pieces[4]))
   m = Metadata(path=None, server=pieces[0], channel=pieces[1], date=date)
   return (m, suffix)
+
+def browse_url_for_key(key):
+  (m, suffix) = decode_id(key)
+  if suffix:
+    suffix = '#%s' % (suffix,)
+  else:
+    suffix = ''
+  return '/browse/%s/%s/%02d/%02d%s' % (m.channel,
+                                         m.date.year,
+                                         m.date.month,
+                                         m.date.day,
+                                         suffix)
