@@ -28,7 +28,7 @@ def render_from_key(key):
   if cached_data:
     return cached_data
 
-  log_data = log.decode_id(key)
+  (log_data, suffix) = log.decode_id(key)
   s3path = 'rawlogs/%s/%s/%02d.%02d' % (log_data.channel,
                                         log_data.date.year,
                                         log_data.date.month,
