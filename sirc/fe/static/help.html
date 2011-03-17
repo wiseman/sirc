@@ -16,26 +16,24 @@
 </script>
 </head>
 <body>
-<div style="float: right;"><a href="static/help.html">help</a></div>
+<div style="float: right;"><a href="static/help">help</a></div>
 <div style="text-align: center">
 <div class="titlelogo">
 SIRC
 </div>
 
-<form class="searchform" action="/" method="GET">
-<input type="text" name="q" value="{{query|escape}}" size="50" class="searchinput"><input type="submit" class="searchbutton" value="search">
-</form>
+<h1>Example queries</h1>
 
-</div>
-{% if query %}
-{% if has_results %}
-{{ result_html }}
-{% else %}
-<p class="serps">
-Sorry, there were no matches for your query.
-</p>
-{% endif %}
-{% endif %}
+
+<div class="examplequery">ansi compliance</div>
+<div class="examplequery">"common lisp"</div>
+<div class="examplequery">sbcl</div>
+
+sbcl
+"common lisp"
+
+<h1>Known issues</h1>
+
 
 </body>
 </html>
