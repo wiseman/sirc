@@ -96,8 +96,27 @@ class Search(webapp.RequestHandler):
                                                     'pagination_html': paging_html})
         values['result_html'] = result_html
         values['has_results'] = True
+    #self.response.out.write(render_template('search.html', values))
 
-    self.response.out.write(render_template('search.html', values))
+  def handle_exception(self, exception, debug_mode):
+    logging.info('WOO')
+    import sys
+    import traceback
+    from google.appengine.api import xmpp
+    
+    exception_name = sys.exc_info()[0].__name__
+    exception_details = str(sys.exc_info()[1])
+    exception_traceback = ''.join(traceback.format_exception(*sys.exc_info()))
+    logging.error(exception_traceback)
+    self.error(500)
+
+    user_gtalk = 'jjwiseman@gmail.com'
+    if xmpp.get_presence(user_gtalk):
+      logging.info('got it')
+      msg = "%s: %s\n\n%s" % (exception_name, exception_details, exception_traceback)
+      xmpp.send_message(user_gtalk, msg)
+    logging.info('done')
+    
 
 def create_pagination_html(url, query, start, total):
   start = int(start / PAGE_SIZE) * PAGE_SIZE
@@ -203,6 +222,33 @@ def is_same_day(t1, t2):
 
 
 
+
+import sys, logging, traceback
+from google.appengine.ext import webapp
+from google.appengine.api import memcache
+
+class BaseRequestHandler(webapp.RequestHandler):
+  def handle_exception(self, exception, debug_mode):
+    exception_name = sys.exc_info()[0].__name__
+    exception_details = str(sys.exc_info()[1])
+    exception_traceback = ''.join(traceback.format_exception(*sys.exc_info()))
+    logging.error(exception_traceback)
+    exception_expiration = 3600 # seconds (max 1 mail per hour for a particular exception)
+    mail_admin = "yourmail@yourdomain" # must be admin for the application
+    sitename = "yourapplication"
+    throttle_name = 'exception-'+exception_name
+    throttle = memcache.get(throttle_name)
+    if throttle is None:
+      memcache.add(throttle_name, 1, exception_expiration)
+      subject = '[%s] exception [%s: %s]' % (sitename, exception_name, exception_details)
+      mail.send_mail_to_admins(sender=mail_admin,
+                               subject=subject,
+                               body=exception_traceback)
+    template_values = {}
+    if users.is_current_user_admin():
+      template_values['traceback'] = exception_traceback
+    self.response.out.write(template.render('error.html',
+                                            template_values))
 
 def real_main():
   run_wsgi_app(application)
