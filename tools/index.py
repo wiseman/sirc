@@ -121,7 +121,7 @@ def index_record_for_line(log_data, line, line_num, position):
     timestamp = '%sT%sZ' % (date_str, timestamp,)
 
     return {
-      'id': sirc.log.encode_id(log_data, suffix='%05d' % (line_num,))
+      'id': sirc.log.encode_id(log_data, suffix='%05d' % (line_num,)),
       'channel': log_data.channel,
       'timestamp': timestamp,
       'user': who,
