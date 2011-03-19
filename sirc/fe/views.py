@@ -96,7 +96,7 @@ class Search(webapp.RequestHandler):
                                                     'pagination_html': paging_html})
         values['result_html'] = result_html
         values['has_results'] = True
-    #self.response.out.write(render_template('search.html', values))
+    self.response.out.write(render_template('search.html', values))
 
   def handle_exception(self, exception, debug_mode):
     logging.info('WOO')
