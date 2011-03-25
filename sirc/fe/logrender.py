@@ -39,6 +39,3 @@ def render_from_key(key):
   
   memcache.set(key, data, time=60)
   return data
-
-
-

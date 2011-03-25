@@ -7,4 +7,3 @@ class DayLog(db.Model):
   channel = db.StringProperty(required=True)
   date = db.DateProperty(required=True)
   md5 = db.StringProperty()
-

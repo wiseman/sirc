@@ -58,7 +58,8 @@ def upload_log_file(bucket, local_path):
     key.set_contents_from_file(f, cb=upload_callback, num_cb=10)
   end_time = time.time()
   file_size = os.stat(local_path).st_size
-  sys.stdout.write(' %.1f KB/s\n' % ((file_size / 1024) / (end_time - start_time),))
+  sys.stdout.write(' %.1f KB/s\n' % \
+                   ((file_size / 1024) / (end_time - start_time),))
 
 
 if __name__ == '__main__':
