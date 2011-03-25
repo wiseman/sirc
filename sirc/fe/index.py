@@ -29,6 +29,7 @@ class DayLog(db.Model):
                                                   'in-progress']))
   indexing_job_id = db.StringProperty()
 
+
 class LogLineIndex(db.Model):
   log = db.ReferenceProperty(DayLog)
   position = db.IntegerProperty()
@@ -41,6 +42,7 @@ class LogLineIndex(db.Model):
 
 
 NUM_INDEXER_SHARDS = 2
+
 
 def start_indexing_log(blob_info):
   blob_reader = blob_info.open()
@@ -265,5 +267,3 @@ if __name__ == '__main__':
       timestamp, who, text = parsed_line
       words = extract_text_tokens(text)
       print words
-
-    

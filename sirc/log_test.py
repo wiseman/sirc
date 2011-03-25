@@ -41,8 +41,6 @@ class LogTest(unittest.TestCase):
     self.assertEqual(m1.date, metadata.date)
     self.assertEqual(suffix, '100')
 
-    
-    
+
 if __name__ == '__main__':
   unittest.main()
-

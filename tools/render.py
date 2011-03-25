@@ -7,8 +7,6 @@ import logging
 import sirc.logrender
 
 
-
-
 def main(args):
   for path in args[1:]:
     with open(path, 'rb') as file:
@@ -24,4 +22,3 @@ def main(args):
 
 if __name__ == '__main__':
   main(sys.argv)
-  

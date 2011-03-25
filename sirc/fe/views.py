@@ -121,6 +121,7 @@ class Search(webapp.RequestHandler):
 def create_pagination_html(url, query, start, total):
   start = int(start / PAGE_SIZE) * PAGE_SIZE
   base_url = '%s?q=%s' % (url, urllib.quote_plus(query))
+
   def make_url(start):
     return '%s&start=%s' % (base_url, start)
   
@@ -163,7 +164,7 @@ def create_pagination_html(url, query, start, total):
     if i != current_idx:
       page_str += pages[i]
     else:
-      page_str += '%s ' % (i+1,)
+      page_str += '%s ' % (i + 1,)
   if wr < total / PAGE_SIZE:
     page_str += '... '
 
@@ -223,7 +224,9 @@ def is_same_day(t1, t2):
 
 
 
-import sys, logging, traceback
+import sys
+import logging
+import traceback
 from google.appengine.ext import webapp
 from google.appengine.api import memcache
 
@@ -233,10 +236,10 @@ class BaseRequestHandler(webapp.RequestHandler):
     exception_details = str(sys.exc_info()[1])
     exception_traceback = ''.join(traceback.format_exception(*sys.exc_info()))
     logging.error(exception_traceback)
-    exception_expiration = 3600 # seconds (max 1 mail per hour for a particular exception)
-    mail_admin = "yourmail@yourdomain" # must be admin for the application
+    exception_expiration = 3600  # seconds (max 1 mail per hour for a particular exception)
+    mail_admin = "yourmail@yourdomain"  # must be admin for the application
     sitename = "yourapplication"
-    throttle_name = 'exception-'+exception_name
+    throttle_name = 'exception-' + exception_name
     throttle = memcache.get(throttle_name)
     if throttle is None:
       memcache.add(throttle_name, 1, exception_expiration)
@@ -257,7 +260,8 @@ def real_main():
 def profile_main():
     # This is the main function for profiling
     # We've renamed our original main() above to real_main()
-    import cProfile, pstats
+    import cProfile
+    import pstats
     prof = cProfile.Profile()
     prof = prof.runctx("real_main()", globals(), locals())
     print "<pre>"
