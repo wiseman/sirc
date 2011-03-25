@@ -6,16 +6,16 @@ import re
 import sirc.log
 
 
-MSG_LINE_TEMPLATE = '<tr>' + \
+MSG_LINE_TEMPLATE = string.Template('<tr>' + \
                     '<td class="time"><a name="$linenum">$time</a></td>' + \
                     '<td class="nick"><span class="brack">&lt;</span><span class="source">$user</span><span class="brack">&gt;</span></td>' + \
                     '<td class="msg">$message</td>' + \
-                    '</tr>\n'
+                    '</tr>\n')
 
-UNKNOWN_LINE_TEMPLATE = '<tr>' + \
+UNKNOWN_LINE_TEMPLATE = string.Template('<tr>' + \
                         '<td class="time"><a name="$linenum">$time</a></td>' + \
                         '<td colspan="2" class="unknown">$line</td>' + \
-                        '</tr>\n'
+                        '</tr>\n')
 
 g_line_renderers = {}
 
@@ -43,10 +43,9 @@ def render_default_line(linenum, line):
   else:
     time_str = match.groups()[0]
     remaining_str = match.groups()[1]
-    template = string.Template(UNKNOWN_LINE_TEMPLATE)
-    return template.substitute(linenum=linenum,
-                               time=time_str,
-                               line=cgi.escape(remaining_str))
+    return UNKNOWN_LINE_TEMPLATE.substitute(linenum=linenum,
+                                            time=time_str,
+                                            line=cgi.escape(remaining_str))
 
 
 def render_msg_line(linenum, timestamp, user, message):
@@ -54,11 +53,10 @@ def render_msg_line(linenum, timestamp, user, message):
   time_str = cgi.escape(timestamp)
   user_str = cgi.escape(user)
   message_str = cgi.escape(message)
-  template = string.Template(MSG_LINE_TEMPLATE)
-  return template.substitute(linenum='%05d' % (linenum,),
-                             user=user_str,
-                             message=message_str,
-                             time=time_str)
+  return MSG_LINE_TEMPLATE.substitute(linenum='%05d' % (linenum,),
+                                      user=user_str,
+                                      message=message_str,
+                                      time=time_str)
 
 
 register_line_renderer(
