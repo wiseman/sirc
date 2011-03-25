@@ -19,9 +19,11 @@ UNKNOWN_LINE_TEMPLATE = string.Template('<tr>' + \
 
 g_line_renderers = {}
 
+
 def register_line_renderer(regex, function):
   global g_line_renderers
   g_line_renderers[regex] = function
+
 
 def render_line(line_num, line):
   global g_line_renderers
@@ -35,6 +37,7 @@ def render_line(line_num, line):
 
 
 DEFAULT_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+)(.*)', re.UNICODE)
+
 
 def render_default_line(linenum, line):
   match = DEFAULT_RE.match(line)

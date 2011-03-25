@@ -8,7 +8,7 @@ def find_url_start(text, start):
   no URL is found, this function returns -1.
   """
   for prefix in g_url_prefixes:
-    extra_prefix="%s://" % (prefix,)
+    extra_prefix = "%s://" % (prefix,)
     url_start = string.find(text, extra_prefix, start)
     if url_start > -1:
       return url_start

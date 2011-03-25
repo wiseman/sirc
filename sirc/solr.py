@@ -24,13 +24,13 @@ Features
  * Supports http/https and SSL client-side certificates
  * Uses persistent HTTP connections by default
  * Properly converts to/from SOLR data types, including datetime objects
- * Supports both querying and update commands (add, delete). 
+ * Supports both querying and update commands (add, delete).
  * Supports batching of commands
- * Requires python 2.3+ 
- 
+ * Requires python 2.3+
+
 Connections
 -----------
-`SolrConnection` can be passed in the following parameters. 
+`SolrConnection` can be passed in the following parameters.
 Only `url` is required,.
 
     url -- URI pointing to the SOLR instance. Examples:
@@ -38,17 +38,17 @@ Only `url` is required,.
         http://localhost:8080/solr
         https://solr-server/solr
 
-        Your python install must be compiled with SSL support for the 
+        Your python install must be compiled with SSL support for the
         https:// schemes to work. (Most pre-packaged pythons are.)
 
-    persistent -- Keep a persistent HTTP connection open.  
+    persistent -- Keep a persistent HTTP connection open.
         Defaults to true.
 
-    timeout -- Timeout, in seconds, for the server to response. 
+    timeout -- Timeout, in seconds, for the server to response.
         By default, use the python default timeout (of none?)
         NOTE: This changes the python-wide timeout.
 
-    ssl_key, ssl_cert -- If using client-side key files for 
+    ssl_key, ssl_cert -- If using client-side key files for
         SSL authentication,  these should be, respectively, 
         your PEM key file and certificate file
 
@@ -59,7 +59,7 @@ Once created, a connection object has the following public methods:
            score=True, sort=None, **params)
 
             q -- the query string.
-    
+
             fields -- optional list of fields to include. It can be either
                 a string in the format that SOLR expects ('id,f1,f2'), or 
                 a python list/tuple of field names.   Defaults to returning 
@@ -79,7 +79,7 @@ Once created, a connection object has the following public methods:
 
             Any parameters available to SOLR 'select' calls can also be 
             passed in as named parameters (e.g., fq='...', rows=20, etc).  
-    
+
             Many SOLR parameters are in a dotted notation (e.g., 
             `hl.simple.post`).  For such parameters, replace the dots with 
             underscores when calling this method. (e.g., 
@@ -353,12 +353,10 @@ class SolrConnection:
                 your PEM key file and certificate file
 
         """
-
-                
         self.scheme, self.host, self.path = urlparse.urlparse(url, 'http')[:3]
         self.url = url
 
-        assert self.scheme in ('http','https')
+        assert self.scheme in ('http', 'https')
         
         self.persistent = persistent
         self.reconnects = 0
@@ -372,7 +370,7 @@ class SolrConnection:
         else:
             self.conn = httplib.HTTPConnection(self.host)
 
-        self.batch_cnt = 0  #  this is int, not bool!
+        self.batch_cnt = 0  # this is int, not bool!
         self.response_version = 2.2 
         self.encoder = codecs.getencoder('utf-8')
         
@@ -394,7 +392,6 @@ class SolrConnection:
 
         if not self.persistent: 
             self.form_headers['Connection'] = 'close'
-
 
     def query(self, q, fields=None, highlight=None, 
               score=True, sort=None, **params):
@@ -430,7 +427,7 @@ class SolrConnection:
         """
 
        # Clean up optional parameters to match SOLR spec.
-        params = dict([(key.replace('_','.'), unicode(value)) 
+        params = dict([(key.replace('_', '.'), unicode(value)) 
                       for key, value in params.items()])
 
         if q is not None: 
@@ -447,7 +444,7 @@ class SolrConnection:
                 sort = ",".join(sort)
             params['sort'] = sort
 
-        if score and not 'score' in fields.replace(',',' ').split(): 
+        if score and not 'score' in fields.replace(',', ' ').split(): 
             fields += ',score'
 
         params['fl'] = fields
@@ -471,14 +468,13 @@ class SolrConnection:
             # and creating a StringIO, then Persistence breaks with
             # an internal python error. 
             xml = StringIO(rsp.read())
-            data = parse_query_response(xml,  params=params, connection=self)
+            data = parse_query_response(xml, params=params, connection=self)
             
         finally:
             if not self.persistent: 
                 self.conn.close()
 
         return data
-
 
     def begin_batch(self): 
         """
@@ -502,7 +498,6 @@ class SolrConnection:
 
         return self.batch_cnt
         
-
     def end_batch(self, commit=False):
         """
         Denote the end of a batch update. 
@@ -526,7 +521,6 @@ class SolrConnection:
             self.__batch_queue.append('<commit/>')
 
         return self._update("".join(self.__batch_queue))
-
 
     def delete(self, id):
         """
@@ -591,7 +585,7 @@ class SolrConnection:
         """
         Issue a commit command to the SOLR server. 
         """
-        if not wait_searcher:  #just handle deviations from the default
+        if not wait_searcher:  # just handle deviations from the default
             if not wait_flush: 
                 options = 'waitFlush="false" waitSearcher="false"'
             else: 
@@ -624,14 +618,14 @@ class SolrConnection:
         """
 
         # Clean up optional parameters to match SOLR spec.
-        params = dict([(key.replace('_','.'), unicode(value)) 
+        params = dict([(key.replace('_', '.'), unicode(value)) 
                        for key, value in params.items()])
 
 
         request = urllib.urlencode(params, doseq=True)
 
         try:
-            rsp = self._post(self.path+'/select', 
+            rsp = self._post(self.path + '/select', 
                               request, self.form_headers)
             data = rsp.read()
         finally:
@@ -844,7 +838,7 @@ class ResponseContentHandler(ContentHandler):
         self.stack[-2].children.append(element)
 
 
-    def characters (self, ch):
+    def characters(self, ch):
         self.stack[-1].chars.append(ch)
 
 
@@ -872,7 +866,7 @@ class ResponseContentHandler(ContentHandler):
         elif name == 'date': 
              node.final = utc_from_string(value.strip())
             
-        elif name in ('float','double', 'status','QTime'):
+        elif name in ('float', 'double', 'status', 'QTime'):
             node.final = float(value.strip())
             
         elif name == 'response': 
@@ -885,7 +879,7 @@ class ResponseContentHandler(ContentHandler):
                     name = 'results'
                 setattr(response, name, child.final)
 
-        elif name in ('lst','doc'): 
+        elif name in ('lst', 'doc'): 
             # Represent these with a dict
             node.final = dict(
                     [(cnode.attrs['name'], cnode.final) 
@@ -973,6 +967,7 @@ class UTC(datetime.tzinfo):
 
 utc = UTC()
 
+
 def utc_to_string(value):
     """
     Convert datetimes to the subset
@@ -1004,7 +999,7 @@ if sys.version < '2.5.':
             return datetime.datetime(year, month, day, hour, 
                 minute, second, microsecond, utc)
         except ValueError: 
-            raise ValueError ("'%s' is not a valid ISO 8601 SOLR date" % value)
+            raise ValueError("'%s' is not a valid ISO 8601 SOLR date" % value)
 else: 
     def utc_from_string(value): 
         """

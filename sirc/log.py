@@ -50,7 +50,7 @@ def parse_log_path(path):
     return metadata_from_s3path(path)
   else:
     return metadata_from_logpath(path)
-  
+
 
 def encode_id(log_data, suffix=None):
   assert suffix is None or not ('/' in suffix)
@@ -60,7 +60,6 @@ def encode_id(log_data, suffix=None):
                     '%s' % (log_data.date.year,),
                     '%02d' % (log_data.date.month,),
                     '%02d' % (log_data.date.day,)])
-    
     if not (suffix is None):
       key += ':' + suffix
     return key
@@ -81,6 +80,7 @@ def decode_id(id):
                        day=int(pieces[4]))
   m = Metadata(path=None, server=pieces[0], channel=pieces[1], date=date)
   return (m, suffix)
+
 
 def browse_url_for_key(key):
   (m, suffix) = decode_id(key)
