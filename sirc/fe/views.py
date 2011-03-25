@@ -50,14 +50,14 @@ class Browse(webapp.RequestHandler):
                                  date=log_date)
     key = sirc.log.encode_id(log_data)
     logging.info('Browsing %s, key=%s', log_data, key)
-    self.response.headers['content-type'] = 'text/plain; charset=utf-8'
     logging.info('%s', self.response.headers)
     log = sirc.fe.logrender.render_from_key(key)
     fetch_time = time.time()
-    self.response.out.write(sirc.fe.logrender.render_from_key(key))
+    self.response.out.write(log)
     end_time = time.time()
-    self.response.out.write('\n\ntotal=%s ms, fetch=%s ms' % (int((end_time - start_time) * 1000),
-                                                              int((fetch_time - start_time) * 1000)))
+    logging.info('total=%s ms, fetch=%s ms',
+                 int((end_time - start_time) * 1000),
+                 int((fetch_time - start_time) * 1000))
     
 
 PAGE_SIZE = 20
