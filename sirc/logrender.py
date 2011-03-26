@@ -6,16 +6,22 @@ import re
 import sirc.log
 
 
-MSG_LINE_TEMPLATE = string.Template('<tr>' + \
-                    '<td class="time"><a name="$linenum">$time</a></td>' + \
-                    '<td class="nick"><span class="brack">&lt;</span><span class="source">$user</span><span class="brack">&gt;</span></td>' + \
-                    '<td class="msg">$message</td>' + \
-                    '</tr>\n')
+MSG_LINE_TEMPLATE = string.Template(
+  '<tr>' +
+  '<td class="time"><a name="$linenum">$time</a></td>' +
+  '<td class="nick">' +
+  '<span class="brack">&lt;</span>' +
+  '<span class="source">$user</span>' +
+  '<span class="brack">&gt;</span>' +
+  '</td>' + \
+  '<td class="msg">$message</td>' + \
+  '</tr>\n')
 
-UNKNOWN_LINE_TEMPLATE = string.Template('<tr>' + \
-                        '<td class="time"><a name="$linenum">$time</a></td>' + \
-                        '<td colspan="2" class="unknown">$line</td>' + \
-                        '</tr>\n')
+UNKNOWN_LINE_TEMPLATE = string.Template(
+  '<tr>' + \
+  '<td class="time"><a name="$linenum">$time</a></td>' + \
+  '<td colspan="2" class="unknown">$line</td>' + \
+  '</tr>\n')
 
 g_line_renderers = {}
 
@@ -42,7 +48,8 @@ DEFAULT_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+)(.*)', re.UNICODE)
 def render_default_line(linenum, line):
   match = DEFAULT_RE.match(line)
   if not match:
-    return '<tr><td></td><td colspan="2">Unknown line: %s</td></tr>\n' % (cgi.escape(line),)
+    return '<tr><td></td><td colspan="2">Unknown line: %s</td></tr>\n' % \
+           (cgi.escape(line),)
   else:
     time_str = match.groups()[0]
     remaining_str = match.groups()[1]

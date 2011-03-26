@@ -16,6 +16,7 @@ def extract_text_tokens(text):
   words = [w.lower() for w in set(words) if len(w) > 0]
   return words
 
+
 def recode(text):
   recoded_text = None
   try:
@@ -28,12 +29,12 @@ def recode(text):
       try:
         recoded_text = unicode(text, guess['encoding'])
       except UnicodeDecodeError, e:
-        raise EncodingError('Unable to encode text %r as cp1252 or %s: %s' % (text, guess, e))
+        raise EncodingError('Unable to encode text %r as cp1252 or %s: %s' % \
+                            (text, guess, e))
     else:
-      raise EncodingError('Unable to encode text %r as cp1252, unable to guess encoding.' % (text,))
+      raise EncodingError('Unable to encode text %r as cp1252, ' +
+                          'unable to guess encoding.' % (text,))
   return recoded_text
-          
-
 
 
 def main(argv):

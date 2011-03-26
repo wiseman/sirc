@@ -40,7 +40,6 @@ class LogLineIndex(db.Model):
   user = db.StringProperty()
 
 
-
 NUM_INDEXER_SHARDS = 2
 
 
@@ -52,7 +51,8 @@ def start_indexing_log(blob_info):
   first_line = blob_reader.readline()
   match = log_header_re.match(first_line)
   if not match:
-    raise Exception('Unable to parse log header %s: "%s"' % (blob_info.key(), first_line))
+    raise Exception('Unable to parse log header %s: "%s"' % \
+                    (blob_info.key(), first_line))
   #logging.info('%s' % (match.groups(),))
   channel = match.groups()[0]
   date_str = match.groups()[1]
@@ -68,24 +68,24 @@ def start_indexing_log(blob_info):
                md5=blob_hash(blob_info),
                indexing_state='in-progress')
   log.put()
-  job_id = mapreduce.control.start_map('Index log %s' % (blob_info.key()),
-                                       handler_spec='index.index_log_line',
-                                       reader_spec='mapreduce.input_readers.BlobstoreLineInputReader',
-                                       shard_count=NUM_INDEXER_SHARDS,
-                                       reader_parameters={'blob_keys': str(blob_info.key()),
-                                                          'log_key': str(log.key())},
-                                       mapreduce_parameters={'done_callback': '/indexing_did_finish'})
-  
+  job_id = mapreduce.control.start_map(
+    'Index log %s' % (blob_info.key()),
+    handler_spec='index.index_log_line',
+    reader_spec='mapreduce.input_readers.BlobstoreLineInputReader',
+    shard_count=NUM_INDEXER_SHARDS,
+    reader_parameters={'blob_keys': str(blob_info.key()),
+                       'log_key': str(log.key())},
+    mapreduce_parameters={'done_callback': '/indexing_did_finish'})
+
 
 LINE_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+) <(\w+)> ?(.*)', re.UNICODE)
+
 
 def parse_log_line(line):
   match = LINE_RE.match(line)
   if match:
     # timestamp, who, text
     return match.groups()
-
-
 
 
 def index_log_line(entity):
@@ -110,7 +110,7 @@ def index_log_line(entity):
                                   msg_hour,
                                   msg_minute,
                                   msg_second)
-    
+
     encoded = False
     try:
       text_u = tokenz.recode(text)
@@ -141,6 +141,7 @@ def parse_query_string(query_string):
   words = tokenz.extract_text_tokens(query_string)
   return words
 
+
 def make_db_query_from_parsed_query(parsed_query):
   db_query = LogLineIndex.all()
   for word in parsed_query:
@@ -148,7 +149,7 @@ def make_db_query_from_parsed_query(parsed_query):
   db_query.order('-timestamp')
   return db_query
 
-  
+
 def get_query_results(query_string):
   parsed_query = parse_query_string(query_string)
   db_query = query.make_multi_term_query(parsed_query)
@@ -164,7 +165,10 @@ def get_query_results(query_string):
   return records
 
 
-SEARCH_SERVER_URL = 'http://ec2-184-72-93-240.compute-1.amazonaws.com:8983/solr/select/?q=%s&version=2.2&start=%s&rows=%s&wt=json&sort=timestamp+desc'
+SEARCH_SERVER_URL = 'http://ec2-184-72-93-240.compute-1.amazonaws.com:8983' + \
+                    '/solr/select/?q=%s&version=2.2&start=%s&rows=%s' + \
+                    '&wt=json&sort=timestamp+desc'
+
 
 def get_query_results(query_string, start, num_results):
   start_time = time.time()
@@ -172,14 +176,17 @@ def get_query_results(query_string, start, num_results):
   from django.utils import simplejson as json
   import datetime
 
-  url = SEARCH_SERVER_URL % (urllib.quote_plus(query_string), start, num_results)
+  url = SEARCH_SERVER_URL % (urllib.quote_plus(query_string),
+                             start,
+                             num_results)
   logging.info('URL=%s' % (url,))
   result = urllib2.urlopen(url)
   response = json.load(result)
   response['response']['QTime'] = response['responseHeader']['QTime']
   response = response['response']
   for r in response['docs']:
-    r['timestamp'] = datetime.datetime.strptime(r['timestamp'], '%Y-%m-%dT%H:%M:%SZ')
+    r['timestamp'] = datetime.datetime.strptime(r['timestamp'],
+                                                '%Y-%m-%dT%H:%M:%SZ')
 
 #  for r in response['docs']:
 #    blob_reader = blobstore.BlobReader(r.log.blob.key())
@@ -216,7 +223,8 @@ def get_context_lines(blob_reader, position, num_lines=5):
   # First get the preceding lines of context.
   while not have_context and position - offset >= 0:
     preceding_lines = []
-    #logging.debug('offset = %s, position - offset = %s' % (offset, position - offset))
+    #logging.debug('offset = %s, position - offset = %s',
+    #              offset, position - offset)
     blob_reader.seek(position - offset)
     # Sync to the next line.
     line_pos, line = blob_read_line(blob_reader)
@@ -241,13 +249,6 @@ def get_context_lines(blob_reader, position, num_lines=5):
   context_lines = context_lines[-((num_lines * 2) + 1):]
   return context_lines
 
-    
-      
-
-
-  
-
-
 
 def blob_hash(blob_info):
   m = hashlib.md5()
@@ -257,7 +258,6 @@ def blob_hash(blob_info):
     return m.hexdigest()
   finally:
     reader.close()
-  
 
 
 if __name__ == '__main__':

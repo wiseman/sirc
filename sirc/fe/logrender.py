@@ -36,6 +36,6 @@ def render_from_key(key):
 
   data = fetch_from_key(key)
   data = render_log(data)
-  
+
   memcache.set(key, data, time=60)
   return data
