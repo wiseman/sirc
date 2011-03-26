@@ -2,6 +2,7 @@ import string
 
 g_url_prefixes = ["http", "ftp", "https", "telnet", "gopher", "file"]
 
+
 def find_url_start(text, start):
   """Returns the start index of the first URL found in the specified
   string (starting at the specified index, which defaults to 0).  If
@@ -14,6 +15,7 @@ def find_url_start(text, start):
       return url_start
   return -1
 
+
 def find_url_end(text, start):
   """Given a string and the starting position of a URL, returns the
   index of the first non-URL character.
@@ -22,6 +24,7 @@ def find_url_end(text, start):
     if text[i] == ">" or text[i] in string.whitespace:
       return i
   return len(text)
+
 
 def find_url(text, start=0):
   url_start = find_url_start(text, start)
@@ -32,6 +35,7 @@ def find_url(text, start=0):
     if (url_end > -1):
       return (url_start, url_end)
   return None
+
 
 def find_urls(text, start=0):
   url_indices = []
@@ -45,7 +49,10 @@ def find_urls(text, start=0):
 
 def run_tests():
   import pprint
-  s = """11:11:10 I have just read about google art project ( http://www.googleartproject.com/ ) and the first thing that has come to my mind is Paul Graham's failed startup called Artix ( http://www.paulgraham.com/bronze.html ) :)"""
+  s = """11:11:10 I have just read about google art project ( """ +
+      """http://www.googleartproject.com/ ) and the first thing that has """ +
+      """come to my mind is Paul Graham's failed startup called Artix ( """ +
+      """http://www.paulgraham.com/bronze.html ) :)"""
   url_spans = find_urls(s)
   pprint.pprint(find_urls(s))
   for span in url_spans:
