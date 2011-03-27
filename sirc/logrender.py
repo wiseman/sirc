@@ -8,7 +8,7 @@ import sirc.log
 
 MSG_LINE_TEMPLATE = string.Template(
   '<tr>' +
-  '<td class="time"><a name="$linenum">$time</a></td>' +
+  '<td class="time"><a name="$line_num">$time</a></td>' +
   '<td class="nick">' +
   '<span class="brack">&lt;</span>' +
   '<span class="source">$user</span>' +
@@ -19,7 +19,7 @@ MSG_LINE_TEMPLATE = string.Template(
 
 UNKNOWN_LINE_TEMPLATE = string.Template(
   '<tr>' + \
-  '<td class="time"><a name="$linenum">$time</a></td>' + \
+  '<td class="time"><a name="$line_num">$time</a></td>' + \
   '<td colspan="2" class="unknown">$line</td>' + \
   '</tr>\n')
 
@@ -45,7 +45,7 @@ def render_line(line_num, line):
 DEFAULT_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+)(.*)', re.UNICODE)
 
 
-def render_default_line(linenum, line):
+def render_default_line(line_num, line):
   match = DEFAULT_RE.match(line)
   if not match:
     return '<tr><td></td><td colspan="2">Unknown line: %s</td></tr>\n' % \
@@ -53,17 +53,17 @@ def render_default_line(linenum, line):
   else:
     time_str = match.groups()[0]
     remaining_str = match.groups()[1]
-    return UNKNOWN_LINE_TEMPLATE.substitute(linenum=linenum,
+    return UNKNOWN_LINE_TEMPLATE.substitute(line_num='%05d' % (line_num,),
                                             time=time_str,
                                             line=cgi.escape(remaining_str))
 
 
-def render_msg_line(linenum, timestamp, user, message):
+def render_msg_line(line_num, timestamp, user, message):
   #logging.info('BINGO')
   time_str = cgi.escape(timestamp)
   user_str = cgi.escape(user)
   message_str = cgi.escape(message)
-  return MSG_LINE_TEMPLATE.substitute(linenum='%05d' % (linenum,),
+  return MSG_LINE_TEMPLATE.substitute(line_num='%05d' % (line_num,),
                                       user=user_str,
                                       message=message_str,
                                       time=time_str)
