@@ -43,7 +43,7 @@ class LogLineIndex(db.Model):
 class QueryEvent(db.Model):
   timestamp = db.DateTimeProperty(required=True)
   query = db.StringProperty(required=True)
-
+  query_time = db.FloatProperty()
 
 
 def record_query(query):
@@ -51,6 +51,7 @@ def record_query(query):
   qe = QueryEvent(timestamp=now,
                   query=query)
   qe.put()
+  return qe
 
 
 NUM_INDEXER_SHARDS = 2
@@ -189,7 +190,7 @@ def get_query_results(query_string, start, num_results):
   from django.utils import simplejson as json
   import datetime
 
-  record_query('q=%s, start=%s' % (query_string, start))
+  query_event = record_query('q=%s, start=%s' % (query_string, start))
   
   url = SEARCH_SERVER_URL % (urllib.quote_plus(query_string),
                              start,
@@ -211,7 +212,10 @@ def get_query_results(query_string, start, num_results):
 #  for r in records:
 #    r['text'] = get_log_line_from_position(blob_reader, r['position'])
   end_time = time.time()
-  response['query_time'] = end_time - start_time
+  query_time = end_time - start_time
+  response['query_time'] = query_time
+  query_event.query_time = query_time
+  query_event.put()
   return response
 
 
