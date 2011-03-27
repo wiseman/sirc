@@ -1,6 +1,8 @@
 from __future__ import with_statement
 import re
+import fnmatch
 
+import boto.s3.bucketlistresultset
 import boto.s3.key
 
 
@@ -38,13 +40,32 @@ def split_s3_path(s3_path):
 PATTERN_CHARS_RE = re.compile(r'\[\|\?|\*')
 
 
-def glob_s3_path(bucket, s3_path):
-  if not PATTERN_CHARS_RE.match(s3_path):
-    return [s3_path]
-  else:
-    keys = bucket.get_all_keys()
-    regex = fnmatch.translate(s3_path)
-    return [k.name for k in keys if regex.match(k.name)]
+def get_all_keys(bucket):
+  return [k for k in boto.s3.bucketlistresultset.bucket_lister(bucket)]
+
+
+def glob_s3_path(bucket, s3_path, remote_keys=None):
+  if not remote_keys:
+    remote_keys = get_all_keys(bucket)
+  regex = fnmatch.translate(s3_path)
+  #print regex
+  regex = re.compile(regex)
+  #print [k.name for k in keys]
+  matches = [k.name for k in remote_keys if regex.match(k.name)]
+  #print matches
+  return matches
+
+
+g_remote_keys_cache = None
+
+
+def cached_glob_s3_path(bucket, s3_path):
+  global g_remote_keys_cache
+  if not g_remote_keys_cache:
+    g_remote_keys_cache = get_all_keys(bucket)
+  remote_keys = g_remote_keys_cache
+  x = glob_s3_path(bucket, s3_path, remote_keys=remote_keys)
+  return x
 
 
 def mkdir(bucket, logical_path):
