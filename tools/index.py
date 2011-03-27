@@ -7,6 +7,7 @@ import logging
 import StringIO
 import time
 import unicodedata
+import optparse
 
 import boto
 
@@ -33,9 +34,23 @@ def _usage():
                    'or an s3:// url.\n')
 
 
-def index_files(solr_url, paths):
+def is_already_indexed(solr_url, log_data):
+  id = sirc.log.encode_id(log_data) + '*'
+  conn = get_solr_connection(solr_url)
+  query = 'id:%s' % (id,)
+  response = conn.query(q=query,
+                        fields='id',
+                        score=False)
+  return len(response) > 0
+
+
+def index_files(solr_url, paths, force=False):
   for path in paths:
-    index_file(solr_url, path)
+    log_data = sirc.log.parse_log_path(path)
+    if force or not is_already_indexed(solr_url, log_data):
+      index_file(solr_url, path)
+    else:
+      print 'Skipping %s' % (path,)
   quartiles()
 
 
@@ -68,7 +83,7 @@ def index_fp(solr_url, log_data, fp):
 
 
 def index_records_for_fp(log_data, fp):
-  logging.info('Indexing %s' % (log_data,))
+  print 'Indexing %s' % (log_data,)
   first_line = fp.readline()
   match = LOG_TIMESTAMP_HEADER_RE.match(first_line)
   if not match:
@@ -88,9 +103,22 @@ def index_records_for_fp(log_data, fp):
       yield xformed
 
 
+g_solr_connection = None
+g_solr_url = None
+
+
+def get_solr_connection(solr_url):
+  assert solr_url.startswith('http')
+  global g_solr_url, g_solr_connection
+  if not (g_solr_url == solr_url and g_solr_connection):
+    g_solr_url = solr_url
+    g_solr_connection = sirc.solr.SolrConnection(url=solr_url)
+  return g_solr_connection
+
+
 def post_records(solr_url, index_records):
   start_time = time.time()
-  conn = sirc.solr.SolrConnection(url=solr_url)
+  conn = get_solr_connection(solr_url)
   #  for i in index_records:
   #    print i
   #    conn.add(i)
@@ -119,15 +147,19 @@ def index_record_for_line(log_data, line, line_num, position):
                                  log_data.date.month,
                                  log_data.date.day)
     timestamp = '%sT%sZ' % (date_str, timestamp,)
-
+    id = get_log_id(log_data, line_num)
     return {
-      'id': sirc.log.encode_id(log_data, suffix='%05d' % (line_num,)),
+      'id': id,
       'channel': log_data.channel,
       'timestamp': timestamp,
       'user': who,
       'text': message,
       'position': position
       }
+
+
+def get_log_id(log_data, line_num):
+  return sirc.log.encode_id(log_data, suffix='%05d' % (line_num,))
 
 
 def parse_log_line(line):
@@ -181,16 +213,27 @@ def quartile(label, measurements):
 # Main
 # ------------------------------------------------------------
 
-def main(argv):
+def main(args):
+  parser = optparse.OptionParser(
+    usage='usage: %prog [options] [<log source>...]')
+  parser.add_option(
+    '-f',
+    '--force',
+    dest='force',
+    action='store_true',
+    default=False,
+    help='Indexes the file even if it has already been indexed ' + \
+    '(default is %default).')
+  (options, args) = parser.parse_args()
+
   logging.basicConfig(level=logging.INFO)
-  args = argv[1:]
   if len(args) < 2:
-    _usage()
-    sys.exit(1)
+    parser.print_usage()
+    return 1
   solr_url = args[0]
   files = args[1:]
-  index_files(solr_url, files)
+  index_files(solr_url, files, force=options.force)
 
 
 if __name__ == '__main__':
-  main(sys.argv)
+  sys.exit(main(sys.argv))
