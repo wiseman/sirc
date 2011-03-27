@@ -9,6 +9,7 @@ from google.appengine.api import memcache
 import boto
 
 import sirc.log
+import sirc.logrender
 from sirc.util import s3
 
 
@@ -35,7 +36,7 @@ def render_from_key(key):
     return cached_data
 
   data = fetch_from_key(key)
-  data = render_log(data)
+  data = sirc.logrender.render_log(data)
 
   memcache.set(key, data, time=60)
   return data
