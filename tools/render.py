@@ -7,6 +7,7 @@ import optparse
 import contextlib
 
 import sirc.logrender
+import sirc.util.s3
 
 
 def main(args):
@@ -31,19 +32,23 @@ def main(args):
 
   print destination
   print args
-  
+
   with contextlib.closing(destination):
-    for path in args:
-      print path
+    paths = args
+    for path in paths:
       with contextlib.closing(sirc.log.open_log(path, 'rb')) as input:
-        log_text = input.read()
-        time_start = time.time()
-        html = sirc.logrender.render_log(log_text)
-        time_end = time.time()
-        destination.write(html)
-        logging.info('Rendered %s in %s ms',
-                     path,
-                     int((time_end - time_start) * 1000))
+        render(path, input, destination)
+
+
+def render(path, input, output):
+  log_text = input.read()
+  time_start = time.time()
+  html = sirc.logrender.render_log(log_text)
+  time_end = time.time()
+  output.write(html)
+  logging.info('Rendered path in %s ms',
+               path,
+               int((time_end - time_start) * 1000))
 
 
 if __name__ == '__main__':
