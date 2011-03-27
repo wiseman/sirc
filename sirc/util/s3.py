@@ -13,6 +13,11 @@ class Key(boto.s3.key.Key):
     print boto.s3.key.Key.set_contents_from_file(*args, **kwargs)
 
 
+def parse_s3_url(url):
+  pieces = [p for p in url.split('/') if len(p) > 0]
+  return pieces[1], '/'.join(pieces[2:])
+
+
 def translate_to_s3_path(logical_path):
   return logical_path
 #  return logical_path.replace('/', ',folder/')
@@ -55,3 +60,32 @@ def get_credentials():
     aws_access_key_id = f.readline()[:-1]
     aws_secret_access_key = f.readline()[:-1]
   return Credentials(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
+
+
+g_connection = None
+
+
+def get_s3_connection():
+  global g_connection
+  if not g_connection:
+    credentials = get_credentials()
+    g_connection = boto.connect_s3(credentials.access_key,
+                                   credentials.secret,
+                                   debug=1)
+  return g_connection
+
+
+g_buckets = {}
+
+
+def get_s3_bucket(bucket_name):
+  global g_buckets
+  if not (bucket_name in g_buckets):
+    conn = get_s3_connection()
+    bucket = conn.create_bucket(bucket_name)
+    g_buckets[bucket_name] = bucket
+  else:
+    bucket = g_buckets[bucket]
+  return bucket
+
+

@@ -47,8 +47,8 @@ def index_file(solr_url, path):
 
 
 def index_s3_file(solr_url, path):
-  bucket, s3_path = parse_s3_url(path)
-  bucket = get_s3_bucket(bucket)
+  bucket, s3_path = sirc.util.s3.parse_s3_url(path)
+  bucket = sirc.util.s3.get_s3_bucket(bucket)
   key = boto.s3.key.Key(bucket)
   key.key = s3_path
   log_data = sirc.log.metadata_from_s3path(s3_path)
@@ -150,42 +150,6 @@ def recode(text):
 
   recoded_text = ''.join([c for c in recoded_text if not is_ctrl_char(c)])
   return recoded_text
-
-
-# ------------------------------------------------------------
-# S3 utils
-# ------------------------------------------------------------
-
-def parse_s3_url(url):
-  pieces = [p for p in url.split('/') if len(p) > 0]
-  return pieces[1], '/'.join(pieces[2:])
-
-
-g_connection = None
-
-
-def get_s3_connection():
-  global g_connection
-  if not g_connection:
-    credentials = sirc.util.s3.get_credentials()
-    g_connection = boto.connect_s3(credentials.access_key,
-                                   credentials.secret,
-                                   debug=1)
-  return g_connection
-
-
-g_buckets = {}
-
-
-def get_s3_bucket(bucket_name):
-  global g_buckets
-  if not (bucket_name in g_buckets):
-    conn = get_s3_connection()
-    bucket = conn.create_bucket(bucket_name)
-    g_buckets[bucket_name] = bucket
-  else:
-    bucket = g_buckets[bucket]
-  return bucket
 
 
 g_measurements = {}
