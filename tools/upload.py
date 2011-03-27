@@ -1,8 +1,9 @@
 #!/usr/bin/env python
-
+from __future__ import with_statement
 import os
 import sys
 import time
+import optparse
 
 import boto
 
@@ -26,10 +27,18 @@ def _usage():
 ############################################################
 
 def main(argv):
-  args = argv[1:]
-  if len(args) == 0:
-    _usage()
-    sys.exit(1)
+  parser = optparse.OptionParser(
+    usage='usage: %prog [options] [<log source>...]')
+  parser.add_option(
+    '-f',
+    '--force',
+    dest='force',
+    default=False,
+    help='Uploads the file even if it already exists (default is %default).')
+  (options, args) = parser.parse_args()
+  if len(args) < 1:
+    parser.print_usage()
+    return 1
 
   credentials = sirc.util.s3.get_credentials()
   conn = boto.connect_s3(credentials.access_key, credentials.secret, debug=0)
@@ -37,7 +46,7 @@ def main(argv):
   bucket = conn.create_bucket(bucket_name)
 
   for path in args:
-    upload_log_file(bucket, path)
+      upload_log_file(bucket, path, force=options.force)
 
 
 def upload_callback(bytes_sent, bytes_left):
@@ -45,14 +54,21 @@ def upload_callback(bytes_sent, bytes_left):
   sys.stdout.flush()
 
 
-def upload_log_file(bucket, local_path):
+def upload_log_file(bucket, local_path, force=False):
   start_time = time.time()
   with open(local_path, 'rb') as f:
     log_data = sirc.log.metadata_from_logpath(local_path)
-    remote_path = 'rawlogs/%s/%s/' % (log_data.channel, log_data.date.year)
+    remote_path = 'rawlogs/%s/%s/%02d.%02d' % (log_data.channel,
+                                               log_data.date.year,
+                                               log_data.date.month,
+                                               log_data.date.day)
+    if not (force or
+            len(sirc.util.s3.cached_glob_s3_path(bucket, remote_path)) == 0):
+      print 'Skipping %s' % (local_path,)
+      return
+
     key = boto.s3.key.Key(bucket)
-    key.key = os.path.join(remote_path, '%02d.%02d' % (log_data.date.month,
-                                                       log_data.date.day))
+    key.key = remote_path
     sys.stdout.write('%s -> s3://%s/%s: ' % (local_path, bucket.name, key.key))
     sys.stdout.flush()
     key.set_contents_from_file(f, cb=upload_callback, num_cb=10)
