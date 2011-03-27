@@ -1,6 +1,36 @@
 import datetime
+import StringIO
+
+import boto.s3
+
+import sirc.util.s3
 
 
+
+def open_log(path, mode):
+  if path.startswith('s3://'):
+    return open_log_from_s3(path, mode)
+  else:
+    return open(path, mode)
+
+
+def open_log_from_s3(path, mode):
+  if 'r' in mode:
+    return open_read_only_log_from_s3(path)
+  else:
+    return open_writeable_log_from_s3(path)
+
+
+def open_read_only_log_from_s3(path):
+  bucket, s3_path = sirc.util.s3.parse_s3_url(path)
+  bucket = sirc.util.s3.get_s3_bucket(bucket)
+  key = boto.s3.key.Key(bucket)
+  key.key = s3_path
+  log_data = sirc.log.metadata_from_s3path(s3_path)
+  log_contents = key.get_contents_as_string()
+  log_file = StringIO.StringIO(log_contents)
+  return log_file
+  
 class Metadata():
   def __init__(self, server, channel, date, path=''):
     self.path = path
