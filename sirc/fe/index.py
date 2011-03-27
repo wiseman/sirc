@@ -191,7 +191,7 @@ def get_query_results(query_string, start, num_results):
   import datetime
 
   query_event = record_query('q=%s, start=%s' % (query_string, start))
-  
+
   url = SEARCH_SERVER_URL % (urllib.quote_plus(query_string),
                              start,
                              num_results)
