@@ -1,4 +1,6 @@
 from __future__ import with_statement
+import re
+
 import boto.s3.key
 
 
@@ -31,6 +33,18 @@ def translate_from_s3_path(s3_path):
 def split_s3_path(s3_path):
   path = translate_from_s3_path(s3_path)
   return [p for p in path.split('/') if len(p) > 0]
+
+
+PATTERN_CHARS_RE = re.compile(r'\[\|\?|\*')
+
+
+def glob_s3_path(bucket, s3_path):
+  if not PATTERN_CHARS_RE.match(s3_path):
+    return [s3_path]
+  else:
+    keys = bucket.get_all_keys()
+    regex = fnmatch.translate(s3_path)
+    return [k.name for k in keys if regex.match(k.name)]
 
 
 def mkdir(bucket, logical_path):
@@ -87,5 +101,3 @@ def get_s3_bucket(bucket_name):
   else:
     bucket = g_buckets[bucket]
   return bucket
-
-

@@ -6,7 +6,6 @@ import boto.s3
 import sirc.util.s3
 
 
-
 def open_log(path, mode):
   if path.startswith('s3://'):
     return open_log_from_s3(path, mode)
@@ -30,7 +29,8 @@ def open_read_only_log_from_s3(path):
   log_contents = key.get_contents_as_string()
   log_file = StringIO.StringIO(log_contents)
   return log_file
-  
+
+
 class Metadata():
   def __init__(self, server, channel, date, path=''):
     self.path = path
