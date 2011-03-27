@@ -50,9 +50,9 @@ def find_urls(text, start=0):
 def run_tests():
   import pprint
   s = """11:11:10 I have just read about google art project ( """ + \
-      """http://www.googleartproject.com/ ) and the first thing that has """ + \
-      """come to my mind is Paul Graham's failed startup called Artix ( """ + \
-      """http://www.paulgraham.com/bronze.html ) :)"""
+      """http://www.googleartproject.com/ ) and the first thing that """ + \
+      """ has come to my mind is Paul Graham's failed startup called """ + \
+      """Artix ( http://www.paulgraham.com/bronze.html ) :)"""
   url_spans = find_urls(s)
   pprint.pprint(find_urls(s))
   for span in url_spans:
