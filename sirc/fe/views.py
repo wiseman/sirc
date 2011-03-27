@@ -23,7 +23,7 @@ from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
 
 import sirc.fe.index
-import sirc.fe.urlfinder
+import sirc.util.urlfinder
 import sirc.fe.logrender
 import sirc.log
 
@@ -189,31 +189,11 @@ def create_pagination_html(url, query, start, total):
   return page_str
 
 
-def markup_urls(text):
-  def escape(s):
-    return cgi.escape(s, quote=True)
-
-  url_spans = sirc.fe.urlfinder.find_urls(text)
-  if len(url_spans) == 0:
-    return escape(text)
-
-  import StringIO
-  result = StringIO.StringIO()
-  start = 0
-  for url_start, url_end in sirc.fe.urlfinder.find_urls(text):
-    result.write(escape(text[start:url_start]))
-    url = escape(text[url_start:url_end])
-    result.write('<a href="%s">%s</a>' % (url, url))
-    start = url_end
-  result.write(escape(text[start:]))
-  return result.getvalue()
-
-
 def prepare_results_for_display(records):
   results = []
 
   for r in records:
-    r['text'] = markup_urls(r['text'])
+    r['text'] = sirc.util.urlfinder.markup_urls(r['text'])
 
   current_date = None
   previous_timestamp = None

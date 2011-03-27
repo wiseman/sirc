@@ -1,4 +1,6 @@
 import string
+import cgi
+
 
 g_url_prefixes = ["http", "ftp", "https", "telnet", "gopher", "file"]
 
@@ -45,6 +47,26 @@ def find_urls(text, start=0):
     start = indices[1]
     indices = find_url(text, start)
   return url_indices
+
+
+def markup_urls(text):
+  def escape(s):
+    return cgi.escape(s, quote=True)
+
+  url_spans = find_urls(text)
+  if len(url_spans) == 0:
+    return escape(text)
+
+  import StringIO
+  result = StringIO.StringIO()
+  start = 0
+  for url_start, url_end in url_spans:
+    result.write(escape(text[start:url_start]))
+    url = escape(text[url_start:url_end])
+    result.write('<a href="%s">%s</a>' % (url, url))
+    start = url_end
+  result.write(escape(text[start:]))
+  return result.getvalue()
 
 
 def run_tests():

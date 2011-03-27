@@ -21,6 +21,10 @@ LOG_TIMESTAMP_HEADER_RE = re.compile(r'.*log: started (.+)/([0-9\.]+)')
 LOG_LINE_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+) <(\w+)> ?(.*)', re.UNICODE)
 
 
+class LogParseException(Exception):
+  pass
+
+
 def _error(msg):
   sys.stdout.flush()
   sys.stderr.write('%s\n' % (msg,))
@@ -44,13 +48,19 @@ def is_already_indexed(solr_url, log_data):
   return len(response) > 0
 
 
-def index_files(solr_url, paths, force=False):
+def index_files(solr_url, paths, force=False, ignore_errors=False):
   for path in paths:
-    log_data = sirc.log.parse_log_path(path)
-    if force or not is_already_indexed(solr_url, log_data):
-      index_file(solr_url, path)
-    else:
-      print 'Skipping %s' % (path,)
+    try:
+      log_data = sirc.log.parse_log_path(path)
+      if force or not is_already_indexed(solr_url, log_data):
+        index_file(solr_url, path)
+      else:
+        print 'Skipping %s' % (path,)
+    except LogParseException, e:
+      if not ignore_errors:
+        raise
+      else:
+        logging.error(e)
   quartiles()
 
 
@@ -87,8 +97,8 @@ def index_records_for_fp(log_data, fp):
   first_line = fp.readline()
   match = LOG_TIMESTAMP_HEADER_RE.match(first_line)
   if not match:
-    raise Exception('Unable to parse log header %s: %r' % \
-                    (log_data.path, first_line))
+    raise LogParseException('Unable to parse log header %s: %r' % \
+                            (log_data.path, first_line))
   assert log_data.channel == match.groups()[0]
 
   position = fp.tell()
@@ -224,6 +234,13 @@ def main(args):
     default=False,
     help='Indexes the file even if it has already been indexed ' + \
     '(default is %default).')
+  parser.add_option(
+    '-i',
+    '--ignore-log-parse-errors',
+    dest='ignore_log_parse_errors',
+    action='store_true',
+    default=False,
+    help='Ignore log parsing errors (default is %default).')
   (options, args) = parser.parse_args()
 
   logging.basicConfig(level=logging.INFO)
@@ -232,7 +249,8 @@ def main(args):
     return 1
   solr_url = args[0]
   files = args[1:]
-  index_files(solr_url, files, force=options.force)
+  index_files(solr_url, files, force=options.force,
+              ignore_errors=options.ignore_log_parse_errors)
 
 
 if __name__ == '__main__':
