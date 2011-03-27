@@ -4,6 +4,7 @@ import StringIO
 import re
 
 import sirc.log
+import sirc.util.urlfinder
 
 
 MSG_LINE_TEMPLATE = string.Template(
@@ -62,7 +63,7 @@ def render_msg_line(line_num, timestamp, user, message):
   #logging.info('BINGO')
   time_str = cgi.escape(timestamp)
   user_str = cgi.escape(user)
-  message_str = cgi.escape(message)
+  message_str = sirc.util.urlfinder.markup_urls(message)
   return MSG_LINE_TEMPLATE.substitute(line_num='%05d' % (line_num,),
                                       user=user_str,
                                       message=message_str,
