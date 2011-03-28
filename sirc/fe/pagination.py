@@ -89,7 +89,7 @@ def get_pagination(adjacents,
                                                     counter,
                                                     extra,
                                                     counter))
-  if page < counter - 1:
+  if page < last_page:
     pw(u'<a href="%s?page=%s%s">next \u00BB</a>' % (script_name,
                                                     next,
                                                     extra))
