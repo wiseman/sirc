@@ -25,6 +25,7 @@ from google.appengine.ext.webapp import blobstore_handlers
 import sirc.fe.index
 import sirc.util.urlfinder
 import sirc.fe.logrender
+import sirc.fe.pagination
 import sirc.log
 
 
@@ -69,34 +70,37 @@ class Search(webapp.RequestHandler):
   def get(self):
     values = {}
     query = self.request.get('q')
-    start = self.request.get('start')
+    page = self.request.get('page')
 
-    if start and len(start) > 0:
+    if page and len(page) > 0:
       try:
-        start = int(start)
+        page = int(page)
       except:
-        logging.error('Unable to parse start=%r' % (start,))
-        start = 0
+        logging.error('Unable to parse page=%r' % (page,))
+        page = 1
     else:
-      start = 0
+      page = 1
 
     values['css_file'] = 'main.css'
     values['has_results'] = False
     if len(query) > 0:
       values['query'] = query
       values['css_file'] = 'mainq.css'
-      response = sirc.fe.index.get_query_results(query, start, PAGE_SIZE)
+      response = sirc.fe.index.get_query_results(query, (page - 1) * 20, PAGE_SIZE)
       records = response['docs']
       if len(records) > 0:
         results = prepare_results_for_display(records)
-        paging_html = create_pagination_html(self.request.path,
-                                             query,
-                                             start,
-                                             response['numFound'])
+        paging_html = sirc.fe.pagination.get_pagination(
+          adjacents=5,
+          limit=20,
+          page=page,
+          total_items=response['numFound'],
+          script_name=self.request.path,
+          extra='&q=%s' % (cgi.escape(query),))
         total_ms = int(response['query_time'] * 1000)
         result_html = render_template(
-          'serp.html', {'start': start + 1,
-                        'end': start + len(results),
+          'serp.html', {'start': (page - 1) * 20 + 1,
+                        'end': (page - 1) * 20 + len(results),
                         'total': response['numFound'],
                         'results': results,
                         'total_time': '%s' % (total_ms,),
