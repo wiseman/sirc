@@ -14,9 +14,10 @@ def get_pagination(adjacents,
   lpm1 = last_page - 1
 
   p = StringIO.StringIO()
+
   def pw(s):
     p.write(s)
-    
+
   counter = 0
   if last_page > 1:
     pw(u'<div class="pagination">')
@@ -96,7 +97,3 @@ def get_pagination(adjacents,
     pw(u'<span class="pagination_disabled">next \u00BB</span>')
   pw(u'</div>\n')
   return unicode(p.getvalue())
-
-
-        
-      
