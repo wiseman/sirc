@@ -84,7 +84,9 @@ class Search(webapp.RequestHandler):
     if len(query) > 0:
       values['query'] = query
       values['css_file'] = 'mainq.css'
-      response = sirc.fe.index.get_query_results(query, (page - 1) * PAGE_SIZE, PAGE_SIZE)
+      response = sirc.fe.index.get_query_results(query,
+                                                 (page - 1) * PAGE_SIZE,
+                                                 PAGE_SIZE)
       records = response['docs']
       if len(records) > 0:
         results = prepare_results_for_display(records)
