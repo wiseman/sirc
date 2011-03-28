@@ -51,8 +51,6 @@ class Browse(webapp.RequestHandler):
                                  channel=channel_str,
                                  date=log_date)
     key = sirc.log.encode_id(log_data)
-    logging.info('Browsing %s, key=%s', log_data, key)
-    logging.info('%s', self.response.headers)
     log = sirc.fe.logrender.render_from_key(key)
     fetch_time = time.time()
     self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
@@ -86,21 +84,21 @@ class Search(webapp.RequestHandler):
     if len(query) > 0:
       values['query'] = query
       values['css_file'] = 'mainq.css'
-      response = sirc.fe.index.get_query_results(query, (page - 1) * 20, PAGE_SIZE)
+      response = sirc.fe.index.get_query_results(query, (page - 1) * PAGE_SIZE, PAGE_SIZE)
       records = response['docs']
       if len(records) > 0:
         results = prepare_results_for_display(records)
         paging_html = sirc.fe.pagination.get_pagination(
           adjacents=5,
-          limit=20,
+          limit=PAGE_SIZE,
           page=page,
           total_items=response['numFound'],
           script_name=self.request.path,
           extra='&q=%s' % (cgi.escape(query),))
         total_ms = int(response['query_time'] * 1000)
         result_html = render_template(
-          'serp.html', {'start': (page - 1) * 20 + 1,
-                        'end': (page - 1) * 20 + len(results),
+          'serp.html', {'start': (page - 1) * PAGE_SIZE + 1,
+                        'end': (page - 1) * PAGE_SIZE + len(results),
                         'total': response['numFound'],
                         'results': results,
                         'total_time': '%s' % (total_ms,),
