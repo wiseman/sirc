@@ -2,6 +2,7 @@ import string
 import cgi
 import StringIO
 import re
+import logging
 
 import sirc.log
 import sirc.util.urlfinder
@@ -38,6 +39,7 @@ def render_line(line_num, line):
     #logging.info('Checking %s against %s', regex, line[0:20])
     match = regex.match(line)
     if match:
+      logging.info(match.groups()[1])
       return g_line_renderers[regex](line_num, *match.groups())
   #logging.info('no match')
   return render_default_line(line_num, line)
@@ -71,7 +73,7 @@ def render_msg_line(line_num, timestamp, user, message):
 
 
 register_line_renderer(
-  regex=re.compile(r'([0-9]+:[0-9]+:[0-9]+) <(\w+)> ?(.*)', re.UNICODE),
+  regex=re.compile(r'([0-9]+:[0-9]+:[0-9]+) <([^>]+)> ?(.*)', re.UNICODE),
   function=render_msg_line)
 
 
