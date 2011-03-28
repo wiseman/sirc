@@ -23,7 +23,7 @@ def find_url_end(text, start):
   index of the first non-URL character.
   """
   for i in range(start, len(text)):
-    if text[i] == ">" or text[i] in string.whitespace:
+    if text[i] == ">" or text[i] == ')' or text[i] in string.whitespace:
       return i
   return len(text)
 
