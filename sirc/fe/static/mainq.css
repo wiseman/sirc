@@ -107,6 +107,14 @@ td.serpdate {
     margin-top: 1cm;
 }
 
+.pagination_disabled {
+    color: #666666;
+}
+
+.pagination_current {
+    font-weight: bold;
+}
+
 .smallstats {
     color: #999999;
 }

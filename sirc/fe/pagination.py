@@ -1,5 +1,6 @@
 import math
 import StringIO
+import logging
 
 
 def get_pagination(adjacents,
@@ -10,9 +11,8 @@ def get_pagination(adjacents,
                    extra):
   prev = page - 1
   next = page + 1
-  last_page = int(math.ceil(total_items / limit))
+  last_page = int(math.ceil(float(total_items) / limit))
   lpm1 = last_page - 1
-
   p = StringIO.StringIO()
 
   def pw(s):
