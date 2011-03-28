@@ -54,6 +54,7 @@ class Browse(webapp.RequestHandler):
     logging.info('%s', self.response.headers)
     log = sirc.fe.logrender.render_from_key(key)
     fetch_time = time.time()
+    self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
     self.response.out.write(log)
     end_time = time.time()
     logging.info('total=%s ms, fetch=%s ms',
