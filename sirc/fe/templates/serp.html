@@ -9,10 +9,10 @@ Showing {{ start }}-{{ end }} of {{ total }} hits.
 <tr class="serpdaterow"><td class="serpdate" colspan="4">{{ date.grouper|date:"N j, Y" }}</tr>
 {% for result in date.list %}
 <tr class="serprow">
-<td valign="top" class="serpchannel">#{{ result.record.channel|escape }}</td>
-<td valign="top" class="serptime"><a href="{{result.record.log_url}}">{{ result.record.timestamp|date:"H:i:s" }}</a></td>
-<td valign="top" class="serpuser">&lt;{{ result.record.user|escape }}&gt;</td>
-<td valign="top" class="serptext">{{ result.record.text }}</td>
+<td class="serpchannel">#{{ result.record.channel|escape }}</td>
+<td class="serptime"><a href="{{result.record.log_url}}">{{ result.record.timestamp|date:"H:i:s" }}</a></td>
+<td class="serpuser">&lt;{{ result.record.user|escape }}&gt;</td>
+<td class="serptext">{{ result.record.text }}</td>
 </tr>
 {% for msg in result.record.context %}
 <tr>
