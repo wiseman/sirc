@@ -133,7 +133,7 @@ def create_pagination_html(url, query, start, total):
   base_url = '%s?q=%s' % (url, urllib.quote_plus(query))
 
   def make_url(start):
-    return '%s&start=%s' % (base_url, start)
+    return cgi.escape('%s&start=%s' % (base_url, start))
 
   pages = []
   for offset in range(0, total, PAGE_SIZE):
