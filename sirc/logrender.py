@@ -8,20 +8,20 @@ import sirc.util.urlfinder
 
 
 MSG_LINE_TEMPLATE = string.Template(
-  '<tr>' +
-  '<td class="time"><a name="$line_num">$time</a></td>' +
-  '<td class="nick">' +
+  '<tr class="serprow">' +
+  '<td class="serptime"><a id="$line_num">$time</a></td>' +
+  '<td class="serpuser">' +
   '<span class="brack">&lt;</span>' +
-  '<span class="source">$user</span>' +
+  '<span>$user</span>' +
   '<span class="brack">&gt;</span>' +
   '</td>' + \
-  '<td class="msg">$message</td>' + \
+  '<td class="serptext">$message</td>' + \
   '</tr>\n')
 
 UNKNOWN_LINE_TEMPLATE = string.Template(
-  '<tr>' + \
-  '<td class="time"><a name="$line_num">$time</a></td>' + \
-  '<td colspan="2" class="unknown">$line</td>' + \
+  '<tr class="serprow">' + \
+  '<td class="serptime"><a id="$line_num">$time</a></td>' + \
+  '<td colspan="2" class="serptext">$line</td>' + \
   '</tr>\n')
 
 g_line_renderers = {}
@@ -75,15 +75,34 @@ register_line_renderer(
   function=render_msg_line)
 
 
+LOG_PROLOGUE = """<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>woo</title>
+<link href="/static/mainq.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-137136-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+<table>
+"""
+
 def render_log(text):
   in_buffer = StringIO.StringIO(text)
   out_buffer = StringIO.StringIO()
-  out_buffer.write('<html>\n')
-  out_buffer.write('<head>\n')
-  out_buffer.write('<title>woo</title>\n')
-  out_buffer.write('</head>\n')
-  out_buffer.write('<body>\n')
-  out_buffer.write('<table>\n')
+  out_buffer.write(LOG_PROLOGUE)
   for line_num, line in enumerate(in_buffer):
     out_buffer.write(render_line(line_num, line[0:-1]))
   out_buffer.write('</table>\n')
