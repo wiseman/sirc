@@ -77,11 +77,11 @@ register_line_renderer(
   function=render_msg_line)
 
 
-LOG_PROLOGUE = """<!DOCTYPE HTML>
+LOG_PROLOGUE_TEMPLATE = """<!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-<title>woo</title>
+<title>$title</title>
 <link href="/static/mainq.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 
@@ -101,14 +101,25 @@ LOG_PROLOGUE = """<!DOCTYPE HTML>
 </script>
 </head>
 <body>
+<h1>$heading</h1>
 <table>
 """
 
 
-def render_log(text):
+def render_log(log_data, text):
+  date_str = '%02d-%02d-%02d' % (log_data.date.year,
+                                 log_data.date.month,
+                                 log_data.date.day)
+  title = 'SIRC > %s > %s' % (log_data.channel, date_str)
+  heading = '%s > %s' % (log_data.channel, date_str)
   in_buffer = StringIO.StringIO(text)
   out_buffer = StringIO.StringIO()
-  out_buffer.write(LOG_PROLOGUE)
+  prologue_template = string.Template(LOG_PROLOGUE_TEMPLATE)
+  prologue = prologue_template.substitute({
+      'title': cgi.escape(title),
+      'heading': cgi.escape(heading)
+      })
+  out_buffer.write(prologue)
   for line_num, line in enumerate(in_buffer):
     out_buffer.write(render_line(line_num, line[0:-1]))
   out_buffer.write('</table>\n')

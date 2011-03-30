@@ -31,12 +31,12 @@ def fetch_from_key(key):
 
 
 def render_from_key(key):
-  cached_data = memcache.get(key)
-  if cached_data:
-    return cached_data
+  cached_html = memcache.get(key)
+  if cached_html:
+    return cached_html
 
   data = fetch_from_key(key)
-  data = sirc.logrender.render_log(data)
+  html = sirc.logrender.render_log(sirc.log.decode_id(key)[0], data)
 
-  memcache.set(key, data, time=60)
-  return data
+  memcache.set(key, html, time=60)
+  return html
