@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 from __future__ import with_statement
+import optparse
 import os
 import sys
 import time
-import optparse
 
 import boto
 
@@ -14,10 +14,6 @@ import sirc.log
 def _error(msg):
   sys.stdout.flush()
   sys.stderr.write('%s\n' % (msg,))
-
-
-def _usage():
-  _error('Usage: %s <logpath> [<logpath>...]' % (sys.argv[0],))
 
 
 ############################################################
@@ -33,6 +29,7 @@ def main(argv):
     '-f',
     '--force',
     dest='force',
+    action='store_true',
     default=False,
     help='Uploads the file even if it already exists (default is %default).')
   (options, args) = parser.parse_args()
