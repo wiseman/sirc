@@ -6,6 +6,7 @@ import sys
 import time
 
 import boto
+import ircloglib
 
 import sirc.util.s3
 import sirc.log
@@ -54,11 +55,12 @@ def upload_callback(bytes_sent, bytes_left):
 def upload_log_file(bucket, local_path, force=False):
   start_time = time.time()
   with open(local_path, 'rb') as f:
-    log_data = sirc.log.metadata_from_logpath(local_path)
+    log_data = ircloglib.parse_header(f.readline())
+    f.seek(0)
     remote_path = 'rawlogs/%s/%s/%02d.%02d' % (log_data.channel,
-                                               log_data.date.year,
-                                               log_data.date.month,
-                                               log_data.date.day)
+                                               log_data.start_time.year,
+                                               log_data.start_time.month,
+                                               log_data.start_time.day)
     if not (force or
             len(sirc.util.s3.cached_glob_s3_path(bucket, remote_path)) == 0):
       print 'Skipping %s' % (local_path,)

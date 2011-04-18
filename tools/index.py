@@ -10,6 +10,7 @@ import unicodedata
 import optparse
 
 import boto
+import ircloglib
 
 import sirc.util.s3
 import sirc.log
@@ -84,7 +85,8 @@ def index_s3_file(solr_url, path):
 
 def index_local_file(solr_url, path):
   with open(path, 'rb') as f:
-    log_data = sirc.log.metadata_from_logpath(path)
+    log_data = ircloglib.parse_header(f.readline())
+    f.seek(0)
     index_fp(solr_url, log_data, f)
 
 
@@ -95,12 +97,7 @@ def index_fp(solr_url, log_data, fp):
 def index_records_for_fp(log_data, fp):
   print 'Indexing %s' % (log_data,)
   first_line = fp.readline()
-  match = LOG_TIMESTAMP_HEADER_RE.match(first_line)
-  if not match:
-    raise LogParseException('Unable to parse log header %s: %r' % \
-                            (log_data.path, first_line))
-  assert log_data.channel == match.groups()[0]
-
+  log_data = ircloglib.parse_header(first_line)
   position = fp.tell()
   line_num = 0
   line = fp.readline()
@@ -153,9 +150,9 @@ def index_record_for_line(log_data, line, line_num, position):
     who = cgi.escape(recode(who))
     message = recode(message)
     message = cgi.escape(message)
-    date_str = '%s-%02d-%02d' % (log_data.date.year,
-                                 log_data.date.month,
-                                 log_data.date.day)
+    date_str = '%s-%02d-%02d' % (log_data.start_time.year,
+                                 log_data.start_time.month,
+                                 log_data.start_time.day)
     timestamp = '%sT%sZ' % (date_str, timestamp,)
     id = get_log_id(log_data, line_num)
     return {
