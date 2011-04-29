@@ -16,9 +16,9 @@ from sirc.util import s3
 def fetch_from_key(key):
   (log_data, suffix) = sirc.log.decode_id(key)
   s3path = 'rawlogs/%s/%s/%02d.%02d' % (log_data.channel,
-                                        log_data.date.year,
-                                        log_data.date.month,
-                                        log_data.date.day)
+                                        log_data.start_time.year,
+                                        log_data.start_time.month,
+                                        log_data.start_time.day)
   credentials = s3.get_credentials()
   conn = boto.connect_s3(credentials.access_key, credentials.secret,
                          debug=0)

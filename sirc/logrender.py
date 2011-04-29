@@ -108,9 +108,9 @@ LOG_PROLOGUE_TEMPLATE = """<!DOCTYPE HTML>
 
 
 def render_log(log_data, text):
-  date_str = '%02d-%02d-%02d' % (log_data.date.year,
-                                 log_data.date.month,
-                                 log_data.date.day)
+  date_str = '%02d-%02d-%02d' % (log_data.start_time.year,
+                                 log_data.start_time.month,
+                                 log_data.start_time.day)
   title = 'SIRC > %s > %s' % (log_data.channel, date_str)
   heading = '%s > %s' % (log_data.channel, date_str)
   in_buffer = StringIO.StringIO(text)
