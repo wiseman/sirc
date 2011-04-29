@@ -52,10 +52,10 @@ def get_pagination(adjacents,
                                                lpm1,
                                                extra,
                                                lpm1))
-        pw('<a href="%spage=%s%s">%s</a> ' % (script_name,
-                                              last_page,
-                                              extra,
-                                              last_page))
+        pw('<a href="%s?page=%s%s">%s</a> ' % (script_name,
+                                               last_page,
+                                               extra,
+                                               last_page))
       elif last_page - (adjacents * 2) > page and page > (adjacents * 2):
         pw('<a href="%s?page=1%s">1</a> ' % (script_name, extra))
         pw('<a href="%s?page=2%s">2</a> ' % (script_name, extra))
