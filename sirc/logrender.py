@@ -19,6 +19,12 @@ MSG_LINE_TEMPLATE = string.Template(
   '<td class="serptext">$message</td>' + \
   '</tr>\n')
 
+ACTION_LINE_TEMPLATE = string.Template(
+  '<tr class="serprow serpaction" id="$line_num">' +
+  '<td class="serptime"><a href="#$line_num">$time</a></td>' +
+  '<td colspan="2" class="serptext">$action</td>' + \
+  '</tr>\n')
+
 UNKNOWN_LINE_TEMPLATE = string.Template(
   '<tr class="serprow serpunk" id="$line_num">' + \
   '<td class="serptime"><a href="#$line_num">$time</a></td>' + \
@@ -61,7 +67,6 @@ def render_default_line(context, line_num, line):
 
 
 def render_msg_line(context, line_num, timestamp, user, message):
-  #logging.info('BINGO')
   context.nicks[user] = True
   time_str = cgi.escape(timestamp)
   user_str = cgi.escape(user)
@@ -75,6 +80,19 @@ def render_msg_line(context, line_num, timestamp, user, message):
 register_line_renderer(
   regex=re.compile(r'([0-9]+:[0-9]+:[0-9]+) <([^>]+)> ?(.*)', re.UNICODE),
   function=render_msg_line)
+
+
+def render_action_line(context, line_num, timestamp, action):
+  time_str = cgi.escape(timestamp)
+  action_str = sirc.util.urlfinder.markup_urls(action)
+  return ACTION_LINE_TEMPLATE.substitute(line_num='%05d' % (line_num,),
+                                         time=time_str,
+                                         action=action_str)
+
+
+register_line_renderer(
+  regex=re.compile(r'([0-9]+:[0-9]+:[0-9]+) (\* .*)', re.UNICODE),
+  function=render_action_line)
 
 
 LOG_PROLOGUE_TEMPLATE = """<!DOCTYPE HTML>
