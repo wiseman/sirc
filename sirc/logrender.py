@@ -33,21 +33,21 @@ def register_line_renderer(regex, function):
   g_line_renderers[regex] = function
 
 
-def render_line(line_num, line):
+def render_line(context, line_num, line):
   global g_line_renderers
   for regex in g_line_renderers:
     #logging.info('Checking %s against %s', regex, line[0:20])
     match = regex.match(line)
     if match:
-      return g_line_renderers[regex](line_num, *match.groups())
+      return g_line_renderers[regex](context, line_num, *match.groups())
   #logging.info('no match')
-  return render_default_line(line_num, line)
+  return render_default_line(context, line_num, line)
 
 
 DEFAULT_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+)(.*)', re.UNICODE)
 
 
-def render_default_line(line_num, line):
+def render_default_line(context, line_num, line):
   match = DEFAULT_RE.match(line)
   if not match:
     return '<tr><td></td><td colspan="2">Unknown line: %s</td></tr>\n' % \
@@ -60,8 +60,9 @@ def render_default_line(line_num, line):
                                             line=cgi.escape(remaining_str))
 
 
-def render_msg_line(line_num, timestamp, user, message):
+def render_msg_line(context, line_num, timestamp, user, message):
   #logging.info('BINGO')
+  context.nicks[user] = True
   time_str = cgi.escape(timestamp)
   user_str = cgi.escape(user)
   message_str = sirc.util.urlfinder.markup_urls(message)
@@ -106,6 +107,11 @@ LOG_PROLOGUE_TEMPLATE = """<!DOCTYPE HTML>
 """
 
 
+class RenderingContext:
+  def __init__(self):
+    self.nicks = {}
+    
+
 def render_log(log_data, text):
   date_str = '%02d-%02d-%02d' % (log_data.start_time.year,
                                  log_data.start_time.month,
@@ -120,8 +126,10 @@ def render_log(log_data, text):
       'heading': cgi.escape(heading)
       })
   out_buffer.write(prologue)
+  context = RenderingContext()
   for line_num, line in enumerate(in_buffer):
-    out_buffer.write(render_line(line_num, line[0:-1]))
+    out_buffer.write(render_line(context, line_num, line[0:-1]))
+  logging.info('num_nicks=%s', len(context.nicks))
   out_buffer.write('</table>\n')
   out_buffer.write('</body>\n')
   out_buffer.write('</html>\n')
