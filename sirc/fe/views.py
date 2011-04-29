@@ -49,9 +49,9 @@ class Browse(webapp.RequestHandler):
     month = int(month_str)
     day = int(day_str)
     log_date = datetime.date(year=year, month=month, day=day)
-    log_data = ircloglib..Metadata(server='freenode',
-                                   channel=channel_str,
-                                   start_time=log_date)
+    log_data = ircloglib.Metadata(server='freenode',
+                                  channel=channel_str,
+                                  start_time=log_date)
     key = sirc.log.encode_id(log_data)
     log = sirc.fe.logrender.render_from_key(key)
     fetch_time = time.time()
