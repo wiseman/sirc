@@ -56,7 +56,8 @@ def index_files(solr_url, paths, force=False, ignore_errors=False):
       if force or not is_already_indexed(solr_url, log_data):
         index_file(solr_url, path)
       else:
-        print 'Skipping %s' % (path,)
+        #print 'Skipping %s' % (path,)
+        pass
     except LogParseException, e:
       if not ignore_errors:
         raise
@@ -91,7 +92,8 @@ def index_local_file(solr_url, path):
 
 
 def index_fp(solr_url, log_data, fp):
-  post_records(solr_url, list(index_records_for_fp(log_data, fp)))
+  records = list(index_records_for_fp(log_data, fp))
+  post_records(solr_url, records)
 
 
 def index_records_for_fp(log_data, fp):
@@ -124,6 +126,8 @@ def get_solr_connection(solr_url):
 
 
 def post_records(solr_url, index_records):
+  if len(index_records) == 0:
+    return
   start_time = time.time()
   conn = get_solr_connection(solr_url)
   #  for i in index_records:

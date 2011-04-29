@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from __future__ import with_statement
+import datetime
 import optparse
 import os
 import sys
@@ -7,6 +8,7 @@ import time
 
 import boto
 import ircloglib
+import pytz
 
 import sirc.util.s3
 import sirc.log
@@ -61,11 +63,15 @@ def upload_log_file(bucket, local_path, force=False):
                                                log_data.start_time.year,
                                                log_data.start_time.month,
                                                log_data.start_time.day)
-    if not (force or
-            len(sirc.util.s3.cached_glob_s3_path(bucket, remote_path)) == 0):
-      print 'Skipping %s' % (local_path,)
-      return
-
+    
+    if not force:
+      if sirc.util.s3.key_exists(bucket, remote_path):
+        remote_timestamp = sirc.util.s3.cached_get_mtime(bucket, remote_path)
+        local_timestamp = file_mtime(local_path)
+        #print 'remote=%s, local=%s %s' % (remote_timestamp, local_timestamp, local_path)
+        if sirc.util.s3.cached_get_mtime(bucket, remote_path) >= file_mtime(local_path):
+          #print 'Skipping %s' % (local_path,)
+          return
     key = boto.s3.key.Key(bucket)
     key.key = remote_path
     sys.stdout.write('%s -> s3://%s/%s: ' % (local_path, bucket.name, key.key))
@@ -76,6 +82,12 @@ def upload_log_file(bucket, local_path, force=False):
   sys.stdout.write(' %.1f KB/s\n' % \
                    ((file_size / 1024) / (end_time - start_time),))
 
+
+def file_mtime(path):
+  mtime = os.stat(path).st_mtime
+  mtime = datetime.datetime.fromtimestamp(mtime, tz=pytz.utc)
+  return mtime
+  
 
 if __name__ == '__main__':
   main(sys.argv)
