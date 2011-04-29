@@ -9,8 +9,8 @@ import sirc.util.urlfinder
 
 
 MSG_LINE_TEMPLATE = string.Template(
-  '<tr class="serprow">' +
-  '<td class="serptime"><a id="$line_num">$time</a></td>' +
+  '<tr class="serprow serpmsg" id="$line_num">' +
+  '<td class="serptime"><a href="#$line_num">$time</a></td>' +
   '<td class="serpuser">' +
   '<span class="brack">&lt;</span>' +
   '<span>$user</span>' +
@@ -20,8 +20,8 @@ MSG_LINE_TEMPLATE = string.Template(
   '</tr>\n')
 
 UNKNOWN_LINE_TEMPLATE = string.Template(
-  '<tr class="serprow">' + \
-  '<td class="serptime"><a id="$line_num">$time</a></td>' + \
+  '<tr class="serprow serpunk" id="$line_num">' + \
+  '<td class="serptime"><a href="#$line_num">$time</a></td>' + \
   '<td colspan="2" class="serptext">$line</td>' + \
   '</tr>\n')
 
@@ -39,7 +39,6 @@ def render_line(line_num, line):
     #logging.info('Checking %s against %s', regex, line[0:20])
     match = regex.match(line)
     if match:
-      logging.info(match.groups()[1])
       return g_line_renderers[regex](line_num, *match.groups())
   #logging.info('no match')
   return render_default_line(line_num, line)
