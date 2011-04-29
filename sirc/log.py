@@ -55,8 +55,8 @@ def metadata_from_s3path(s3path):
   month_str = date_piece[0:2]
   day_str = date_piece[3:5]
   date = datetime.date(int(year_str), int(month_str), int(day_str))
-  return Metadata(path=s3path, server=server_str, channel=channel_str,
-                  date=date)
+  return ircloglib.Metadata(path=s3path, server=server_str, channel=channel_str,
+                            start_time=date)
 
 
 S3_PATH_PREFIX = 's3://'
@@ -96,7 +96,10 @@ def decode_id(id):
   date = datetime.date(year=int(pieces[2]),
                        month=int(pieces[3]),
                        day=int(pieces[4]))
-  m = Metadata(path=None, server=pieces[0], channel=pieces[1], date=date)
+  m = ircloglib.Metadata(path=None,
+                         server=pieces[0],
+                         channel=pieces[1],
+                         start_time=date)
   return (m, suffix)
 
 
@@ -107,7 +110,7 @@ def browse_url_for_key(key):
   else:
     suffix = ''
   return '/browse/%s/%s/%02d/%02d%s' % (m.channel,
-                                         m.date.year,
-                                         m.date.month,
-                                         m.date.day,
+                                         m.start_time.year,
+                                         m.start_time.month,
+                                         m.start_time.day,
                                          suffix)
