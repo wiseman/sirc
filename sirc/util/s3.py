@@ -2,6 +2,8 @@ from __future__ import with_statement
 import re
 import fnmatch
 
+import iso8601
+
 import boto.s3.bucketlistresultset
 import boto.s3.key
 
@@ -56,16 +58,39 @@ def glob_s3_path(bucket, s3_path, remote_keys=None):
   return matches
 
 
-g_remote_keys_cache = None
+g_remote_keys_cache = {}
 
 
 def cached_glob_s3_path(bucket, s3_path):
   global g_remote_keys_cache
-  if not g_remote_keys_cache:
-    g_remote_keys_cache = get_all_keys(bucket)
-  remote_keys = g_remote_keys_cache
-  x = glob_s3_path(bucket, s3_path, remote_keys=remote_keys)
+  if not bucket in g_remote_keys_cache:
+    g_remote_keys_cache[bucket] = get_all_keys(bucket)
+  x = glob_s3_path(bucket, s3_path, remote_keys=g_remote_keys_cache[bucket])
   return x
+
+
+def key_exists(bucket, s3_path):
+  return len(cached_glob_s3_path(bucket, s3_path)) > 0
+
+
+def cached_get_mtime(bucket, s3_path):
+  global g_remote_keys_cache
+  if not bucket in g_remote_keys_cache:
+    g_remote_keys_cache[bucket] = get_all_keys(bucket)
+  x = get_mtime(bucket, s3_path, remote_keys=g_remote_keys_cache[bucket])
+  return x
+
+
+def get_mtime(bucket, s3_path, remote_keys=None):
+  if not remote_keys:
+    remote_keys = get_all_keys(bucket)
+  # Linear search duh whatever.
+  for k in remote_keys:
+    if k.name == s3_path:
+      mtime_str = k.last_modified
+      mtime = iso8601.parse_date(mtime_str)
+      return mtime
+  {}[s3_path]
 
 
 def mkdir(bucket, logical_path):
