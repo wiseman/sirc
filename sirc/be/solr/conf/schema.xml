@@ -400,13 +400,21 @@
 
 
 <fields>
-  <field name="id" type="string" indexed="true" stored="true" />
-  <field name="position" type="int" indexed="false" stored="true" />
-  <field name="channel" type="text" indexed="true" stored="true" />
-  <field name="timestamp" type="date" indexed="true" stored="true"/>
-  <field name="user" type="text" indexed="true" stored="true" />
-  <field name="text" type="text" indexed="true" stored="true" />
+  
+  <!-- LOGs and LOG LINEs both have ids. -->
+  <field name="id" type="string" indexed="true" stored="true" multiValued="false"/>
 
+  <!-- LOG records record just the time of indexing. -->
+  <field name="index_time" type="date" indexed="true" stored="true" />
+
+  <!-- All fields under this line are only present in LOG LINE records. -->
+  <field name="position" type="int" indexed="false" stored="true" />
+  <field name="channel" type="text" indexed="true" stored="true" omitNorms="true"/>
+  <field name="timestamp" type="date" indexed="true" stored="true"/>
+  <field name="user" type="text" indexed="true" stored="true" omitNorms="true"/>
+  <field name="text" type="text" indexed="true" stored="true" omitNorms="true" />
+
+  <!-- Must be multi-valued because we copy two fields into this one. -->
    <field name="searchtext" type="text" indexed="true" stored="false" multiValued="true"/>
 </fields>
   

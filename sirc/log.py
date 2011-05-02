@@ -70,6 +70,18 @@ def parse_log_path(path):
       return ircloglib.parse_header(f.readline())
 
 
+# IDs look like
+#
+#   server/channel/year/month/day[:suffix]
+#
+# IDs of LOGs have no suffix.  Example:
+#
+#   freenode/lisp/2011/04/01
+#
+# IDs of LOG LINEs have a suffix containing the line number.  Example:
+#
+#   freenode/lisp/2011/04/01:00001
+
 def encode_id(log_data, suffix=None):
   assert suffix is None or not ('/' in suffix)
   if isinstance(log_data, ircloglib.Metadata):
