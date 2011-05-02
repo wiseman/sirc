@@ -18,28 +18,6 @@ import mapreduce.context
 import sirc.fe.tokenz
 
 
-class DayLog(db.Model):
-  channel = db.StringProperty(required=True)
-  date = db.DateProperty(required=True)
-  blob = blobstore.BlobReferenceProperty(required=True)
-  md5 = db.StringProperty()
-  indexing_state = db.StringProperty(required=True,
-                                     choices=set(['unindexed',
-                                                  'indexed',
-                                                  'in-progress']))
-  indexing_job_id = db.StringProperty()
-
-
-class LogLineIndex(db.Model):
-  log = db.ReferenceProperty(DayLog)
-  position = db.IntegerProperty()
-  channel = db.StringProperty(required=True)
-  timestamp = db.DateTimeProperty(required=True)
-  terms = db.StringListProperty(required=True)
-  text = db.StringProperty()
-  user = db.StringProperty()
-
-
 class QueryEvent(db.Model):
   timestamp = db.DateTimeProperty(required=True)
   query = db.StringProperty(required=True)
@@ -54,52 +32,11 @@ def record_query(query):
   return qe
 
 
-NUM_INDEXER_SHARDS = 2
-
-
-def start_indexing_log(blob_info):
-  blob_reader = blob_info.open()
-  # The first line of the log should look something like this:
-  # 00:00:00 --- log: started lisp/04.01.01
-  log_header_re = re.compile(r'.*log: started (.+)/([0-9\.]+)')
-  first_line = blob_reader.readline()
-  match = log_header_re.match(first_line)
-  if not match:
-    raise Exception('Unable to parse log header %s: "%s"' % \
-                    (blob_info.key(), first_line))
-  #logging.info('%s' % (match.groups(),))
-  channel = match.groups()[0]
-  date_str = match.groups()[1]
-  #logging.info('date_str=%s, %s' % (date_str, date_str[0:2]))
-  year = 2000 + int(date_str[0:2])
-  month = int(date_str[3:5])
-  day = int(date_str[6:8])
-  log_date = datetime.date(year, month, day)
-
-  log = DayLog(channel=channel,
-               date=log_date,
-               blob=blob_info.key(),
-               md5=blob_hash(blob_info),
-               indexing_state='in-progress')
-  log.put()
-  job_id = mapreduce.control.start_map(
-    'Index log %s' % (blob_info.key()),
-    handler_spec='index.index_log_line',
-    reader_spec='mapreduce.input_readers.BlobstoreLineInputReader',
-    shard_count=NUM_INDEXER_SHARDS,
-    reader_parameters={'blob_keys': str(blob_info.key()),
-                       'log_key': str(log.key())},
-    mapreduce_parameters={'done_callback': '/indexing_did_finish'})
-
-
 LINE_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+) <(\w+)> ?(.*)', re.UNICODE)
 
 
 def parse_log_line(line):
-  match = LINE_RE.match(line)
-  if match:
-    # timestamp, who, text
-    return match.groups()
+  return ircloglib.parse_line(line)
 
 
 def index_log_line(entity):

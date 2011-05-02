@@ -17,15 +17,6 @@ import sirc.log
 import sirc.solr
 
 
-LOG_TIMESTAMP_HEADER_RE = re.compile(r'.*log: started (.+)/([0-9\.]+)')
-
-LOG_LINE_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+) <(\w+)> ?(.*)', re.UNICODE)
-
-
-class LogParseException(Exception):
-  pass
-
-
 def _error(msg):
   sys.stdout.flush()
   sys.stderr.write('%s\n' % (msg,))
@@ -64,6 +55,8 @@ def index_files(solr_url, paths, force=False, ignore_errors=False):
       else:
         logging.error(e)
   quartiles()
+  print 'Optimizing...'
+  get_solr_connection(solr_url).optimize()
 
 
 def index_file(solr_url, path):
@@ -104,7 +97,8 @@ def index_records_for_fp(log_data, fp):
   line_num = 0
   line = fp.readline()
   while line != '':
-    xformed = index_record_for_line(log_data, line, line_num, position)
+    
+    xformed = index_record_for_line(log_data, line, line_num, position, timestamp)
     position = fp.tell()
     line_num += 1
     line = fp.readline()
@@ -147,6 +141,8 @@ def post_records(solr_url, index_records):
                total_ms, commit_ms)
 
 
+LINE_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+)(.*)', re.UNICODE)
+
 def index_record_for_line(log_data, line, line_num, position):
   result = parse_log_line(line)
   if result:
@@ -167,6 +163,14 @@ def index_record_for_line(log_data, line, line_num, position):
       'text': message,
       'position': position
       }
+
+
+def index_record_for_day(log_data, index_time):
+  id = sirc.log.encode_id(log_data)
+  date_str = '%s-%02d-%02d' % (index_time.year,
+                               index_time.month,
+                               log_data.start_time.day)
+  
 
 
 def get_log_id(log_data, line_num):

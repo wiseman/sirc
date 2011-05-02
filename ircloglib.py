@@ -71,6 +71,34 @@ def parse_header(header):
   return m
 
 
+INFO = 'INFO'
+ACTION = 'ACTION'
+MSG = 'MSG'
+
+
+class ParsingError(Exception):
+  pass
+
+
+def parse_line(line):
+  #t_str = line[0:8]
+  offset = line[0:8] #int(t_str[0:2]) * 3600 +  int(t_str[3:5]) * 60 + int(t_str[6:8])
+  rest = line[9:]
+  if rest[0] == '<':
+    user_end = rest.find('>', 1)
+    return (MSG, offset, rest[1:user_end], rest[user_end + 1:])
+  elif rest[0] == '-':
+    return (INFO, offset, rest)
+  elif rest[0] == '*':
+    user_end = rest.find(' ', 1)
+    if user_end == -1:
+      return [ACTION, offset, rest[1:], '']
+    else:
+      return [ACTION, offset, rest[1:user_end], rest[user_end+1:]]
+  else:
+    raise ParsingError('Unable to parse this line: %s (%s)' % (line, rest[1]))
+
+
 def all_logs(dir):
   for server_dir in sorted(glob.glob(os.path.join(dir, '*'))):
     for channel_dir in sorted(glob.glob(os.path.join(server_dir, '*'))):
