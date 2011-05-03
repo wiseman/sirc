@@ -128,7 +128,7 @@ LOG_PROLOGUE_TEMPLATE = """<!DOCTYPE HTML>
 class RenderingContext:
   def __init__(self):
     self.nicks = {}
-    
+
 
 def render_log(log_data, text):
   date_str = '%02d-%02d-%02d' % (log_data.start_time.year,

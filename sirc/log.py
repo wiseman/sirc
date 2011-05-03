@@ -55,7 +55,9 @@ def metadata_from_s3path(s3path):
   month_str = date_piece[0:2]
   day_str = date_piece[3:5]
   date = datetime.date(int(year_str), int(month_str), int(day_str))
-  return ircloglib.Metadata(path=s3path, server=server_str, channel=channel_str,
+  return ircloglib.Metadata(path=s3path,
+                            server=server_str,
+                            channel=channel_str,
                             start_time=date)
 
 

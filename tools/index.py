@@ -108,7 +108,9 @@ def index_records_for_fp(log_data, fp):
   print 'Indexing %s' % (log_data,)
   first_line = fp.readline()
   log_data = ircloglib.parse_header(first_line)
-  r =  index_record_for_day(log_data, datetime.datetime.utcnow().replace(tzinfo=g_utc))
+  r = index_record_for_day(
+    log_data,
+    datetime.datetime.utcnow().replace(tzinfo=g_utc))
   yield r
   position = fp.tell()
   line_num = 0
