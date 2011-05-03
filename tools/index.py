@@ -3,11 +3,12 @@ from __future__ import with_statement
 import sys
 import re
 import cgi
+import datetime
 import logging
+import optparse
 import StringIO
 import time
 import unicodedata
-import optparse
 
 import boto
 import ircloglib
@@ -15,6 +16,24 @@ import ircloglib
 import sirc.util.s3
 import sirc.log
 import sirc.solr
+
+
+class IndexingError:
+  pass
+
+
+class UTC(datetime.tzinfo):
+  def utcoffset(self, dt):
+    return datetime.timedelta(0)
+
+  def tzname(self, dt):
+    return "UTC"
+
+  def dst(self, dt):
+    return datetime.timedelta(0)
+
+
+g_utc = UTC()
 
 
 def _error(msg):
@@ -42,18 +61,12 @@ def is_already_indexed(solr_url, log_data):
 
 def index_files(solr_url, paths, force=False, ignore_errors=False):
   for path in paths:
-    try:
-      log_data = sirc.log.parse_log_path(path)
-      if force or not is_already_indexed(solr_url, log_data):
-        index_file(solr_url, path)
-      else:
-        #print 'Skipping %s' % (path,)
-        pass
-    except LogParseException, e:
-      if not ignore_errors:
-        raise
-      else:
-        logging.error(e)
+    log_data = sirc.log.parse_log_path(path)
+    if force or not is_already_indexed(solr_url, log_data):
+      index_file(solr_url, path)
+    else:
+      #print 'Skipping %s' % (path,)
+      pass
   quartiles()
   print 'Optimizing...'
   get_solr_connection(solr_url).optimize()
@@ -86,6 +99,8 @@ def index_local_file(solr_url, path):
 
 def index_fp(solr_url, log_data, fp):
   records = list(index_records_for_fp(log_data, fp))
+  if len(records) > 0:
+    print records[0]
   post_records(solr_url, records)
 
 
@@ -93,12 +108,13 @@ def index_records_for_fp(log_data, fp):
   print 'Indexing %s' % (log_data,)
   first_line = fp.readline()
   log_data = ircloglib.parse_header(first_line)
+  r =  index_record_for_day(log_data, datetime.datetime.utcnow().replace(tzinfo=g_utc))
+  yield r
   position = fp.tell()
   line_num = 0
   line = fp.readline()
   while line != '':
-    
-    xformed = index_record_for_line(log_data, line, line_num, position, timestamp)
+    xformed = index_record_for_line(log_data, line, line_num, position)
     position = fp.tell()
     line_num += 1
     line = fp.readline()
@@ -141,47 +157,41 @@ def post_records(solr_url, index_records):
                total_ms, commit_ms)
 
 
-LINE_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+)(.*)', re.UNICODE)
-
 def index_record_for_line(log_data, line, line_num, position):
-  result = parse_log_line(line)
-  if result:
-    timestamp, who, message = result
-    who = cgi.escape(recode(who))
-    message = recode(message)
-    message = cgi.escape(message)
-    date_str = '%s-%02d-%02d' % (log_data.start_time.year,
-                                 log_data.start_time.month,
-                                 log_data.start_time.day)
-    timestamp = '%sT%sZ' % (date_str, timestamp,)
-    id = get_log_id(log_data, line_num)
-    return {
-      'id': id,
-      'channel': log_data.channel,
-      'timestamp': timestamp,
-      'user': who,
-      'text': message,
-      'position': position
-      }
+  result = ircloglib.parse_line(line)
+  kind, timestamp = result[0:2]
+  if not kind in (ircloglib.MSG, ircloglib.ACTION):
+    return None
+
+  offset_seconds = \
+      int(timestamp[0:2]) * 3600 + \
+      int(timestamp[3:5]) * 60 + \
+      int(timestamp[7:9])
+  time_offset = datetime.timedelta(seconds=offset_seconds)
+  line_timestamp = log_data.start_time + time_offset
+  record = {
+    'id': get_log_id(log_data, line_num),
+    'server': log_data.server,
+    'channel': log_data.channel,
+    'timestamp': line_timestamp,
+    'user': recode(result[2]),
+    'text': recode(result[3])
+    }
+  return record
 
 
 def index_record_for_day(log_data, index_time):
-  id = sirc.log.encode_id(log_data)
-  date_str = '%s-%02d-%02d' % (index_time.year,
-                               index_time.month,
-                               log_data.start_time.day)
-  
+  record = {
+    'id': sirc.log.encode_id(log_data),
+    'server': log_data.server,
+    'channel': log_data.channel,
+    'index_timestamp.': index_time
+    }
+  return record
 
 
 def get_log_id(log_data, line_num):
   return sirc.log.encode_id(log_data, suffix='%05d' % (line_num,))
-
-
-def parse_log_line(line):
-  match = LOG_LINE_RE.match(line)
-  if match:
-    # timestamp, who, text
-    return match.groups()
 
 
 def is_ctrl_char(c):
