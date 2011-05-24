@@ -38,7 +38,7 @@ g_utc = UTC()
 
 def _error(msg):
   sys.stdout.flush()
-  sys.stderr.write('%s\n' % (msg,))
+  sys.stderr.write('error: %s\n' % (msg,))
 
 
 def _usage():
@@ -242,7 +242,7 @@ def quartile(label, measurements):
 
 def main(args):
   parser = optparse.OptionParser(
-    usage='usage: %prog [options] [<log source>...]')
+    usage='usage: %prog [options] <solr url> <logpath> [<logpath>...]')
   parser.add_option(
     '-f',
     '--force',
@@ -262,6 +262,7 @@ def main(args):
 
   logging.basicConfig(level=logging.INFO)
   if len(args) < 2:
+    _error('Too few arguments.')
     parser.print_usage()
     return 1
   solr_url = args[0]
