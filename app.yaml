@@ -3,6 +3,18 @@ version: 1
 runtime: python
 api_version: 1
 
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^.*/solr/.*
+
 builtins:
 - remote_api: on
 - appstats: on
