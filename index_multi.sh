@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 NUM_THREADS=5
 SOLR_URL=$1
