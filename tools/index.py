@@ -51,10 +51,10 @@ def _usage():
                    'or an s3:// url.\n')
 
 
-class Worker(Thread):
+class Worker(threading.Thread):
   """Thread executing tasks from a given tasks queue"""
   def __init__(self, tasks):
-    Thread.__init__(self)
+    threading.Thread.__init__(self)
     self.tasks = tasks
     self.daemon = True
     self.start()
@@ -69,24 +69,25 @@ class Worker(Thread):
 
 class ThreadPool:
   """Pool of threads consuming tasks from a queue"""
-    def __init__(self, num_threads):
-        self.tasks = Queue(num_threads)
-        for _ in range(num_threads): Worker(self.tasks)
+  def __init__(self, num_threads):
+    self.tasks = Queue.Queue(num_threads)
+    for _ in range(num_threads):
+      Worker(self.tasks)
 
-    def add_task(self, func, *args, **kargs):
-        """Add a task to the queue"""
-        self.tasks.put((func, args, kargs))
+  def add_task(self, func, *args, **kargs):
+    """Add a task to the queue"""
+    self.tasks.put((func, args, kargs))
 
-    def wait_completion(self):
-        """Wait for completion of all the tasks in the queue"""
-        self.tasks.join()
+  def wait_completion(self):
+    """Wait for completion of all the tasks in the queue"""
+    self.tasks.join()
 
 
 
 g_threadpool = ThreadPool(20)
 
  
-def is_already_indexed(solr_url, log_datas):
+def is_already_indexed(solr_url, log_data):
   id = sirc.log.encode_id(log_data) + '*'
   conn = get_solr_connection(solr_url)
   query = 'id:%s' % (id,)
@@ -100,19 +101,6 @@ def grouper(n, iterable, fillvalue=None):
   "grouper(3, 'ABCDEFG', 'x') --> ABC DEF Gxx"
   args = [itertools.iter(iterable)] * n
   return itertools.izip_longest(fillvalue=fillvalue, *args)
-
-
-def index_files(solr_url, paths, thread_pool, force=False, ignore_errors=False):
-  for path in paths:
-    log_data = sirc.log.parse_log_path(path)
-    if force or not is_already_indexed(solr_url, log_data):
-      index_file(solr_url, path)
-    else:
-      #print 'Skipping %s' % (path,)
-      pass
-  quartiles()
-  print 'Optimizing...'
-  get_solr_connection(solr_url).optimize()
 
 
 def index_files(solr_url, paths, thread_pool, force=False, ignore_errors=False):
@@ -134,6 +122,19 @@ def file_mtime(path):
   mtime = os.stat(path).st_mtime
   mtime = datetime.datetime.fromtimestamp(mtime, tz=pytz.utc)
   return mtime
+
+
+def index_files(solr_url, paths, force=False, ignore_errors=False):
+  for path in paths:
+    log_data = sirc.log.parse_log_path(path)
+    if force or not is_already_indexed(solr_url, log_data):
+      index_file(solr_url, path)
+    else:
+      #print 'Skipping %s' % (path,)
+      pass
+  quartiles()
+  print 'Optimizing...'
+  get_solr_connection(solr_url).optimize()
 
 
 def index_file(solr_url, path):
