@@ -12,9 +12,9 @@ MSG_LINE_TEMPLATE = string.Template(
   '<tr class="serprow serpmsg" id="$line_num">' +
   '<td class="serptime"><a href="#$line_num">$time</a></td>' +
   '<td class="serpuser">' +
-  '<span class="brack">&lt;</span>' +
-  '<span>$user</span>' +
-  '<span class="brack">&gt;</span>' +
+  '&lt;' +
+  '$user' +
+  '&gt;' +
   '</td>' + \
   '<td class="serptext">$message</td>' + \
   '</tr>\n')
