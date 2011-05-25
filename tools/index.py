@@ -6,7 +6,9 @@ import cgi
 import datetime
 import logging
 import optparse
+import Queue
 import StringIO
+import threading
 import time
 import unicodedata
 
@@ -49,7 +51,42 @@ def _usage():
                    'or an s3:// url.\n')
 
 
-def is_already_indexed(solr_url, log_data):
+class Worker(Thread):
+  """Thread executing tasks from a given tasks queue"""
+  def __init__(self, tasks):
+    Thread.__init__(self)
+    self.tasks = tasks
+    self.daemon = True
+    self.start()
+    
+  def run(self):
+    while True:
+      func, args, kargs = self.tasks.get()
+      try: func(*args, **kargs)
+      except Exception, e: print e
+      self.tasks.task_done()
+
+
+class ThreadPool:
+  """Pool of threads consuming tasks from a queue"""
+    def __init__(self, num_threads):
+        self.tasks = Queue(num_threads)
+        for _ in range(num_threads): Worker(self.tasks)
+
+    def add_task(self, func, *args, **kargs):
+        """Add a task to the queue"""
+        self.tasks.put((func, args, kargs))
+
+    def wait_completion(self):
+        """Wait for completion of all the tasks in the queue"""
+        self.tasks.join()
+
+
+
+g_threadpool = ThreadPool(20)
+
+ 
+def is_already_indexed(solr_url, log_datas):
   id = sirc.log.encode_id(log_data) + '*'
   conn = get_solr_connection(solr_url)
   query = 'id:%s' % (id,)
@@ -59,7 +96,13 @@ def is_already_indexed(solr_url, log_data):
   return len(response) > 0
 
 
-def index_files(solr_url, paths, force=False, ignore_errors=False):
+def grouper(n, iterable, fillvalue=None):
+  "grouper(3, 'ABCDEFG', 'x') --> ABC DEF Gxx"
+  args = [itertools.iter(iterable)] * n
+  return itertools.izip_longest(fillvalue=fillvalue, *args)
+
+
+def index_files(solr_url, paths, thread_pool, force=False, ignore_errors=False):
   for path in paths:
     log_data = sirc.log.parse_log_path(path)
     if force or not is_already_indexed(solr_url, log_data):
@@ -70,6 +113,27 @@ def index_files(solr_url, paths, force=False, ignore_errors=False):
   quartiles()
   print 'Optimizing...'
   get_solr_connection(solr_url).optimize()
+
+
+def index_files(solr_url, paths, thread_pool, force=False, ignore_errors=False):
+  for path_group in grouper(INDEX_BATCH_SIZE, paths):
+    log_datas = [sirc.log.parse_log_path(path) for path in path_group]
+    thread_pool.add_task(index_file_group, log_datas)
+
+
+def index_file_group(solr_url, log_datas, force=False):
+  index_times = get_index_times(solr_url, log_datas)
+  for log_data in log_datas:
+    if force or \
+          (not log_data in index_times) or \
+          index_times[log_data] <= file_mtime(log_data.path):
+      print 'Indexing %s' % (log_data.path,)
+
+
+def file_mtime(path):
+  mtime = os.stat(path).st_mtime
+  mtime = datetime.datetime.fromtimestamp(mtime, tz=pytz.utc)
+  return mtime
 
 
 def index_file(solr_url, path):
