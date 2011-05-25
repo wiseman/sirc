@@ -187,7 +187,7 @@ def index_record_for_day(log_data, index_time):
     'id': sirc.log.encode_id(log_data),
     'server': log_data.server,
     'channel': log_data.channel,
-    'index_timestamp.': index_time
+    'index_timestamp': index_time
     }
   return record
 
