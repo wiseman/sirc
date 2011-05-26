@@ -83,53 +83,6 @@ class ThreadPool:
     self.tasks.join()
 
 
-# ----------------------------------------
-# Multi-threaded
-
-# def grouper(n, iterable, fillvalue=None):
-#   "grouper(3, 'ABCDEFG', 'x') --> ABC DEF Gxx"
-#   args = [itertools.iter(iterable)] * n
-#   return itertools.izip_longest(fillvalue=fillvalue, *args)
-
-
-# def index_files(solr_url, paths, thread_pool, force=False, ignore_errors=False):
-#   for path_group in grouper(INDEX_BATCH_SIZE, paths):
-#     log_datas = [sirc.log.parse_log_path(path) for path in path_group]
-#     thread_pool.add_task(index_file_group, log_datas)
-
-
-# def index_file_group(solr_url, log_datas, force=False):
-#   index_times = get_index_times(solr_url, log_datas)
-#   for log_data in log_datas:
-#     if force or \
-#           (not log_data in index_times) or \
-#           index_times[log_data] <= file_mtime(log_data.path):
-#       print 'Indexing %s' % (log_data.path,)
-
-
-# def file_mtime(path):
-#   mtime = os.stat(path).st_mtime
-#   mtime = datetime.datetime.fromtimestamp(mtime, tz=pytz.utc)
-#   return mtime
-
-
-# ----------------------------------------
-# Single-threaded.
-
-def index_documents(solr_url, doc_paths, force=False, ignore_errors=False):
-  for path in doc_paths:
-    log_data = sirc.log.parse_log_path(path)
-    if force or not is_already_indexed(solr_url, log_data):
-      doc = get_document(path)
-      index_document(solr_url, doc)
-    else:
-      #print 'Skipping %s' % (path,)
-      pass
-  quartiles()
-  print 'Optimizing...'
-  get_solr_connection(solr_url).optimize()
-
-
 class Document:
   def __init__(self, log_data, file_object):
     self.file = file_object
@@ -165,6 +118,30 @@ def get_s3_document(doc_path):
   return Document(log_data, log_fp)
   
 
+# ----------------------------------------
+# Single-threaded.
+
+def index_documents(solr_url, doc_paths, force=False, ignore_errors=False):
+  for path in doc_paths:
+    log_data = sirc.log.parse_log_path(path)
+    if force or not is_already_indexed(solr_url, log_data):
+      doc = get_document(path)
+      index_document(solr_url, doc)
+    else:
+      #print 'Skipping %s' % (path,)
+      pass
+  quartiles()
+  print 'Optimizing...'
+  get_solr_connection(solr_url).optimize()
+
+
+def index_document(solr_url, doc):
+  records = list(index_records_for_document(doc))
+  if len(records) > 0:
+    print records[0]
+  post_records(solr_url, records)
+
+
 def is_already_indexed(solr_url, log_data):
   id = sirc.log.encode_id(log_data) + '*'
   conn = get_solr_connection(solr_url)
@@ -175,11 +152,44 @@ def is_already_indexed(solr_url, log_data):
   return len(response) > 0
 
 
-def index_document(solr_url, doc):
-  records = list(index_records_for_document(doc))
-  if len(records) > 0:
-    print records[0]
-  post_records(solr_url, records)
+# ----------------------------------------
+# Multi-threaded
+
+def grouper(n, iterable, fillvalue=None):
+  "grouper(3, 'ABCDEFG', 'x') --> ABC DEF Gxx"
+  args = [itertools.iter(iterable)] * n
+  return itertools.izip_longest(fillvalue=fillvalue, *args)
+
+
+INDEX_BATCH_SIZE = 10
+
+def index_documents(solr_url, doc_paths, thread_pool, force=False, ignore_errors=False):
+  for path_group in grouper(INDEX_BATCH_SIZE, paths):
+    log_datas = [sirc.log.parse_log_path(path) for path in path_group]
+    thread_pool.add_task(index_file_group, solr_url, log_datas, force=force)
+  print 'WAITING FOR POOL DRAINAGE'
+  thread_pool.wait_completion()
+  print 'Optimizing...'
+  get_solr_connection(solr_url).optimize()
+  
+
+def index_file_group(solr_url, log_datas, force=False):
+  index_times = get_index_times(solr_url, log_datas)
+  for log_data in log_datas:
+    if force or \
+          (not log_data in index_times) or \
+          index_times[log_data] <= file_mtime(log_data.path):
+      print 'Indexing %s' % (log_data.path,)
+
+
+def get_index_times(solr_url, log_datas):
+  
+
+
+def file_mtime(path):
+  mtime = os.stat(path).st_mtime
+  mtime = datetime.datetime.fromtimestamp(mtime, tz=pytz.utc)
+  return mtime
 
 
 def index_records_for_document(doc):
