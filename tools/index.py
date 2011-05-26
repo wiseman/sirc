@@ -83,10 +83,88 @@ class ThreadPool:
     self.tasks.join()
 
 
+# ----------------------------------------
+# Multi-threaded
 
-g_threadpool = ThreadPool(20)
+# def grouper(n, iterable, fillvalue=None):
+#   "grouper(3, 'ABCDEFG', 'x') --> ABC DEF Gxx"
+#   args = [itertools.iter(iterable)] * n
+#   return itertools.izip_longest(fillvalue=fillvalue, *args)
 
- 
+
+# def index_files(solr_url, paths, thread_pool, force=False, ignore_errors=False):
+#   for path_group in grouper(INDEX_BATCH_SIZE, paths):
+#     log_datas = [sirc.log.parse_log_path(path) for path in path_group]
+#     thread_pool.add_task(index_file_group, log_datas)
+
+
+# def index_file_group(solr_url, log_datas, force=False):
+#   index_times = get_index_times(solr_url, log_datas)
+#   for log_data in log_datas:
+#     if force or \
+#           (not log_data in index_times) or \
+#           index_times[log_data] <= file_mtime(log_data.path):
+#       print 'Indexing %s' % (log_data.path,)
+
+
+# def file_mtime(path):
+#   mtime = os.stat(path).st_mtime
+#   mtime = datetime.datetime.fromtimestamp(mtime, tz=pytz.utc)
+#   return mtime
+
+
+# ----------------------------------------
+# Single-threaded.
+
+def index_documents(solr_url, doc_paths, force=False, ignore_errors=False):
+  for path in doc_paths:
+    log_data = sirc.log.parse_log_path(path)
+    if force or not is_already_indexed(solr_url, log_data):
+      doc = get_document(path)
+      index_document(solr_url, doc)
+    else:
+      #print 'Skipping %s' % (path,)
+      pass
+  quartiles()
+  print 'Optimizing...'
+  get_solr_connection(solr_url).optimize()
+
+
+class Document:
+  def __init__(self, log_data, file_object):
+    self.file = file_object
+    self.log_data = log_data
+
+
+def get_document(doc_path):
+  if is_s3_path(doc_path):
+    return get_s3_document(doc_path)
+  else:
+    return get_fs_document(doc_path)
+
+
+def is_s3_path(doc_path):
+  return doc_path.startswith('s3://')
+
+
+def get_fs_document(doc_path):
+  fp = open(doc_path, 'rb')
+  log_data = ircloglib.parse_header(fp.readline())
+  fp.seek(0)
+  return Document(log_data, fp)
+
+
+def get_s3_document(doc_path):
+  bucket, s3_path = sirc.util.s3.parse_s3_url(doc_path)
+  bucket = sirc.util.s3.get_s3_bucket(bucket)
+  key = boto.s3.key.Key(bucket)
+  key.key = s3_path
+  log_data = sirc.log.metadata_from_s3path(s3_path)
+  log_contents = key.get_contents_as_string()
+  log_fp = StringIO.StringIO(log_contents)
+  return Document(log_data, log_fp)
+  
+
 def is_already_indexed(solr_url, log_data):
   id = sirc.log.encode_id(log_data) + '*'
   conn = get_solr_connection(solr_url)
@@ -97,94 +175,29 @@ def is_already_indexed(solr_url, log_data):
   return len(response) > 0
 
 
-def grouper(n, iterable, fillvalue=None):
-  "grouper(3, 'ABCDEFG', 'x') --> ABC DEF Gxx"
-  args = [itertools.iter(iterable)] * n
-  return itertools.izip_longest(fillvalue=fillvalue, *args)
-
-
-def index_files(solr_url, paths, thread_pool, force=False, ignore_errors=False):
-  for path_group in grouper(INDEX_BATCH_SIZE, paths):
-    log_datas = [sirc.log.parse_log_path(path) for path in path_group]
-    thread_pool.add_task(index_file_group, log_datas)
-
-
-def index_file_group(solr_url, log_datas, force=False):
-  index_times = get_index_times(solr_url, log_datas)
-  for log_data in log_datas:
-    if force or \
-          (not log_data in index_times) or \
-          index_times[log_data] <= file_mtime(log_data.path):
-      print 'Indexing %s' % (log_data.path,)
-
-
-def file_mtime(path):
-  mtime = os.stat(path).st_mtime
-  mtime = datetime.datetime.fromtimestamp(mtime, tz=pytz.utc)
-  return mtime
-
-
-def index_files(solr_url, paths, force=False, ignore_errors=False):
-  for path in paths:
-    log_data = sirc.log.parse_log_path(path)
-    if force or not is_already_indexed(solr_url, log_data):
-      index_file(solr_url, path)
-    else:
-      #print 'Skipping %s' % (path,)
-      pass
-  quartiles()
-  print 'Optimizing...'
-  get_solr_connection(solr_url).optimize()
-
-
-def index_file(solr_url, path):
-  if path.startswith('s3://'):
-    index_s3_file(solr_url, path)
-  else:
-    index_local_file(solr_url, path)
-
-
-def index_s3_file(solr_url, path):
-  bucket, s3_path = sirc.util.s3.parse_s3_url(path)
-  bucket = sirc.util.s3.get_s3_bucket(bucket)
-  key = boto.s3.key.Key(bucket)
-  key.key = s3_path
-  log_data = sirc.log.metadata_from_s3path(s3_path)
-  log_contents = key.get_contents_as_string()
-  log_fp = StringIO.StringIO(log_contents)
-  return index_fp(solr_url, log_data, log_fp)
-
-
-def index_local_file(solr_url, path):
-  with open(path, 'rb') as f:
-    log_data = ircloglib.parse_header(f.readline())
-    f.seek(0)
-    index_fp(solr_url, log_data, f)
-
-
-def index_fp(solr_url, log_data, fp):
-  records = list(index_records_for_fp(log_data, fp))
+def index_document(solr_url, doc):
+  records = list(index_records_for_document(doc))
   if len(records) > 0:
     print records[0]
   post_records(solr_url, records)
 
 
-def index_records_for_fp(log_data, fp):
-  print 'Indexing %s' % (log_data,)
-  first_line = fp.readline()
+def index_records_for_document(doc):
+  print 'Indexing %s' % (doc.log_data,)
+  first_line = doc.file.readline()
   log_data = ircloglib.parse_header(first_line)
   r = index_record_for_day(
     log_data,
     datetime.datetime.utcnow().replace(tzinfo=g_utc))
   yield r
-  position = fp.tell()
+  position = doc.file.tell()
   line_num = 0
-  line = fp.readline()
+  line = doc.file.readline()
   while line != '':
     xformed = index_record_for_line(log_data, line, line_num, position)
-    position = fp.tell()
+    position = doc.file.tell()
     line_num += 1
-    line = fp.readline()
+    line = doc.file.readline()
     if xformed:
       yield xformed
 
@@ -332,8 +345,8 @@ def main(args):
     return 1
   solr_url = args[0]
   files = args[1:]
-  index_files(solr_url, files, force=options.force,
-              ignore_errors=options.ignore_log_parse_errors)
+  index_documents(solr_url, files, force=options.force,
+                  ignore_errors=options.ignore_log_parse_errors)
 
 
 if __name__ == '__main__':
