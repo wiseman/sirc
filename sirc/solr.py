@@ -984,7 +984,7 @@ def utc_to_string(value):
     value += 'Z'
     return value
     
-if sys.version < '2.5.': 
+if True: #sys.version < '2.5.': 
     def utc_from_string(value):
         """
         Parse a string representing an ISO 8601 date.
