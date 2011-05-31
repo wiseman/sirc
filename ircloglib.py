@@ -16,7 +16,7 @@ class Metadata():
     self.start_time = start_time
 
   def __str__(self):
-    return '<log.Metadata path=%s server=%s channel=%r start_time=%s>' %  \
+    return '<ircloglib.Metadata path=%s server=%s channel=%r start_time=%s>' %  \
         (self.path,
          self.server,
          self.channel,
