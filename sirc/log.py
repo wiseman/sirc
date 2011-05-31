@@ -69,7 +69,9 @@ def parse_log_path(path):
     return metadata_from_s3path(path)
   else:
     with open(path, 'rb') as f:
-      return ircloglib.parse_header(f.readline())
+      data = ircloglib.parse_header(f.readline())
+      data.path = path
+      return data
 
 
 # IDs look like
