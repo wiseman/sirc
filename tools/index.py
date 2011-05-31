@@ -4,9 +4,12 @@ import sys
 import re
 import cgi
 import datetime
+import itertools
 import logging
 import optparse
+import os
 import Queue
+import random
 import StringIO
 import threading
 import time
@@ -53,26 +56,41 @@ def _usage():
 
 class Worker(threading.Thread):
   """Thread executing tasks from a given tasks queue"""
-  def __init__(self, tasks):
+  def __init__(self, pool, tasks):
     threading.Thread.__init__(self)
+    self.pool = pool
     self.tasks = tasks
     self.daemon = True
     self.start()
     
   def run(self):
     while True:
-      func, args, kargs = self.tasks.get()
-      try: func(*args, **kargs)
-      except Exception, e: print e
-      self.tasks.task_done()
+      try:
+        func, args, kargs = self.tasks.get()
+  #       try:
+  #         func(*args, **kargs)
+  #       except Exception, e:
+  #         print e
+        start_time = time.time()
+        func(*args, **kargs)
+        end_time = time.time()
+        self.pool.record_task_time(end_time - start_time)
+      finally:
+        self.tasks.task_done()
 
 
 class ThreadPool:
   """Pool of threads consuming tasks from a queue"""
   def __init__(self, num_threads):
     self.tasks = Queue.Queue(num_threads)
+    self.lock = threading.Condition()
+    self.start_time = time.time()
+    self.total_task_time = 0
     for _ in range(num_threads):
-      Worker(self.tasks)
+      Worker(self, self.tasks)
+
+  def elapsed_time(self):
+    return time.time() - self.start_time
 
   def add_task(self, func, *args, **kargs):
     """Add a task to the queue"""
@@ -81,6 +99,11 @@ class ThreadPool:
   def wait_completion(self):
     """Wait for completion of all the tasks in the queue"""
     self.tasks.join()
+
+  def record_task_time(self, time):
+    with self.lock:
+      self.total_task_time += time
+      #print '%s seconds of work in %s seconds' % (self.total_task_time, self.elapsed_time())
 
 
 class Document:
@@ -137,15 +160,15 @@ def index_documents(solr_url, doc_paths, force=False, ignore_errors=False):
 
 def index_document(solr_url, doc):
   records = list(index_records_for_document(doc))
-  if len(records) > 0:
-    print records[0]
+  #if len(records) > 0:
+  #  print records[0]
   post_records(solr_url, records)
 
 
 def is_already_indexed(solr_url, log_data):
   id = sirc.log.encode_id(log_data) + '*'
-  conn = get_solr_connection(solr_url)
   query = 'id:%s' % (id,)
+  conn = get_solr_connection(solr_url)
   response = conn.query(q=query,
                         fields='id',
                         score=False)
@@ -157,15 +180,16 @@ def is_already_indexed(solr_url, log_data):
 
 def grouper(n, iterable, fillvalue=None):
   "grouper(3, 'ABCDEFG', 'x') --> ABC DEF Gxx"
-  args = [itertools.iter(iterable)] * n
+  args = [iter(iterable)] * n
   return itertools.izip_longest(fillvalue=fillvalue, *args)
 
 
-INDEX_BATCH_SIZE = 10
+INDEX_BATCH_SIZE = 20
+NUM_THREADS = 4
 
 def index_documents(solr_url, doc_paths, thread_pool, force=False, ignore_errors=False):
-  for path_group in grouper(INDEX_BATCH_SIZE, paths):
-    log_datas = [sirc.log.parse_log_path(path) for path in path_group]
+  for path_group in grouper(INDEX_BATCH_SIZE, doc_paths):
+    log_datas = [sirc.log.parse_log_path(path) for path in path_group if path]
     thread_pool.add_task(index_file_group, solr_url, log_datas, force=force)
   print 'WAITING FOR POOL DRAINAGE'
   thread_pool.wait_completion()
@@ -175,25 +199,45 @@ def index_documents(solr_url, doc_paths, thread_pool, force=False, ignore_errors
 
 def index_file_group(solr_url, log_datas, force=False):
   index_times = get_index_times(solr_url, log_datas)
+  logs = []
   for log_data in log_datas:
     if force or \
           (not log_data in index_times) or \
           index_times[log_data] <= file_mtime(log_data.path):
-      print 'Indexing %s' % (log_data.path,)
+      logs.append(log_data)
+      print '%s Indexing %s' % (threading.current_thread(), log_data.path)
+    else:
+      #print 'Skipping %s' % (log_data.path,)
+      pass
+  records = []
+  for log_data in logs:
+    #print '%s %s' % (file_mtime(log_data.path), index_times[log_data])
+    records += index_records_for_document(get_document(log_data.path))
+  post_records(solr_url, records)
 
-
-def get_index_times(solr_url, log_datas):
   
-
+def get_index_times(solr_url, log_datas):
+  logs_by_id = dict((sirc.log.encode_id(d), d) for d in log_datas)
+  query = ' OR '.join(['id:%s' % (id,) for id in logs_by_id])
+  conn = get_solr_connection(solr_url)
+  response = conn.query(q=query,
+                        fields='id,index_timestamp',
+                        score=False,
+                        rows=INDEX_BATCH_SIZE)
+  index_times = {}
+  for doc in response.results:
+    id = doc['id']
+    index_times[logs_by_id[id]] = doc['index_timestamp']
+  #print index_times
+  return index_times
 
 def file_mtime(path):
   mtime = os.stat(path).st_mtime
-  mtime = datetime.datetime.fromtimestamp(mtime, tz=pytz.utc)
+  mtime = datetime.datetime.fromtimestamp(mtime, tz=sirc.solr.UTC())
   return mtime
 
 
 def index_records_for_document(doc):
-  print 'Indexing %s' % (doc.log_data,)
   first_line = doc.file.readline()
   log_data = ircloglib.parse_header(first_line)
   r = index_record_for_day(
@@ -212,20 +256,24 @@ def index_records_for_document(doc):
       yield xformed
 
 
-g_solr_connection = None
+g_solr_connections = {}
 g_solr_url = None
+
+g_solr_lock = threading.Condition()
 
 
 def get_solr_connection(solr_url):
   assert solr_url.startswith('http')
-  global g_solr_url, g_solr_connection
-  if not (g_solr_url == solr_url and g_solr_connection):
-    g_solr_url = solr_url
-    g_solr_connection = sirc.solr.SolrConnection(url=solr_url)
-  return g_solr_connection
+  key = (threading.current_thread(), solr_url)
+  if key in g_solr_connections:
+    return g_solr_connections[key]
+  connection = sirc.solr.SolrConnection(url=solr_url)
+  g_solr_connections[key] = connection
+  return connection
 
 
 def post_records(solr_url, index_records):
+  index_records = list(index_records)
   if len(index_records) == 0:
     return
   start_time = time.time()
@@ -354,8 +402,8 @@ def main(args):
     parser.print_usage()
     return 1
   solr_url = args[0]
-  files = args[1:]
-  index_documents(solr_url, files, force=options.force,
+  files = sorted(args[1:])
+  index_documents(solr_url, files, ThreadPool(NUM_THREADS), force=options.force,
                   ignore_errors=options.ignore_log_parse_errors)
 
 
