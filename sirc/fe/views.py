@@ -3,15 +3,15 @@
 # Copyright 2011 John Wiseman <jjwiseman@gmail.com>
 
 from __future__ import with_statement
-import os.path
-import logging
-import collections
-import hashlib
-import urllib
 import cgi
-import string
+import collections
 import datetime
+import hashlib
+import logging
+import os.path
+import string
 import time
+import urllib
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
@@ -23,6 +23,7 @@ from google.appengine.ext import blobstore
 from google.appengine.ext.webapp import blobstore_handlers
 
 import ircloglib
+import pytz
 
 import sirc.fe.index
 import sirc.util.urlfinder
@@ -136,7 +137,7 @@ class Search(webapp.RequestHandler):
 
 def create_pagination_html(url, query, start, total):
   start = int(start / PAGE_SIZE) * PAGE_SIZE
-  base_url = '%s?q=%s' % (url, urllib.quote_plus(query))
+  base_url = '%s?q=%s' % (url, urllib.quote_plus(query.encode('utf-8')))
 
   def make_url(start):
     return cgi.escape('%s&start=%s' % (base_url, start))
@@ -204,6 +205,14 @@ def prepare_results_for_display(records):
 
   current_date = None
   previous_timestamp = None
+  
+  # Adjust timestamps to desired timezone for subsequent uses.
+  pacific_tz = pytz.timezone('America/Los_Angeles')
+  for r in records:
+    ts = r['timestamp']
+    ts = ts.replace(tzinfo=pytz.utc).astimezone(pacific_tz)
+    r['timestamp'] = ts
+
   for r in records:
     if current_date is None or not is_same_day(previous_timestamp,
                                                r['timestamp']):
