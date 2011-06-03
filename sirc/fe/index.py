@@ -129,7 +129,7 @@ def get_query_results(query_string, start, num_results):
 
   query_event = record_query('q=%s, start=%s' % (query_string, start))
 
-  url = SEARCH_SERVER_URL % (urllib.quote_plus(query_string),
+  url = SEARCH_SERVER_URL % (urllib.quote_plus(query_string.encode('utf-8')),
                              start,
                              num_results)
   logging.info('URL=%s' % (url,))
