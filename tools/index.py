@@ -154,8 +154,8 @@ def index_documents(solr_url, doc_paths, force=False, ignore_errors=False):
       #print 'Skipping %s' % (path,)
       pass
   quartiles()
-  print 'Optimizing...'
-  get_solr_connection(solr_url).optimize()
+  #print 'Optimizing...'
+  #get_solr_connection(solr_url).optimize()
 
 
 def index_document(solr_url, doc):
@@ -184,17 +184,16 @@ def grouper(n, iterable, fillvalue=None):
   return itertools.izip_longest(fillvalue=fillvalue, *args)
 
 
-INDEX_BATCH_SIZE = 20
+INDEX_BATCH_SIZE = 10
 NUM_THREADS = 4
 
 def index_documents(solr_url, doc_paths, thread_pool, force=False, ignore_errors=False):
   for path_group in grouper(INDEX_BATCH_SIZE, doc_paths):
     log_datas = [sirc.log.parse_log_path(path) for path in path_group if path]
     thread_pool.add_task(index_file_group, solr_url, log_datas, force=force)
-  print 'WAITING FOR POOL DRAINAGE'
   thread_pool.wait_completion()
-  print 'Optimizing...'
-  get_solr_connection(solr_url).optimize()
+  #print 'Optimizing...'
+  #get_solr_connection(solr_url).optimize()
   
 
 def index_file_group(solr_url, log_datas, force=False):
@@ -205,7 +204,7 @@ def index_file_group(solr_url, log_datas, force=False):
           (not log_data in index_times) or \
           index_times[log_data] <= file_mtime(log_data.path):
       logs.append(log_data)
-      print '%s Indexing %s' % (threading.current_thread(), log_data.path)
+      print 'Indexing %s' % (log_data.path,)
     else:
       #print 'Skipping %s' % (log_data.path,)
       pass
@@ -290,9 +289,9 @@ def post_records(solr_url, index_records):
 
   record_measurement('total', total_ms)
   record_measurement('commit', commit_ms)
-  logging.info('Posted %s records in %s ms (%s ms commit)',
-               len(index_records),
-               total_ms, commit_ms)
+  #logging.info('Posted %s records in %s ms (%s ms commit)',
+  #             len(index_records),
+  #             total_ms, commit_ms)
 
 
 def index_record_for_line(log_data, line, line_num, position):
