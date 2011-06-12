@@ -23,7 +23,7 @@ import sirc.log
 import sirc.solr
 
 
-class IndexingError:
+class IndexingError(Exception):
   pass
 
 
@@ -106,6 +106,20 @@ class ThreadPool:
       #print '%s seconds of work in %s seconds' % (self.total_task_time, self.elapsed_time())
 
 
+g_num_lines = 0
+g_num_lines_lock = threading.Condition()
+
+def record_num_lines_indexed(n):
+  global g_num_lines_lock, g_num_lines
+  with g_num_lines_lock:
+    g_num_lines += n
+
+
+def report_performance(num_lines, secs):
+  print 'Indexed %s lines in %s secs for %s lines/second.' % \
+      (num_lines, secs, num_lines / secs)
+
+
 class Document:
   def __init__(self, log_data, file_object):
     self.file = file_object
@@ -154,8 +168,8 @@ def index_documents(solr_url, doc_paths, force=False, ignore_errors=False):
       #print 'Skipping %s' % (path,)
       pass
   quartiles()
-  #print 'Optimizing...'
-  #get_solr_connection(solr_url).optimize()
+  print 'Optimizing...'
+  get_solr_connection(solr_url).optimize()
 
 
 def index_document(solr_url, doc):
@@ -163,6 +177,7 @@ def index_document(solr_url, doc):
   #if len(records) > 0:
   #  print records[0]
   post_records(solr_url, records)
+  record_num_lines_indexed(len(records))
 
 
 def is_already_indexed(solr_url, log_data):
@@ -184,16 +199,20 @@ def grouper(n, iterable, fillvalue=None):
   return itertools.izip_longest(fillvalue=fillvalue, *args)
 
 
-INDEX_BATCH_SIZE = 10
+INDEX_BATCH_SIZE = 1
 NUM_THREADS = 4
 
 def index_documents(solr_url, doc_paths, thread_pool, force=False, ignore_errors=False):
+  global g_num_lines
+  start_time = time.time()
   for path_group in grouper(INDEX_BATCH_SIZE, doc_paths):
     log_datas = [sirc.log.parse_log_path(path) for path in path_group if path]
     thread_pool.add_task(index_file_group, solr_url, log_datas, force=force)
   thread_pool.wait_completion()
-  #print 'Optimizing...'
-  #get_solr_connection(solr_url).optimize()
+  end_time = time.time()
+  report_performance(g_num_lines, end_time - start_time)
+  print 'Optimizing...'
+  get_solr_connection(solr_url).optimize()
   
 
 def index_file_group(solr_url, log_datas, force=False):
@@ -239,6 +258,7 @@ def file_mtime(path):
 def index_records_for_document(doc):
   first_line = doc.file.readline()
   log_data = ircloglib.parse_header(first_line)
+  log_data.path = doc.file.name
   r = index_record_for_day(
     log_data,
     datetime.datetime.utcnow().replace(tzinfo=g_utc))
@@ -289,13 +309,17 @@ def post_records(solr_url, index_records):
 
   record_measurement('total', total_ms)
   record_measurement('commit', commit_ms)
+  record_num_lines_indexed(len(index_records))
   #logging.info('Posted %s records in %s ms (%s ms commit)',
   #             len(index_records),
   #             total_ms, commit_ms)
 
 
 def index_record_for_line(log_data, line, line_num, position):
-  result = ircloglib.parse_line(line)
+  try:
+    result = ircloglib.parse_line(line)
+  except ircloglib.ParsingError, e:
+    raise IndexingError('Error while indexing %s:%s: %s' % (log_data.path, line_num, e))
   kind, timestamp = result[0:2]
   if not kind in (ircloglib.MSG, ircloglib.ACTION):
     return None

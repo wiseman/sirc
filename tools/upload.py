@@ -35,6 +35,13 @@ def main(argv):
     action='store_true',
     default=False,
     help='Uploads the file even if it already exists (default is %default).')
+  parser.add_option(
+    '-v',
+    '--verbose',
+    dest='verbose',
+    default=False,
+    action='store_true',
+    help='Enable verbose mode.')
   (options, args) = parser.parse_args()
   if len(args) < 1:
     parser.print_usage()
