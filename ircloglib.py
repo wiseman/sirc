@@ -84,6 +84,8 @@ def parse_line(line):
   #t_str = line[0:8]
   offset = line[0:8] #int(t_str[0:2]) * 3600 +  int(t_str[3:5]) * 60 + int(t_str[6:8])
   rest = line[9:]
+  if len(rest) == 0:
+    raise ParsingError('Unable to parse empty line: %s' % (line,))
   if rest[0] == '<':
     user_end = rest.find('>', 1)
     return (MSG, offset, rest[1:user_end], rest[user_end + 1:])
@@ -96,7 +98,7 @@ def parse_line(line):
     else:
       return [ACTION, offset, rest[1:user_end], rest[user_end+1:]]
   else:
-    raise ParsingError('Unable to parse this line: %s (%s)' % (line, rest[1]))
+    raise ParsingError('Unable to parse this line: "%s" (%s)' % (line, rest[1]))
 
 
 def all_logs(dir):
