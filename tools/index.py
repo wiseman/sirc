@@ -158,7 +158,7 @@ def get_s3_document(doc_path):
 # ----------------------------------------
 # Single-threaded.
 
-def index_documents(solr_url, doc_paths, force=False, ignore_errors=False):
+def index_documents(solr_url, doc_paths, force=False):
   for path in doc_paths:
     log_data = sirc.log.parse_log_path(path)
     if force or not is_already_indexed(solr_url, log_data):
@@ -167,9 +167,6 @@ def index_documents(solr_url, doc_paths, force=False, ignore_errors=False):
     else:
       #print 'Skipping %s' % (path,)
       pass
-  quartiles()
-  print 'Optimizing...'
-  get_solr_connection(solr_url).optimize()
 
 
 def index_document(solr_url, doc):
@@ -202,7 +199,7 @@ def grouper(n, iterable, fillvalue=None):
 INDEX_BATCH_SIZE = 1
 NUM_THREADS = 4
 
-def index_documents(solr_url, doc_paths, thread_pool, force=False, ignore_errors=False):
+def index_documents(solr_url, doc_paths, thread_pool, force=False):
   global g_num_lines
   start_time = time.time()
   for path_group in grouper(INDEX_BATCH_SIZE, doc_paths):
@@ -413,12 +410,12 @@ def main(args):
     help='Indexes the file even if it has already been indexed ' + \
     '(default is %default).')
   parser.add_option(
-    '-i',
-    '--ignore-log-parse-errors',
-    dest='ignore_log_parse_errors',
+    '-o',
+    '--optimize',
+    dest='optimize',
     action='store_true',
     default=False,
-    help='Ignore log parsing errors (default is %default).')
+    help='Optimize the index after updating (default is %default).')
   (options, args) = parser.parse_args()
 
   logging.basicConfig(level=logging.INFO)
@@ -428,8 +425,11 @@ def main(args):
     return 1
   solr_url = args[0]
   files = sorted(args[1:])
-  index_documents(solr_url, files, ThreadPool(NUM_THREADS), force=options.force,
-                  ignore_errors=options.ignore_log_parse_errors)
+  index_documents(solr_url, files, ThreadPool(NUM_THREADS), force=options.force)
+  if options.optimize:
+    print 'Optimizing...'
+    get_solr_connection(solr_url).optimize()
+
 
 
 if __name__ == '__main__':
