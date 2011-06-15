@@ -229,8 +229,10 @@ def index_file_group(solr_url, log_datas, force=False):
       pass
   records = []
   for log_data in logs:
-    #print '%s %s' % (file_mtime(log_data.path), index_times[log_data])
-    records += index_records_for_document(get_document(log_data.path))
+    try:
+      records += index_records_for_document(get_document(log_data.path))
+    except IndexingError, e:
+      sys.stderr.write('%s\n' % (e,))
   post_records(solr_url, records)
 
   
