@@ -116,7 +116,7 @@ def get_query_results(query_string):
   return records
 
 
-SEARCH_SERVER_URL = 'http://ec2-184-72-93-240.compute-1.amazonaws.com:8983' + \
+SEARCH_SERVER_URL = 'http://heavymeta.dyndns.org:8983' + \
                     '/solr/select/?q=%s&version=2.2&start=%s&rows=%s' + \
                     '&wt=json&sort=timestamp+desc'
 
