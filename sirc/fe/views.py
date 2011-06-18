@@ -205,7 +205,7 @@ def prepare_results_for_display(records):
 
   current_date = None
   previous_timestamp = None
-  
+
   # Adjust timestamps to desired timezone for subsequent uses.
   pacific_tz = pytz.timezone('America/Los_Angeles')
   for r in records:
