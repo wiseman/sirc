@@ -208,8 +208,8 @@ def index_documents(solr_url, doc_paths, thread_pool, force=False):
   thread_pool.wait_completion()
   end_time = time.time()
   report_performance(g_num_lines, end_time - start_time)
-  print 'Optimizing...'
-  get_solr_connection(solr_url).optimize()
+  #print 'Optimizing...'
+  #get_solr_connection(solr_url).optimize()
   
 
 def index_file_group(solr_url, log_datas, force=False):
