@@ -21,6 +21,7 @@ import ircloglib
 import sirc.util.s3
 import sirc.log
 import sirc.solr
+import sirc.util.solr
 
 
 class IndexingError(Exception):
@@ -177,10 +178,15 @@ def index_document(solr_url, doc):
   record_num_lines_indexed(len(records))
 
 
+def id_for_day(log_data):
+  id = 'day/%s' % (sirc.log.encode_id(log_data),)
+  return id
+
+
 def is_already_indexed(solr_url, log_data):
-  id = sirc.log.encode_id(log_data) + '*'
-  query = 'id:%s' % (id,)
-  conn = get_solr_connection(solr_url)
+  id = id_for_day(log_data)
+  query = 'id:%s*' % (id,)
+  conn = sirc.util.solr.get_solr_connection(solr_url)
   response = conn.query(q=query,
                         fields='id',
                         score=False)
@@ -234,9 +240,9 @@ def index_file_group(solr_url, log_datas, force=False):
 
   
 def get_index_times(solr_url, log_datas):
-  logs_by_id = dict((sirc.log.encode_id(d), d) for d in log_datas)
+  logs_by_id = dict((id_for_day(d), d) for d in log_datas)
   query = ' OR '.join(['id:%s' % (id,) for id in logs_by_id])
-  conn = get_solr_connection(solr_url)
+  conn = sirc.util.solr. get_solr_connection(solr_url)
   response = conn.query(q=query,
                         fields='id,index_timestamp',
                         score=False,
@@ -274,28 +280,12 @@ def index_records_for_document(doc):
       yield xformed
 
 
-g_solr_connections = {}
-g_solr_url = None
-
-g_solr_lock = threading.Condition()
-
-
-def get_solr_connection(solr_url):
-  assert solr_url.startswith('http')
-  key = (threading.current_thread(), solr_url)
-  if key in g_solr_connections:
-    return g_solr_connections[key]
-  connection = sirc.solr.SolrConnection(url=solr_url)
-  g_solr_connections[key] = connection
-  return connection
-
-
 def post_records(solr_url, index_records):
   index_records = list(index_records)
   if len(index_records) == 0:
     return
   start_time = time.time()
-  conn = get_solr_connection(solr_url)
+  conn = sirc.util.solr.get_solr_connection(solr_url)
   #  for i in index_records:
   #    print i
   #    conn.add(i)
@@ -342,7 +332,7 @@ def index_record_for_line(log_data, line, line_num, position):
 
 def index_record_for_day(log_data, index_time):
   record = {
-    'id': sirc.log.encode_id(log_data),
+    'id': id_for_day(log_data),
     'server': log_data.server,
     'channel': log_data.channel,
     'index_timestamp': index_time
@@ -428,7 +418,7 @@ def main(args):
   index_documents(solr_url, files, ThreadPool(NUM_THREADS), force=options.force)
   if options.optimize:
     print 'Optimizing...'
-    get_solr_connection(solr_url).optimize()
+    sirc.util.solr.get_solr_connection(solr_url).optimize()
 
 
 
