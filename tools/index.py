@@ -63,7 +63,7 @@ class Worker(threading.Thread):
     self.tasks = tasks
     self.daemon = True
     self.start()
-    
+
   def run(self):
     while True:
       try:
@@ -104,11 +104,11 @@ class ThreadPool:
   def record_task_time(self, time):
     with self.lock:
       self.total_task_time += time
-      #print '%s seconds of work in %s seconds' % (self.total_task_time, self.elapsed_time())
 
 
 g_num_lines = 0
 g_num_lines_lock = threading.Condition()
+
 
 def record_num_lines_indexed(n):
   global g_num_lines_lock, g_num_lines
@@ -154,7 +154,7 @@ def get_s3_document(doc_path):
   log_contents = key.get_contents_as_string()
   log_fp = StringIO.StringIO(log_contents)
   return Document(log_data, log_fp)
-  
+
 
 # ----------------------------------------
 # Single-threaded.
@@ -205,6 +205,7 @@ def grouper(n, iterable, fillvalue=None):
 INDEX_BATCH_SIZE = 1
 NUM_THREADS = 4
 
+
 def index_documents(solr_url, doc_paths, thread_pool, force=False):
   global g_num_lines
   start_time = time.time()
@@ -216,7 +217,7 @@ def index_documents(solr_url, doc_paths, thread_pool, force=False):
   report_performance(g_num_lines, end_time - start_time)
   #print 'Optimizing...'
   #get_solr_connection(solr_url).optimize()
-  
+
 
 def index_file_group(solr_url, log_datas, force=False):
   index_times = get_index_times(solr_url, log_datas)
@@ -238,7 +239,7 @@ def index_file_group(solr_url, log_datas, force=False):
       sys.stderr.write('%s\n' % (e,))
   post_records(solr_url, records)
 
-  
+
 def get_index_times(solr_url, log_datas):
   logs_by_id = dict((id_for_day(d), d) for d in log_datas)
   query = ' OR '.join(['id:%s' % (id,) for id in logs_by_id])
@@ -253,6 +254,7 @@ def get_index_times(solr_url, log_datas):
     index_times[logs_by_id[id]] = doc['index_timestamp']
   #print index_times
   return index_times
+
 
 def file_mtime(path):
   mtime = os.stat(path).st_mtime
@@ -308,7 +310,8 @@ def index_record_for_line(log_data, line, line_num, position):
   try:
     result = ircloglib.parse_line(line)
   except ircloglib.ParsingError, e:
-    raise IndexingError('Error while indexing %s:%s: %s' % (log_data.path, line_num, e))
+    raise IndexingError('Error while indexing %s:%s: %s' % \
+                        (log_data.path, line_num, e))
   kind, timestamp = result[0:2]
   if not kind in (ircloglib.MSG, ircloglib.ACTION):
     return None
@@ -415,11 +418,11 @@ def main(args):
     return 1
   solr_url = args[0]
   files = sorted(args[1:])
-  index_documents(solr_url, files, ThreadPool(NUM_THREADS), force=options.force)
+  index_documents(solr_url, files, ThreadPool(NUM_THREADS),
+                  force=options.force)
   if options.optimize:
     print 'Optimizing...'
     sirc.util.solr.get_solr_connection(solr_url).optimize()
-
 
 
 if __name__ == '__main__':
