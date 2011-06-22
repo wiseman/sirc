@@ -6,11 +6,12 @@ import sys
 import threading
 
 import sirc.solr
+import sirc.util.solr
 
 
 def all_indexed(solr_url):
     query = 'id:day/*'
-    conn = get_solr_connection(solr_url)
+    conn = sirc.util.solr.get_solr_connection(solr_url)
     response = conn.query(q=query, score=False, rows=1000)
     num_results = len(response.results)
     while num_results > 0:
@@ -18,18 +19,6 @@ def all_indexed(solr_url):
             yield result
         response = response.next_batch()
         num_results = len(response.results)
-
-
-g_solr_connections = {}
-
-def get_solr_connection(solr_url):
-  assert solr_url.startswith('http')
-  key = (threading.current_thread(), solr_url)
-  if key in g_solr_connections:
-    return g_solr_connections[key]
-  connection = sirc.solr.SolrConnection(url=solr_url)
-  g_solr_connections[key] = connection
-  return connection
 
 
 def get_date(record):
