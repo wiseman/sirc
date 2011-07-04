@@ -15,8 +15,6 @@ import mapreduce.operation
 import mapreduce.control
 import mapreduce.context
 
-import sirc.fe.tokenz
-
 
 class QueryEvent(db.Model):
   timestamp = db.DateTimeProperty(required=True)
@@ -33,10 +31,6 @@ def record_query(query):
 
 
 LINE_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+) <(\w+)> ?(.*)', re.UNICODE)
-
-
-def parse_log_line(line):
-  return ircloglib.parse_line(line)
 
 
 def index_log_line(entity):

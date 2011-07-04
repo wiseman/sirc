@@ -1,6 +1,5 @@
 import math
 import StringIO
-import logging
 
 
 def get_pagination(adjacents,
@@ -9,8 +8,8 @@ def get_pagination(adjacents,
                    total_items,
                    script_name,
                    extra):
-  prev = page - 1
-  next = page + 1
+  prev_page = page - 1
+  next_page = page + 1
   last_page = int(math.ceil(float(total_items) / limit))
   lpm1 = last_page - 1
   p = StringIO.StringIO()
@@ -23,7 +22,7 @@ def get_pagination(adjacents,
     pw(u'<div class="pagination">')
     if page > 1:
       pw(u'<a href="%s?page=%s%s">\u00AB previous</a> ' % (script_name,
-                                                           prev,
+                                                           prev_page,
                                                            extra))
     else:
       pw(u'<span class="pagination_disabled"> \u00AB previous</span> ')
@@ -91,7 +90,7 @@ def get_pagination(adjacents,
                                                     counter))
   if page < last_page:
     pw(u'<a href="%s?page=%s%s">next \u00BB</a>' % (script_name,
-                                                    next,
+                                                    next_page,
                                                     extra))
   else:
     pw(u'<span class="pagination_disabled">next \u00BB</span>')

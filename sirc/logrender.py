@@ -53,7 +53,7 @@ def render_line(context, line_num, line):
 DEFAULT_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+)(.*)', re.UNICODE)
 
 
-def render_default_line(context, line_num, line):
+def render_default_line(unused_context, line_num, line):
   match = DEFAULT_RE.match(line)
   if not match:
     return '<tr><td></td><td colspan="2">Unknown line: %s</td></tr>\n' % \
@@ -82,7 +82,7 @@ register_line_renderer(
   function=render_msg_line)
 
 
-def render_action_line(context, line_num, timestamp, action):
+def render_action_line(unused_context, line_num, timestamp, action):
   time_str = cgi.escape(timestamp)
   action_str = sirc.util.urlfinder.markup_urls(action)
   return ACTION_LINE_TEMPLATE.substitute(line_num='%05d' % (line_num,),
@@ -141,8 +141,7 @@ def render_log(log_data, text):
   prologue_template = string.Template(LOG_PROLOGUE_TEMPLATE)
   prologue = prologue_template.substitute({
       'title': cgi.escape(title),
-      'heading': cgi.escape(heading)
-      })
+      'heading': cgi.escape(heading)})
   out_buffer.write(prologue)
   context = RenderingContext()
   for line_num, line in enumerate(in_buffer):

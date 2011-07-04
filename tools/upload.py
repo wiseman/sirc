@@ -19,11 +19,15 @@ def _error(msg):
   sys.stderr.write('%s\n' % (msg,))
 
 
+class UploadError(Exception):
+  pass
+
 ############################################################
 #
 # ./upload.py ~/src/irc-logs/freenode/lisp/2010/10.01.01
 #
 ############################################################
+
 
 def main(argv):
   parser = optparse.OptionParser(
@@ -42,7 +46,7 @@ def main(argv):
     default=False,
     action='store_true',
     help='Enable verbose mode.')
-  (options, args) = parser.parse_args()
+  (options, args) = parser.parse_args(argv[1:])
   if len(args) < 1:
     parser.print_usage()
     return 1
@@ -56,7 +60,7 @@ def main(argv):
       upload_log_file(bucket, path, force=options.force)
 
 
-def upload_callback(bytes_sent, bytes_left):
+def upload_callback(unused_bytes_sent, unused_bytes_left):
   sys.stdout.write('.')
   sys.stdout.flush()
 
@@ -64,7 +68,10 @@ def upload_callback(bytes_sent, bytes_left):
 def upload_log_file(bucket, local_path, force=False):
   start_time = time.time()
   with open(local_path, 'rb') as f:
-    log_data = ircloglib.parse_header(f.readline())
+    try:
+      log_data = ircloglib.parse_header(f.readline())
+    except ircloglib.ParsingError, e:
+      raise UploadError('Error uploading %s: %s' % (local_path, e))
     f.seek(0)
     remote_path = 'rawlogs/%s/%s/%02d.%02d' % (log_data.channel,
                                                log_data.start_time.year,
@@ -75,8 +82,7 @@ def upload_log_file(bucket, local_path, force=False):
       if sirc.util.s3.key_exists(bucket, remote_path):
         remote_timestamp = sirc.util.s3.cached_get_mtime(bucket, remote_path)
         local_timestamp = file_mtime(local_path)
-        if sirc.util.s3.cached_get_mtime(bucket, remote_path) >= \
-               file_mtime(local_path):
+        if remote_timestamp >= local_timestamp:
           #print 'Skipping %s' % (local_path,)
           return
     key = boto.s3.key.Key(bucket)

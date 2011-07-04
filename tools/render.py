@@ -36,12 +36,12 @@ def main(args):
   with contextlib.closing(destination):
     paths = args
     for path in paths:
-      with contextlib.closing(sirc.log.open_log(path, 'rb')) as input:
-        render(path, input, destination)
+      with contextlib.closing(sirc.log.open_log(path, 'rb')) as source:
+        render(path, source, destination)
 
 
-def render(path, input, output):
-  log_text = input.read()
+def render(path, source, output):
+  log_text = source.read()
   time_start = time.time()
   html = sirc.logrender.render_log(log_text)
   time_end = time.time()
