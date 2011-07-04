@@ -14,6 +14,7 @@ def make_application():
   app = webapp.WSGIApplication(
       [('/', sirc.fe.views.Search),
        ('/browse/(.*)/(.*)/(.*)/(.*)', sirc.fe.views.Browse),
+       ('/browse2', sirc.fe.views.Browse2),
        ],
       #debug=True
       )

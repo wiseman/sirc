@@ -1,8 +1,3 @@
-import string
-import cgi
-import StringIO
-import re
-import logging
 
 from google.appengine.api import memcache
 
