@@ -90,6 +90,7 @@ def get_mtime(bucket, s3_path, remote_keys=None):
       mtime_str = k.last_modified
       mtime = iso8601.parse_date(mtime_str)
       return mtime
+  # Hacky way to raise a KeyError.
   {}[s3_path]
 
 

@@ -3,7 +3,6 @@
 import datetime
 import pprint
 import sys
-import threading
 
 import sirc.solr
 import sirc.util.solr

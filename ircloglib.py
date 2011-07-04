@@ -62,7 +62,10 @@ def format_header(metadata):
 
 def parse_header(header):
   json_m = header.find('{')
-  dict = json.loads(header[json_m:])
+  try:
+    dict = json.loads(header[json_m:])
+  except json.decoder.JSONDecodeError, e:
+    raise ParsingError('Unable to parse header line %r: %s' % (header, e))
   start_time_str = dict['start_time']
   start_time = iso8601.parse_date(start_time_str)
   m = Metadata(server=dict['server'],
@@ -111,6 +114,7 @@ def all_logs(dir):
           metadata = parse_header(header)
           metadata.path = path
           yield metadata
+            
 
 
 def missing_logs(dir):

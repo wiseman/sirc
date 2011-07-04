@@ -4,23 +4,17 @@
 
 from __future__ import with_statement
 import cgi
-import collections
 import datetime
-import hashlib
 import logging
 import os.path
-import string
+import sys
 import time
+import traceback
 import urllib
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
-from django.utils import simplejson
-from google.appengine.ext import db
-from google.appengine.api import users as gaeusers
-from google.appengine.ext import blobstore
-from google.appengine.ext.webapp import blobstore_handlers
 
 import ircloglib
 import pytz
@@ -62,6 +56,12 @@ class Browse(webapp.RequestHandler):
     logging.info('total=%s ms, fetch=%s ms',
                  int((end_time - start_time) * 1000),
                  int((fetch_time - start_time) * 1000))
+
+
+class Browse2(webapp.RequestHandler):
+  def get(self):
+    values = {}
+    self.response.out.write(render_template('browse.html', values))
 
 
 PAGE_SIZE = 20
@@ -115,8 +115,6 @@ class Search(webapp.RequestHandler):
 
   def handle_exception(self, exception, debug_mode):
     logging.info('WOO')
-    import sys
-    import traceback
     from google.appengine.api import xmpp
 
     exception_name = sys.exc_info()[0].__name__
@@ -232,39 +230,32 @@ def is_same_day(t1, t2):
   return v
 
 
-import sys
-import logging
-import traceback
-from google.appengine.ext import webapp
-from google.appengine.api import memcache
-
-
-class BaseRequestHandler(webapp.RequestHandler):
-  def handle_exception(self, exception, debug_mode):
-    exception_name = sys.exc_info()[0].__name__
-    exception_details = str(sys.exc_info()[1])
-    exception_traceback = ''.join(traceback.format_exception(*sys.exc_info()))
-    logging.error(exception_traceback)
-    # expiration in seconds (max 1 mail per hour for a particular
-    # exception)
-    exception_expiration = 3600
-    mail_admin = "yourmail@yourdomain"  # must be admin for the application
-    sitename = "yourapplication"
-    throttle_name = 'exception-' + exception_name
-    throttle = memcache.get(throttle_name)
-    if throttle is None:
-      memcache.add(throttle_name, 1, exception_expiration)
-      subject = '[%s] exception [%s: %s]' % (sitename,
-                                             exception_name,
-                                             exception_details)
-      mail.send_mail_to_admins(sender=mail_admin,
-                               subject=subject,
-                               body=exception_traceback)
-    template_values = {}
-    if users.is_current_user_admin():
-      template_values['traceback'] = exception_traceback
-    self.response.out.write(template.render('error.html',
-                                            template_values))
+# class BaseRequestHandler(webapp.RequestHandler):
+#   def handle_exception(self, exception, debug_mode):
+#     exception_name = sys.exc_info()[0].__name__
+#     exception_details = str(sys.exc_info()[1])
+#     exception_traceback = ''.join(traceback.format_exception(*sys.exc_info()))
+#     logging.error(exception_traceback)
+#     # expiration in seconds (max 1 mail per hour for a particular
+#     # exception)
+#     exception_expiration = 3600
+#     mail_admin = "yourmail@yourdomain"  # must be admin for the application
+#     sitename = "yourapplication"
+#     throttle_name = 'exception-' + exception_name
+#     throttle = memcache.get(throttle_name)
+#     if throttle is None:
+#       memcache.add(throttle_name, 1, exception_expiration)
+#       subject = '[%s] exception [%s: %s]' % (sitename,
+#                                              exception_name,
+#                                              exception_details)
+#       mail.send_mail_to_admins(sender=mail_admin,
+#                                subject=subject,
+#                                body=exception_traceback)
+#     template_values = {}
+#     if users.is_current_user_admin():
+#       template_values['traceback'] = exception_traceback
+#     self.response.out.write(template.render('error.html',
+#                                             template_values))
 
 
 def real_main():

@@ -1,15 +1,12 @@
 #!/usr/bin/env python
 from __future__ import with_statement
 import sys
-import re
-import cgi
 import datetime
 import itertools
 import logging
 import optparse
 import os
 import Queue
-import random
 import StringIO
 import threading
 import time
@@ -29,13 +26,13 @@ class IndexingError(Exception):
 
 
 class UTC(datetime.tzinfo):
-  def utcoffset(self, dt):
+  def utcoffset(self, unused_dt):
     return datetime.timedelta(0)
 
-  def tzname(self, dt):
+  def tzname(self, unused_dt):
     return "UTC"
 
-  def dst(self, dt):
+  def dst(self, unused_dt):
     return datetime.timedelta(0)
 
 
@@ -159,33 +156,14 @@ def get_s3_document(doc_path):
 # ----------------------------------------
 # Single-threaded.
 
-def index_documents(solr_url, doc_paths, force=False):
-  for path in doc_paths:
-    log_data = sirc.log.parse_log_path(path)
-    if force or not is_already_indexed(solr_url, log_data):
-      doc = get_document(path)
-      index_document(solr_url, doc)
-    else:
-      #print 'Skipping %s' % (path,)
-      pass
-
-
-def index_document(solr_url, doc):
-  records = list(index_records_for_document(doc))
-  #if len(records) > 0:
-  #  print records[0]
-  post_records(solr_url, records)
-  record_num_lines_indexed(len(records))
-
-
 def id_for_day(log_data):
-  id = 'day/%s' % (sirc.log.encode_id(log_data),)
-  return id
+  log_id = 'day/%s' % (sirc.log.encode_id(log_data),)
+  return log_id
 
 
 def is_already_indexed(solr_url, log_data):
-  id = id_for_day(log_data)
-  query = 'id:%s*' % (id,)
+  log_id = id_for_day(log_data)
+  query = 'id:%s*' % (log_id,)
   conn = sirc.util.solr.get_solr_connection(solr_url)
   response = conn.query(q=query,
                         fields='id',
@@ -242,7 +220,7 @@ def index_file_group(solr_url, log_datas, force=False):
 
 def get_index_times(solr_url, log_datas):
   logs_by_id = dict((id_for_day(d), d) for d in log_datas)
-  query = ' OR '.join(['id:%s' % (id,) for id in logs_by_id])
+  query = ' OR '.join(['id:%s' % (log_id,) for log_id in logs_by_id])
   conn = sirc.util.solr. get_solr_connection(solr_url)
   response = conn.query(q=query,
                         fields='id,index_timestamp',
@@ -250,8 +228,8 @@ def get_index_times(solr_url, log_datas):
                         rows=INDEX_BATCH_SIZE)
   index_times = {}
   for doc in response.results:
-    id = doc['id']
-    index_times[logs_by_id[id]] = doc['index_timestamp']
+    log_id = doc['id']
+    index_times[logs_by_id[log_id]] = doc['index_timestamp']
   #print index_times
   return index_times
 
@@ -270,12 +248,10 @@ def index_records_for_document(doc):
     log_data,
     datetime.datetime.utcnow().replace(tzinfo=g_utc))
   yield r
-  position = doc.file.tell()
   line_num = 0
   line = doc.file.readline()
   while line != '':
-    xformed = index_record_for_line(log_data, line, line_num, position)
-    position = doc.file.tell()
+    xformed = index_record_for_line(log_data, line, line_num)
     line_num += 1
     line = doc.file.readline()
     if xformed:
@@ -306,7 +282,7 @@ def post_records(solr_url, index_records):
   #             total_ms, commit_ms)
 
 
-def index_record_for_line(log_data, line, line_num, position):
+def index_record_for_line(log_data, line, line_num):
   try:
     result = ircloglib.parse_line(line)
   except ircloglib.ParsingError, e:
@@ -328,8 +304,7 @@ def index_record_for_line(log_data, line, line_num, position):
     'channel': log_data.channel,
     'timestamp': line_timestamp,
     'user': recode(result[2]),
-    'text': recode(result[3])
-    }
+    'text': recode(result[3])}
   return record
 
 
@@ -338,8 +313,7 @@ def index_record_for_day(log_data, index_time):
     'id': id_for_day(log_data),
     'server': log_data.server,
     'channel': log_data.channel,
-    'index_timestamp': index_time
-    }
+    'index_timestamp': index_time}
   return record
 
 
