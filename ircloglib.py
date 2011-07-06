@@ -104,15 +104,18 @@ def parse_line(line):
     raise ParsingError('Unable to parse this line: "%s" (%s)' % (line, rest[1]))
 
 
-def all_logs(dir):
+def all_logs(dir, callback=None):
   for server_dir in sorted(glob.glob(os.path.join(dir, '*'))):
     for channel_dir in sorted(glob.glob(os.path.join(server_dir, '*'))):
       for year_dir in sorted(glob.glob(os.path.join(channel_dir, '[0-9]*'))):
         for path in sorted(glob.glob(os.path.join(year_dir, '[0-9]*'))):
           with open(path, 'rb') as f:
             header = f.readline()
-          metadata = parse_header(header)
-          metadata.path = path
+            metadata = parse_header(header)
+            metadata.path = path
+            if callback:
+              f.tell(0)
+              callback(metadata, f)
           yield metadata
             
 
