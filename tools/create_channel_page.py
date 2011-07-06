@@ -1,3 +1,4 @@
+import calendar
 import StringIO
 import sys
 
@@ -29,11 +30,11 @@ def get_channels_stats(log_dir):
 def create_channel_page(server, channel, channel_stats):
   out = StringIO.StringIO()
   out.write('<h1>%s/%s</h1>\n' % (server, channel))
-  for year in sorted(channel_stats.keys()):
+  for year in sorted(channel_stats.keys(), reverse=True):
     out.write('<h2>%s</h2>\n' % (year,))
     out.write('<table>\n')
-    for month in sorted(channel_stats[year].keys()):
-      out.write('<tr><td><big>%s<big></td>' % (month,))
+    for month in sorted(channel_stats[year].keys(), reverse=True):
+      out.write('<tr><td><big>%s<big></td>' % (calendar.month_name[month],))
       for day in range(NUM_DAYS_BY_MONTH[month]):
         day += 1
         if day in channel_stats[year][month]:
