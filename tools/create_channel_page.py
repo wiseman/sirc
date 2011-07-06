@@ -35,6 +35,7 @@ def create_channel_page(server, channel, channel_stats):
     for month in sorted(channel_stats[year].keys()):
       out.write('<tr><td><big>%s<big></td>' % (month,))
       for day in range(NUM_DAYS_BY_MONTH[month]):
+        day += 1
         if day in channel_stats[year][month]:
           out.write('<td align="center">%s</td>' % (day,))
         else:
