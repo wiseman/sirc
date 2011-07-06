@@ -1,3 +1,4 @@
+import StringIO
 import sys
 
 import ircloglib
@@ -22,10 +23,25 @@ def get_channels_stats(log_dir):
     stats[(log_data.server, log_data.channel)] = channel_stats
   return stats
 
+def create_channel_page(server, channel, channel_stats):
+  out = StringIO.StringIO()
+  out.write('<h1>%s/%s</h1>\n' % (server, channel))
+  for year in sorted(channel_stats.keys()):
+    out.write('<h2>%s</h2>\n' % (year,))
+    out.write('<table>\n')
+    for month in sorted(channel_stats[year].keys()):
+      out.write('<tr><td><big>%s<big></td>' % (month,))
+      for (day, activity) in channel_stats[year][month]:
+        out.write('<td>%s</td>' % (day,))
+      out.write('</tr>\n')
+    out.write('</table>\n')
+  return out.getvalue()
 
 def get_activity_count(path):
   with open(path, 'rb') as f:
     return len(f.readlines())
 
 if __name__ == '__main__':
-  get_channels_stats(sys.argv[1])
+  stats = get_channels_stats(sys.argv[1])
+  for server, channel in sorted(stats.keys()):
+    print create_channel_page(server, channel, stats[(server, channel)])
