@@ -40,11 +40,15 @@ if __name__ == '__main__':
 <html>
 <head>
 <style type="text/css">
-  .activity-xlow   { background-color: rgb(  0,   0, 255); }
-  .activity-low    { background-color: rgb(  0, 102, 255); }
-  .activity-medium { background-color: rgb(  0, 255, 255); }
-  .activity-high   { background-color: rgb(255, 255,   0); }
-  .activity-xhigh  { background-color: rgb(255, 101,   0); }
+  .act { }
+  /* heatmap colors from Brewer:
+     http://colorbrewer2.org/index.php?type=diverging&scheme=RdYlBu&n=5
+  */
+  .xlo { background-color: rgb( 44, 123, 182); }
+  .lo  { background-color: rgb(171, 217, 233); }
+  .med { background-color: rgb(255, 255, 191); }
+  .hi  { background-color: rgb(253, 174,  97); }
+  .xhi { background-color: rgb(215,  25,  28); }
 </style>
 <title>Browsing</title>
 </head>
