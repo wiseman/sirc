@@ -18,7 +18,7 @@ def get_channel_browse_html(server, channel, channel_stats, activity_counts):
         if day in channel_stats[year][month]:
           count = channel_stats[year][month][day]
           css_class = activity_css_class(count, activity_counts)
-          out.write('<td><span class="%s">%02d</span></td>' % (css_class, day))
+          out.write('<td><span class="act %s">%02d</span></td>' % (css_class, day))
         else:
           out.write('<td align="center">--</td>')
       out.write('</tr>\n')
@@ -27,11 +27,11 @@ def get_channel_browse_html(server, channel, channel_stats, activity_counts):
 
 
 
-ACTIVITY_CLASSES = (('activity-xlow', 0.0),
-                    ('activity-low', 0.1),
-                    ('activity-medium', 0.25),
-                    ('activity-high', 0.75),
-                    ('activity-xhigh', 0.9))
+ACTIVITY_CLASSES = (('xlo', 0.0),
+                    ('lo', 0.1),
+                    ('med', 0.25),
+                    ('hi', 0.75),
+                    ('xhi', 0.9))
 
 
 def activity_css_class(count, distribution):
