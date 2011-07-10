@@ -1,3 +1,4 @@
+import zlib
 
 from google.appengine.api import memcache
 
@@ -26,12 +27,12 @@ def fetch_from_key(key):
 
 
 def render_from_key(key):
-  cached_html = memcache.get(key)
-  if cached_html:
-    return cached_html
+  cached_compressed_html = memcache.get(key)
+  if cached_compressed_html:
+    return zlib.decompress(cached_compressed_html)
 
   data = fetch_from_key(key)
   html = sirc.logrender.render_log(sirc.log.decode_id(key)[0], data)
 
-  memcache.set(key, html, time=60)
+  memcache.set(key, zlib.compress(html), time=60)
   return html
