@@ -4,6 +4,11 @@ import StringIO
 
 NUM_DAYS_BY_MONTH = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
+def num_days_in_month(year, month):
+  if calendar.isleap(year) and month == 2:
+    return NUM_DAYS_IN_MONTH[month] + 1
+  else:
+    return NUM_DAYS_IN_MONTH[month]
 
 def get_channel_browse_html(server, channel, channel_stats, activity_counts):
   out = StringIO.StringIO()
@@ -27,19 +32,27 @@ def get_channel_browse_html(server, channel, channel_stats, activity_counts):
 
 
 
+# We assign one of five CSS classes to a channel-day of activity based
+# on what percentile of overall activity it reaches.  The minimum
+# percentile for each class:
+#
+#  Extra low:   0th percentile
+#  Low:        10th percentile
+#  Medium:     25th percentile
+#  High:       75th percentile
+#  Extra high: 90th percentile
+
 ACTIVITY_CLASSES = (('xlo', 0.0),
-                    ('lo', 0.1),
+                    ('lo',  0.1),
                     ('med', 0.25),
-                    ('hi', 0.75),
+                    ('hi',  0.75),
                     ('xhi', 0.9))
 
 
 def activity_css_class(count, distribution):
-  #print '<!-- *** -->'
   activity_css = ACTIVITY_CLASSES[0][0]
   for i in range(len(ACTIVITY_CLASSES)):
     break_val = distribution[int(ACTIVITY_CLASSES[i][1] * len(distribution))]
-    #print '<!-- %s, %s -->' % (count, break_val)
     if count > break_val:
       activity_css = ACTIVITY_CLASSES[i][0]
     else:
