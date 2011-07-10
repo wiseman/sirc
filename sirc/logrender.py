@@ -10,26 +10,26 @@ import sirc.util.urlfinder
 
 MSG_LINE_TEMPLATE = string.Template(
   '<tr class="serprow serpmsg" id="$line_num">' +
-  '<td class="serptime"><a href="#$line_num">$time</a></td>' +
+  '<td class="serptime"><a href="#$line_num">$time</a>' +
   '<td class="serpuser">' +
   '&lt;' +
   '$user' +
   '&gt;' +
   '</td>' + \
-  '<td class="serptext">$message</td>' + \
-  '</tr>\n')
+  '<td class="serptext">$message' + \
+  '')
 
 ACTION_LINE_TEMPLATE = string.Template(
-  '<tr class="serprow serpaction" id="$line_num">' +
-  '<td class="serptime"><a href="#$line_num">$time</a></td>' +
-  '<td colspan="2" class="serptext">$action</td>' + \
-  '</tr>\n')
+  '<tr class="serprow" id="$line_num">' +
+  '<td class="serptime"><a href="#$line_num">$time</a>' +
+  '<td colspan="2" class="serptext">$action' + \
+  '')
 
 UNKNOWN_LINE_TEMPLATE = string.Template(
   '<tr class="serprow serpunk" id="$line_num">' + \
-  '<td class="serptime"><a href="#$line_num">$time</a></td>' + \
-  '<td colspan="2" class="serptext">$line</td>' + \
-  '</tr>\n')
+  '<td class="serptime"><a href="#$line_num">$time</a>' + \
+  '<td colspan="2" class="serptext">$line' + \
+  '')
 
 g_line_renderers = {}
 
