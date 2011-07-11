@@ -55,7 +55,6 @@ if __name__ == '__main__':
 <body>
 """
   stats, activity_counts = get_channels_stats(sys.argv[1])
-  print '<!-- %s -->' % (activity_counts,)
   for server, channel in sorted(stats.keys()):
     print sirc.browse.get_channel_browse_html(server, channel, stats[(server, channel)], activity_counts)
   print "</body></html>"
