@@ -1,8 +1,33 @@
 import calendar
+import logging
 import StringIO
+
+from google.appengine.ext import db
+
+from django.utils import simplejson
+
+
+class ChannelStats(db.Model):
+  stats_json = db.TextProperty()
+
+
+def set_statistics(stats):
+  logging.info('%s' % (stats.keys(),))
+  assert 'channel_stats' in stats
+  assert 'activity_counts' in stats
+  record = ChannelStats(key_name='channel_activity_stats',
+                        stats_json=simplejson.dumps(stats))
+  record.put()
+
+
+def get_statistics():
+  key = db.Key.from_path('ChannelStats', 'channel_activity_stats')
+  record = db.get(key)
+  return simplejson.loads(record.stats_json)
 
 
 NUM_DAYS_BY_MONTH = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
 
 def num_days_in_month(year, month):
   if calendar.isleap(year) and month == 2:
@@ -10,20 +35,30 @@ def num_days_in_month(year, month):
   else:
     return NUM_DAYS_IN_MONTH[month]
 
-def get_channel_browse_html(server, channel, channel_stats, activity_counts):
+
+def get_channel_browse_html(server, channel, stats):
+  channel_stats = stats['channel_stats']['%s:%s' % (server, channel)]
+  activity_counts = stats['activity_counts']
   out = StringIO.StringIO()
   out.write('<h1>%s/%s</h1>\n' % (server, channel))
-  for year in sorted(channel_stats.keys(), reverse=True):
-    out.write('<h2>%s</h2>\n' % (year,))
+  years = [int(y) for y in channel_stats.keys()]
+  for year in sorted(years, reverse=True):
+    year_str = str(year)
+    out.write('<h2>%s</h2>\n' % (year_str,))
     out.write('<table>\n')
-    for month in sorted(channel_stats[year].keys(), reverse=True):
+    months = [int(m) for m in channel_stats[year_str].keys()]
+    for month in sorted(months, reverse=True):
+      month_str = str(month)
       out.write('<tr><td><big>%s</big></td>' % (calendar.month_name[month],))
       for day in range(NUM_DAYS_BY_MONTH[month]):
         day += 1
-        if day in channel_stats[year][month]:
-          count = channel_stats[year][month][day]
+        day_str = str(day)
+        if day_str in channel_stats[year_str][month_str]:
+          count = channel_stats[year_str][month_str][day_str]
           css_class = activity_css_class(count, activity_counts)
-          out.write('<td><span class="act %s">%02d</span></td>' % (css_class, day))
+          # e.g. /browse/haskell/2011/07/22
+          target_url = '/browse/%s/%s/%s/%s' % (channel, year_str, month_str, day_str)
+          out.write('<td><a href="%s"><span class="act %s">%02d</span></a></td>' % (target_url, css_class, day))
         else:
           out.write('<td align="center">--</td>')
       out.write('</tr>\n')
@@ -59,3 +94,4 @@ def activity_css_class(count, distribution):
       break
   return activity_css
   
+
