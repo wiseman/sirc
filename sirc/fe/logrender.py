@@ -34,5 +34,7 @@ def render_from_key(key):
   data = fetch_from_key(key)
   html = sirc.logrender.render_log(sirc.log.decode_id(key)[0], data)
 
-  memcache.set(key, zlib.compress(html), time=60)
+  # Cache for up to 5 minutes.  We probably update the newest logs
+  # every 10 minutes...
+  memcache.set(key, zlib.compress(html), time=300)
   return html

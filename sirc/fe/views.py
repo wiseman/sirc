@@ -7,18 +7,21 @@ import cgi
 import datetime
 import logging
 import os.path
+import simplejson
 import sys
 import time
 import traceback
 import urllib
 
 from google.appengine.ext import webapp
-from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.webapp import template
+from google.appengine.ext.webapp.util import run_wsgi_app
+from django.utils import simplejson
 
 import ircloglib
 import pytz
 
+import sirc.fe.browse
 import sirc.fe.index
 import sirc.util.urlfinder
 import sirc.fe.logrender
@@ -37,14 +40,15 @@ def render_template(name, values={}):
   return template.render(os.path.join(TEMPLATE_PATH, name), values)
 
 
-class Browse(webapp.RequestHandler):
+class BrowseDay(webapp.RequestHandler):
   def get(self, channel_str, year_str, month_str, day_str):
+    server_str = 'freenode'
     start_time = time.time()
     year = int(year_str)
     month = int(month_str)
     day = int(day_str)
     log_date = datetime.date(year=year, month=month, day=day)
-    log_data = ircloglib.Metadata(server='freenode',
+    log_data = ircloglib.Metadata(server=server_str,
                                   channel=channel_str,
                                   start_time=log_date)
     key = sirc.log.encode_id(log_data)
@@ -58,10 +62,21 @@ class Browse(webapp.RequestHandler):
                  int((fetch_time - start_time) * 1000))
 
 
-class Browse2(webapp.RequestHandler):
-  def get(self):
-    values = {}
+class BrowseChannel(webapp.RequestHandler):
+  def get(self, channel_str):
+    server_str = 'freenode'
+    stats = sirc.fe.browse.get_statistics()
+    html = sirc.fe.browse.get_channel_browse_html(server_str, channel_str, stats)
+    values = {'stats_html': html}
+    self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
     self.response.out.write(render_template('browse.html', values))
+
+
+class PostActivityStats(webapp.RequestHandler):
+  def post(self):
+    stats = simplejson.loads(self.request.get('stats'))
+    sirc.fe.browse.set_statistics(stats)
+    self.response.out.write('OK')
 
 
 PAGE_SIZE = 20
