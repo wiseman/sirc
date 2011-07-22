@@ -13,8 +13,13 @@ def make_application():
   import sirc.fe.views
   app = webapp.WSGIApplication(
       [('/', sirc.fe.views.Search),
-       ('/browse/(.*)/(.*)/(.*)/(.*)', sirc.fe.views.Browse),
-       ('/browse2', sirc.fe.views.Browse2),
+       # Browse URLs can look like this:
+       # http://sirc.com/browse/haskell/2011/07/11
+       ('/browse/(.*)/(.*)/(.*)/(.*)', sirc.fe.views.BrowseDay),
+       # Or like this:
+       # http://sirc.com/browse/haskell
+       ('/browse/(.*)', sirc.fe.views.BrowseChannel),
+       ('/postactivitystats', sirc.fe.views.PostActivityStats),
        ],
       #debug=True
       )

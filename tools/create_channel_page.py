@@ -1,10 +1,6 @@
-import calendar
-import StringIO
 import sys
 
 import ircloglib
-
-import sirc.browse
 
 
 # {(server, channel):
@@ -25,9 +21,8 @@ def get_channels_stats(log_dir):
     year_stats[log_data.start_time.month] = month_stats
     channel_stats[log_data.start_time.year] = year_stats
     stats[(log_data.server, log_data.channel)] = channel_stats
-  return stats, sorted(activity_counts)
-
-
+    return {'channel_stats': stats,
+            'activity_count': sorted(activity_counts)}
 
 
 def get_activity_count(path):
@@ -35,7 +30,7 @@ def get_activity_count(path):
     return len(f.readlines())
 
 
-if __name__ == '__main__':
+def create_browse_html(logdir):
   print """
 <html>
 <head>
@@ -54,7 +49,19 @@ if __name__ == '__main__':
 </head>
 <body>
 """
-  stats, activity_counts = get_channels_stats(sys.argv[1])
+  stats = get_channels_stats(logdir)
+  activity_counts = stats['activity_counts']
+  stats = stats['channel_stats']
+  import pprint
+  pprint.pprint(stats)
   for server, channel in sorted(stats.keys()):
-    print sirc.browse.get_channel_browse_html(server, channel, stats[(server, channel)], activity_counts)
+    print sirc.fe.browse.get_channel_browse_html(server, channel, stats[(server, channel)], activity_counts)
   print "</body></html>"
+
+
+def main(argv):
+  create_browse_html(argv[1])
+
+
+if __name__ == '__main__':
+  main(sys.argv)

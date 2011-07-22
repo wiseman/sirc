@@ -17,6 +17,17 @@
   })();
 
 </script>
+<style type="text/css">
+  /* heatmap colors from Brewer:
+     http://colorbrewer2.org/index.php?type=diverging&scheme=RdYlBu&n=5
+  */
+  .xlo { background-color: rgb( 44, 123, 182); }
+  .lo  { background-color: rgb(171, 217, 233); }
+  .med { background-color: rgb(255, 255, 191); }
+  .hi  { background-color: rgb(253, 174,  97); }
+  .xhi { background-color: rgb(215,  25,  28); }
+</style>
+
 </head>
 <body>
 <div style="float: right;"><a href="static/help.html">help</a></div>
@@ -25,8 +36,8 @@
 SIRC
 </div>
 
-<table>
-<tr><td>Jan</td><td>Feb</td><td>Mar</td><td>Apr</td></tr>
-<tr><td>May</td><td>Jun</td><td>Jul</td><td>Aug</td></tr>
-<tr><td>Sep</td><td>Oct</td><td>Nov</td><td>Dec</td></tr>
-</table>
+{{stats_html}}
+
+</body>
+</html>
+
