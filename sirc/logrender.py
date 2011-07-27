@@ -130,12 +130,33 @@ class RenderingContext:
     self.nicks = {}
 
 
+def browse_url(channel, fragment=None):
+  if fragment:
+    return '/browse/%s#%s' % (channel, fragment)
+  else:
+    return '/browse/%s' % (channel,)
+
+
+def make_link(url, anchor):
+  return '<a href="%s">%s</a>' % (url, anchor)
+
+
 def render_log(log_data, text):
+  channel = log_data.channel
+  year = log_data.start_time.year
+  heading_s = StringIO.StringIO()
+  heading_s.write(make_link(browse_url(channel), channel))
+  heading_s.write(' &gt; ')
+  heading_s.write(make_link(browse_url(log_data.channel, year),
+                            ''))
+  browse_url(log_data.channel, log_data.start_time.year)
+  #heading_s.write('%d')
+
   date_str = '%02d-%02d-%02d' % (log_data.start_time.year,
                                  log_data.start_time.month,
                                  log_data.start_time.day)
   title = 'SIRC > %s > %s' % (log_data.channel, date_str)
-  heading = '%s > %s' % (log_data.channel, date_str)
+  heading_html = '<a href="%s">%s</a> > %s' % (log_data.channel, date_str)
   in_buffer = StringIO.StringIO(text)
   out_buffer = StringIO.StringIO()
   prologue_template = string.Template(LOG_PROLOGUE_TEMPLATE)
