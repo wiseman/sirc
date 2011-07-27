@@ -16,7 +16,6 @@ import urllib
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
-from django.utils import simplejson
 
 import ircloglib
 import pytz
@@ -66,7 +65,8 @@ class BrowseChannel(webapp.RequestHandler):
   def get(self, channel_str):
     server_str = 'freenode'
     stats = sirc.fe.browse.get_statistics()
-    html = sirc.fe.browse.get_channel_browse_html(server_str, channel_str, stats)
+    html = sirc.fe.browse.get_channel_browse_html(
+      server_str, channel_str, stats)
     values = {'stats_html': html}
     self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
     self.response.out.write(render_template('browse.html', values))
