@@ -26,7 +26,7 @@ def get_statistics():
   return simplejson.loads(record.stats_json)
 
 
-NUM_DAYS_BY_MONTH = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+NUM_DAYS_IN_MONTH = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 
 def num_days_in_month(year, month):
@@ -44,27 +44,30 @@ def get_channel_browse_html(server, channel, stats):
   years = [int(y) for y in channel_stats.keys()]
   for year in sorted(years, reverse=True):
     year_str = str(year)
-    out.write('<h2>%s</h2>\n' % (year_str,))
+    out.write('<h2><a name="%s">%s</a></h2>\n' % (year_str, year_str))
     out.write('<table>\n')
     months = [int(m) for m in channel_stats[year_str].keys()]
     for month in sorted(months, reverse=True):
       month_str = str(month)
-      out.write('<tr><td><big>%s</big></td>' % (calendar.month_name[month],))
-      for day in range(NUM_DAYS_BY_MONTH[month]):
+      out.write('<tr><td><big><a name="%s-%s">%s</a></big></td>' %
+                (year_str, month_str, calendar.month_name[month],))
+      for day in range(num_days_in_month(month)):
         day += 1
         day_str = str(day)
         if day_str in channel_stats[year_str][month_str]:
           count = channel_stats[year_str][month_str][day_str]
           css_class = activity_css_class(count, activity_counts)
           # e.g. /browse/haskell/2011/07/22
-          target_url = '/browse/%s/%s/%s/%s' % (channel, year_str, month_str, day_str)
-          out.write('<td><a href="%s"><span class="act %s">%02d</span></a></td>' % (target_url, css_class, day))
+          target_url = '/browse/%s/%s/%s/%s' % (
+            channel, year_str, month_str, day_str)
+          out.write('<td><a href="%s">' % (target_url,))
+          out.write('<span class="act %s">%02d</span></a></td>' % (
+              css_class, day))
         else:
           out.write('<td align="center">--</td>')
       out.write('</tr>\n')
     out.write('</table>\n')
   return out.getvalue()
-
 
 
 # We assign one of five CSS classes to a channel-day of activity based
@@ -78,9 +81,9 @@ def get_channel_browse_html(server, channel, stats):
 #  Extra high: 90th percentile
 
 ACTIVITY_CLASSES = (('xlo', 0.0),
-                    ('lo',  0.1),
+                    ('lo', 0.1),
                     ('med', 0.25),
-                    ('hi',  0.75),
+                    ('hi', 0.75),
                     ('xhi', 0.9))
 
 
@@ -93,5 +96,3 @@ def activity_css_class(count, distribution):
     else:
       break
   return activity_css
-  
-

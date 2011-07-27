@@ -55,7 +55,8 @@ def create_browse_html(logdir):
   import pprint
   pprint.pprint(stats)
   for server, channel in sorted(stats.keys()):
-    print sirc.fe.browse.get_channel_browse_html(server, channel, stats[(server, channel)], activity_counts)
+    print sirc.fe.browse.get_channel_browse_html(
+      server, channel, stats[(server, channel)], activity_counts)
   print "</body></html>"
 
 
