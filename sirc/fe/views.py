@@ -245,34 +245,6 @@ def is_same_day(t1, t2):
   return v
 
 
-# class BaseRequestHandler(webapp.RequestHandler):
-#   def handle_exception(self, exception, debug_mode):
-#     exception_name = sys.exc_info()[0].__name__
-#     exception_details = str(sys.exc_info()[1])
-#     exception_traceback = ''.join(traceback.format_exception(*sys.exc_info()))
-#     logging.error(exception_traceback)
-#     # expiration in seconds (max 1 mail per hour for a particular
-#     # exception)
-#     exception_expiration = 3600
-#     mail_admin = "yourmail@yourdomain"  # must be admin for the application
-#     sitename = "yourapplication"
-#     throttle_name = 'exception-' + exception_name
-#     throttle = memcache.get(throttle_name)
-#     if throttle is None:
-#       memcache.add(throttle_name, 1, exception_expiration)
-#       subject = '[%s] exception [%s: %s]' % (sitename,
-#                                              exception_name,
-#                                              exception_details)
-#       mail.send_mail_to_admins(sender=mail_admin,
-#                                subject=subject,
-#                                body=exception_traceback)
-#     template_values = {}
-#     if users.is_current_user_admin():
-#       template_values['traceback'] = exception_traceback
-#     self.response.out.write(template.render('error.html',
-#                                             template_values))
-
-
 def real_main():
   run_wsgi_app(application)
 
