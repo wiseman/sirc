@@ -61,13 +61,23 @@ class BrowseDay(webapp.RequestHandler):
                  int((fetch_time - start_time) * 1000))
 
 
+class BrowseAllChannels(webapp.RequestHandler):
+  def get(self):
+    server_str = 'freenode'
+    stats = sirc.fe.browse.get_all_channels_statistics()
+    values = {'server_channels': stats}
+    self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
+    self.response.out.write(render_template('browseall.html', values))
+
+
 class BrowseChannel(webapp.RequestHandler):
   def get(self, channel_str):
     server_str = 'freenode'
     stats = sirc.fe.browse.get_statistics()
     html = sirc.fe.browse.get_channel_browse_html(
       server_str, channel_str, stats)
-    values = {'stats_html': html}
+    values = {'stats_html': html,
+              'channel': channel_str}
     self.response.headers['Content-Type'] = 'text/html; charset=utf-8'
     self.response.out.write(render_template('browse.html', values))
 

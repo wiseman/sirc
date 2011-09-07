@@ -16,19 +16,19 @@ MSG_LINE_TEMPLATE = string.Template(
   '$user' +
   '&gt;' +
   '</td>' + \
-  '<td class="serptext">$message</td>' + \
+  '<td class="serptext" width="*">$message</td>' + \
   '</tr>\n')
 
 ACTION_LINE_TEMPLATE = string.Template(
   '<tr class="serprow serpaction" id="$line_num">' +
   '<td class="serptime"><a href="#$line_num">$time</a></td>' +
-  '<td colspan="2" class="serptext">$action</td>' + \
+  '<td colspan="2" class="serptext" width="*">$action</td>' + \
   '</tr>\n')
 
 UNKNOWN_LINE_TEMPLATE = string.Template(
   '<tr class="serprow serpunk" id="$line_num">' + \
   '<td class="serptime"><a href="#$line_num">$time</a></td>' + \
-  '<td colspan="2" class="serptext">$line</td>' + \
+  '<td colspan="2" class="serptext" width="*">$line</td>' + \
   '</tr>\n')
 
 g_line_renderers = {}
@@ -149,20 +149,22 @@ def render_log(log_data, text):
   heading_s.write(' &gt; ')
   heading_s.write(make_link(browse_url(log_data.channel, year),
                             ''))
-  browse_url(log_data.channel, log_data.start_time.year)
   #heading_s.write('%d')
 
   date_str = '%02d-%02d-%02d' % (log_data.start_time.year,
                                  log_data.start_time.month,
                                  log_data.start_time.day)
   title = 'SIRC > %s > %s' % (log_data.channel, date_str)
-  heading_html = '<a href="%s">%s</a> > %s' % (log_data.channel, date_str)
+  heading_html = '<a href="%s">%s</a> > %s' % (
+    browse_url(log_data.channel, log_data.start_time.year),
+    log_data.channel,
+    date_str)
   in_buffer = StringIO.StringIO(text)
   out_buffer = StringIO.StringIO()
   prologue_template = string.Template(LOG_PROLOGUE_TEMPLATE)
   prologue = prologue_template.substitute({
       'title': cgi.escape(title),
-      'heading': cgi.escape(heading)})
+      'heading': heading_html})
   out_buffer.write(prologue)
   context = RenderingContext()
   for line_num, line in enumerate(in_buffer):
