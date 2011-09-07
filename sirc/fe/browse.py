@@ -36,6 +36,16 @@ def num_days_in_month(year, month):
     return NUM_DAYS_IN_MONTH[month]
 
 
+def get_all_channels_statistics():
+  stats = get_statistics()
+  server_channels = []
+  for key in stats['channel_stats']:
+    server, channel = key.split(':')
+    server_channels.append({'server': server,
+                            'channel': channel})
+  return server_channels
+
+
 def get_channel_browse_html(server, channel, stats):
   channel_stats = stats['channel_stats']['%s:%s' % (server, channel)]
   activity_counts = stats['activity_counts']
@@ -51,7 +61,7 @@ def get_channel_browse_html(server, channel, stats):
       month_str = str(month)
       out.write('<tr><td><big><a name="%s-%s">%s</a></big></td>' %
                 (year_str, month_str, calendar.month_name[month],))
-      for day in range(num_days_in_month(month)):
+      for day in range(num_days_in_month(year, month)):
         day += 1
         day_str = str(day)
         if day_str in channel_stats[year_str][month_str]:

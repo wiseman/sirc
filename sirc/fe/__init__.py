@@ -18,6 +18,7 @@ def make_application():
        ('/browse/(.*)/(.*)/(.*)/(.*)', sirc.fe.views.BrowseDay),
        # Or like this:
        # http://sirc.com/browse/haskell
+       ('/browse', sirc.fe.views.BrowseAllChannels),
        ('/browse/(.*)', sirc.fe.views.BrowseChannel),
        ('/postactivitystats', sirc.fe.views.PostActivityStats),
        ],
