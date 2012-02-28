@@ -1,6 +1,6 @@
 body {
     background-image: url('background2.jpg');
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-attachment: fixed;
     padding-left: 0.2in;
     padding-right: 0.2in;
@@ -129,3 +129,9 @@ td.serpdate {
     color: #999999;
 }
 
+.error {
+    background-color: #FC9D9D;
+    border-color: #910000;
+    border-style: dashed;
+    border-width: 1px;
+}

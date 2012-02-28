@@ -34,9 +34,13 @@ SIRC
 {% if has_results %}
 {{ result_html }}
 {% else %}
+{% if error %}
+{{ error_message }}
+{% else %}
 <p class="serps">
 Sorry, there were no matches for your query.
 </p>
+{% endif %}
 {% endif %}
 {% endif %}
 

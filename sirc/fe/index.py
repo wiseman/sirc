@@ -1,20 +1,18 @@
-import sys
-import re
-import logging
+import cgi
 import datetime
 import hashlib
+import logging
+import re
+import sys
+import time
 import urllib
 import urllib2
-import time
+
+from django.utils import simplejson as json
 
 from google.appengine.ext import webapp
 from google.appengine.ext import db
 from google.appengine.ext import blobstore
-
-import mapreduce.operation
-import mapreduce.control
-import mapreduce.context
-
 
 class QueryEvent(db.Model):
   timestamp = db.DateTimeProperty(required=True)
@@ -33,54 +31,6 @@ def record_query(query):
 LINE_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+) <(\w+)> ?(.*)', re.UNICODE)
 
 
-def index_log_line(entity):
-  context = mapreduce.context.get()
-  params = context.mapreduce_spec.mapper.params
-  #logging.info('params: %s' % (params,))
-  #logging.info('Got entity: %s' % (entity,))
-  log_key = params['log_key']
-  position, line = entity
-
-  parsed_line = parse_log_line(line)
-  if parsed_line:
-    timestamp_str, user, text = parsed_line
-
-    log = DayLog.get(params['log_key'])
-    msg_hour = int(timestamp_str[0:2])
-    msg_minute = int(timestamp_str[3:5])
-    msg_second = int(timestamp_str[6:8])
-    timestamp = datetime.datetime(log.date.year,
-                                  log.date.month,
-                                  log.date.day,
-                                  msg_hour,
-                                  msg_minute,
-                                  msg_second)
-
-    encoded = False
-    try:
-      text_u = tokenz.recode(text)
-      terms_u = tokenz.extract_text_tokens(text_u)
-      user_u = tokenz.recode(user)
-      encoded = True
-    except tokenz.EncodingError, e:
-      logging.error('Unable to encode line %r: %s' % (text, e))
-
-    if encoded:
-      index = LogLineIndex(log=log,
-                           position=position,
-                           channel=log.channel,
-                           timestamp=timestamp,
-                           terms=terms_u,
-                           user=user_u,
-                           text=text_u)
-      yield mapreduce.operation.db.Put(index)
-
-
-class IndexingFinished(webapp.RequestHandler):
-  def post(self):
-    pass
-
-
 def parse_query_string(query_string):
   logging.info('%r' % (query_string,))
   words = tokenz.extract_text_tokens(query_string)
@@ -95,21 +45,6 @@ def make_db_query_from_parsed_query(parsed_query):
   return db_query
 
 
-def get_query_results(query_string):
-  parsed_query = parse_query_string(query_string)
-  db_query = query.make_multi_term_query(parsed_query)
-  records = db_query.fetch(1000)
-  for r in records:
-    blob_reader = blobstore.BlobReader(r.log.blob.key())
-    r.context = get_context_lines(blob_reader, r.position)
-    #logging.info('context: %s' % (r.context,))
-    #logging.info('Context: %s' % (r.context,))
-  for r in records:
-    r['text'] = get_log_line_from_position(blob_reader, r['position'])
-    logging.info(r['text'])
-  return records
-
-
 SEARCH_SERVER_URL = 'http://heavymeta.dyndns.org:8983' + \
                     '/solr/select/?q=%s&version=2.2&start=%s&rows=%s' + \
                     '&wt=json&sort=timestamp+desc'
@@ -117,10 +52,6 @@ SEARCH_SERVER_URL = 'http://heavymeta.dyndns.org:8983' + \
 
 def get_query_results(query_string, start, num_results):
   start_time = time.time()
-  import cgi
-  from django.utils import simplejson as json
-  import datetime
-
   query_event = record_query('q=%s, start=%s' % (query_string, start))
 
   url = SEARCH_SERVER_URL % (urllib.quote_plus(query_string.encode('utf-8')),
