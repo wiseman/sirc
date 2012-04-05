@@ -33,54 +33,6 @@ def record_query(query):
 LINE_RE = re.compile(r'([0-9]+:[0-9]+:[0-9]+) <(\w+)> ?(.*)', re.UNICODE)
 
 
-def index_log_line(entity):
-  context = mapreduce.context.get()
-  params = context.mapreduce_spec.mapper.params
-  #logging.info('params: %s' % (params,))
-  #logging.info('Got entity: %s' % (entity,))
-  log_key = params['log_key']
-  position, line = entity
-
-  parsed_line = parse_log_line(line)
-  if parsed_line:
-    timestamp_str, user, text = parsed_line
-
-    log = DayLog.get(params['log_key'])
-    msg_hour = int(timestamp_str[0:2])
-    msg_minute = int(timestamp_str[3:5])
-    msg_second = int(timestamp_str[6:8])
-    timestamp = datetime.datetime(log.date.year,
-                                  log.date.month,
-                                  log.date.day,
-                                  msg_hour,
-                                  msg_minute,
-                                  msg_second)
-
-    encoded = False
-    try:
-      text_u = tokenz.recode(text)
-      terms_u = tokenz.extract_text_tokens(text_u)
-      user_u = tokenz.recode(user)
-      encoded = True
-    except tokenz.EncodingError, e:
-      logging.error('Unable to encode line %r: %s' % (text, e))
-
-    if encoded:
-      index = LogLineIndex(log=log,
-                           position=position,
-                           channel=log.channel,
-                           timestamp=timestamp,
-                           terms=terms_u,
-                           user=user_u,
-                           text=text_u)
-      yield mapreduce.operation.db.Put(index)
-
-
-class IndexingFinished(webapp.RequestHandler):
-  def post(self):
-    pass
-
-
 def parse_query_string(query_string):
   logging.info('%r' % (query_string,))
   words = tokenz.extract_text_tokens(query_string)
@@ -134,14 +86,6 @@ def get_query_results(query_string, start, num_results):
   for r in response['docs']:
     r['timestamp'] = datetime.datetime.strptime(r['timestamp'],
                                                 '%Y-%m-%dT%H:%M:%SZ')
-
-#  for r in response['docs']:
-#    blob_reader = blobstore.BlobReader(r.log.blob.key())
-#    r.context = get_context_lines(blob_reader, r.position)
-    #logging.info('context: %s' % (r.context,))
-    #logging.info('Context: %s' % (r.context,))
-#  for r in records:
-#    r['text'] = get_log_line_from_position(blob_reader, r['position'])
   end_time = time.time()
   query_time = end_time - start_time
   response['query_time'] = query_time
