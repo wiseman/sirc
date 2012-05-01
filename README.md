@@ -41,3 +41,21 @@ The back end
 
 The back end collects IRC logs, adds them to the index, and stores them in the log repository.
 
+To collect logs, I use code from my [irc-logs
+project](http://code.google.com/p/irc-logs/) (I don't have a log bot,
+so I use the logs that nef collects at
+[http://tunes.org/~nef/logs/](http://tunes.org/~nef/logs/).
+
+
+The search index
+----------------
+
+SIRC indexes each line of every IRC log using [Solr](http://lucene.apache.org/solr/).
+
+
+The log repository
+------------------
+
+I store the logs in Amazon S3.  The front end gets them from S3, marks them up with HTML, and shows them to the user.
+
+
