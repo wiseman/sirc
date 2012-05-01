@@ -16,6 +16,11 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
+window.onerror = function(message, file, line) { 
+   var sFormattedMessage = '[' + file + ' (' + line + ')] ' + message; 
+   _gaq.push(['_trackEvent', 'Exceptions', 'Application', sFormattedMessage, null, true]);
+}
+
 </script>
 </head>
 <body>
