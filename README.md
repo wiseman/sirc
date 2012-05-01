@@ -31,3 +31,13 @@ Looking at the log for one channel for one day:
 Browsing the entire history of a channel, which color-coded activity indicators:
 
 ![Screenshot of heavymetalab.appspot.com home page](https://github.com/wiseman/sirc/raw/master/screenshots/sirc-browse.png "Browsing page")
+
+The front end queries the search index for searches, displays search
+results, and renders logs for display.
+
+
+The back end
+------------
+
+The back end collects IRC logs, adds them to the index, and stores them in the log repository.
+
