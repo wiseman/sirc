@@ -42,7 +42,7 @@ The back end collects IRC logs, adds them to the index, and stores them in the l
 To collect logs, I use code from my [irc-logs
 project](http://code.google.com/p/irc-logs/) (I don't have a log bot,
 so I use the logs that nef collects at
-[http://tunes.org/~nef/logs/](http://tunes.org/~nef/logs/).
+[http://tunes.org/~nef/logs/](http://tunes.org/~nef/logs/)).
 
 The search index
 ----------------
