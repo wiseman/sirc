@@ -156,7 +156,7 @@ class Search(webapp.RequestHandler):
       values['advice'] = 'Try emailing John at jjwiseman@gmail.com.'
     elif isinstance(exception, urllib2.HTTPError):
       if exception.code == 400:  # Bad request
-        values['detail'] = 'Sorry, I didn\'t understand your query.'
+        values['detail'] = 'I didn\'t understand your query.'
         values['advice'] = ('Try your query again, but try removing any punctuation '
                             'or special characters.')
     else:
