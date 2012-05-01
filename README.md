@@ -28,7 +28,7 @@ Looking at the log for one channel for one day:
 
 ![Screenshot of heavymetalab.appspot.com home page](https://github.com/wiseman/sirc/raw/master/screenshots/sirc-log.png "Log page")
 
-Browsing the entire history of a channel, which color-coded activity indicators:
+Browsing the entire history of a channel, with color-coded activity indicators:
 
 ![Screenshot of heavymetalab.appspot.com home page](https://github.com/wiseman/sirc/raw/master/screenshots/sirc-browse.png "Browsing page")
 
