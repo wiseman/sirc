@@ -8,7 +8,6 @@ SIRC is a search engine for IRC logs.  It has four big parts:
 * The search index.
 * The log repository.
 
-
 The front end
 -------------
 
@@ -35,7 +34,6 @@ Browsing the entire history of a channel, with color-coded activity indicators:
 The front end queries the search index for searches, displays search
 results, and renders logs for display.
 
-
 The back end
 ------------
 
@@ -46,16 +44,12 @@ project](http://code.google.com/p/irc-logs/) (I don't have a log bot,
 so I use the logs that nef collects at
 [http://tunes.org/~nef/logs/](http://tunes.org/~nef/logs/).
 
-
 The search index
 ----------------
 
 SIRC indexes each line of every IRC log using [Solr](http://lucene.apache.org/solr/).
 
-
 The log repository
 ------------------
 
 I store the logs in Amazon S3.  The front end gets them from S3, marks them up with HTML, and shows them to the user.
-
-
