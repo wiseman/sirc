@@ -2,5 +2,4 @@
 *.pyc
 creds.txt
 env
-sirc/be/work
-sirc/be/solr
+sirc/be
