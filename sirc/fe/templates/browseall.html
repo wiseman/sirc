@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>SIRC : Browse channels</title>
+<link href="/static/{{css_file}}" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-137136-5']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<style type="text/css">
+  /* heatmap colors from Brewer:
+     http://colorbrewer2.org/index.php?type=diverging&scheme=RdYlBu&n=5
+  */
+  .xlo { background-color: rgb( 44, 123, 182); }
+  .lo  { background-color: rgb(171, 217, 233); }
+  .med { background-color: rgb(255, 255, 191); }
+  .hi  { background-color: rgb(253, 174,  97); }
+  .xhi { background-color: rgb(215,  25,  28); }
+</style>
+
+</head>
+<body>
+<div style="float: right;"><a href="static/help.html">help</a></div>
+
+<h1>SIRC : Browse channels</h1>
+{% regroup server_channels|dictsort:"server" by server as grouped %}
+{% for group in grouped %}
+<h2>{{ group.grouper|escape}}</h2>
+{% for serverchannel in group.list %}
+<h3><a href="{% url BrowseChannel serverchannel.channel %}">{{ serverchannel.channel|escape }}</a></h3>
+{% endfor %}
+{% endfor %}
+
+</body>
+</html>
+
