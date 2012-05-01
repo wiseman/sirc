@@ -13,6 +13,8 @@ import time
 import traceback
 import urllib
 
+from google.appengine import runtime
+from google.appengine.api import urlfetch
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
@@ -112,31 +114,49 @@ class Search(webapp.RequestHandler):
     if len(query) > 0:
       values['query'] = query
       values['css_file'] = 'mainq.css'
-      response = sirc.fe.index.get_query_results(query,
-                                                 (page - 1) * PAGE_SIZE,
-                                                 PAGE_SIZE)
-      records = response['docs']
-      if len(records) > 0:
-        results = prepare_results_for_display(records)
-        paging_html = sirc.fe.pagination.get_pagination(
-          adjacents=5,
-          limit=PAGE_SIZE,
-          page=page,
-          total_items=response['numFound'],
-          script_name=self.request.path,
-          extra='&q=%s' % (cgi.escape(query),))
-        total_ms = int(response['query_time'] * 1000)
-        result_html = render_template(
-          'serp.html', {'start': (page - 1) * PAGE_SIZE + 1,
-                        'end': (page - 1) * PAGE_SIZE + len(results),
-                        'total': response['numFound'],
-                        'results': results,
-                        'total_time': '%s' % (total_ms,),
-                        'query_time': '%s' % (response['QTime'],),
-                        'pagination_html': paging_html})
-        values['result_html'] = result_html
-        values['has_results'] = True
+      try:
+        response = sirc.fe.index.get_query_results(query,
+                                                   (page - 1) * PAGE_SIZE,
+                                                   PAGE_SIZE)
+        records = response['docs']
+        if len(records) > 0:
+          results = prepare_results_for_display(records)
+          paging_html = sirc.fe.pagination.get_pagination(
+            adjacents=5,
+            limit=PAGE_SIZE,
+            page=page,
+            total_items=response['numFound'],
+            script_name=self.request.path,
+            extra='&q=%s' % (cgi.escape(query),))
+          total_ms = int(response['query_time'] * 1000)
+          result_html = render_template(
+            'serp.html',
+            {'start': (page - 1) * PAGE_SIZE + 1,
+             'end': (page - 1) * PAGE_SIZE + len(results),
+             'total': response['numFound'],
+             'results': results,
+             'total_time': '%s' % (total_ms,),
+             'query_time': '%s' % (response['QTime'],),
+             'pagination_html': paging_html})
+          values['result_html'] = result_html
+          values['has_results'] = True
+      except (runtime.DeadlineExceededError, urlfetch.DownloadError), e:
+        values['error'] = True
+        values['error_message'] = self.GetSearchErrorMessage(e)
     self.response.out.write(render_template('search.html', values))
+
+  def GetSearchErrorMessage(self, exception):
+    values = {}
+    if isinstance(exception, runtime.DeadlineExceededError):
+      values['detail'] = 'Processing your query was taking too long: %s' % (exception,)
+      values['advice'] = 'This might be a temporary problem, so try reloading this page.'
+    elif isinstance(exception, urlfetch.DownloadError):
+      values['detail'] = 'This looks serious: %s' % (exception,)
+      values['advice'] = 'Try emailing John at jjwiseman@gmail.com.'
+    else:
+      values['detail'] = 'I don\'t know what happened: %s' % (exception,)
+      values['advice'] = 'Try again later.'
+    return render_template('search_error.html', values)
 
   def handle_exception(self, exception, debug_mode):
     logging.info('WOO')

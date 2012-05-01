@@ -106,10 +106,6 @@ def mkdir(bucket, logical_path):
     print k.set_contents_from_string('')
 
 
-AWS_ACCESS_KEY_ID = '1P7JHG3GWH0R2596ZK82'
-AWS_SECRET_ACCESS_KEY = '4u6iCa6UFc1Q2WfK3zIEhRdTV0ah94RSFJY9dASS'
-
-
 class Credentials:
   def __init__(self, access_key, secret):
     self.access_key = access_key
@@ -120,7 +116,7 @@ def get_credentials():
   with open('creds.txt', 'rb') as f:
     aws_access_key_id = f.readline()[:-1]
     aws_secret_access_key = f.readline()[:-1]
-  return Credentials(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
+  return Credentials(aws_access_key_id, aws_secret_access_key)
 
 
 g_connection = None
