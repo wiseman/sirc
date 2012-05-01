@@ -1,20 +1,18 @@
-import sys
-import re
-import logging
+import cgi
 import datetime
 import hashlib
+import logging
+import re
+import sys
+import time
 import urllib
 import urllib2
-import time
+
+from django.utils import simplejson as json
 
 from google.appengine.ext import webapp
 from google.appengine.ext import db
 from google.appengine.ext import blobstore
-
-import mapreduce.operation
-import mapreduce.control
-import mapreduce.context
-
 
 class QueryEvent(db.Model):
   timestamp = db.DateTimeProperty(required=True)
@@ -47,21 +45,6 @@ def make_db_query_from_parsed_query(parsed_query):
   return db_query
 
 
-def get_query_results(query_string):
-  parsed_query = parse_query_string(query_string)
-  db_query = query.make_multi_term_query(parsed_query)
-  records = db_query.fetch(1000)
-  for r in records:
-    blob_reader = blobstore.BlobReader(r.log.blob.key())
-    r.context = get_context_lines(blob_reader, r.position)
-    #logging.info('context: %s' % (r.context,))
-    #logging.info('Context: %s' % (r.context,))
-  for r in records:
-    r['text'] = get_log_line_from_position(blob_reader, r['position'])
-    logging.info(r['text'])
-  return records
-
-
 SEARCH_SERVER_URL = 'http://heavymeta.dyndns.org:8983' + \
                     '/solr/select/?q=%s&version=2.2&start=%s&rows=%s' + \
                     '&wt=json&sort=timestamp+desc'
@@ -69,10 +52,6 @@ SEARCH_SERVER_URL = 'http://heavymeta.dyndns.org:8983' + \
 
 def get_query_results(query_string, start, num_results):
   start_time = time.time()
-  import cgi
-  from django.utils import simplejson as json
-  import datetime
-
   query_event = record_query('q=%s, start=%s' % (query_string, start))
 
   url = SEARCH_SERVER_URL % (urllib.quote_plus(query_string.encode('utf-8')),

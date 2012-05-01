@@ -1,2 +1,5 @@
 *~
 *.pyc
+creds.txt
+env
+sirc/be
