@@ -13,10 +13,21 @@ The front end
 -------------
 
 The front end is written in Python and runs on Google's App Engine.
-You can see it in action at
-[http://heavymetalab.appspot.com/](http://heavymetalab.appspot.com/):
+You can see it in action (try it out!) at
+[http://heavymetalab.appspot.com/](http://heavymetalab.appspot.com/).
+
+The home page:
 
 ![Screenshot of heavymetalab.appspot.com home page](https://github.com/wiseman/sirc/raw/master/screenshots/sirc-home.png "Home page")
-![Screenshot of heavymetalab.appspot.com serp page]https://github.com/wiseman/sirc/raw/master/screenshots/sirc-serp.png( "SERP page")
+
+The results of a search:
+
+![Screenshot of heavymetalab.appspot.com serp page](https://github.com/wiseman/sirc/raw/master/screenshots/sirc-serp.png "SERP page")
+
+Looking at the log for one channel for one day:
+
 ![Screenshot of heavymetalab.appspot.com home page](https://github.com/wiseman/sirc/raw/master/screenshots/sirc-log.png "Log page")
+
+Browsing the entire history of a channel, which color-coded activity indicators:
+
 ![Screenshot of heavymetalab.appspot.com home page](https://github.com/wiseman/sirc/raw/master/screenshots/sirc-browse.png "Browsing page")
