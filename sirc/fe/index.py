@@ -14,6 +14,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext import db
 from google.appengine.ext import blobstore
 
+
 class QueryEvent(db.Model):
   timestamp = db.DateTimeProperty(required=True)
   query = db.StringProperty(required=True)
