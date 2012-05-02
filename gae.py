@@ -21,9 +21,10 @@
 #
 # So we define a main here.
 
-import sirc.fe
-
+import sys
 sys.path.append('thirdparty')
+
+import sirc.fe
 
 def main():
   sirc.fe.run_application()
