@@ -23,6 +23,7 @@
 
 import sirc.fe
 
+sys.path.append('thirdparty')
 
 def main():
   sirc.fe.run_application()
