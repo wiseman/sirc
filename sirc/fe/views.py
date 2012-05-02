@@ -141,7 +141,9 @@ class Search(webapp.RequestHandler):
              'pagination_html': paging_html})
           values['result_html'] = result_html
           values['has_results'] = True
-      except (runtime.DeadlineExceededError, urlfetch.DownloadError, urllib2.HTTPError), e:
+      except (runtime.DeadlineExceededError,
+              urlfetch.DownloadError,
+              urllib2.HTTPError), e:
         values['error'] = True
         values['error_message'] = self.GetSearchErrorMessage(e)
     self.response.out.write(render_template('search.html', values))
@@ -149,16 +151,18 @@ class Search(webapp.RequestHandler):
   def GetSearchErrorMessage(self, exception):
     values = {}
     if isinstance(exception, runtime.DeadlineExceededError):
-      values['detail'] = 'Processing your query was taking too long: %s' % (exception,)
-      values['advice'] = 'This might be a temporary problem, so try reloading this page.'
+      values['detail'] = 'Processing your query was taking too long: %s' % (
+        exception,)
+      values['advice'] = ('This might be a temporary problem, so try '
+                          'reloading this page.')
     elif isinstance(exception, urlfetch.DownloadError):
       values['detail'] = 'This looks serious: %s' % (exception,)
       values['advice'] = 'Try emailing John at jjwiseman@gmail.com.'
     elif isinstance(exception, urllib2.HTTPError):
       if exception.code == 400:  # Bad request
         values['detail'] = 'I didn\'t understand your query.'
-        values['advice'] = ('Try your query again, but try removing any punctuation '
-                            'or special characters.')
+        values['advice'] = ('Try your query again, but try removing any '
+                            'punctuation and special characters.')
     else:
       values['detail'] = 'I don\'t know what happened: %s' % (exception,)
       values['advice'] = 'Try again later.'
